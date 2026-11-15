@@ -185,7 +185,7 @@
 
 ## D016: 第一次 commit，推到 GitHub 私有仓库，供队员共享
 - Date: 2026-11-15
-- Status: accepted
+- Status: accepted（第 1 条的"私有、不改成公开"由 D017 取代）
 - Decided by: 用户（要求"传到 github，分享给小组成员"，并选了账号、仓库名、提交邮箱和邮箱处理方式），AI（Claude Code）执行
 - Context: D004 规定队员设置 git 身份之前不 commit，到 11-15 仓库还没有任何 commit。用户要把项目分享给组员。比赛规则禁止把代码、数据、预测和结果分享到队伍以外（`docs/COMPETITION_RULES.md`，D014），所以只能用私有仓库。
 - Decision:
@@ -196,3 +196,12 @@
   5. 以后的 run 都在 commit 之后做，`meta.json` 会记录真实的 commit；之前的 run 仍是 `no-commit`（代码来源靠代码包 + 逐位重跑，D005、D012、D013）。
 - Consequences: 组员 `git clone` 后按 `docs/SETUP.md` 建环境、下载数据即可复现。组员需要被加为仓库协作者（collaborator）才能看到仓库。
 - Evidence: 本条之后的第一次 commit；`gh repo view yongzic1-lgtm/dsai4203-small-sample-classification`。
+
+## D017: 仓库改为公开（用户知情后决定）
+- Date: 2026-11-15
+- Status: accepted
+- Decided by: 用户。AI 先说明了规则风险，用户在三个选项（保持私有并邀请组员 / 截止后再公开 / 现在就公开）里选了"现在就公开"。
+- Context: D016 把仓库建成私有。用户随后要求公开。存档的规则（`docs/COMPETITION_RULES.md`）：Kaggle 6b 规定比赛期间代码只能在 Kaggle 上（本比赛的论坛或 notebooks）公开分享，6a 规定违规可能被取消资格；课程规则 5 禁止把代码和结果分享给队伍以外的人，明确包括其他组的同学。比赛 2026-11-30 00:59 JST 截止，此前排行榜上还有其他 DSAI4203 小组。
+- Decision: 2026-11-15 把 `yongzic1-lgtm/dsai4203-small-sample-classification` 改为公开（`gh repo edit --visibility public`）。公开前检查过：仓库里没有比赛数据、学号、token、密钥或个人邮箱；名字只以 Kaggle 显示名出现（排行榜上本来就公开）。
+- Consequences: 风险由用户承担：可能被认为违反 Kaggle 6b / 课程规则 5（可能被取消资格或引起学术诚信问题）；公开后别人可能已经 clone 或 fork，改回私有也收不回。报告的 GenAI / 合规部分如果写到分享方式，要如实写。
+- Evidence: `gh repo view yongzic1-lgtm/dsai4203-small-sample-classification` 显示 PUBLIC。

@@ -162,3 +162,7 @@
 - Result: 见 D016 和第一次 commit。比赛数据、`.venv`、快照、`*.npy`、提交 CSV 都不在仓库里。
 - Difficulties: 代码包里藏着旧的 project.yaml（含个人邮箱），压缩包用 grep 搜不到，要解包检查。
 - Next: 组员把 GitHub 用户名发给仓库所有者，加为协作者；组员 clone 后按 `docs/SETUP.md` 建环境，从 Kaggle 下载数据，跑 `scripts/verify_data.py` 校验。
+
+## 2026-11-15 — TODO（仓库改为公开）
+- Did: 用户要求公开仓库。AI 先列出规则风险（Kaggle 6a/6b、课程规则 5，比赛 11-30 00:59 JST 才截止），给了三个选项；用户选择现在就公开。公开前检查了学号、密码、token 和个人邮箱，都没有。已改为 PUBLIC（D017）。
+- Next: 组员可以直接 clone；如果以后要改回私有：`gh repo edit yongzic1-lgtm/dsai4203-small-sample-classification --visibility private --accept-visibility-change-consequences`（已有的 clone/fork 收不回）。
