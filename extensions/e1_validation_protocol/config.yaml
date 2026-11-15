@@ -1,0 +1,114 @@
+# E1 Validation protocol design -- configuration for run.py
+#
+# Question: which validation scheme would you trust to choose between two models
+# that differ by 0.01 AUC?
+#
+# Every scheme below is executed `n_split_seeds` times. Between executions ONLY the
+# split seed changes (rows -> train/validation assignment); the model seeds
+# (pipeline.random_state) stay fixed, so the spread of the estimates is caused by
+# the split alone. Models A and B are always evaluated on the SAME splits (paired).
+#
+# Seeds: execution s (s = 0 .. n_split_seeds-1) of a scheme with R repeats uses
+# split seeds  seed_base + s * seed_stride + r,  r = 0 .. R-1   (see ssc.validation.Scheme).
+# seed_stride must be >= the largest n_repeats so executions never share a split.
+
+name: e1_validation_protocol
+hypothesis: >-
+  The spread of a single hold-out AUC (one split of 250 rows) is several times larger
+  than 0.01, so a hold-out cannot rank two models that differ by 0.01. Plain k-fold
+  shrinks the spread as k grows only modestly; only repeated k-fold (5-fold x 10, or
+  the official 5-fold x 20) brings the MDD (2 x std of the paired difference of two
+  close candidates) below 0.01.
+
+n_split_seeds: 50          # executions per scheme (one estimate per execution)
+seed_base: 1               # first split seed
+seed_stride: 1000          # distance between executions' seed ranges (>= max n_repeats)
+
+# Two candidate models, each a ssc.models.build_pipeline spec. Their random_state is
+# the MODEL seed and is held fixed for every split (logreg/liblinear is effectively
+# deterministic anyway; the field matters for random models such as rf / lgbm).
+# Note sklearn 1.9: use l1_ratio (1.0 = L1, 0.0 = L2), not the deprecated `penalty`.
+#
+# Choose A and B like a REAL decision of the team: two close candidates (neighbouring
+# hyperparameters or selector sizes) whose CV gap is about the 0.01 of the question.
+# The MDD of a paired difference depends on the pair, not only on the scheme:
+# std(A - B) = sqrt(sA^2 + sB^2 - 2 rho sA sB), and similar models have a high rho.
+# Default: in-fold |corr| top-30 vs top-50 + the same L2 logreg (synthetic CV gap ~0.012).
+# Replace it by the team's own neighbouring candidates for the real-data run.
+#
+# Real-data choice (2026-10-22, agent ext12): KEPT top-30 vs top-50. R300
+# (research/r300_e1_pair_screen.py, official 5-fold x 20, reports/tables/r300_pair_screen.csv)
+# screened 11 neighbouring supervised pairs with a pre-registered rule (linear-regime pair
+# whose |gap| is closest to 0.01): corr top-30 + L2 = 0.7910 (run 20261022-063705_r300_corr30_l2)
+# vs corr top-50 + L2 = 0.8011 (run 20261022-063706_r300_corr50_l2), paired A - B = -0.0101,
+# se_split 0.0023, corr of repeat means 0.76, corrected p 0.51. The transductive GMM is
+# saturated at CV AUC 1.0 and cannot be used here. The ceiling-regime pair QDA reg 0.1 vs 0.3
+# on the block (gap +0.0126) is run as a second E1 execution through
+# research/r301_run_extension.py with research/r305_e1_qda_pair.yaml (report prefix e1_qda_).
+# Result (run 20261022-064054_e1_validation_protocol): the reference 5x50 gap of this pair is
+# only -0.0029 (SE 0.0014); the official seed's -0.0101 was a ~2 sd split-noise draw, which
+# the pick-closest-to-0.01 rule favours. The MDD (spread of A - B) is unaffected.
+# A dissimilar pair (larger gap, low rho, larger MDD), kept for comparison:
+#   A: {scaler: standard, model: {name: logreg, params: {C: 0.1, l1_ratio: 1.0, solver: liblinear}}, random_state: 0}
+#   B: {scaler: standard, model: {name: logreg, params: {C: 0.05, l1_ratio: 0.0, solver: liblinear}}, random_state: 0}
+models:
+  A:
+    label: "corr top-30 + L2 logreg C=0.05"
+    pipeline:
+      scaler: standard
+      selector: {name: corr_topk, k: 30}
+      model:
+        name: logreg
+        params: {C: 0.05, l1_ratio: 0.0, solver: liblinear}
+      random_state: 0
+  B:
+    label: "corr top-50 + L2 logreg C=0.05"
+    pipeline:
+      scaler: standard
+      selector: {name: corr_topk, k: 50}
+      model:
+        name: logreg
+        params: {C: 0.05, l1_ratio: 0.0, solver: liblinear}
+      random_state: 0
+
+# Candidate schemes. Fields follow ssc.validation.Scheme (kind, n_splits, n_repeats,
+# test_size, shuffle, stratify); `seed` is set by run.py per execution.
+# One estimate = what a practitioner would report from ONE execution:
+#   holdout          -> the single validation AUC
+#   kfold, R = 1     -> mean AUC over its k folds
+#   kfold, R > 1     -> mean AUC over all k x R folds (repeated k-fold)
+# Set enabled: false to drop a scheme without deleting it.
+schemes:
+  - {name: holdout20, kind: holdout, test_size: 0.2, n_repeats: 1, enabled: true}
+  - {name: holdout30, kind: holdout, test_size: 0.3, n_repeats: 1, enabled: true}   # optional variant
+  - {name: 3fold, kind: kfold, n_splits: 3, n_repeats: 1, enabled: true}
+  - {name: 5fold, kind: kfold, n_splits: 5, n_repeats: 1, enabled: true}
+  - {name: 10fold, kind: kfold, n_splits: 10, n_repeats: 1, enabled: true}
+  - {name: 5foldx10, kind: kfold, n_splits: 5, n_repeats: 10, enabled: true}         # candidate "trustworthy" scheme
+  - {name: 5foldx20, kind: kfold, n_splits: 5, n_repeats: 20, enabled: true}         # = project.yaml official_cv (5 x 20)
+  # sklearn caveat: without shuffle=True the split depends only on the row order;
+  # sklearn refuses a random_state then (ValueError), so every "seed" gives the
+  # identical split -> zero spread. Reported as a separate row.
+  - {name: 5fold_noshuffle, kind: kfold, n_splits: 5, n_repeats: 1, shuffle: false, enabled: true}
+
+# Reference for the sign of (A - B): one large repeated CV on seeds disjoint from
+# all executions above. It is the best available estimate of the expected CV
+# difference on these 250 rows (it is still an estimate: its SE is reported).
+reference:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 50
+  seed: 900000
+
+# Decision threshold of the question (AUC). MDD = 2 x std(paired-difference estimate).
+target_difference: 0.01
+
+# Synthetic data only: also fit A and B on all 250 rows and score them on the 19,750
+# hidden test labels (data/synthetic/test_labels.csv) -> "true" AUCs and true sign.
+ground_truth: true
+
+# --quick (smoke test) overrides, applied on top of the settings above.
+quick:
+  n_split_seeds: 4
+  max_repeats: 2           # caps n_repeats of every scheme (5foldx10 -> 5foldx2)
+  reference_repeats: 4

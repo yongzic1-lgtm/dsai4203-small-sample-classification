@@ -1,0 +1,33 @@
+{
+  "auc_mean": 0.9961881757533934,
+  "auc_std_fold": 0.005004733962694702,
+  "auc_std_repeat": 0.000997463442354297,
+  "auc_min_repeat": 0.9948391785348306,
+  "auc_max_repeat": 0.998387079908819,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.9962954589496803,
+  "oof_auc_std": 0.0006193194228890771,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "group": "supervised-generative",
+  "features": "block(train+test highvar, train+test standardised)",
+  "n_configs": 1,
+  "tuning": "none (analytic Ledoit-Wolf shrinkage)",
+  "uses_unlabeled_test_features": true,
+  "wall_seconds": 3.5,
+  "n_constant_pred_folds": 0,
+  "oof_logloss": 0.08173397957495421,
+  "oof_brier": 0.023077292719794296,
+  "n_fold_logs": 100,
+  "status": "done",
+  "finished_at": "2026-10-22T08:20:47+09:00"
+}

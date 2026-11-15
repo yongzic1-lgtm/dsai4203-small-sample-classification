@@ -1,0 +1,75 @@
+name: r249_sup_comparison
+candidates:
+- r207_l2_block_tt_wide
+- r200_l1_block
+- r207_l1_block_wide
+- r207_l2_block_wide
+- r200_l2_block
+- r201_poly2lr_block
+- r200_en_block
+- r200_l1_all
+- r200_lda_block
+- r200_l1_corrk
+- r200_en_all
+- r200_l2_corrk
+- r200_lda_corrk
+- r200_lda_all
+- r200_l2_all
+- r209_sup_qda_tt_r003
+- r201_qda_block
+- r201_qda_pcablock
+- r208_qda_blockextra_full
+- r201_qda_block_tt
+- r208_qda_block13_infold
+- r201_qda_blockratio
+- r201_qda_blockextra
+- r209_sup_qda_tt_r01
+- r208_qda_corrk_full
+- r208_qda_block_lw
+- r201_qda_corrk
+- r208_qda_all_lw
+- r201_gnb_block_tt
+- r201_gnb_block
+- r201_gnb_all
+- r202_gpc_ard_block_tt
+- r202_gpc_ard_block
+- r202_gpc_rbf_block
+- r201_svm_block
+- r201_knn_block
+- r201_svm_all
+- r202_gpc_rbf_all
+- r201_knn_all
+- r203_lgbm_block_nested
+- r203_lgbm_block
+- r203_et_block
+- r203_xgb_block
+- r203_rf_block
+- r203_lgbm_all
+- r203_rf_all
+- r203_xgb_all
+- r203_et_all
+- r205_select_supervised
+- r209_selftrain_qda_r003
+- r209_selftrain_qda_lw
+- r209_selftrain_qda_fullgrid
+- r204_selftrain_qda_nested
+- r204_selftrain_qda_default
+- r209_labelspread_widegrid
+- r204_labelspread_nested
+- r204_labelprop_block
+- r204_labelspread_block
+- r204_selftrain_lr
+- r204_labelspread_all
+- R003_gmm2_hv (recomputed)
+best_strict_supervised: r201_qda_pcablock
+reference_transductive: TransductiveGMM('highvar', 2), recomputed on the official
+  splits
+model_code: research/r249_sup_comparison.py
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true

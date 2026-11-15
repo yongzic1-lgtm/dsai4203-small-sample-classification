@@ -1,0 +1,7 @@
+{'candidate': 'gmm2_block_mle', 'run_id': '20261022-074857_r105_gmm2_block_mle', 'auc_mean': 1.0, 'cv_logloss': 0.0171255175306125, 'kendall_boundary': 0.9959432048681544, 'n_boundary_self': 204, 'expected_auc_under_ref': 0.9999479945010317, 'n_side_flips_all': 0}
+{'candidate': 'semisup_eps01_mle', 'run_id': '20261022-074903_r105_semisup_eps01_mle', 'auc_mean': 1.0, 'cv_logloss': 0.007697867613355444, 'kendall_boundary': 0.9959432048681544, 'n_boundary_self': 189, 'expected_auc_under_ref': 0.9999479945132211, 'n_side_flips_all': 0}
+{'candidate': 'gmm2_block_mle_seed10', 'run_id': '20261022-074907_r105_gmm2_block_mle_seed10', 'auc_mean': 1.0, 'cv_logloss': 0.01712551753268299, 'kendall_boundary': 0.9959432048681544, 'n_boundary_self': 204, 'expected_auc_under_ref': 0.9999479945010317, 'n_side_flips_all': 0}
+            candidate                                     run_id  auc_mean  cv_logloss  cv_brier  kendall_boundary  spearman_boundary  expected_auc_under_ref
+       gmm2_block_mle        20261022-074857_r105_gmm2_block_mle       1.0    0.017126  0.002687          0.995943           0.999917                0.999948
+    semisup_eps01_mle     20261022-074903_r105_semisup_eps01_mle       1.0    0.007698  0.002573          0.995943           0.999921                0.999948
+gmm2_block_mle_seed10 20261022-074907_r105_gmm2_block_mle_seed10       1.0    0.017126  0.002687          0.995943           0.999917                0.999948

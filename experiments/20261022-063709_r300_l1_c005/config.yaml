@@ -1,0 +1,21 @@
+name: r300_l1_c005
+description: L1 logistic C=0.05, all 150 features
+model_code: research/r300_e1_pair_screen.py
+pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params:
+      C: 0.05
+      l1_ratio: 1.0
+      solver: liblinear
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

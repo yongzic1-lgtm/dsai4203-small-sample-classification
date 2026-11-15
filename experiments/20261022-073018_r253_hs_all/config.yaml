@@ -1,0 +1,46 @@
+name: r253_hs_all
+description: regularised-horseshoe logistic, all 150 standardised features
+model_code: research/r253_horseshoe_logreg.py + research/lib_fm.py
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false
+prior:
+  type: regularised horseshoe
+  p0: 10.0
+  slab_scale: 2.0
+  slab_df: 4.0
+mcmc:
+  sampler: NUTS
+  warmup: 500
+  samples: 500
+  chains: 1
+  target_accept: 0.95
+versions:
+  torch: null
+  tabpfn: null
+  tabicl: null
+  jax: 0.10.2
+  jaxlib: 0.10.2
+  numpyro: 0.22.0
+  huggingface_hub: null
+  scikit-learn: 1.9.1
+  numpy: 2.4.6
+  pandas: 3.0.6
+  scipy: 1.17.1
+venv:
+  venv: /content/venv_numpyro
+  packages:
+  - numpyro
+  - jax
+  hash: d382ccc68ffc4045
+  pinned_resolution: true
+code_sha:
+  lib_fm.py: a52df6cce06d4be6
+  r253_horseshoe_logreg.py: ddaa80204a8b89a9

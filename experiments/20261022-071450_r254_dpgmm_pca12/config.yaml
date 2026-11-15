@@ -1,0 +1,22 @@
+name: r254_dpgmm_pca12
+description: DP-BGMM T=10 gamma=1 on the PCA(12) basis of the block
+model_code: research/r254_dp_gmm.py + research/lib_fm.py
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true
+params:
+  n_components: 10
+  gamma: 1.0
+  pca_dims: 12
+  n_init: 3
+  alpha: 1.0
+code_sha:
+  lib_fm.py: a52df6cce06d4be6
+  r254_dp_gmm.py: 1c188151ad9af781

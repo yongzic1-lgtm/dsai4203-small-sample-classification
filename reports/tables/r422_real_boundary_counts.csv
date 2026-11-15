@@ -1,0 +1,4 @@
+definition,archived,n_0.1_0.9,n_0.05_0.95,n_0.01_0.99
+converged posterior (R922 fit_posterior),R922: 189 / 554,189,286,554
+"S003 mixture, single fit on all 250 labels (r321)",r321: 203,203,312,10092
+"S003 submitted fold-mean score, %.8f (r932)",r932: 204,204,319,10098

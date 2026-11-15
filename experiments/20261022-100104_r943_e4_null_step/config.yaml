@@ -1,0 +1,9 @@
+n_boot: 2000
+n_perm: 50
+ks:
+- 5
+- 10
+- 13
+- 20
+seeds: 'E4: bootstrap 2026, perm label 7+p, boot 2027+p'
+model_code: research/r943_e4_null_step.py

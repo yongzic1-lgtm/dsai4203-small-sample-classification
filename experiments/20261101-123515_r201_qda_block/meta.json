@@ -1,0 +1,141 @@
+{
+  "run_id": "20261101-123515_r201_qda_block",
+  "kind": "experiment",
+  "name": "r201_qda_block",
+  "author": "TODO_ID_1",
+  "created_at": "2026-11-01T12:35:15+09:00",
+  "data_source": "raw",
+  "data_fingerprint": {
+    "train.csv": "7ef80ff93ef49c8c",
+    "test.csv": "e40a4f71df157db8"
+  },
+  "git": {
+    "commit": "no-commit",
+    "dirty": true,
+    "branch": null,
+    "from_env": true
+  },
+  "packages": {
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "sklearn": "1.9.1",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.2.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "version": "0.3.31.188.0",
+      "architecture": "Haswell",
+      "threading_layer": "pthreads",
+      "num_threads": 2,
+      "library": "libscipy_openblas64_-32a4b2a6.so"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "version": null,
+      "architecture": null,
+      "threading_layer": null,
+      "num_threads": 2,
+      "library": "libgomp.so.1.0.0"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "version": null,
+      "architecture": null,
+      "threading_layer": null,
+      "num_threads": 2,
+      "library": "libgomp-e985bcbb.so.1.0.0"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "version": "0.3.30",
+      "architecture": "Haswell",
+      "threading_layer": "pthreads",
+      "num_threads": 2,
+      "library": "libscipy_openblas-6cdc3b4a.so"
+    }
+  ],
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "compute": {
+    "host": "colab",
+    "account": "pro1",
+    "session": "repro",
+    "hardware": "CPU Standard DEFAULT",
+    "job_id": "J20261101-123642-pro1-repro",
+    "code_bundle": "00a20dcb38357b0d",
+    "env_hash": "8871117790f585a7",
+    "research_data": "ebe13cddfe369284",
+    "node": "638e164cce04",
+    "cpus": 2,
+    "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz"
+  },
+  "command": "research/r201_sup_quadratic.py --only qda_block",
+  "estimator": {
+    "class": "lib_sup.Tuned",
+    "params": {
+      "estimator": "Pipeline(steps=[('sel', HighVarColumns()), ('scale', StandardScaler()),\n                ('model', QuadraticDiscriminantAnalysis())])",
+      "estimator__memory": null,
+      "estimator__model": "QuadraticDiscriminantAnalysis()",
+      "estimator__model__covariance_estimator": null,
+      "estimator__model__priors": null,
+      "estimator__model__reg_param": 0.0,
+      "estimator__model__shrinkage": null,
+      "estimator__model__solver": "svd",
+      "estimator__model__store_covariance": false,
+      "estimator__model__tol": 0.0001,
+      "estimator__scale": "StandardScaler()",
+      "estimator__scale__copy": true,
+      "estimator__scale__with_mean": true,
+      "estimator__scale__with_std": true,
+      "estimator__sel": "HighVarColumns()",
+      "estimator__sel__extra_k": 0,
+      "estimator__sel__ratio": 1.5,
+      "estimator__steps": [
+        [
+          "sel",
+          "HighVarColumns()"
+        ],
+        [
+          "scale",
+          "StandardScaler()"
+        ],
+        [
+          "model",
+          "QuadraticDiscriminantAnalysis()"
+        ]
+      ],
+      "estimator__transform_input": null,
+      "estimator__verbose": false,
+      "grid": {
+        "model__reg_param": [
+          0.9,
+          0.7,
+          0.5,
+          0.3,
+          0.2,
+          0.1,
+          0.05,
+          0.03,
+          0.01,
+          0.003,
+          0.001
+        ]
+      },
+      "inner_repeats": 2,
+      "inner_seed": 0,
+      "inner_splits": 5,
+      "log_dir": "/tmp/suplog_qda_block_t3ol6keq",
+      "n_jobs": 1,
+      "scoring": "roc_auc"
+    }
+  }
+}

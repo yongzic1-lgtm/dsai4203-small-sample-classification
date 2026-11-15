@@ -1,0 +1,15 @@
+# Baseline 3: filter selection inside each fold + L2 logreg (official CV: no cv block).
+name: baseline_corr20_l2_logreg
+hypothesis: >-
+  Keeping the 20 features with the largest |corr| (re-selected inside every fold, no
+  leakage) removes most noise before an L2 model and should match or beat L1 on all 150.
+pipeline:
+  scaler: standard
+  selector:
+    name: corr_topk
+    k: 20
+  model:
+    name: logreg
+    params: {C: 0.1, l1_ratio: 0.0, solver: liblinear}
+  random_state: 0
+test_pred: fold_mean

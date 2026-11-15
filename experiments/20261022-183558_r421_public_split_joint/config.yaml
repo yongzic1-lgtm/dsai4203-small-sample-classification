@@ -1,0 +1,111 @@
+name: r421_public_split_joint
+obs_public_s003: 0.99923
+n_public: 395
+kmax: 10
+n_public_draws: 12000000
+n_private_draws_per_f: 3000
+store_window: 0.00015
+windows:
+  exact_round5: 5.0e-06
+  pm5e-5: 5.0e-05
+  pm1.5e-4: 0.00015
+f_private_grid:
+- 0.0
+- 0.0005
+- 0.001
+- 0.0015
+- 0.002
+- 0.0025
+- 0.003
+- 0.0035
+- 0.004
+- 0.0045
+- 0.005
+- 0.0055
+- 0.006
+- 0.0065
+- 0.007
+- 0.0075
+- 0.008
+- 0.0085
+- 0.009
+- 0.0095
+- 0.01
+- 0.0105
+- 0.011
+- 0.0115
+- 0.012
+- 0.0125
+- 0.013
+- 0.0135
+- 0.014
+- 0.0145
+- 0.015
+- 0.0155
+- 0.016
+- 0.0165
+- 0.017
+- 0.0175
+- 0.018
+- 0.0185
+- 0.019
+- 0.0195
+- 0.02
+- 0.0205
+- 0.021
+- 0.0215
+- 0.022
+- 0.0225
+- 0.023
+- 0.0235
+- 0.024
+- 0.0245
+- 0.025
+- 0.0255
+- 0.026
+- 0.0265
+- 0.027
+- 0.0275
+- 0.028
+- 0.0285
+- 0.029
+- 0.0295
+- 0.03
+- 0.035
+- 0.04
+- 0.05
+- 0.06
+- 0.08
+- 0.1
+n1_hist_range:
+- 150
+- 245
+posterior: R922 fit_posterior (converged K=2 full GMM, PCA basis, tol 1e-10, reg 1e-10)
+split_models:
+- random 395-subset (R922)
+- 'stratified: n1* = 197'
+- 'stratified: n1* = 198'
+- 'stratified: n1* mixed by P(round(395 N1/19750))'
+priors:
+- uniform_0_0.1 (primary, R922)
+- default_aware (R922)
+beliefs_checked:
+  B006:
+    interval80:
+    - 0.998
+    - 0.9997
+    point: 0.9988
+    p_higher: 0.2
+    bad_below: 0.996
+  B007:
+    interval80:
+    - 0.9987
+    - 0.9996
+    point: 0.9991
+    p_higher: 0.265
+    p_equal: 0.04
+    bad_below: 0.9975
+reuses:
+- research/r922_label_noise_private.py (helpers)
+- research/r931_cand_lib.py
+quick: false

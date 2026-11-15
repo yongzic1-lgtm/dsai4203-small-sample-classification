@@ -1,0 +1,42 @@
+{
+  "auc_mean": 0.7869625865278037,
+  "auc_std_fold": 0.05522663050984843,
+  "auc_std_repeat": 0.01220540576418245,
+  "auc_min_repeat": 0.7656241504067591,
+  "auc_max_repeat": 0.8142475479432001,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.7686874232930689,
+  "oof_auc_std": 0.017889795209284385,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "group": "supervised-linear",
+  "features": "all 150",
+  "n_configs": 10,
+  "tuning": "C in [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1.0, 3.0, 10.0, 30.0]",
+  "uses_unlabeled_test_features": false,
+  "wall_seconds": 16.6,
+  "n_constant_pred_folds": 0,
+  "oof_logloss": 0.6285193912832578,
+  "oof_brier": 0.21706982767681024,
+  "n_fold_logs": 100,
+  "chosen_params_top": {
+    "{\"model__C\": 0.001}": 41,
+    "{\"model__C\": 0.003}": 36,
+    "{\"model__C\": 0.01}": 16,
+    "{\"model__C\": 0.03}": 6,
+    "{\"model__C\": 1.0}": 1
+  },
+  "chosen_params_n_distinct": 5,
+  "best_inner_auc_mean": 0.7868122579175211,
+  "status": "done",
+  "finished_at": "2026-10-22T06:57:07+09:00"
+}

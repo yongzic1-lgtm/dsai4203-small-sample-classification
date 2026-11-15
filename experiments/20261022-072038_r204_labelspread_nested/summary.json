@@ -1,0 +1,39 @@
+{
+  "auc_mean": 0.9437682727900119,
+  "auc_std_fold": 0.02659697322028495,
+  "auc_std_repeat": 0.00519688552231684,
+  "auc_min_repeat": 0.9341139134617397,
+  "auc_max_repeat": 0.9566398979442458,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.9437019572379046,
+  "oof_auc_std": 0.004382794878361197,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "group": "semi-supervised",
+  "features": "block(train+test highvar) + 20,000 unlabeled rows",
+  "n_configs": 9,
+  "tuning": "{'n_neighbors': [30, 15, 7], 'alpha': [0.8, 0.5, 0.2]}",
+  "uses_unlabeled_test_features": true,
+  "wall_seconds": 56.7,
+  "n_constant_pred_folds": 0,
+  "oof_logloss": 0.3128799976379154,
+  "oof_brier": 0.0939621995589141,
+  "n_fold_logs": 100,
+  "chosen_params_top": {
+    "{\"alpha\": 0.8, \"n_neighbors\": 30}": 98,
+    "{\"alpha\": 0.8, \"n_neighbors\": 15}": 2
+  },
+  "chosen_params_n_distinct": 2,
+  "best_inner_auc_mean": 0.9411021872863978,
+  "status": "done",
+  "finished_at": "2026-10-22T07:21:34+09:00"
+}

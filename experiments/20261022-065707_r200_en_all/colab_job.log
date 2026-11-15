@@ -1,0 +1,25 @@
+[sup] research/r200_sup_linear.py: 11 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r200_l1_all                        auc=0.8693 +/- 0.0131  logloss=0.4783987154039301  20s  run=20261022-065631_r200_l1_all  chosen={"{\"model__C\": 0.2}": 50, "{\"model__C\": 0.5}": 45, "{\"model__C\": 5.0}": 2, "{\"model__C\": 2.0}": 2, "{\"model__C\": 1.0}": 1}
+[sup] r200_l2_all                        auc=0.7870 +/- 0.0122  logloss=0.6285193912832578  17s  run=20261022-065651_r200_l2_all  chosen={"{\"model__C\": 0.001}": 41, "{\"model__C\": 0.003}": 36, "{\"model__C\": 0.01}": 16, "{\"model__C\": 0.03}": 6, "{\"model__C\": 1.0}": 1}
+[sup] r200_en_all                        auc=0.8552 +/- 0.0129  logloss=0.4782390644809083  327s  run=20261022-065707_r200_en_all  chosen={"{\"model__C\": 0.3, \"model__l1_ratio\": 0.8}": 75, "{\"model__C\": 0.1, \"model__l1_ratio\": 0.8}": 21, "{\"model__C\": 0.1, \"model__l1_ratio\": 0.5}": 2, "
+[sup] r200_lda_all                       auc=0.7962 +/- 0.0124  logloss=0.74755968398235  1s  run=20261022-070235_r200_lda_all  chosen={}
+[sup] r200_l1_block                      auc=0.9321 +/- 0.0078  logloss=0.3490433009813948  18s  run=20261022-070236_r200_l1_block  chosen={"{\"model__C\": 10.0}": 78, "{\"model__C\": 5.0}": 22}
+[sup] r200_l2_block                      auc=0.9317 +/- 0.0074  logloss=0.34362621807852906  15s  run=20261022-070254_r200_l2_block  chosen={"{\"model__C\": 30.0}": 100}
+[sup] r200_en_block                      auc=0.9250 +/- 0.0095  logloss=0.35107332753653203  43s  run=20261022-070309_r200_en_block  chosen={"{\"model__C\": 3.0, \"model__l1_ratio\": 0.8}": 100}
+[sup] r200_lda_block                     auc=0.8592 +/- 0.0073  logloss=0.4796771744093927  1s  run=20261022-070352_r200_lda_block  chosen={}
+[sup] r200_l1_corrk                      auc=0.8562 +/- 0.0138  logloss=0.4956458787565189  36s  run=20261022-070353_r200_l1_corrk  chosen={"{\"model__C\": 3.0, \"sel__k\": 10}": 70, "{\"model__C\": 3.0, \"sel__k\": 20}": 16, "{\"model__C\": 3.0, \"sel__k\": 40}": 11, "{\"model__C\": 0.3, \"sel__k\
+[sup] r200_l2_corrk                      auc=0.8478 +/- 0.0138  logloss=0.5031924448290365  35s  run=20261022-070429_r200_l2_corrk  chosen={"{\"model__C\": 3.0, \"sel__k\": 10}": 89, "{\"model__C\": 3.0, \"sel__k\": 20}": 5, "{\"model__C\": 3.0, \"sel__k\": 40}": 5, "{\"model__C\": 1.0, \"sel__k\":
+[sup] r200_lda_corrk                     auc=0.8211 +/- 0.0181  logloss=0.5481383184219225  9s  run=20261022-070504_r200_lda_corrk  chosen={"{\"sel__k\": 10}": 80, "{\"sel__k\": 5}": 8, "{\"sel__k\": 40}": 6, "{\"sel__k\": 20}": 6}
+
+     candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                         run_id
+ r200_l1_block  0.932089        0.007777     0.349043         10  20261022-070236_r200_l1_block
+ r200_l2_block  0.931719        0.007446     0.343626         10  20261022-070254_r200_l2_block
+ r200_en_block  0.924976        0.009494     0.351073         18  20261022-070309_r200_en_block
+   r200_l1_all  0.869319        0.013117     0.478399         10    20261022-065631_r200_l1_all
+r200_lda_block  0.859215        0.007255     0.479677          1 20261022-070352_r200_lda_block
+ r200_l1_corrk  0.856205        0.013774     0.495646         24  20261022-070353_r200_l1_corrk
+   r200_en_all  0.855193        0.012856     0.478239         18    20261022-065707_r200_en_all
+ r200_l2_corrk  0.847799        0.013782     0.503192         24  20261022-070429_r200_l2_corrk
+r200_lda_corrk  0.821085        0.018051     0.548138          4 20261022-070504_r200_lda_corrk
+  r200_lda_all  0.796242        0.012424     0.747560          1   20261022-070235_r200_lda_all
+   r200_l2_all  0.786963        0.012205     0.628519         10    20261022-065651_r200_l2_all

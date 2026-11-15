@@ -1,0 +1,18 @@
+name: r204_labelspread_all
+description: LabelSpreading(knn k=7, alpha=0.2) on all 150 features, 20,000 rows
+model_code: research/r204_semisup_sklearn.py + research/lib_sup.py
+group: semi-supervised
+features: all 150 (train+test standardised) + 20,000 unlabeled rows
+tuning: none
+n_configs: 1
+inner_cv: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true

@@ -1,0 +1,47 @@
+name: r913_submission_precision_qda
+description: 'R913 - same question as R912 for the supervised QDA family (S002, r201_qda_block):
+  does the saturation of
+
+  predict_proba at 0 / 1 plus the "%.8f" submission format cost AUC? (verifier `repro`,
+  2026-10-22)'
+replica:
+  variant: make_classification
+  class_sep: 0.71
+  hamming: 4
+  flip_y:
+  - 0.0
+  - 0.005
+  seeds:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+model: HighVarColumns(250 train rows) + StandardScaler + QDA(reg_param in [0.003,
+  0.1])
+subset: private (19,355 rows)

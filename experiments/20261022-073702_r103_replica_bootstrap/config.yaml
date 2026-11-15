@@ -1,0 +1,8 @@
+name: r103_replica_bootstrap
+generator: lib_mix.ReplicaGenerator(BLOCK, K=2)
+n_rep: 40
+flip: 0.01
+all150_reps: 8
+public_draws: 400
+public_obs: 0.99923
+reg_small: 1.0e-08

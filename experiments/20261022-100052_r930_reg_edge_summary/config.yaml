@@ -1,0 +1,11 @@
+name: r930_reg_edge_summary
+compared_runs:
+- 20261022-095943_r930_qda_block_nll_ext
+- 20261022-100014_r930_qda_block_auc_ext
+- 20261022-100043_r930_qda_block_fix_0.003
+- 20261022-100045_r930_qda_block_fix_0.001
+- 20261022-100046_r930_qda_block_fix_0.0003
+- 20261022-100047_r930_qda_block_fix_0.0001
+- 20261022-100049_r930_qda_block_fix_3e-05_tol
+- 20261022-100050_r930_qda_block_fix_1e-05_tol
+reference: TransductiveGMM highvar K=2 (S003 model)

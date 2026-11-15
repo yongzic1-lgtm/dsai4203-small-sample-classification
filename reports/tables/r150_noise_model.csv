@@ -1,0 +1,10 @@
+test,value,detail
+"noise_std_ks_U(0.5,3)",0.2560613935525258,min 0.526 max 2.997
+"noise_std_ks_U(1,101) (sklearn scale=None)",2.2265628660793143e-221,
+"noise_mean_ks_U(-5,5)",0.865143826090934,min -4.952 max 4.977
+"spearman(|mean|, std) (sklearn shift-then-scale predicts > 0)",0.7625571961673312,rho 0.027
+noise normaltest p<0.001 count (expected 0.13),0.0,of 130
+noise min normaltest p (Bonferroni x130),1.1819004588768691,
+noise max |pairwise corr| / null sd,4.113272442201385,"max 0.0291, pairs 8385"
+noise max |corr| with structured,0.025644779470874096,
+noise |pairwise corr| ks vs half-normal(1/sqrt n),0.46084896556257005,

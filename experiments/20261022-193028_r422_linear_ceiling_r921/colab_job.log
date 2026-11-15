@@ -1,0 +1,55 @@
+R921 fit: structured 20 cols, rank 12, recon 3.37e-07
+                    quantity  R921_converged_pca  R154_lib_gen_replica  R154_archived
+     auc_best_linear_formula            0.946843              0.946843       0.946843
+   auc_lda_direction_formula            0.946843              0.946843            NaN
+          auc_best_linear_mc            0.946652              0.946627       0.946627
+        auc_lda_direction_mc            0.946652              0.946627       0.946627
+      auc_bayes_quadratic_mc            0.999949              0.999949       0.999949
+ auc_mean_only_pooled_cov_mc            0.946955              0.946909       0.947035
+   auc_cov_only_same_mean_mc            0.999793              0.999795       0.999803
+          mahalanobis_pooled            2.283938              2.283932       2.283932
+            bayes_error_rate            0.003190              0.003265       0.003265
+           frac_post_0.1_0.9            0.009241              0.009423       0.009423
+  expected_test_rows_0.1_0.9          182.514687            186.094375     186.094375
+         frac_post_0.05_0.95            0.013813              0.014020            NaN
+expected_test_rows_0.05_0.95          272.796875            276.895000            NaN
+         frac_post_0.01_0.99            0.026925              0.027075            NaN
+expected_test_rows_0.01_0.99          531.768750            534.731250            NaN
+                                       definition        archived  n_0.1_0.9  n_0.05_0.95  n_0.01_0.99
+         converged posterior (R922 fit_posterior) R922: 189 / 554        189          286          554
+S003 mixture, single fit on all 250 labels (r321)       r321: 203        203          312        10092
+      S003 submitted fold-mean score, %.8f (r932)       r932: 204        204          319        10098
+[Parallel(n_jobs=8)]: Using backend LokyBackend with 8 concurrent workers.
+[Parallel(n_jobs=8)]: Done   2 tasks      | elapsed:    3.0s
+[Parallel(n_jobs=8)]: Done  56 tasks      | elapsed:   12.2s
+[Parallel(n_jobs=8)]: Done 146 tasks      | elapsed:   29.7s
+[Parallel(n_jobs=8)]: Done 200 out of 200 | elapsed:   39.0s finished
+                       quantity  count       mean       std        min         5%        50%        95%        max  real_value  real_percentile_in_replicas
+              true_test_0.1_0.9  200.0 184.430000 14.059640 138.000000 161.000000 184.000000 208.050000 221.000000         NaN                          NaN
+             refit_test_0.1_0.9  200.0 183.855000 13.957364 140.000000 161.000000 184.000000 207.050000 220.000000       189.0                        0.680
+            true_test_0.05_0.95  200.0 272.085000 16.481382 229.000000 247.000000 272.000000 301.050000 314.000000         NaN                          NaN
+           refit_test_0.05_0.95  200.0 271.085000 16.955092 229.000000 244.900000 271.000000 300.100000 321.000000       286.0                        0.815
+            true_test_0.01_0.99  200.0 530.760000 22.943286 475.000000 493.800000 530.000000 568.000000 598.000000         NaN                          NaN
+           refit_test_0.01_0.99  200.0 529.030000 23.248258 464.000000 493.900000 529.000000 566.100000 601.000000       554.0                        0.860
+         true_bayes_errors_test  200.0  60.580000  8.042200  42.000000  47.950000  60.000000  74.050000  83.000000         NaN                          NaN
+ expected_bayes_error_test_true  200.0   0.003108  0.000211   0.002535   0.002778   0.003097   0.003482   0.003602         NaN                          NaN
+expected_bayes_error_test_refit  200.0   0.003097  0.000213   0.002535   0.002756   0.003088   0.003450   0.003623         NaN                          NaN
+      refit_best_linear_ceiling  200.0   0.946962  0.001397   0.943710   0.944535   0.947124   0.949295   0.951511         NaN                          NaN
+             refit_n_structured  200.0  20.000000  0.000000  20.000000  20.000000  20.000000  20.000000  20.000000         NaN                          NaN
+                     refit_rank  200.0  12.000000  0.000000  12.000000  12.000000  12.000000  12.000000  12.000000         NaN                          NaN
+                      n_highvar  200.0  13.000000  0.000000  13.000000  13.000000  13.000000  13.000000  13.000000         NaN                          NaN
+        test_auc_lda_shrink_250  200.0   0.893945  0.005636   0.872665   0.884505   0.894520   0.901841   0.904241         NaN                          NaN
+         test_auc_logreg_l2_250  200.0   0.911871  0.006750   0.892070   0.900657   0.911929   0.922162   0.925266         NaN                          NaN
+      test_auc_true_best_linear  200.0   0.946845  0.001482   0.943220   0.944312   0.946940   0.948932   0.951014         NaN                          NaN
+                 test_auc_bayes  200.0   0.999953  0.000012   0.999918   0.999932   0.999954   0.999970   0.999979         NaN                          NaN
+                        seconds  200.0   1.406943  0.073522   1.113188   1.329605   1.392375   1.558424   1.787561         NaN                          NaN
+R921_fit: {'n_structured': 20, 'rank': 12, 'recon_max_abs': 3.367015870558987e-07}
+population_R921: {'auc_best_linear_formula': 0.9468433331421162, 'auc_lda_direction_formula': 0.9468433331421162, 'auc_best_linear_mc': 0.94665190279375, 'auc_lda_direction_mc': 0.94665190279375, 'auc_bayes_quadratic_mc': 0.99994936035, 'auc_mean_only_pooled_cov_mc': 0.9469550274375, 'auc_cov_only_same_mean_mc': 0.9997934210875, 'mahalanobis_pooled': 2.2839376705364356, 'bayes_error_rate': 0.00319, 'frac_post_0.1_0.9': 0.00924125, 'expected_test_rows_0.1_0.9': 182.51468749999998, 'frac_post_0.05_0.95': 0.0138125, 'expected_test_rows_0.05_0.95': 272.796875, 'frac_post_0.01_0.99': 0.026925, 'expected_test_rows_0.01_0.99': 531.7687500000001}
+population_R154_recomputed: {'auc_best_linear_formula': 0.9468428993444679, 'auc_lda_direction_formula': 0.9468428993444679, 'auc_best_linear_mc': 0.94662692549375, 'auc_lda_direction_mc': 0.94662692549375, 'auc_bayes_quadratic_mc': 0.999949316725, 'auc_mean_only_pooled_cov_mc': 0.94690921498125, 'auc_cov_only_same_mean_mc': 0.999794807025, 'mahalanobis_pooled': 2.2839320048695515, 'bayes_error_rate': 0.003265, 'frac_post_0.1_0.9': 0.0094225, 'expected_test_rows_0.1_0.9': 186.094375, 'frac_post_0.05_0.95': 0.01402, 'expected_test_rows_0.05_0.95': 276.895, 'frac_post_0.01_0.99': 0.027075, 'expected_test_rows_0.01_0.99': 534.7312499999999}
+real_boundary_counts: {'converged posterior (R922 fit_posterior)': {'n_0.1_0.9': 189, 'n_0.05_0.95': 286, 'n_0.01_0.99': 554}, 'S003 mixture, single fit on all 250 labels (r321)': {'n_0.1_0.9': 203, 'n_0.05_0.95': 312, 'n_0.01_0.99': 10092}, 'S003 submitted fold-mean score, %.8f (r932)': {'n_0.1_0.9': 204, 'n_0.05_0.95': 319, 'n_0.01_0.99': 10098}}
+rep_true_count_0.1_0.9_mean_sd: [184.43, 14.059639658849136]
+rep_refit_minus_true_count_mean_sd: [-0.575, 3.8101128328430085]
+rep_refit_ceiling_mean_sd: [0.9469623457045594, 0.0013968374259599827]
+rep_lda_shrink_250_mean_sd: [0.8939449422023558, 0.00563569434642724]
+rep_logreg_250_mean_sd: [0.9118712557669313, 0.006750180321089473]
+seconds: 50.53098511695862

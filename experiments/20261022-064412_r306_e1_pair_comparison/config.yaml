@@ -1,0 +1,7 @@
+name: r306_e1_pair_comparison
+pairs:
+  linear: corr top-30 vs top-50 + L2 (AUC ~0.80)
+  qda: QDA reg 0.1 vs 0.3 on block (AUC ~0.99)
+source_runs:
+  linear: 20261022-064054_e1_validation_protocol
+  qda: 20261022-064148_e1_validation_protocol_qda_pair

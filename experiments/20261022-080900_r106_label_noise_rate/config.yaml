@@ -1,0 +1,17 @@
+name: r106_label_noise_rate
+flips:
+- 0.0
+- 0.001
+- 0.002
+- 0.004
+- 0.006
+- 0.008
+- 0.01
+- 0.015
+- 0.02
+- 0.03
+n_rep: 16
+n_flip_draws: 60
+public_obs: 0.99923
+tol: 0.0004
+n_public: 395

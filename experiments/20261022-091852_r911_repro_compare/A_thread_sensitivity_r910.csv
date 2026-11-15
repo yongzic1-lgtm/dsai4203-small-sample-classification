@@ -1,0 +1,4 @@
+model,rerun,seconds_t1,fold_auc_max_abs_diff,n_folds_differ,test_max_abs_diff,test_n_differ,test_spearman,test_bit_identical,oof_max_abs_diff
+s003,20261022-091211_r910_s003_gmm2_hv,7.6,0.0,0,0.0,0,1.0,True,0.0
+e3final,20261022-091223_r910_e3_final_k20,0.9,0.0,0,0.0,0,1.0,True,0.0
+r201qda,20261022-091224_r910_r201_qda_block,112.1,0.0,0,0.0,0,1.0,True,0.0

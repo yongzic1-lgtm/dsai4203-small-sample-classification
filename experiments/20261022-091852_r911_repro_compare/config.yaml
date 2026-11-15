@@ -1,0 +1,11 @@
+name: r911_repro_compare
+description: archived vs re-run arrays, submission files, make_submission dry run,
+  environment versions (pure file checks, local)
+archived:
+  s003: 20261022-050708_r003_gmm2_hv
+  e3final: 20261022-063908_e3_leakage
+  r201qda: 20261022-071234_r201_qda_block
+reruns_named:
+  s003: r910_s003_gmm2_hv
+  e3final: r910_e3_final_k20
+  r201qda: r910_r201_qda_block

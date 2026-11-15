@@ -1,0 +1,31 @@
+{
+  "generator_weights": [
+    0.5001800275316565,
+    0.49981997246834353
+  ],
+  "generator_comp_class": [
+    0,
+    1
+  ],
+  "wall_seconds": 616.971987247467,
+  "public_lb_s003": [
+    {
+      "gen": "G0",
+      "public_mean": 0.9999502586176294,
+      "public_p_le_obs": 0.00125,
+      "public_p_eq_1": 0.525
+    },
+    {
+      "gen": "G1",
+      "public_mean": 0.9947926365058526,
+      "public_p_le_obs": 0.8275625,
+      "public_p_eq_1": 0.0715625
+    }
+  ],
+  "highvar_is_block_frac": 1.0,
+  "discover_n_added_mean": 0.0,
+  "supsel_overlap_block_mean": 9.75,
+  "n_boundary_bayes_mean": 185.525,
+  "status": "done",
+  "finished_at": "2026-10-22T07:47:22+09:00"
+}

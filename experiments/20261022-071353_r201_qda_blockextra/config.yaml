@@ -1,0 +1,19 @@
+name: r201_qda_blockextra
+description: QDA on in-fold block plus k extra in-fold |corr| features, nested k x
+  reg_param
+model_code: research/r201_sup_quadratic.py + research/lib_sup.py
+group: supervised-generative
+features: block(in-fold)+top-k corr extras(in-fold)
+tuning: extra_k in [0, 1, 2, 3, 5, 8] x reg_param in [0.3, 0.1, 0.03]
+n_configs: 18
+inner_cv: RepeatedStratifiedKFold on the 200-row training fold (see lib_sup.Tuned)
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

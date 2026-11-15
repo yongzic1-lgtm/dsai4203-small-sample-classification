@@ -1,0 +1,4 @@
+space,n_cols,dup_within_train,dup_within_test,train_rows_in_test
+all150,150,0,0,0
+block13,13,0,0,0
+informative12,12,0,0,0

@@ -1,0 +1,208 @@
+[sup] research/r201_sup_quadratic.py: 15 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r201_qda_block                     auc=0.9999 +/- 0.0002  logloss=0.01463601426015323  17s  run=20261022-071234_r201_qda_block  chosen={"{\"model__reg_param\": 0.003}": 49, "{\"model__reg_param\": 0.001}": 41, "{\"model__reg_param\": 0.01}": 10}
+[sup] r201_qda_blockratio                auc=0.9996 +/- 0.0006  logloss=0.02415766618206524  43s  run=20261022-071252_r201_qda_blockratio  chosen={"{\"model__reg_param\": 0.003, \"sel__ratio\": 1.6}": 22, "{\"model__reg_param\": 0.003, \"sel__ratio\": 1.5}": 22, "{\"model__reg_param\": 0.01, \"sel__ratio\
+[sup] r201_qda_pcablock                  auc=0.9999 +/- 0.0002  logloss=0.01463601426015317  18s  run=20261022-071335_r201_qda_pcablock  chosen={"{\"model__reg_param\": 0.003}": 49, "{\"model__reg_param\": 0.001}": 41, "{\"model__reg_param\": 0.01}": 10}
+[sup] r201_qda_blockextra                auc=0.9983 +/- 0.0010  logloss=0.05501669784595351  25s  run=20261022-071353_r201_qda_blockextra  chosen={"{\"model__reg_param\": 0.03, \"sel__extra_k\": 1}": 74, "{\"model__reg_param\": 0.03, \"sel__extra_k\": 0}": 21, "{\"model__reg_param\": 0.03, \"sel__extra_k\
+[sup] r201_qda_corrk                     auc=0.9666 +/- 0.0080  logloss=0.2385562051623829  21s  run=20261022-071419_r201_qda_corrk  chosen={"{\"model__reg_param\": 0.1, \"sel__k\": 10}": 63, "{\"model__reg_param\": 0.1, \"sel__k\": 13}": 32, "{\"model__reg_param\": 0.1, \"sel__k\": 20}": 5}
+[sup] r201_qda_all FAILED: ValueError: 
+All the 70 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+14 fits failed with the following error:
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 855, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 645, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/discriminant_analysis.py", line 1132, in fit
+    raise linalg.LinAlgError(
+numpy.linalg.LinAlgError: The covariance matrix of class 0 is not full rank. When using `solver='svd'` the number of samples in each class should be more than the number of features, but class 0 has 88 samples and 150 features. Try using `solver='eigen'` and setting the parameter `shrinkage` for regularization.
+
+--------------------------------------------------------------------------------
+56 fits failed with the following error:
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 855, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 645, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/discriminant_analysis.py", line 1132, in fit
+    raise linalg.LinAlgError(
+numpy.linalg.LinAlgError: The covariance matrix of class 0 is not full rank. When using `solver='svd'` the number of samples in each class should be more than the number of features, but class 0 has 87 samples and 150 features. Try using `solver='eigen'` and setting the parameter `shrinkage` for regularization.
+
+joblib.externals.loky.process_executor._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py", line 490, in _process_worker
+    r = call_item()
+        ^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py", line 291, in __call__
+    return self.fn(*self.args, **self.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 607, in __call__
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 607, in <listcomp>
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/content/ml/src/ssc/validation.py", line 137, in _fit_one
+    model.fit(X[split.train_idx], y[split.train_idx])
+  File "/content/ml/research/lib_sup.py", line 245, in fit
+    gs.fit(X, y)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 1134, in fit
+    self._run_search(evaluate_candidates, callback_ctx=root_callback_ctx)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 1721, in _run_search
+    evaluate_candidates(ParameterGrid(self.param_grid), callback_ctx=search_ctx)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_search.py", line 1110, in evaluate_candidates
+    _warn_or_raise_about_fit_failures(out, self.error_score)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 482, in _warn_or_raise_about_fit_failures
+    raise ValueError(all_fits_failed_message)
+ValueError: 
+All the 70 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+14 fits failed with the following error:
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 855, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 645, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/discriminant_analysis.py", line 1132, in fit
+    raise linalg.LinAlgError(
+numpy.linalg.LinAlgError: The covariance matrix of class 0 is not full rank. When using `solver='svd'` the number of samples in each class should be more than the number of features, but class 0 has 88 samples and 150 features. Try using `solver='eigen'` and setting the parameter `shrinkage` for regularization.
+
+--------------------------------------------------------------------------------
+56 fits failed with the following error:
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 855, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 645, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/discriminant_analysis.py", line 1132, in fit
+    raise linalg.LinAlgError(
+numpy.linalg.LinAlgError: The covariance matrix of class 0 is not full rank. When using `solver='svd'` the number of samples in each class should be more than the number of features, but class 0 has 87 samples and 150 features. Try using `solver='eigen'` and setting the parameter `shrinkage` for regularization.
+
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/content/ml/research/lib_sup.py", line 527, in run_candidates
+    cv = cross_validate(model, ds.X, ds.y, splits, scheme, X_test=ds.X_test, n_jobs=n_jobs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/ml/src/ssc/validation.py", line 162, in cross_validate
+    results = Parallel(n_jobs=n_jobs)(delayed(_fit_one)(estimator, X, y, Xt, s) for s in splits)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 2098, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 1704, in _get_outputs
+    yield from self._retrieve()
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 1806, in _retrieve
+    self._raise_error_fast()
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 1885, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 780, in get_result
+    return self._return_or_raise()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 795, in _return_or_raise
+    raise self._result
+ValueError: 
+All the 70 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+14 fits failed with the following error:
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 855, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 645, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/discriminant_analysis.py", line 1132, in fit
+    raise linalg.LinAlgError(
+numpy.linalg.LinAlgError: The covariance matrix of class 0 is not full rank. When using `solver='svd'` the number of samples in each class should be more than the number of features, but class 0 has 88 samples and 150 features. Try using `solver='eigen'` and setting the parameter `shrinkage` for regularization.
+
+--------------------------------------------------------------------------------
+56 fits failed with the following error:
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/sklearn/model_selection/_validation.py", line 855, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/pipeline.py", line 645, in fit
+    self._final_estimator.fit(Xt, y, **last_step_params["fit"])
+  File "/content/venv/lib/python3.11/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/sklearn/discriminant_analysis.py", line 1132, in fit
+    raise linalg.LinAlgError(
+numpy.linalg.LinAlgError: The covariance matrix of class 0 is not full rank. When using `solver='svd'` the number of samples in each class should be more than the number of features, but class 0 has 87 samples and 150 features. Try using `solver='eigen'` and setting the parameter `shrinkage` for regularization.
+
+
+[sup] r201_qda_block_tt                  auc=0.9997 +/- 0.0006  logloss=0.019104255633133536  60s  run=20261022-071441_r201_qda_block_tt  chosen={"{\"estimator__reg_param\": 0.003}": 50, "{\"estimator__reg_param\": 0.01}": 39, "{\"estimator__reg_param\": 0.001}": 7, "{\"estimator__reg_param\": 0.03}": 4}
+[sup] r201_gnb_block                     auc=0.8668 +/- 0.0050  logloss=0.625643639336293  1s  run=20261022-071541_r201_gnb_block  chosen={}
+[sup] r201_gnb_block_tt                  auc=0.8721 +/- 0.0052  logloss=0.6071497915064018  1s  run=20261022-071542_r201_gnb_block_tt  chosen={}
+[sup] r201_gnb_all                       auc=0.8271 +/- 0.0105  logloss=0.8676617355366825  2s  run=20261022-071543_r201_gnb_all  chosen={}
+[sup] r201_poly2lr_block                 auc=0.9303 +/- 0.0143  logloss=0.36453145139554644  20s  run=20261022-071544_r201_poly2lr_block  chosen={"{\"model__C\": 0.1}": 33, "{\"model__C\": 0.03}": 32, "{\"model__C\": 0.3}": 15, "{\"model__C\": 0.01}": 9, "{\"model__C\": 1.0}": 4, "{\"model__C\": 0.003}":
+[sup] r201_svm_block                     auc=0.9505 +/- 0.0105  logloss=None  28s  run=20261022-071605_r201_svm_block  chosen={"{\"model__C\": 100.0, \"model__gamma\": 0.01}": 87, "{\"model__C\": 10.0, \"model__gamma\": 0.03}": 10, "{\"model__C\": 10.0, \"model__gamma\": 0.1}": 1, "{\"
+[sup] r201_svm_all                       auc=0.8052 +/- 0.0108  logloss=None  38s  run=20261022-071633_r201_svm_all  chosen={"{\"model__C\": 10.0, \"model__gamma\": 0.01}": 50, "{\"model__C\": 0.1, \"model__gamma\": 0.01}": 29, "{\"model__C\": 1.0, \"model__gamma\": 0.01}": 17, "{\"m
+[sup] r201_knn_block                     auc=0.9021 +/- 0.0095  logloss=0.48009199578151335  15s  run=20261022-071710_r201_knn_block  chosen={"{\"model__n_neighbors\": 15, \"model__weights\": \"distance\"}": 39, "{\"model__n_neighbors\": 25, \"model__weights\": \"distance\"}": 32, "{\"model__n_neighb
+[sup] r201_knn_all                       auc=0.7730 +/- 0.0195  logloss=0.6896749176176746  14s  run=20261022-071726_r201_knn_all  chosen={"{\"model__n_neighbors\": 41, \"model__weights\": \"distance\"}": 28, "{\"model__n_neighbors\": 25, \"model__weights\": \"distance\"}": 27, "{\"model__n_neighb
+
+          candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                              run_id
+     r201_qda_block  0.999903        0.000213     0.014636       11.0      20261022-071234_r201_qda_block
+  r201_qda_pcablock  0.999903        0.000213     0.014636       12.0   20261022-071335_r201_qda_pcablock
+  r201_qda_block_tt  0.999694        0.000605     0.019104       11.0   20261022-071441_r201_qda_block_tt
+r201_qda_blockratio  0.999629        0.000622     0.024158       33.0 20261022-071252_r201_qda_blockratio
+r201_qda_blockextra  0.998254        0.000987     0.055017       18.0 20261022-071353_r201_qda_blockextra
+     r201_qda_corrk  0.966583        0.007999     0.238556       15.0      20261022-071419_r201_qda_corrk
+     r201_svm_block  0.950547        0.010541          NaN       16.0      20261022-071605_r201_svm_block
+ r201_poly2lr_block  0.930330        0.014269     0.364531        8.0  20261022-071544_r201_poly2lr_block
+     r201_knn_block  0.902087        0.009514     0.480092       10.0      20261022-071710_r201_knn_block
+  r201_gnb_block_tt  0.872133        0.005205     0.607150        1.0   20261022-071542_r201_gnb_block_tt
+     r201_gnb_block  0.866799        0.004986     0.625644        1.0      20261022-071541_r201_gnb_block
+       r201_gnb_all  0.827128        0.010535     0.867662        1.0        20261022-071543_r201_gnb_all
+       r201_svm_all  0.805168        0.010839          NaN       16.0        20261022-071633_r201_svm_all
+       r201_knn_all  0.773003        0.019529     0.689675       10.0        20261022-071726_r201_knn_all
+       r201_qda_all       NaN             NaN          NaN        NaN                              FAILED

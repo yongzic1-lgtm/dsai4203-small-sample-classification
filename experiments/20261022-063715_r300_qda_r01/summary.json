@@ -1,0 +1,27 @@
+{
+  "auc_mean": 0.9957842921973357,
+  "auc_std_fold": 0.005302255751004443,
+  "auc_std_repeat": 0.0011195282602874351,
+  "auc_min_repeat": 0.9935587761674718,
+  "auc_max_repeat": 0.9980650187171927,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.9959466442736258,
+  "oof_auc_std": 0.0005811216514942164,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "regime": "qda",
+  "description": "QDA reg 0.1 on the block (= R003 sup_qda_hv, reproducibility check)",
+  "n_constant_folds": 0,
+  "uses_unlabeled_test_features": true,
+  "status": "done",
+  "finished_at": "2026-10-22T06:37:17+09:00"
+}

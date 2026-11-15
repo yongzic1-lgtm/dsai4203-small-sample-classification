@@ -1,0 +1,13 @@
+n_rep: 100
+n_boot: 500
+sens_n_boot: 200
+models:
+- l1_all
+- qda_hv
+truth:
+  l1_all: 0.92297
+  qda_hv: 0.99444
+replica: sample_parametric(fit_parametric(X_all, y)), seed 70000 + r
+e2_code: extensions/e2_learning_curve/run.py (score_subset, fit_and_bootstrap; out_of_subset
+  off)
+model_code: research/r942_e2_coverage.py

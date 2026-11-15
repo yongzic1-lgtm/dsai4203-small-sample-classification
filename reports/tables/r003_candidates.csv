@@ -1,0 +1,9 @@
+candidate,run_id,auc_mean,auc_std_repeat,auc_std_fold,oof_auc_mean,description
+gmm2_all,20261022-050732_r003_gmm2_all,1.0,0.0,0.0,1.0,"transductive GMM K=2 full, all 150 features"
+gmm4_hv,20261022-050723_r003_gmm4_hv,1.0,0.0,0.0,1.0,"transductive GMM K=4 full, high-variance block"
+gmm2_hv_pca,20261022-050716_r003_gmm2_hv_pca,1.0,0.0,0.0,1.0,"transductive GMM K=2 full, PCA(12) of block"
+gmm2_hv,20261022-050708_r003_gmm2_hv,1.0,0.0,0.0,1.0,"transductive GMM K=2 full, high-variance block"
+sup_qda_hv,20261022-050659_r003_sup_qda_hv,0.9957842921973357,0.0011195282602874351,0.005302255751004443,0.9959466442736258,supervised QDA (reg 0.1) on high-variance block
+sup_logreg_hv,20261022-050704_r003_sup_logreg_hv,0.8976608476064999,0.007627804640450822,0.03619439991647861,0.8960338479426394,supervised L2 logistic on high-variance block
+sup_lda_hv,20261022-050653_r003_sup_lda_hv,0.8778515747537488,0.006077817715493035,0.03723227392828103,0.8760868160971512,supervised shrinkage LDA on high-variance block
+sup_l1_all,20261022-050647_r003_sup_l1_all,0.846930694104607,0.012008392686938004,0.050860866307834124,0.8456785737355469,"supervised L1 logistic, all 150 features, C=0.1"

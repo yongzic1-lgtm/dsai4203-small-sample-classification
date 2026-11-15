@@ -1,0 +1,57 @@
+# E3 - information leakage from feature selection outside the CV loop.
+# Used by extensions/e3_leakage/run.py. Keys under `quick:` override the rest
+# (deep merge) when the script is run with --quick.
+
+name: e3_leakage
+
+hypothesis: >
+  Selecting the top-k features by |corr| on all 250 rows before CV (leaky) gives a
+  higher CV AUC than redoing the selection inside every fold (honest). The gap is 0
+  at k_feat = 150, small for tiny k_feat if the strongest features are real, and
+  largest at intermediate k_feat. To first order it does not depend on k_fold.
+  With permuted labels honest CV is ~0.5 while leaky CV stays clearly above 0.5.
+  Real data (written before the full run, ext34 2026-10-22): R001 found 7 features with
+  |corr| 0.34-0.40 (98, 17, 100, 112, 80, 77, 46) and the rest <= 0.24, so the gap should
+  be near 0 for k_feat <= 7 (the strong features are found inside every fold too) and
+  largest for k_feat ~ 20-50, where most kept features are noise picked for their chance
+  correlation with the validation labels; the gap should be flat in k_fold.
+
+# Base model in ssc.models.build_pipeline format, WITHOUT a selector:
+# run.py inserts FixedColumns (leaky) or CorrelationTopK (honest) itself.
+pipeline:
+  scaler: standard                  # standard | robust | none
+  model:
+    name: logreg
+    # sklearn 1.9: `penalty` is deprecated; l1_ratio 0 = L2, 1 = L1.
+    params: {C: 0.1, l1_ratio: 0.0, solver: liblinear}
+  random_state: 0                   # model seed, fixed -> spread comes from the splits only
+
+selection:
+  method: pearson                   # |corr| used by CorrelationTopK: pearson | spearman
+
+grid:
+  # ext34 (real data): 7 = size of the strong |corr| group (R001), 13 = size of the label-free
+  # high-variance block (R001); 2 and 30 fill the curve. 150 = no selection, gap must be 0.
+  k_feat: [2, 5, 7, 10, 13, 20, 30, 50, 100, 150]
+  k_fold: [2, 3, 5, 10]             # number of CV folds (2 added: widest range of 1/K)
+
+cv:
+  n_repeats: 20                     # CV split seeds per cell; repeat r uses seed + r
+  seed: 2026                        # same seeds for every cell and for both procedures
+  stratify: true                    # StratifiedKFold(shuffle=True)
+
+null_experiment:                    # permuted-label experiment (key must not be the YAML word null)
+  n_permutations: 30                # label permutations (ext34: 10 -> 30 for a tighter null curve)
+  label_seed: 7                     # permutation p uses default_rng(label_seed + p)
+  k_feat: null                      # null = same as grid.k_feat
+  k_fold: [3, 5, 10]                # folds used under the null (ext34: all three, to test the k_fold claim)
+  n_repeats: 5                      # split seeds per permutation (seed + r, as above)
+
+leaderboard:
+  k_feat: 20                        # final model = scaler + CorrelationTopK(k_feat) + model, fit on all rows
+  k_fold_reference: 5               # the k_fold row used for the registry entry (= official 5-fold)
+
+quick:                              # --quick: smoke test, minutes -> seconds
+  grid: {k_feat: [5, 20, 150], k_fold: [3, 5]}
+  cv: {n_repeats: 3}
+  null_experiment: {n_permutations: 2, k_feat: [5, 20, 150], n_repeats: 2}

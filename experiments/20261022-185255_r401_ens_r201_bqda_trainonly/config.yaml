@@ -1,0 +1,23 @@
+name: r401_ens_r201_bqda_trainonly
+description: Equal-weight average of P(class 1) of r201_qda_block (in-fold block,
+  nested reg by inner AUC) and r255_bqda_eb_trainonly (in-fold block, EB Bayesian
+  QDA); both fitted on the same training fold
+model_code: research/r401_inductive_official.py + research/r400_inductive_lib.py +
+  research/lib_fm.py + research/lib_sup.py
+group: supervised-generative
+features: block(in-fold highvar)
+n_configs: 143
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false
+wide_kappa_grid: null
+members:
+- 20261022-071234_r201_qda_block
+- 20261022-070202_r255_bqda_eb_trainonly

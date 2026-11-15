@@ -1,0 +1,30 @@
+{
+  "auc_mean": 1.0,
+  "auc_std_fold": 0.0,
+  "auc_std_repeat": 0.0,
+  "auc_min_repeat": 1.0,
+  "auc_max_repeat": 1.0,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 1.0,
+  "oof_auc_std": 0.0,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "reproduces_run": "20261022-050708_r003_gmm2_hv",
+  "test_pred_sha16": "71fb85e7168cde88",
+  "oof_sha16": "558939edce03599e",
+  "fold_auc_sha16": "c08966543ff025ba",
+  "wall_seconds": 11.2,
+  "cpus": 2,
+  "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "status": "done",
+  "finished_at": "2026-10-22T09:12:23+09:00"
+}

@@ -1,0 +1,19 @@
+name: r930_qda_block_fix_1e-05_tol
+description: QDA reg 1e-05, rank-check tol 1e-8 (fixed, post-hoc profile) on the in-fold
+  block
+model_code: research/r930_qda_reg_edge.py + research/lib_sup.py
+group: supervised-generative
+features: block(in-fold highvar)
+tuning: none (fixed)
+n_configs: 1
+inner_cv: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

@@ -1,0 +1,61 @@
+[Parallel(n_jobs=8)]: Using backend LokyBackend with 8 concurrent workers.
+[Parallel(n_jobs=8)]: Done   2 out of 112 | elapsed:  1.7min
+[Parallel(n_jobs=8)]: Done  56 out of 112 | elapsed: 11.9min
+[Parallel(n_jobs=8)]: Done 112 out of 112 | elapsed: 23.4min finished
+                  proc                           archived_run sha16_recomputed   sha16_archived bit_identical
+          s003_gmm2_hv           20261022-050708_r003_gmm2_hv 71fb85e7168cde88 71fb85e7168cde88          True
+       r255_bqda_eb_hv        20261022-070200_r255_bqda_eb_hv 91ec317034fc4e7e e25a12aa3c506a3b         False
+ r209_selftrain_qda_lw  20261022-080632_r209_selftrain_qda_lw 7ca0ee20d72004f1 7ca0ee20d72004f1          True
+        r201_qda_block         20261022-071234_r201_qda_block 0d7e9b64d238586a 0d7e9b64d238586a          True
+    r210_qda_block_nll     20261022-082047_r210_qda_block_nll da02b1c4e7e7222b da02b1c4e7e7222b          True
+   x_qda_block_nll_ext 20261022-095943_r930_qda_block_nll_ext ec6dde0117266d4d ec6dde0117266d4d          True
+r255_bqda_eb_trainonly 20261022-070202_r255_bqda_eb_trainonly fa138c8f5e758f83 412c1f9f1e3df3f5         False
+   x_bqda_trainonly_wk                                    NaN 17fc8df863117071              NaN          None
+     r208_qda_block_lw      20261022-075228_r208_qda_block_lw 801a4eb5649c0165 801a4eb5649c0165          True
+    x_ens_r201_bqda_to                                    NaN 10551694c770e245              NaN          None
+ flip_y                   proc  private_r8_mean  diff_vs_r201  diff_vs_r201_mc_se  p_beats_r201  p_ties_r201  diff_vs_s003
+      0           s003_gmm2_hv          0.99995   0.000248901         9.23359e-06             1            0             0
+      0        r255_bqda_eb_hv         0.999831   0.000129861         8.94524e-06      0.980293            0   -0.00011904
+      0  r209_selftrain_qda_lw         0.999886    0.00018442         8.95611e-06             1            0  -6.44813e-05
+      0         r201_qda_block         0.999701             0                   0             0            1  -0.000248901
+      0     r210_qda_block_nll         0.999791   8.95284e-05         8.58251e-06      0.990991            0  -0.000159373
+      0    x_qda_block_nll_ext         0.999895   0.000193353         8.64258e-06             1            0  -5.55486e-05
+      0 r255_bqda_eb_trainonly         0.999608  -9.34024e-05         2.13037e-05      0.298986            0  -0.000342304
+      0    x_bqda_trainonly_wk         0.999616  -8.57932e-05         1.92023e-05      0.288288            0  -0.000334695
+      0      r208_qda_block_lw         0.989789   -0.00991267         0.000229714             0            0    -0.0101616
+      0     x_ens_r201_bqda_to         0.999704   3.12195e-06         8.75256e-06      0.481419            0   -0.00024578
+      0                  bayes         0.999951    0.00024924          9.2398e-06             1            0   3.38759e-07
+  0.005           s003_gmm2_hv         0.997432   0.000266382         1.76586e-05      0.936937            0             0
+  0.005        r255_bqda_eb_hv         0.997321   0.000155805         1.43918e-05      0.850788            0  -0.000110577
+  0.005  r209_selftrain_qda_lw         0.997363   0.000197875         1.51132e-05      0.913288            0  -6.85072e-05
+  0.005         r201_qda_block         0.997165             0                   0             0            1  -0.000266382
+  0.005     r210_qda_block_nll         0.997258   9.27103e-05         1.32969e-05      0.764077            0  -0.000173672
+  0.005    x_qda_block_nll_ext         0.997362   0.000196153         1.43372e-05      0.918919            0  -7.02294e-05
+  0.005 r255_bqda_eb_trainonly         0.997095  -7.04038e-05         2.34247e-05      0.412725            0  -0.000336786
+  0.005    x_bqda_trainonly_wk         0.997103  -6.25201e-05         2.16058e-05      0.414414            0  -0.000328902
+  0.005      r208_qda_block_lw         0.987298   -0.00986743         0.000228505             0            0    -0.0101338
+  0.005     x_ens_r201_bqda_to         0.997185   1.99444e-05         1.21157e-05      0.591779            0  -0.000246438
+  0.005                  bayes         0.997426   0.000260877         1.85213e-05      0.938063            0  -5.50553e-06
+   0.01           s003_gmm2_hv         0.994871   0.000279122         2.19059e-05      0.895833            0             0
+   0.01        r255_bqda_eb_hv         0.994749   0.000157446         1.83656e-05      0.798423            0  -0.000121676
+   0.01  r209_selftrain_qda_lw         0.994799   0.000206831         1.80068e-05      0.893581            0   -7.2291e-05
+   0.01         r201_qda_block         0.994592             0                   0             0            1  -0.000279122
+   0.01     r210_qda_block_nll         0.994689   9.70586e-05         1.56477e-05      0.756194            0  -0.000182063
+   0.01    x_qda_block_nll_ext         0.994791   0.000198999         1.70484e-05      0.878378            0  -8.01224e-05
+   0.01 r255_bqda_eb_trainonly         0.994515   -7.6844e-05         2.62701e-05      0.417793            0  -0.000355966
+   0.01    x_bqda_trainonly_wk          0.99452   -7.1433e-05         2.51401e-05      0.380068            0  -0.000350555
+   0.01      r208_qda_block_lw         0.984771   -0.00982049         0.000225558             0            0    -0.0100996
+   0.01     x_ens_r201_bqda_to         0.994606   1.38948e-05         1.58327e-05      0.550676            0  -0.000265227
+   0.01                  bayes         0.994855   0.000262597         2.40154e-05      0.849662            0  -1.65244e-05
+                  proc  bnd_auc_clean  bnd_expected_auc  bnd_kendall  s003bnd_auc_clean   n_bnd  n_s003bnd
+          s003_gmm2_hv       0.802983          0.804331     0.931639           0.811995 184.559    193.333
+       r255_bqda_eb_hv       0.680537          0.682005     0.415645           0.687363 184.559    193.333
+ r209_selftrain_qda_lw        0.71957          0.719809     0.536527           0.727258 184.559    193.333
+        r201_qda_block       0.665591          0.666579      0.37533           0.671462 184.559    193.333
+    r210_qda_block_nll       0.671601          0.672947     0.391484           0.677859 184.559    193.333
+   x_qda_block_nll_ext       0.699227           0.70099     0.460805           0.707103 184.559    193.333
+r255_bqda_eb_trainonly       0.653617          0.655314     0.349085           0.659893 184.559    193.333
+   x_bqda_trainonly_wk         0.6536          0.655919     0.350304           0.659719 184.559    193.333
+     r208_qda_block_lw       0.595605          0.596796     0.211911           0.598719 184.559    193.333
+    x_ens_r201_bqda_to       0.665641           0.66689     0.376758           0.671941 184.559    193.333
+                 bayes       0.805104          0.805738            1           0.813958 184.559    193.333

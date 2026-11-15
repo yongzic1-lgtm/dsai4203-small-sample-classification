@@ -1,0 +1,35 @@
+name: r206_label_budget
+models:
+  sup_qda_infold_lw: QDA-LW, block found in-fold (strict supervised)
+  sup_qda_tt_lw: QDA-LW, train+test block
+  sup_qda_infold_r003: QDA reg 0.003, block found in-fold (strict supervised)
+  sup_qda_tt_r01: QDA reg 0.1, train+test block
+  sup_qda_tt_r003: QDA reg 0.003, train+test block
+  sup_lr_tt: L2 logistic, train+test block
+  ssl_selftrain_lw: Self-training QDA-LW (20,000 rows)
+  ssl_selftrain_r01: Self-training QDA reg 0.1 (20,000 rows)
+  ssl_labelspread: Label spreading kNN (20,000 rows)
+  trans_gmm2: Transductive GMM K=2
+budgets:
+- 4
+- 6
+- 10
+- 20
+- 40
+- 80
+- 120
+- 160
+- 200
+repeats_used: 4
+draws: 3
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+n_evaluations_per_model: 500
+model_code: research/r206_label_budget.py + research/lib_sup.py
+uses_unlabeled_test_features: true

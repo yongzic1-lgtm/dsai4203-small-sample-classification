@@ -1,0 +1,18 @@
+name: r204_labelspread_nested
+description: LabelSpreading(knn) on 20,000 block rows, nested n_neighbors x alpha
+model_code: research/r204_semisup_sklearn.py + research/lib_sup.py
+group: semi-supervised
+features: block(train+test highvar) + 20,000 unlabeled rows
+tuning: '{''n_neighbors'': [30, 15, 7], ''alpha'': [0.8, 0.5, 0.2]}'
+n_configs: 9
+inner_cv: RepeatedStratifiedKFold on the 200-row training fold (see lib_sup.Tuned)
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true

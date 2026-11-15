@@ -1,0 +1,11 @@
+name: r921_bayes_regret_replicas
+n_param: 1000
+n_mc: 1000
+class_sep_mc: 0.71
+hamming_mc: 4
+flip_for_noisy_auc: 0.01
+procedure: S003 (highvar block, GMM K=2 full, n_init 5, reg 1e-6, default tol, smoothed
+  rates)
+independent_of:
+- research/lib_gen_replica.py
+- research/lib_mix.py

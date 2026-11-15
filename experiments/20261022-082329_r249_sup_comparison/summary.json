@@ -1,0 +1,9 @@
+{
+  "best_strict_supervised": "r210_qda_block_nll",
+  "n_candidates": 63,
+  "n_strict_supervised": 43,
+  "n_configs_total": 587,
+  "gmm_boundary_rows": 204,
+  "status": "done",
+  "finished_at": "2026-10-22T08:23:31+09:00"
+}

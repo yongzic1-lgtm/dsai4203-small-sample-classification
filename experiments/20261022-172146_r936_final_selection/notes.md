@@ -1,0 +1,16 @@
+# 20261022-172146_r936_final_selection
+
+- author: TODO_ID_1
+- kind: analysis
+
+## Hypothesis (written before running)
+
+Pooled replicas, test-label noise only (tn0) and CSV-formatted scores, levels weighted by R156: (1) no candidate has a positive expected private-AUC difference to S003; the GMM family (r105, r155, r102) is within 1e-6 and ties S003 exactly in most replicas, so its P(beat) and hedge value E[max(0, X - S003)] are < 0.3 and < 1e-5; (2) BQDA r255 and self-training r209 lose 5e-5 to 2e-4 and beat S003 in < 15 % of replica-draws; supervised nested QDA r201 / r210 lose 2e-4 to 4e-4 and beat S003 in < 10 %; (3) private AUCs are correlated > 0.9 within a noise level (shared test labels) but the sd of the difference to S003 is ~1e-4 for the non-GMM candidates; (4) the best second selection raises E[max] by < 2e-5; (5) with train-label noise (tn1) the supervised QDAs lose 2-4x more, which the train-clean subset of tn1 removes; (6) given S003's public 0.99923 the expected public of r201 is ~0.9989 with predictive sd ~0.0008. (7) CV calibration: on replicas the supervised QDAs show MORE folds below 1.0 than on the real data (real: r210 1, r201 4), i.e. the parametric replica is somewhat harder for them; conditioning on the real CV pattern shrinks their private loss vs S003 but leaves it negative.
+
+## Result
+
+(see summary.json)
+
+## Conclusion (write after reading the results)
+
+Primary (tn0: 222 replicas, test-label noise only, CSV-formatted scores, R156 weights): S003 private 0.9977 (sd 3.1e-4). Diff vs S003 (MC SE) / P(beat) / hedge E[max(0, X - S003)]: r105 -1.1e-6 (1.4e-6) / 0.50 / 7.9e-6; r155 -1.7e-6 / 0.46 / 8.0e-6; r102 -0.9e-6 / 0.45 / 6.8e-6; BQDA r255 -1.16e-4 (7e-6) / 0.18 / 1.37e-5; self-training r209 -6.9e-5 (5e-6) / 0.21 / 1.45e-5; r210 -1.68e-4 (7e-6) / 0.08 / 5.0e-6; r201 -2.57e-4 (1.1e-5) / 0.06 / 4.1e-6 (all MC SE of the hedge <= 1.9e-6). The gaps are the same at every noise level (clean-label gaps -1.2e-4 / -6.5e-5 / -1.6e-4 / -2.5e-4). Best pair S003 + r209: +1.45e-5 +- 1.9e-6 (S003 + r255 +1.37e-5), i.e. 1/20 of the private sd. CSV rounding cuts r102's tie-breaking hedge from 3.6e-5 (raw) to 6.8e-6. Correlation with S003 within a level: GMM family 0.998, r209 0.97, r255 0.94-0.95, r210 0.95, r201 0.89-0.90. Official-CV paired test: not significant in 222/222 replicas for every candidate although the true gap is negative in 100% of them (zero power at |gap| <= 3e-4). Real CV is luckier than typical replica CV (P(replica folds below 1 <= real): S003 0.73, r255 0.26, r210 0.21, r201 0.08); conditioning on the real CV pattern (13 replicas) leaves r210 -1.1e-4 (3e-5), r201 -2.7e-4 (5e-5), r209 -0.1e-6 (2.9e-5). Given S003's public 0.99923 (ABC +-1.5e-4): expected public r209 0.99913 (pred sd 3.3e-4, MC SE 3.8e-5), r255 0.99906, r210 0.99901, r201 0.99884 (pred sd 6.6e-4, MC SE 7.9e-5); GMM family equals S003's public in 87-95%. With train-label noise (tn1) r210 loses -6.3e-4 (fragile), the train-clean subset matches tn0. Hypotheses (1), (3)-(7) confirmed; (1) refuted on P(beat) for the GMM family (0.45-0.50, they flip a coin over tiny tie-breaking differences, not < 0.3); (2) BQDA / self-training beat S003 in 18 / 21% (predicted < 15%), r210's loss 1.7e-4 (predicted 2-4e-4). (cand)

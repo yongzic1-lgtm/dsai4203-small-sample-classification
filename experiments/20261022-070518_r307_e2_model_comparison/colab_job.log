@@ -1,0 +1,141 @@
+[r307] === l1_all: /content/ml/extensions/e2_learning_curve/run.py --data raw --n-jobs 8
+[e2] run 20261022-070248_e2_learning_curve: 50 subsets on raw data (full settings, n_jobs=8)
+[e2] fitting learning curve + 2000 bootstrap refits ...
+
+E2 learning curve  run_id=20261022-070248_e2_learning_curve  data=raw  quick=False
+model: logreg(C=0.1,l1_ratio=1.0,solver=liblinear)  inner CV: 5-fold x 4  x axis: effective (training rows behind each score (effective size n*4/5))
+
+Per size (CV inside subset; out-of-subset = fit on subset, score on the other rows):
+  size         x    n_subsets    cv_mean    cv_std    cv_min    cv_max    oos_mean    oos_std    n_oos_rows    frac_constant_folds
+------  --------  -----------  ---------  --------  --------  --------  ----------  ---------  ------------  ---------------------
+    50   40.0000           10     0.6587    0.0997    0.4888    0.7948      0.6756     0.0814           200                 0.2450
+   100   80.0000           10     0.7346    0.0400    0.6955    0.8364      0.7804     0.0234           150                 0.0000
+   150  120.0000           10     0.8104    0.0283    0.7753    0.8503      0.8150     0.0211           100                 0.0000
+   200  160.0000           10     0.8301    0.0214    0.7855    0.8591      0.8106     0.0726            50                 0.0000
+   250  200.0000           10     0.8474    0.0061    0.8389    0.8560    nan        nan                  0                 0.0000
+  note: size 250 = full data; its spread is CV-seed (evaluation) noise only
+
+Extrapolation (bootstrap over subset scores):
+model                        x    point    boot_median    boot_lo_0.05    boot_hi_0.95    n_boot_failed  at_bounds
+--------------------  --------  -------  -------------  --------------  --------------  ---------------  -----------
+power_law             250.0000   0.8646         0.8640          0.8575          0.8693           0.0000
+power_law             500.0000   0.9057         0.9035          0.8806          0.9158           0.0000
+log_linear            250.0000   0.8717         0.8725          0.8659          0.8803           0.0000
+log_linear            500.0000   0.9447         0.9465          0.9259          0.9738           0.0000
+power_law_unweighted  250.0000   0.8619         0.8614          0.8510          0.8701           0.0000  a
+power_law_unweighted  500.0000   0.9025         0.9013          0.8854          0.9127           0.0000  a
+power_law_drop_50     250.0000   0.8562         0.8558          0.8508          0.8658           0.0000
+power_law_drop_50     500.0000   0.8692         0.8678          0.8567          0.9072           0.0000
+envelope              250.0000   0.8646       nan               0.8508          0.8803         nan
+envelope              500.0000   0.9057       nan               0.8567          0.9738         nan
+  CAVEAT: every interval above resamples only the subset scores. All subsets come from the same
+  250 rows, so the noise of that parent sample (another 250 rows from the same population) is
+  missing, and the SEM weighting pins the curve to the n = 250 point. Treat even the 'envelope'
+  row as a lower bound on the uncertainty, at x = 250 as well as at the target.
+power law: a=0.9955 b=2.6435 c=0.5443
+gain 250 -> 500 (power law): median +0.0398 [+0.0224, +0.0470], P(gain > 0) = 1.00
+gain 250 -> 500 (log-linear): median +0.0742 [+0.0593, +0.0937], P(gain > 0) = 1.00
+
+run folder: /content/jobs/J20261022-070426-pro1-rext12/archive/experiments/20261022-070248_e2_learning_curve
+report outputs: /content/jobs/J20261022-070426-pro1-rext12/archive/reports/tables | /content/jobs/J20261022-070426-pro1-rext12/archive/reports/figures
+runtime: 48.8 s
+[r307] l1_all -> 20261022-070248_e2_learning_curve
+[r307] === qda_hv: /content/ml/research/r301_run_extension.py --ext e2 --prefix e2_qda_ -- --config /content/ml/research/r302_e2_qda_block.yaml --data raw --n-jobs 8
+[r301] extensions/e2_learning_curve/run.py with lib_ext12.build_pipeline, prefix='e2_qda_', args=['--config', '/content/ml/research/r302_e2_qda_block.yaml', '--data', 'raw', '--n-jobs', '8']
+[e2] run 20261022-070339_e2_learning_curve_qda_block: 50 subsets on raw data (full settings, n_jobs=8)
+[e2] fitting learning curve + 2000 bootstrap refits ...
+
+E2 learning curve  run_id=20261022-070339_e2_learning_curve_qda_block  data=raw  quick=False
+model: subspace_qda(columns=highvar,reg_param=0.1)  inner CV: 5-fold x 4  x axis: effective (training rows behind each score (effective size n*4/5))
+
+Per size (CV inside subset; out-of-subset = fit on subset, score on the other rows):
+  size         x    n_subsets    cv_mean    cv_std    cv_min    cv_max    oos_mean    oos_std    n_oos_rows    frac_constant_folds
+------  --------  -----------  ---------  --------  --------  --------  ----------  ---------  ------------  ---------------------
+    50   40.0000           10     0.9729    0.0224    0.9313    0.9960      0.9791     0.0101           200                 0.0000
+   100   80.0000           10     0.9903    0.0053    0.9823    0.9995      0.9941     0.0035           150                 0.0000
+   150  120.0000           10     0.9923    0.0030    0.9877    0.9973      0.9949     0.0028           100                 0.0000
+   200  160.0000           10     0.9950    0.0014    0.9933    0.9979      0.9963     0.0050            50                 0.0000
+   250  200.0000           10     0.9960    0.0005    0.9952    0.9968    nan        nan                  0                 0.0000
+  note: size 250 = full data; its spread is CV-seed (evaluation) noise only
+
+Extrapolation (bootstrap over subset scores):
+model                        x    point    boot_median    boot_lo_0.05    boot_hi_0.95    n_boot_failed  at_bounds
+--------------------  --------  -------  -------------  --------------  --------------  ---------------  -----------
+power_law             250.0000   0.9961         0.9961          0.9951          0.9969           0.0000
+power_law             500.0000   0.9969         0.9970          0.9952          0.9986           0.0000
+log_linear            250.0000   0.9987         0.9987          0.9975          1.0001           0.0000
+log_linear            500.0000   1.0046         1.0047          1.0017          1.0081           0.0000
+power_law_unweighted  250.0000   0.9961         0.9961          0.9951          0.9969           0.0000
+power_law_unweighted  500.0000   0.9969         0.9970          0.9952          0.9985           0.0000
+power_law_drop_50     250.0000   0.9965         0.9964          0.9957          0.9970           0.0000  a
+power_law_drop_50     500.0000   0.9982         0.9980          0.9967          0.9986           0.0000  a
+envelope              250.0000   0.9961       nan               0.9951          1.0001         nan
+envelope              500.0000   0.9969       nan               0.9952          1.0081         nan
+  CAVEAT: every interval above resamples only the subset scores. All subsets come from the same
+  250 rows, so the noise of that parent sample (another 250 rows from the same population) is
+  missing, and the SEM weighting pins the curve to the n = 250 point. Treat even the 'envelope'
+  row as a lower bound on the uncertainty, at x = 250 as well as at the target.
+power law: a=0.9973 b=10.2772 c=1.6453
+gain 250 -> 500 (power law): median +0.0008 [+0.0001, +0.0018], P(gain > 0) = 1.00
+gain 250 -> 500 (log-linear): median +0.0060 [+0.0042, +0.0081], P(gain > 0) = 1.00
+
+run folder: /content/jobs/J20261022-070426-pro1-rext12/archive/experiments/20261022-070339_e2_learning_curve_qda_block
+report outputs: /content/jobs/J20261022-070426-pro1-rext12/archive/reports/tables | /content/jobs/J20261022-070426-pro1-rext12/archive/reports/figures
+runtime: 62.0 s
+[r307] qda_hv -> 20261022-070339_e2_learning_curve_qda_block
+[r307] === gmm2_hv: /content/ml/research/r301_run_extension.py --ext e2 --prefix e2_gmm_ -- --config /content/ml/research/r303_e2_gmm.yaml --data raw --n-jobs 8
+[r301] extensions/e2_learning_curve/run.py with lib_ext12.build_pipeline, prefix='e2_gmm_', args=['--config', '/content/ml/research/r303_e2_gmm.yaml', '--data', 'raw', '--n-jobs', '8']
+[e2] run 20261022-070445_e2_learning_curve_gmm: 50 subsets on raw data (full settings, n_jobs=8)
+[e2] fitting learning curve + 2000 bootstrap refits ...
+
+E2 learning curve  run_id=20261022-070445_e2_learning_curve_gmm  data=raw  quick=False
+model: transductive_gmm(alpha=1.0,columns=highvar,covariance_type=full,n_components=2,n_init=5)  inner CV: 5-fold x 4  x axis: effective (training rows behind each score (effective size n*4/5))
+
+Per size (CV inside subset; out-of-subset = fit on subset, score on the other rows):
+  size         x    n_subsets    cv_mean    cv_std    cv_min    cv_max    oos_mean    oos_std    n_oos_rows    frac_constant_folds
+------  --------  -----------  ---------  --------  --------  --------  ----------  ---------  ------------  ---------------------
+    50   40.0000           10     1.0000    0.0000    1.0000    1.0000      1.0000     0.0000           200                 0.0000
+   100   80.0000           10     1.0000    0.0000    1.0000    1.0000      1.0000     0.0000           150                 0.0000
+   150  120.0000           10     1.0000    0.0000    1.0000    1.0000      1.0000     0.0000           100                 0.0000
+   200  160.0000           10     1.0000    0.0000    1.0000    1.0000      1.0000     0.0000            50                 0.0000
+   250  200.0000           10     1.0000    0.0000    1.0000    1.0000    nan        nan                  0                 0.0000
+  note: size 250 = full data; its spread is CV-seed (evaluation) noise only
+
+Extrapolation (bootstrap over subset scores):
+model                        x    point    boot_median    boot_lo_0.05    boot_hi_0.95    n_boot_failed  at_bounds
+--------------------  --------  -------  -------------  --------------  --------------  ---------------  -----------
+power_law             250.0000   1.0000         1.0000          1.0000          1.0000           0.0000  a
+power_law             500.0000   1.0000         1.0000          1.0000          1.0000           0.0000  a
+log_linear            250.0000   1.0000         1.0000          1.0000          1.0000           0.0000
+log_linear            500.0000   1.0000         1.0000          1.0000          1.0000           0.0000
+power_law_unweighted  250.0000   1.0000         1.0000          1.0000          1.0000           0.0000  a
+power_law_unweighted  500.0000   1.0000         1.0000          1.0000          1.0000           0.0000  a
+power_law_drop_50     250.0000   1.0000         1.0000          1.0000          1.0000           0.0000  a
+power_law_drop_50     500.0000   1.0000         1.0000          1.0000          1.0000           0.0000  a
+envelope              250.0000   1.0000       nan               1.0000          1.0000         nan
+envelope              500.0000   1.0000       nan               1.0000          1.0000         nan
+  CAVEAT: every interval above resamples only the subset scores. All subsets come from the same
+  250 rows, so the noise of that parent sample (another 250 rows from the same population) is
+  missing, and the SEM weighting pins the curve to the n = 250 point. Treat even the 'envelope'
+  row as a lower bound on the uncertainty, at x = 250 as well as at the target.
+power law: a=1.0000 b=0.0001 c=2.7778  (at bound: a)
+gain 250 -> 500 (power law): median +0.0000 [+0.0000, +0.0000], P(gain > 0) = 1.00
+gain 250 -> 500 (log-linear): median +0.0000 [+0.0000, +0.0000], P(gain > 0) = 1.00
+
+run folder: /content/jobs/J20261022-070426-pro1-rext12/archive/experiments/20261022-070445_e2_learning_curve_gmm
+report outputs: /content/jobs/J20261022-070426-pro1-rext12/archive/reports/tables | /content/jobs/J20261022-070426-pro1-rext12/archive/reports/figures
+runtime: 33.3 s
+[r307] gmm2_hv -> 20261022-070445_e2_learning_curve_gmm
+ size  gmm2_hv_cv_mean  l1_all_cv_mean  qda_hv_cv_mean  gmm2_hv_cv_std  l1_all_cv_std  qda_hv_cv_std
+   50              1.0        0.658742        0.972883             0.0       0.099704       0.022383
+  100              1.0        0.734596        0.990303             0.0       0.040013       0.005258
+  150              1.0        0.810381        0.992282             0.0       0.028263       0.002983
+  200              1.0        0.830088        0.995038             0.0       0.021396       0.001422
+  250              1.0        0.847386        0.996043             0.0       0.006074       0.000499
+  model                                      run_id     x  power_law_point  power_law_median  power_law_lo  power_law_hi  log_linear_point  envelope_lo  envelope_hi at_bounds  gain_250_500_median      gain_lo      gain_hi  p_gain_pos
+ l1_all           20261022-070248_e2_learning_curve 250.0         0.864570          0.863958      0.857455      0.869286          0.871682     0.850757     0.880311       NaN         3.976707e-02 2.238704e-02 4.704049e-02         1.0
+ l1_all           20261022-070248_e2_learning_curve 500.0         0.905719          0.903530      0.880569      0.915753          0.944740     0.856676     0.973774       NaN         3.976707e-02 2.238704e-02 4.704049e-02         1.0
+ qda_hv 20261022-070339_e2_learning_curve_qda_block 250.0         0.996140          0.996118      0.995075      0.996945          0.998675     0.995075     1.000105       NaN         8.440518e-04 1.086041e-04 1.790573e-03         1.0
+ qda_hv 20261022-070339_e2_learning_curve_qda_block 500.0         0.996933          0.997027      0.995231      0.998552          1.004626     0.995223     1.008132       NaN         8.440518e-04 1.086041e-04 1.790573e-03         1.0
+gmm2_hv       20261022-070445_e2_learning_curve_gmm 250.0         1.000000          1.000000      1.000000      1.000000          1.000000     0.999997     1.000000         a         1.675249e-11 1.675249e-11 1.675249e-11         1.0
+gmm2_hv       20261022-070445_e2_learning_curve_gmm 500.0         1.000000          1.000000      1.000000      1.000000          1.000000     0.999998     1.000000         a         1.675249e-11 1.675249e-11 1.675249e-11         1.0

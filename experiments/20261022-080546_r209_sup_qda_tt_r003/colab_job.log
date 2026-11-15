@@ -1,0 +1,15 @@
+[sup] research/r209_semisup_followup.py: 6 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r209_sup_qda_tt_r003               auc=1.0000 +/- 0.0000  logloss=0.010904655433232434  4s  run=20261022-080546_r209_sup_qda_tt_r003  chosen={}
+[sup] r209_selftrain_qda_r003            auc=1.0000 +/- 0.0000  logloss=0.012037604599190477  2s  run=20261022-080549_r209_selftrain_qda_r003  chosen={}
+[sup] r209_sup_qda_tt_r01                auc=0.9958 +/- 0.0011  logloss=0.08757839547825412  1s  run=20261022-080551_r209_sup_qda_tt_r01  chosen={}
+[sup] r209_selftrain_qda_fullgrid        auc=0.9996 +/- 0.0003  logloss=0.028714967071571545  40s  run=20261022-080552_r209_selftrain_qda_fullgrid  chosen={"{\"estimator__reg_param\": 0.01, \"threshold\": 0.99}": 45, "{\"estimator__reg_param\": 0.03, \"threshold\": 0.99}": 25, "{\"estimator__reg_param\": 0.003, \"
+[sup] r209_selftrain_qda_lw              auc=1.0000 +/- 0.0000  logloss=0.007087467409750097  2s  run=20261022-080632_r209_selftrain_qda_lw  chosen={}
+[sup] r209_labelspread_widegrid          auc=0.9566 +/- 0.0070  logloss=0.44573618328592934  747s  run=20261022-080634_r209_labelspread_widegrid  chosen={"{\"alpha\": 0.95, \"n_neighbors\": 120}": 55, "{\"alpha\": 0.99, \"n_neighbors\": 120}": 21, "{\"alpha\": 0.8, \"n_neighbors\": 120}": 11, "{\"alpha\": 0.95, 
+
+                  candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                      run_id
+       r209_sup_qda_tt_r003  1.000000        0.000000     0.010905          1        20261022-080546_r209_sup_qda_tt_r003
+    r209_selftrain_qda_r003  1.000000        0.000000     0.012038          1     20261022-080549_r209_selftrain_qda_r003
+      r209_selftrain_qda_lw  1.000000        0.000000     0.007087          1       20261022-080632_r209_selftrain_qda_lw
+r209_selftrain_qda_fullgrid  0.999645        0.000275     0.028715          8 20261022-080552_r209_selftrain_qda_fullgrid
+        r209_sup_qda_tt_r01  0.995784        0.001120     0.087578          1         20261022-080551_r209_sup_qda_tt_r01
+  r209_labelspread_widegrid  0.956596        0.006994     0.445736          9   20261022-080634_r209_labelspread_widegrid

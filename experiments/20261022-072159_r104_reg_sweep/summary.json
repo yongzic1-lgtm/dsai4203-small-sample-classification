@@ -1,0 +1,24 @@
+{
+  "best_reg_by_bic_per_basis": [
+    {
+      "basis": "std13",
+      "reg": 1e-12,
+      "bic": -171588.62475739885,
+      "kendall_s003_boundary": 0.9960397952284364
+    },
+    {
+      "basis": "pca",
+      "reg": 1e-12,
+      "bic": 343910.6363485168,
+      "kendall_s003_boundary": 0.9959432048681544
+    },
+    {
+      "basis": "white",
+      "reg": 1e-12,
+      "bic": 560276.388150989,
+      "kendall_s003_boundary": 0.9959432048681544
+    }
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T07:23:33+09:00"
+}

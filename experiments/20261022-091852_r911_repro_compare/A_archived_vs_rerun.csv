@@ -1,0 +1,19 @@
+model,archived,rerun,bundle_archived,bundle_rerun,what,n,n_a,n_b,val_id_all_equal,bit_identical,max_abs_diff,n_differ,mean_a,mean_b,nan_pattern_equal,spearman,sha_a,sha_b
+s003,20261022-050708_r003_gmm2_hv,20261022-091211_r910_s003_gmm2_hv,none recorded (pre-D005 run),df6dea90c123b9f4,fold_auc,100.0,100.0,100.0,True,True,0.0,0.0,1.0,1.0,,,,
+s003,20261022-050708_r003_gmm2_hv,20261022-091211_r910_s003_gmm2_hv,none recorded (pre-D005 run),df6dea90c123b9f4,oof,5000.0,,,,True,0.0,0.0,,,True,1.0,558939edce03599e,558939edce03599e
+s003,20261022-050708_r003_gmm2_hv,20261022-091211_r910_s003_gmm2_hv,none recorded (pre-D005 run),df6dea90c123b9f4,test_pred,19750.0,,,,True,0.0,0.0,,,True,1.0,71fb85e7168cde88,71fb85e7168cde88
+s003,20261022-050708_r003_gmm2_hv,20261022-091211_r910_s003_gmm2_hv,none recorded (pre-D005 run),df6dea90c123b9f4,summary auc_mean,,,,,True,0.0,,1.0,1.0,,,,
+e3final,20261022-063908_e3_leakage,20261022-091223_r910_e3_final_k20,unsynced (--no-sync),df6dea90c123b9f4,fold_auc,100.0,100.0,100.0,True,True,0.0,0.0,0.7934408526256352,0.7934408526256352,,,,
+e3final,20261022-063908_e3_leakage,20261022-091223_r910_e3_final_k20,unsynced (--no-sync),df6dea90c123b9f4,test_pred,19750.0,,,,True,0.0,0.0,,,True,1.0,eadb9ff18d9c6cec,eadb9ff18d9c6cec
+e3final,20261022-063908_e3_leakage,20261022-091223_r910_e3_final_k20,unsynced (--no-sync),df6dea90c123b9f4,summary auc_mean,,,,,True,0.0,,0.7934408526256352,0.7934408526256352,,,,
+r201qda,20261022-071234_r201_qda_block,20261022-091224_r910_r201_qda_block,f84e098deaf7a1bf,df6dea90c123b9f4,fold_auc,100.0,100.0,100.0,True,True,0.0,0.0,0.9999028588159024,0.9999028588159024,,,,
+r201qda,20261022-071234_r201_qda_block,20261022-091224_r910_r201_qda_block,f84e098deaf7a1bf,df6dea90c123b9f4,oof,5000.0,,,,True,0.0,0.0,,,True,1.0,67a28deb55720218,67a28deb55720218
+r201qda,20261022-071234_r201_qda_block,20261022-091224_r910_r201_qda_block,f84e098deaf7a1bf,df6dea90c123b9f4,test_pred,19750.0,,,,True,0.0,0.0,,,True,1.0,0d7e9b64d238586a,0d7e9b64d238586a
+r201qda,20261022-071234_r201_qda_block,20261022-091224_r910_r201_qda_block,f84e098deaf7a1bf,df6dea90c123b9f4,summary auc_mean,,,,,True,0.0,,0.9999028588159024,0.9999028588159024,,,,
+r201qda,20261022-071234_r201_qda_block,20261022-091224_r910_r201_qda_block,f84e098deaf7a1bf,df6dea90c123b9f4,fold_fit_info best_params,100.0,,,,True,,0.0,,,,,,
+r201qda,20261022-071234_r201_qda_block,20261022-091224_r910_r201_qda_block,f84e098deaf7a1bf,df6dea90c123b9f4,fold_fit_info support (in-fold block),100.0,,,,True,,0.0,,,,,,
+r201qda,20261022-071234_r201_qda_block,20261022-091224_r910_r201_qda_block,f84e098deaf7a1bf,df6dea90c123b9f4,fold_fit_info best_inner_auc,100.0,,,,True,0.0,0.0,,,,,,
+e3leaky,20261022-063908_e3_leakage,20261022-091403_r910_repro_env,,,"fold_auc (leaky k20, 5-fold)",100.0,100.0,100.0,True,True,0.0,0.0,0.8667809827048959,0.8667809827048959,,,,
+e3final,20261022-063908_e3_leakage,,,,archived config `pipeline` == r910 literal,,,,,True,,,,,,,,
+e3final,20261022-063908_e3_leakage,,,,archived config `selection` == r910 literal,,,,,True,,,,,,,,
+e3final,20261022-063908_e3_leakage,,,,archived config `leaderboard` == r910 literal,,,,,True,,,,,,,,

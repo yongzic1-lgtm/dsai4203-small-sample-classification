@@ -1,0 +1,96 @@
+# E2 Learning curve -- configuration for run.py
+#
+# Question: how does the score grow with the number of training rows, how much of
+# the variation at each size is subset-to-subset noise, and what score should we
+# expect from 500 training rows (with how much confidence)?
+#
+# For every size n in `sizes`, `n_subsets` stratified random subsets of the 250 rows
+# are drawn (subset i of size n uses np.random.default_rng([subset_seed, n, i]), so
+# subsets of different sizes are independent draws, not nested). Each subset is
+# scored by repeated stratified k-fold CV INSIDE the subset (`cv`), with CV seed
+# cv.seed + i * cv_seed_stride. At n = 250 every subset is the full data, so there
+# only the CV seed varies: the spread at n = 250 is evaluation noise only.
+
+name: e2_learning_curve
+hypothesis: >-
+  The mean CV AUC rises with n and flattens; the spread across the 10 subsets shrinks
+  with n. Because 250 rows give only a few points on the curve, the extrapolated
+  AUC at 500 training rows has a wide interval, and the predicted gain from 250 to
+  500 rows is small relative to that interval.
+
+# Model under study (ssc.models.build_pipeline spec). Its random_state is held fixed.
+# A learning curve belongs to ONE pipeline with FIXED hyper-parameters; with
+# liblinear, C multiplies the summed loss, so the effective regularisation weakens
+# as n grows. Use the team's current final pipeline here for the report.
+#
+# Real-data choice (2026-10-22, agent ext12): this file = variant (a), the SUPERVISED BASELINE
+# (L1 logistic C=0.1 on all 150 features, = R003 sup_l1_all, official CV 0.8469; the model of
+# submission S001). The team's final model (TransductiveGMM) and supervised QDA on the block
+# cannot be built by ssc.models.build_pipeline, so they run through
+# research/r301_run_extension.py with the same settings except `pipeline`:
+#   (b) research/r302_e2_qda_block.yaml  (report prefix e2_qda_)
+#   (c) research/r303_e2_gmm.yaml        (report prefix e2_gmm_)
+# research/r307_e2_all_models.py runs (a), (b), (c) in one Colab job and draws the comparison.
+pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params: {C: 0.1, l1_ratio: 1.0, solver: liblinear}
+  random_state: 0
+
+sizes: [50, 100, 150, 200, 250]
+n_subsets: 10
+subset_seed: 2026
+
+# Inner CV, ssc.validation.Scheme fields only (also shown in the registry "cv" column).
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 4
+  seed: 7000
+cv_seed_stride: 100        # >= cv.n_repeats, so subsets never share CV seeds
+
+# Second view for n < 250: train on the whole subset, score on the 250 - n rows not
+# in it. Its own noise grows as n -> 250 (only 50 scoring rows at n = 200).
+out_of_subset: true
+
+fit:
+  # x axis used for the fit AND the extrapolation target (be consistent):
+  #   effective = training rows behind each CV score = n * (k - 1) / k  (40, 80, ..., 200)
+  #               -> target_n = 500 means "a model trained on 500 rows"
+  #   nominal   = subset size n (50, ..., 250)
+  #               -> target_n = 500 means "5-fold CV on a 500-row data set" (models trained on 400)
+  x_axis: effective
+  target_n: 500
+  predict_at: [250, 500]   # also report the curve here (250 = all our rows used for training)
+  weight: sem              # sigma per size: sem = std / sqrt(n_subsets) | std | none
+  sigma_floor: 0.002       # lower bound on sigma so one size with tiny spread cannot dominate
+  bounds:                  # inverse power law AUC(x) = a - b * x^(-c)
+    a: [0.5, 1.0]          # asymptote, a <= 1
+    b: [0.0, 10000.0]      # wide: b has no physical meaning, it only scales the decay
+    c: [0.01, 3.0]
+  n_boot: 2000             # bootstrap over the subset scores at each size
+  sensitivity:             # extra power-law rows in e2_extrapolation (model-form checks)
+    unweighted: true       # same fit with weight = none
+    drop_smallest: true    # refit without the smallest size (where a sparse model may collapse to a constant)
+    n_boot: 500
+  boot_seed: 0
+  interval: 0.90           # central interval reported (5% .. 95%)
+
+# Synthetic data only: a "true" learning curve from the 19,750 labelled mock test rows
+# (train on t fresh rows, score on a fixed set of n_eval other rows, n_draws times).
+ground_truth:
+  enabled: true
+  n_draws: 10
+  n_eval: 5000
+  seed: 99
+
+# --quick (smoke test) overrides.
+quick:
+  sizes: [50, 100, 150, 250]
+  n_subsets: 3
+  cv_n_repeats: 1
+  n_boot: 100
+  sens_n_boot: 50
+  gt_n_draws: 2
+  gt_n_eval: 2000

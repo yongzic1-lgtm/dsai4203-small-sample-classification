@@ -1,0 +1,27 @@
+{
+  "auc_mean": 0.8729406644080556,
+  "auc_std_fold": 0.04144267326666488,
+  "auc_std_repeat": 0.011887886138501166,
+  "auc_min_repeat": 0.8543007716920761,
+  "auc_max_repeat": 0.8982710124014472,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.8725437633227827,
+  "oof_auc_std": 0.010707353265546761,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "regime": "linear",
+  "description": "L1 logistic C=0.2, all 150 features",
+  "n_constant_folds": 0,
+  "uses_unlabeled_test_features": false,
+  "status": "done",
+  "finished_at": "2026-10-22T06:37:12+09:00"
+}

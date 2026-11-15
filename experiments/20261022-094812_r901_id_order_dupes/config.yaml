@@ -1,0 +1,6 @@
+name: r901_id_order_dupes
+kind: analysis
+verifier: leak
+n_ref: 3000
+n_perm: 5000
+inputs: train.csv/test.csv ids, features, train labels; S003 recomputed (R003 code)

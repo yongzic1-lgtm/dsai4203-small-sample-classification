@@ -1,0 +1,16 @@
+name: r256_qda_reg0.01_hv
+description: classical QDA reg_param=0.01 on the block (sensitivity, not tuned)
+model_code: research/r256_bqda_controls.py + research/lib_fm.py
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true
+code_sha:
+  lib_fm.py: a52df6cce06d4be6
+  r256_bqda_controls.py: 4e6a4fdc0e6f0b8f

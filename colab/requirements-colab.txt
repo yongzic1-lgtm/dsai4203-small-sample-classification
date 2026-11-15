@@ -1,0 +1,29 @@
+# Packages for the Colab VM venv (Python 3.11, built with uv by colab/remote.py).
+# Versions are pinned to requirements-lock.txt so local and Colab runs use identical code.
+# Only compute packages: Jupyter/pytest/kaggle are not needed on the VM.
+numpy==2.4.6
+pandas==3.0.6
+scipy==1.17.1
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+matplotlib==3.11.2
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.67.0
+kiwisolver==1.5.1
+pillow==13.0.0
+pyparsing==3.3.3
+python-dateutil==2.9.0.post0
+packaging==26.3
+six==1.17.0
+tzdata==2026.5
+seaborn==0.13.2
+statsmodels==0.15.0
+patsy==1.0.3
+lightgbm==4.7.0
+# xgboost-cpu = same xgboost 3.2.0 code without the ~200 MB CUDA/NCCL wheels
+xgboost-cpu==3.2.0
+PyYAML==6.0.3
+tabulate==0.10.0
+tqdm==4.70.1

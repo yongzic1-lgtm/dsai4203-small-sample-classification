@@ -1,0 +1,44 @@
+name: r933_replicas_param_s72-135
+variant: param
+seeds:
+- 72
+- 135
+flips:
+- 0.0
+- 0.0025
+- 0.005
+- 0.01
+n_draws: 16
+procedures:
+- s003_gmm2_hv
+- r105_gmm2_block_mle
+- r155_gmm2_inf_tight
+- r102_semisup_eps01
+- r255_bqda_eb_hv
+- r209_selftrain_qda_lw
+- r210_qda_block_nll
+- r201_qda_block
+- x_qda_block_nll_ext
+- bayes
+source_runs:
+  s003_gmm2_hv: 20261022-050708_r003_gmm2_hv
+  r105_gmm2_block_mle: 20261022-074857_r105_gmm2_block_mle
+  r155_gmm2_inf_tight: 20261022-080453_r155_gmm2_inf_tight
+  r102_semisup_eps01: 20261022-064500_r102_semisup_eps01
+  r255_bqda_eb_hv: 20261022-070200_r255_bqda_eb_hv
+  r209_selftrain_qda_lw: 20261022-080632_r209_selftrain_qda_lw
+  r210_qda_block_nll: 20261022-082047_r210_qda_block_nll
+  r201_qda_block: 20261022-071234_r201_qda_block
+  x_qda_block_nll_ext: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+code: research/r931_cand_lib.py + research/lib_gen_replica.py
+class_sep: null
+hamming: null

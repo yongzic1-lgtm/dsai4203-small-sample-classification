@@ -1,0 +1,10 @@
+python=/content/venv_tabpfn/bin/python device=cuda gpu=NVIDIA L4 versions={'torch': '2.14.1', 'tabpfn': '9.2.0', 'tabicl': None, 'jax': None, 'jaxlib': None, 'numpyro': None, 'huggingface_hub': '2.2.0', 'scikit-learn': '1.9.1', 'numpy': '2.4.6', 'pandas': '3.0.6', 'scipy': '1.17.1'}
+model params: {'auto_scale_n_estimators': 'True', 'average_before_softmax': 'False', 'balance_probabilities': 'False', 'categorical_features_indices': 'None', 'device': 'cuda', 'differentiable_input': 'False', 'enable_torch_compile': 'False', 'eval_metric': 'None', 'fit_mode': 'fit_preprocessors', 'ignore_pretraining_limits': 'False', 'inference_config': 'None', 'inference_precision': 'auto', 'keep_cache_on_device': 'True', 'kv_cache_precision': 'None', 'memory_saving_mode': 'auto', 'model_path': '/root/.cache/tabpfn/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt', 'n_estimators': '8', 'n_jobs': 'None', 'n_preprocessing_jobs': '1', 'random_state': '0', 'show_progress_bar': 'False', 'softmax_temperature': 'auto', 'tuning_config': 'None'}
+references done in 14s: r003_gmm2_hv=1.0000, r003_sup_qda_hv=0.9958, r003_sup_l1_all=0.8469, r003_sup_logreg_hv=0.8977
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+timing probe (all): fit + predict 50 validation rows = 4.1s
+r251_tabpfn2_all   auc=0.98509 +/- 0.00406 logloss=0.1666 pseudoAUC=0.98565 side_agree_boundary=0.515 (112s) run=20261022-073743_r251_tabpfn2_all
+r251_tabpfn2_hv    auc=0.98875 +/- 0.00310 logloss=0.1457 pseudoAUC=0.99052 side_agree_boundary=0.490 (40s) run=20261022-073935_r251_tabpfn2_hv
+       candidate  auc_mean  auc_std_repeat  cv_logloss  s003_pseudo_auc_confident  s003_side_agree_boundary  cv_seconds
+r251_tabpfn2_all  0.985088        0.004057    0.166571                   0.985647                  0.514706  112.375573
+ r251_tabpfn2_hv  0.988755        0.003103    0.145682                   0.990516                  0.490196   40.326901

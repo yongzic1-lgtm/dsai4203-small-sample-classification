@@ -1,0 +1,9 @@
+{
+  "posterior_mean_flip": 0.004291868744788761,
+  "posterior_mean_wrong_label_rate": 0.0021459343723943805,
+  "expected_private_auc_s003": 0.9978054462853888,
+  "private_auc_clean": 0.9999495978200063,
+  "map_flip": 0.002,
+  "status": "done",
+  "finished_at": "2026-10-22T08:09:37+09:00"
+}

@@ -1,0 +1,12 @@
+# Baseline 2: dense, strongly shrunk linear model (official CV: no cv block).
+name: baseline_l2_logreg
+hypothesis: >-
+  Strong L2 shrinkage (C=0.05) keeps all 150 features with small weights; if the signal
+  is spread over many features it beats L1, if it sits in a few features L1 wins.
+pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params: {C: 0.05, l1_ratio: 0.0, solver: liblinear}
+  random_state: 0
+test_pred: fold_mean

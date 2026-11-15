@@ -1,0 +1,20 @@
+name: r300_qda_r05
+description: QDA reg 0.5 on the block
+model_code: research/r300_e1_pair_screen.py
+pipeline:
+  scaler: none
+  model:
+    name: subspace_qda
+    params:
+      reg_param: 0.5
+      source: raw
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true

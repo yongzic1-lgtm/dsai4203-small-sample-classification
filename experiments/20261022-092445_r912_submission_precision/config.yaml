@@ -1,0 +1,43 @@
+name: r912_submission_precision
+description: R912 - does the submission file format cost AUC? (verifier `repro`, 2026-10-22)
+replica:
+  variant: make_classification
+  class_sep: 0.71
+  hamming: 4
+  flip_y:
+  - 0.0
+  - 0.005
+  seeds:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+model: lib_gen_replica.UnsupervisedGMM(X_all, 'highvar', K=2) = ssc TransductiveGMM
+  defaults
+subset: private (19,355 rows)

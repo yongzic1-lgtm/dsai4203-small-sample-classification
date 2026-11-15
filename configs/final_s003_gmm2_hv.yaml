@@ -1,0 +1,28 @@
+# Final model S003 as a run_experiment config: transductive GMM, K=2 full covariance, on the
+# label-free high-variance block. Same estimator and settings as research/r003_transductive_vs_supervised.py
+# CANDIDATES["gmm2_hv"] = TransductiveGMM("highvar", 2, source=...) with the class defaults below, which made
+# run 20261022-050708_r003_gmm2_hv and submission S003 (registry/submissions.csv, sha256 prefix 3aae140e5837753f).
+# The mixture is fitted on train+test FEATURES of the run's data source (no labels); labels enter only through
+# the training part of each fold (component -> class rate). Reproduction route: README.md, last section.
+name: final_s003_gmm2_hv
+hypothesis: >-
+  Reproduction of S003 (run 20261022-050708_r003_gmm2_hv) through scripts/run_experiment.py: official CV
+  AUC 1.0 in all 100 folds (split signature 5708ce5c3828) and a test_pred that is bit-identical on Colab,
+  so make_submission writes a file with sha256 prefix 3aae140e5837753f; on the Windows laptop the GMM
+  agrees only to about 1e-11 (R910/R911), so one CSV value and the sha256 may differ there.
+pipeline:
+  scaler: none                   # TransductiveGMM standardises the block itself with train+test statistics
+  model:
+    name: transductive_gmm       # ssc.transductive.TransductiveGMM via ssc.models (TRANSDUCTIVE)
+    params:
+      columns: highvar           # features with std > 1.5 x median std over train+test (label-free)
+      n_components: 2
+      covariance_type: full
+      pca_dims: null
+      n_init: 5
+      alpha: 1.0                 # Beta smoothing of each component's class-1 rate
+      reg_covar: 1.0e-6
+      # source is not set: it is the run's --data source (raw = Kaggle data)
+  random_state: 0                # GaussianMixture seed (r003 used the class default 0)
+# cv: omitted on purpose -> project.yaml official_cv (kfold 5 x 20, seed 2026)
+test_pred: fold_mean

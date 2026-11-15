@@ -1,0 +1,19 @@
+name: r205_select_supervised
+description: nested model selection over a 46-config strictly supervised menu (families
+  x hyperparameters)
+model_code: research/r205_sup_nested_selection.py + research/lib_sup.py
+group: selection
+features: menu (all 150 / in-fold block)
+tuning: GridSearchCV over MENU (see script)
+n_configs: 46
+inner_cv: RepeatedStratifiedKFold on the 200-row training fold (see lib_sup.Tuned)
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

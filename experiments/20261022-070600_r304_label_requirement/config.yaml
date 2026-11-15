@@ -1,0 +1,42 @@
+name: r304_label_requirement
+sizes:
+- 2
+- 4
+- 6
+- 8
+- 10
+- 15
+- 20
+- 30
+- 40
+- 50
+- 75
+- 100
+- 150
+- 200
+n_subsets: 50
+models:
+  gmm2_hv:
+    scaler: none
+    model:
+      name: transductive_gmm
+      params:
+        columns: highvar
+        n_components: 2
+        source: raw
+  qda_hv:
+    scaler: none
+    model:
+      name: subspace_qda
+      params:
+        reg_param: 0.1
+        source: raw
+  l1_all:
+    scaler: standard
+    model:
+      name: logreg
+      params:
+        C: 0.1
+        l1_ratio: 1.0
+        solver: liblinear
+evaluation: out-of-subset AUC on the 250 - n other rows

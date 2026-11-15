@@ -1,0 +1,136 @@
+E4 feature-ranking stability | data=raw | quick=False | run_id=20261022-071414_e4_feature_stability
+
+Top 12 features by bootstrap frequency (B=2000, sorted by top-20 frequency):
+feature abs_corr_full freq_k5 freq_k10 freq_k13 freq_k20
+     98         0.398   0.955    0.999    1.000    1.000
+     17         0.390   0.884    1.000    1.000    1.000
+    100         0.385   0.793    0.997    0.999    1.000
+     80         0.347   0.569    0.986    0.996    1.000
+     77         0.346   0.577    0.986    0.994    1.000
+     46         0.341   0.534    0.988    0.996    1.000
+    112         0.352   0.611    0.993    0.998    0.999
+     49         0.238   0.041    0.652    0.792    0.915
+     67         0.180   0.005    0.282    0.423    0.618
+      8         0.157   0.008    0.173    0.299    0.488
+     47         0.151   0.004    0.137    0.258    0.442
+    108         0.149   0.004    0.126    0.246    0.438
+
+Drop position m*(k) under each rule (primary = perm):
+ k chance_rate  m_gap gap_size  m_half  m_binom  m_perm top_freq freq_at_rank_k
+ 5       0.033      7    0.493       7        7       7    0.955          0.577
+10       0.067      8    0.370       8       17       8    1.000          0.173
+13       0.087      8    0.369       8       22       9    1.000          0.241
+20       0.133      8    0.297       9       28      17    1.000          0.261
+
+Overlap of stable sets across k:
+rule  k1  k2  m1  m2  n_common jaccard  k1_set_in_k2_set
+perm   5  10   7   8         7   0.875              True
+perm   5  13   7   9         7   0.778              True
+perm   5  20   7  17         7   0.412              True
+perm  10  13   8   9         8   0.889              True
+perm  10  20   8  17         8   0.471              True
+perm  13  20   9  17         9   0.529              True
+half   5  10   7   8         7   0.875              True
+half   5  13   7   8         7   0.875              True
+half   5  20   7   9         7   0.778              True
+half  10  13   8   8         8   1.000              True
+half  10  20   8   9         8   0.889              True
+half  13  20   8   9         8   0.889              True
+
+Usefulness (5foldx20, identical splits, sig 5708ce5c3828): mean CV AUC (SD over split seeds)
+ k           variant n_features_mean auc_mean auc_std_repeat
+ 5            all150        150.0000   0.7689         0.0185
+ 5      naive_stable          7.0000   0.8352         0.0056
+ 5        naive_drop          7.0000   0.8352         0.0056
+ 5  naive_corr_top_m          7.0000   0.8352         0.0056
+ 5     honest_stable          5.4600   0.8011         0.0152
+ 5 honest_drop_top_m          7.0000   0.8344         0.0059
+ 5 honest_corr_top_m          7.0000   0.8344         0.0059
+10            all150        150.0000   0.7689         0.0185
+10      naive_stable          8.0000   0.8312         0.0059
+10        naive_drop          8.0000   0.8312         0.0059
+10  naive_corr_top_m          8.0000   0.8312         0.0059
+10     honest_stable          7.6000   0.8322         0.0055
+10 honest_drop_top_m          8.0000   0.8303         0.0070
+10 honest_corr_top_m          8.0000   0.8303         0.0070
+13            all150        150.0000   0.7689         0.0185
+13      naive_stable          8.0000   0.8312         0.0059
+13        naive_drop          9.0000   0.8428         0.0066
+13  naive_corr_top_m          8.0000   0.8312         0.0059
+13     honest_stable          8.1700   0.8276         0.0098
+13 honest_drop_top_m          9.0000   0.8225         0.0157
+13 honest_corr_top_m          8.0000   0.8303         0.0070
+20            all150        150.0000   0.7689         0.0185
+20      naive_stable          9.0000   0.8428         0.0066
+20        naive_drop         17.0000   0.8654         0.0058
+20  naive_corr_top_m          9.0000   0.8428         0.0066
+20     honest_stable         10.2700   0.8160         0.0150
+20 honest_drop_top_m         17.0000   0.7965         0.0147
+20 honest_corr_top_m          9.0000   0.8225         0.0157
+  k=5: stable set (freq >= 0.5) on all rows has m=7; set above the drop (perm rule) has m*=7; Jaccard stable vs drop set = 1.000, stable vs top-m |corr| = 1.000
+  k=10: stable set (freq >= 0.5) on all rows has m=8; set above the drop (perm rule) has m*=8; Jaccard stable vs drop set = 1.000, stable vs top-m |corr| = 1.000
+  k=13: stable set (freq >= 0.5) on all rows has m=8; set above the drop (perm rule) has m*=9; Jaccard stable vs drop set = 0.889, stable vs top-m |corr| = 1.000
+  k=20: stable set (freq >= 0.5) on all rows has m=9; set above the drop (perm rule) has m*=17; Jaccard stable vs drop set = 0.529, stable vs top-m |corr| = 1.000
+
+Paired comparisons (a - b; split SE = std_diff_repeat / sqrt(repeats); p = Nadeau-Bengio corrected t-test):
+ k                 a                 b mean_diff se_split win_rate_fold corrected_p
+ 5      naive_stable            all150    0.0663   0.0042        0.8350      0.0328
+ 5        naive_drop            all150    0.0663   0.0042        0.8350      0.0328
+ 5  naive_corr_top_m            all150    0.0663   0.0042        0.8350      0.0328
+ 5     honest_stable            all150    0.0322   0.0052        0.6700      0.3384
+ 5 honest_drop_top_m            all150    0.0656   0.0042        0.8350      0.0350
+ 5 honest_corr_top_m            all150    0.0656   0.0042        0.8350      0.0350
+ 5     honest_stable honest_corr_top_m   -0.0334   0.0029        0.0700      0.0224
+ 5      naive_stable     honest_stable    0.0341   0.0027        0.9400      0.0163
+ 5      naive_stable  naive_corr_top_m    0.0000   0.0000        0.5000      1.0000
+ 5        naive_drop honest_drop_top_m    0.0008   0.0008        0.5050      0.8449
+10      naive_stable            all150    0.0623   0.0041        0.8300      0.0404
+10        naive_drop            all150    0.0623   0.0041        0.8300      0.0404
+10  naive_corr_top_m            all150    0.0623   0.0041        0.8300      0.0404
+10     honest_stable            all150    0.0633   0.0041        0.8200      0.0377
+10 honest_drop_top_m            all150    0.0614   0.0043        0.8300      0.0441
+10 honest_corr_top_m            all150    0.0614   0.0043        0.8300      0.0441
+10     honest_stable honest_corr_top_m    0.0019   0.0007        0.5300      0.6507
+10      naive_stable     honest_stable   -0.0010   0.0004        0.4650      0.6451
+10      naive_stable  naive_corr_top_m    0.0000   0.0000        0.5000      1.0000
+10        naive_drop honest_drop_top_m    0.0009   0.0008        0.5100      0.8375
+13      naive_stable            all150    0.0623   0.0041        0.8300      0.0404
+13        naive_drop            all150    0.0739   0.0041        0.9050      0.0110
+13  naive_corr_top_m            all150    0.0623   0.0041        0.8300      0.0404
+13     honest_stable            all150    0.0587   0.0040        0.7850      0.0558
+13 honest_drop_top_m            all150    0.0536   0.0041        0.7900      0.0692
+13 honest_corr_top_m            all150    0.0614   0.0043        0.8300      0.0441
+13     honest_stable honest_corr_top_m   -0.0027   0.0018        0.4700      0.7374
+13      naive_stable     honest_stable    0.0036   0.0017        0.5200      0.6546
+13      naive_stable  naive_corr_top_m    0.0000   0.0000        0.5000      1.0000
+13        naive_drop honest_drop_top_m    0.0203   0.0029        0.7500      0.1579
+20      naive_stable            all150    0.0739   0.0041        0.9050      0.0110
+20        naive_drop            all150    0.0965   0.0042        0.9900      0.0011
+20  naive_corr_top_m            all150    0.0739   0.0041        0.9050      0.0110
+20     honest_stable            all150    0.0471   0.0045        0.7400      0.1017
+20 honest_drop_top_m            all150    0.0276   0.0047        0.7200      0.2972
+20 honest_corr_top_m            all150    0.0536   0.0041        0.7900      0.0692
+20     honest_stable honest_corr_top_m   -0.0065   0.0019        0.3950      0.5288
+20      naive_stable     honest_stable    0.0268   0.0029        0.8400      0.0645
+20      naive_stable  naive_corr_top_m    0.0000   0.0000        0.5000      1.0000
+20        naive_drop honest_drop_top_m    0.0689   0.0031        0.9950      0.0006
+
+In-fold StabilityTopK selections (honest variant):
+ k n_selected jaccard_with_full_set  n_selected_min  n_selected_max
+ 5      5.460                 0.780               4               7
+10      7.600                 0.938               7               9
+13      8.170                 0.947               7              10
+20     10.270                 0.812               8              13
+
+  [PASS] ssc_matches_local_k5
+  [PASS] freq_sum_equals_k5
+  [PASS] ssc_matches_local_k10
+  [PASS] freq_sum_equals_k10
+  [PASS] ssc_matches_local_k13
+  [PASS] freq_sum_equals_k13
+  [PASS] ssc_matches_local_k20
+  [PASS] freq_sum_equals_k20
+time: bootstrap 3.5s, null 32.8s, usefulness 38.2s, total 77.9s
+run folder: /content/jobs/J20261022-071554-pro1-rext34/archive/experiments/20261022-071414_e4_feature_stability
+tables:     /content/jobs/J20261022-071554-pro1-rext34/archive/reports/tables\e4_*.csv
+figures:    /content/jobs/J20261022-071554-pro1-rext34/archive/reports/figures\e4_*.png

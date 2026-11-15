@@ -1,0 +1,13 @@
+[sup] research/r208_sup_qda_followup.py: 5 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r208_qda_blockextra_full           auc=0.9999 +/- 0.0002  logloss=0.017560200344269597  91s  run=20261022-074940_r208_qda_blockextra_full  chosen={"{\"model__reg_param\": 0.003, \"sel__extra_k\": 0}": 34, "{\"model__reg_param\": 0.001, \"sel__extra_k\": 0}": 17, "{\"model__reg_param\": 0.003, \"sel__extra
+[sup] r208_qda_corrk_full                auc=0.9926 +/- 0.0040  logloss=0.16257093224608238  74s  run=20261022-075111_r208_qda_corrk_full  chosen={"{\"model__reg_param\": 0.001, \"sel__k\": 20}": 37, "{\"model__reg_param\": 0.001, \"sel__k\": 30}": 27, "{\"model__reg_param\": 0.001, \"sel__k\": 13}": 22, 
+[sup] r208_qda_all_lw                    auc=0.8753 +/- 0.0152  logloss=0.672206341513879  3s  run=20261022-075225_r208_qda_all_lw  chosen={}
+[sup] r208_qda_block_lw                  auc=0.9863 +/- 0.0047  logloss=0.1483816060969475  1s  run=20261022-075228_r208_qda_block_lw  chosen={}
+[sup] r208_qda_block13_infold            auc=0.9997 +/- 0.0006  logloss=0.019262604873845755  15s  run=20261022-075229_r208_qda_block13_infold  chosen={"{\"model__reg_param\": 0.003}": 52, "{\"model__reg_param\": 0.01}": 35, "{\"model__reg_param\": 0.001}": 8, "{\"model__reg_param\": 0.03}": 5}
+
+               candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                   run_id
+r208_qda_blockextra_full  0.999871        0.000220     0.017560         66 20261022-074940_r208_qda_blockextra_full
+ r208_qda_block13_infold  0.999661        0.000649     0.019263         11  20261022-075229_r208_qda_block13_infold
+     r208_qda_corrk_full  0.992570        0.003976     0.162571         55      20261022-075111_r208_qda_corrk_full
+       r208_qda_block_lw  0.986313        0.004700     0.148382          1        20261022-075228_r208_qda_block_lw
+         r208_qda_all_lw  0.875297        0.015215     0.672206          1          20261022-075225_r208_qda_all_lw

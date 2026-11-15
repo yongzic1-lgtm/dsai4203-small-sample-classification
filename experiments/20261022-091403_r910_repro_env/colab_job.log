@@ -1,0 +1,34 @@
+[r910] cpus=2 cpu='Intel(R) Xeon(R) CPU @ 2.20GHz' python=3.11.17
+[r910] r910_s003_gmm2_hv        auc=1.000000 sig=5708ce5c3828 test_sha=71fb85e7168cde88 11.2s run=20261022-091211_r910_s003_gmm2_hv
+[r910] r910_e3_final_k20        auc=0.793441 sig=5708ce5c3828 test_sha=eadb9ff18d9c6cec 1.4s run=20261022-091223_r910_e3_final_k20
+[r910] r910_r201_qda_block      auc=0.999903 sig=5708ce5c3828 test_sha=0d7e9b64d238586a 98.4s run=20261022-091224_r910_r201_qda_block
+[r910] threads=1 s003: {'model': 's003', 'rerun': '20261022-091211_r910_s003_gmm2_hv', 'seconds_t1': 7.6, 'fold_auc_max_abs_diff': 0.0, 'n_folds_differ': 0, 'test_max_abs_diff': 0.0, 'test_n_differ': 0, 'test_spearman': 1.0, 'test_bit_identical': True, 'oof_max_abs_diff': 0.0}
+[r910] threads=1 e3final: {'model': 'e3final', 'rerun': '20261022-091223_r910_e3_final_k20', 'seconds_t1': 0.9, 'fold_auc_max_abs_diff': 0.0, 'n_folds_differ': 0, 'test_max_abs_diff': 0.0, 'test_n_differ': 0, 'test_spearman': 1.0, 'test_bit_identical': True, 'oof_max_abs_diff': 0.0}
+[r910] threads=1 r201qda: {'model': 'r201qda', 'rerun': '20261022-091224_r910_r201_qda_block', 'seconds_t1': 112.1, 'fold_auc_max_abs_diff': 0.0, 'n_folds_differ': 0, 'test_max_abs_diff': 0.0, 'test_n_differ': 0, 'test_spearman': 1.0, 'test_bit_identical': True, 'oof_max_abs_diff': 0.0}
+[r910] env: pins match=True; leaky E3 auc=0.866781; run=20261022-091403_r910_repro_env
+        package      pinned   installed  match
+          numpy       2.4.6       2.4.6   True
+         pandas       3.0.6       3.0.6   True
+          scipy      1.17.1      1.17.1   True
+   scikit-learn       1.9.1       1.9.1   True
+         joblib       1.6.0       1.6.0   True
+  threadpoolctl       3.7.0       3.7.0   True
+     matplotlib      3.11.2      3.11.2   True
+      contourpy       1.3.3       1.3.3   True
+         cycler      0.12.1      0.12.1   True
+      fonttools      4.67.0      4.67.0   True
+     kiwisolver       1.5.1       1.5.1   True
+         pillow      13.0.0      13.0.0   True
+      pyparsing       3.3.3       3.3.3   True
+python-dateutil 2.9.0.post0 2.9.0.post0   True
+      packaging        26.3        26.3   True
+            six      1.17.0      1.17.0   True
+         tzdata      2026.5      2026.5   True
+        seaborn      0.13.2      0.13.2   True
+    statsmodels      0.15.0      0.15.0   True
+          patsy       1.0.3       1.0.3   True
+       lightgbm       4.7.0       4.7.0   True
+    xgboost-cpu       3.2.0       3.2.0   True
+         PyYAML       6.0.3       6.0.3   True
+       tabulate      0.10.0      0.10.0   True
+           tqdm      4.70.1      4.70.1   True

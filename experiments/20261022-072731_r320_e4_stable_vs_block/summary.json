@@ -1,0 +1,102 @@
+{
+  "block_features": [
+    "8",
+    "15",
+    "26",
+    "30",
+    "46",
+    "49",
+    "64",
+    "67",
+    "77",
+    "80",
+    "98",
+    "100",
+    "112"
+  ],
+  "k_use": 10,
+  "B": 2000,
+  "frequencies_match_ssc": true,
+  "m_perm": {
+    "5": 7,
+    "10": 8,
+    "13": 9,
+    "20": 17
+  },
+  "stable_perm_sets": {
+    "5": [
+      "17",
+      "46",
+      "77",
+      "80",
+      "98",
+      "100",
+      "112"
+    ],
+    "10": [
+      "17",
+      "46",
+      "49",
+      "77",
+      "80",
+      "98",
+      "100",
+      "112"
+    ],
+    "13": [
+      "17",
+      "46",
+      "49",
+      "67",
+      "77",
+      "80",
+      "98",
+      "100",
+      "112"
+    ],
+    "20": [
+      "8",
+      "17",
+      "26",
+      "34",
+      "39",
+      "46",
+      "47",
+      "49",
+      "67",
+      "77",
+      "80",
+      "98",
+      "100",
+      "108",
+      "112",
+      "115",
+      "138"
+    ]
+  },
+  "usefulness": {
+    "logreg:all150": 0.76888,
+    "logreg:block": 0.86212,
+    "logreg:stable": 0.83222,
+    "logreg:block_and_stable": 0.83573,
+    "logreg:block_minus_stable": 0.7647,
+    "logreg:block_or_stable": 0.8598,
+    "qda:block": 0.99606,
+    "qda:stable": 0.96111,
+    "qda:block_and_stable": 0.95274,
+    "qda:block_minus_stable": 0.91658,
+    "qda:block_or_stable": 0.99645,
+    "gmm:block": 1.0,
+    "gmm:stable": 0.98296,
+    "gmm:block_and_stable": 0.97525,
+    "gmm:block_minus_stable": 0.93191,
+    "gmm:block_or_stable": 1.0
+  },
+  "timings_seconds": {
+    "usefulness": 25.4,
+    "total": 89.1
+  },
+  "official_cv": true,
+  "status": "done",
+  "finished_at": "2026-10-22T07:29:00+09:00"
+}

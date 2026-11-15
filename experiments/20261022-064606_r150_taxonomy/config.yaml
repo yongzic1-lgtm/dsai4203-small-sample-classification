@@ -1,0 +1,4 @@
+name: r150_taxonomy
+inputs: train+test features (20,000 rows); train labels only for orientation, |corr|
+  and label-noise check
+library: research/lib_gen_replica.py

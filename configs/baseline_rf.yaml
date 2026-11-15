@@ -1,0 +1,13 @@
+# Baseline 6: non-linear contrast; trees need no scaling (official CV: no cv block).
+name: baseline_rf
+hypothesis: >-
+  A random forest (500 trees, min_samples_leaf=5) can use interactions but wastes splits on
+  noise features with only 250 rows; we expect it to score below the linear baselines,
+  which would suggest the signal is mostly linear.
+pipeline:
+  scaler: none
+  model:
+    name: rf
+    params: {n_estimators: 500, max_features: sqrt, min_samples_leaf: 5}
+  random_state: 0
+test_pred: fold_mean

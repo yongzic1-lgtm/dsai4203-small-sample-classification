@@ -1,0 +1,59 @@
+name: r441_label_budget_rerun
+models:
+  s003_gmm2_hv: Transductive GMM K=2 (S003)
+  r209_selftrain_qda_lw: Self-training QDA-LW, thr 0.99 (S006)
+  r201_qda_block: Strict supervised QDA, nested reg, AUC (S005)
+  r210_qda_block_nll: Strict supervised QDA, nested reg, log-loss (r210)
+  r255_bqda_eb_hv: Bayesian QDA EB, train+test block
+  r255_bqda_eb_trainonly: Bayesian QDA EB, in-fold block (strict)
+  eq206_qda_infold_r003: QDA reg 0.003, in-fold block (strict; R206)
+  eq206_qda_infold_lw: QDA-LW, in-fold block (strict; R206)
+  eq206_qda_tt_r003: QDA reg 0.003, train+test block (R206)
+  eq206_qda_tt_r01: QDA reg 0.1, train+test block (S002; R206/R304)
+  eq206_selftrain_lw_t075: Self-training QDA-LW, thr 0.75 (R206)
+uses_unlabeled_test_features:
+  s003_gmm2_hv: 'yes'
+  r209_selftrain_qda_lw: 'yes'
+  r201_qda_block: 'no'
+  r210_qda_block_nll: 'no'
+  r255_bqda_eb_hv: block+scaling
+  r255_bqda_eb_trainonly: 'no'
+  eq206_qda_infold_r003: 'no'
+  eq206_qda_infold_lw: 'no'
+  eq206_qda_tt_r003: block+scaling
+  eq206_qda_tt_r01: block+scaling
+  eq206_selftrain_lw_t075: 'yes'
+budgets:
+- 2
+- 4
+- 6
+- 10
+- 20
+- 40
+- 80
+- 120
+- 160
+- 200
+draws: 5
+official_repeats_used:
+- 4
+- 20
+n_folds: 80
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+draw_rng: np.random.default_rng([4410, repeat, fold, n_labels, draw])
+validation: full 50-row validation fold of each official split
+r206_counterparts:
+  eq206_qda_infold_r003: sup_qda_infold_r003
+  eq206_qda_infold_lw: sup_qda_infold_lw
+  eq206_qda_tt_r003: sup_qda_tt_r003
+  eq206_qda_tt_r01: sup_qda_tt_r01
+  eq206_selftrain_lw_t075: ssl_selftrain_lw
+  s003_gmm2_hv: trans_gmm2
+code: research/r441_label_budget_rerun.py + research/r931_cand_lib.py + lib_fm

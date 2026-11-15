@@ -1,0 +1,66 @@
+{
+  "designs": [
+    {
+      "design": "r936 design: 4 levels, 16 subsets, (1-f/2)^250 prior x acceptance",
+      "n_accepted": 125,
+      "n_replicas": 68,
+      "post_mean_f": 0.00421,
+      "r201_qda_block_public_pred": 0.998821,
+      "r201_qda_block_mc_se": 7.28e-05,
+      "r201_qda_block_p_higher": 0.2025795,
+      "r209_selftrain_qda_lw_public_pred": 0.9991134,
+      "r209_selftrain_qda_lw_mc_se": 3.66e-05,
+      "r209_selftrain_qda_lw_p_higher": 0.2827374
+    },
+    {
+      "design": "4 levels, 512 subsets, (1-f/2)^250 prior x acceptance",
+      "n_accepted": 3889,
+      "n_replicas": 220,
+      "post_mean_f": 0.0043512,
+      "r201_qda_block_public_pred": 0.9986916,
+      "r201_qda_block_mc_se": 2.7e-05,
+      "r201_qda_block_p_higher": 0.2009486,
+      "r209_selftrain_qda_lw_public_pred": 0.9991069,
+      "r209_selftrain_qda_lw_mc_se": 8.2e-06,
+      "r209_selftrain_qda_lw_p_higher": 0.2779383
+    },
+    {
+      "design": "4 levels, 512 subsets, R156 posterior weights",
+      "n_accepted": 3889,
+      "n_replicas": 220,
+      "post_mean_f": 0.0043713,
+      "r201_qda_block_public_pred": 0.9986906,
+      "r201_qda_block_mc_se": 2.69e-05,
+      "r201_qda_block_p_higher": 0.2006129,
+      "r209_selftrain_qda_lw_public_pred": 0.9991064,
+      "r209_selftrain_qda_lw_mc_se": 8.3e-06,
+      "r209_selftrain_qda_lw_p_higher": 0.277578
+    },
+    {
+      "design": "R922 flat prior truncated at f <= 0.01, 512 subsets",
+      "n_accepted": 13568,
+      "n_replicas": 222,
+      "post_mean_f": 0.0045854,
+      "r201_qda_block_public_pred": 0.9986877,
+      "r201_qda_block_mc_se": 2.5e-05,
+      "r201_qda_block_p_higher": 0.1939819,
+      "r209_selftrain_qda_lw_public_pred": 0.9991028,
+      "r209_selftrain_qda_lw_mc_se": 7.8e-06,
+      "r209_selftrain_qda_lw_p_higher": 0.2690981
+    },
+    {
+      "design": "R922 flat prior, full grid to 0.03, 512 subsets (= r425)",
+      "n_accepted": 19923,
+      "n_replicas": 222,
+      "post_mean_f": 0.0061998,
+      "r201_qda_block_public_pred": 0.9986845,
+      "r201_qda_block_mc_se": 2.36e-05,
+      "r201_qda_block_p_higher": 0.1935895,
+      "r209_selftrain_qda_lw_public_pred": 0.9991016,
+      "r209_selftrain_qda_lw_mc_se": 7.2e-06,
+      "r209_selftrain_qda_lw_p_higher": 0.2722088
+    }
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T19:42:13+09:00"
+}

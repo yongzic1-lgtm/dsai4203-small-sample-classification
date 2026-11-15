@@ -1,0 +1,31 @@
+{
+  "n_replicas": 176,
+  "real_class_sep_hat_raw": 0.7093669267673961,
+  "real_frac_boundary": 0.0095,
+  "calib_alpha": 0.0015088092019557224,
+  "calib_beta": 0.999843279603755,
+  "calib_resid_sd": 0.05048324003836337,
+  "real_class_sep_calibrated": 0.7079690707587389,
+  "real_class_sep_95": [
+    0.609006410816267,
+    0.8069317307012107
+  ],
+  "grid_posterior_cs_hat": {
+    "0.5": 0.0,
+    "0.6": 0.0162,
+    "0.65": 0.1952,
+    "0.7": 0.4143,
+    "0.75": 0.2812,
+    "0.8": 0.0904,
+    "0.9": 0.0026,
+    "1.0": 0.0
+  },
+  "role_recovery_informative_all": 1.0,
+  "role_recovery_redundant_all": 1.0,
+  "role_recovery_zero_set_all": 0.9545454545454546,
+  "structured_set_ok_all": 1.0,
+  "rank_ok_all": 1.0,
+  "hamming_ok_all": 0.9545454545454546,
+  "status": "done",
+  "finished_at": "2026-10-22T06:54:31+09:00"
+}

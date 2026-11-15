@@ -1,0 +1,89 @@
+models:
+  corr10_l2:
+    scaler: standard
+    selector:
+      name: corr_topk
+      k: 10
+    model:
+      name: logreg
+      params:
+        C: 0.05
+        l1_ratio: 0.0
+        solver: liblinear
+    random_state: 0
+  corr20_l2:
+    scaler: standard
+    selector:
+      name: corr_topk
+      k: 20
+    model:
+      name: logreg
+      params:
+        C: 0.05
+        l1_ratio: 0.0
+        solver: liblinear
+    random_state: 0
+  corr30_l2:
+    scaler: standard
+    selector:
+      name: corr_topk
+      k: 30
+    model:
+      name: logreg
+      params:
+        C: 0.05
+        l1_ratio: 0.0
+        solver: liblinear
+    random_state: 0
+  corr50_l2:
+    scaler: standard
+    selector:
+      name: corr_topk
+      k: 50
+    model:
+      name: logreg
+      params:
+        C: 0.05
+        l1_ratio: 0.0
+        solver: liblinear
+    random_state: 0
+  l2_all:
+    scaler: standard
+    model:
+      name: logreg
+      params:
+        C: 0.05
+        l1_ratio: 0.0
+        solver: liblinear
+    random_state: 0
+  l1_c005:
+    scaler: standard
+    model:
+      name: logreg
+      params:
+        C: 0.05
+        l1_ratio: 1.0
+        solver: liblinear
+    random_state: 0
+  l1_c01:
+    scaler: standard
+    model:
+      name: logreg
+      params:
+        C: 0.1
+        l1_ratio: 1.0
+        solver: liblinear
+    random_state: 0
+  l1_c02:
+    scaler: standard
+    model:
+      name: logreg
+      params:
+        C: 0.2
+        l1_ratio: 1.0
+        solver: liblinear
+    random_state: 0
+n_exec: 50
+n_rep: 20
+seeds: 1 + 1000 s + r; official 2026
+model_code: research/r940_e1_pairs_check.py

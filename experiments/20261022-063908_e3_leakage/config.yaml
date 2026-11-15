@@ -1,0 +1,70 @@
+name: e3_leakage
+hypothesis: 'Selecting the top-k features by |corr| on all 250 rows before CV (leaky)
+  gives a higher CV AUC than redoing the selection inside every fold (honest). The
+  gap is 0 at k_feat = 150, small for tiny k_feat if the strongest features are real,
+  and largest at intermediate k_feat. To first order it does not depend on k_fold.
+  With permuted labels honest CV is ~0.5 while leaky CV stays clearly above 0.5. Real
+  data (written before the full run, ext34 2026-10-22): R001 found 7 features with
+  |corr| 0.34-0.40 (98, 17, 100, 112, 80, 77, 46) and the rest <= 0.24, so the gap
+  should be near 0 for k_feat <= 7 (the strong features are found inside every fold
+  too) and largest for k_feat ~ 20-50, where most kept features are noise picked for
+  their chance correlation with the validation labels; the gap should be flat in k_fold.
+
+  '
+pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params:
+      C: 0.1
+      l1_ratio: 0.0
+      solver: liblinear
+  random_state: 0
+selection:
+  method: pearson
+grid:
+  k_feat:
+  - 2
+  - 5
+  - 7
+  - 10
+  - 13
+  - 20
+  - 30
+  - 50
+  - 100
+  - 150
+  k_fold:
+  - 2
+  - 3
+  - 5
+  - 10
+cv:
+  n_repeats: 20
+  seed: 2026
+  stratify: true
+null_experiment:
+  n_permutations: 30
+  label_seed: 7
+  k_feat:
+  - 2
+  - 5
+  - 7
+  - 10
+  - 13
+  - 20
+  - 30
+  - 50
+  - 100
+  - 150
+  k_fold:
+  - 3
+  - 5
+  - 10
+  n_repeats: 5
+leaderboard:
+  k_feat: 20
+  k_fold_reference: 5
+quick_mode: false
+config_file: extensions/e3_leakage/config.yaml
+data_source: raw

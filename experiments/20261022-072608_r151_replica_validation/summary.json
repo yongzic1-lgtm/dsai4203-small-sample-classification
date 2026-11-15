@@ -1,0 +1,34 @@
+{
+  "sklearn_bit_exact": [
+    true,
+    true,
+    true
+  ],
+  "ranking_order_real": [
+    "gmm2_hv",
+    "qda_hv",
+    "logreg_hv",
+    "lda_hv",
+    "l1_all"
+  ],
+  "ranking_order_match_rate": {
+    "parametric": 0.9666666666666667,
+    "make_classification": 0.5666666666666667
+  },
+  "n_param": 30,
+  "n_mc": 30,
+  "stats_real_outside_param_5_95": [
+    "corr_eig_10",
+    "noise_max_abs_corr_target_train",
+    "mardia_skew_chi2_over_df_max",
+    "bayes_auc_private"
+  ],
+  "stats_real_outside_mc_5_95": [
+    "corr_eig_3",
+    "corr_eig_4",
+    "mardia_kurt_z_absmax",
+    "bayes_auc_private"
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T07:27:49+09:00"
+}

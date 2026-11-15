@@ -1,0 +1,12 @@
+model,label,uses_test_features,first_defined,first_fully_defined,min_labels_mean_ge_0.99,min_labels_mean_minus_2se_ge_0.99,min_labels_median_ge_0.99,min_labels_mean_ge_0.95
+eq206_qda_infold_lw,"QDA-LW, in-fold block (strict; R206)",no,6,10,,,,120
+eq206_qda_infold_r003,"QDA reg 0.003, in-fold block (strict; R206)",no,40,80,80.0,80.0,80.0,80
+eq206_qda_tt_r003,"QDA reg 0.003, train+test block (R206)",block+scaling,40,40,40.0,40.0,40.0,40
+eq206_qda_tt_r01,"QDA reg 0.1, train+test block (S002; R206/R304)",block+scaling,40,40,120.0,120.0,80.0,40
+eq206_selftrain_lw_t075,"Self-training QDA-LW, thr 0.75 (R206)",yes,6,10,20.0,20.0,20.0,20
+r201_qda_block,"Strict supervised QDA, nested reg, AUC (S005)",no,40,80,120.0,120.0,80.0,80
+r209_selftrain_qda_lw,"Self-training QDA-LW, thr 0.99 (S006)",yes,6,10,20.0,20.0,20.0,20
+r210_qda_block_nll,"Strict supervised QDA, nested reg, log-loss (r210)",no,40,80,120.0,120.0,120.0,120
+r255_bqda_eb_hv,"Bayesian QDA EB, train+test block",block+scaling,4,4,80.0,80.0,80.0,80
+r255_bqda_eb_trainonly,"Bayesian QDA EB, in-fold block (strict)",no,4,4,160.0,160.0,160.0,120
+s003_gmm2_hv,Transductive GMM K=2 (S003),yes,2,2,2.0,2.0,2.0,2

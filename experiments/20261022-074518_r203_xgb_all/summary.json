@@ -1,0 +1,33 @@
+{
+  "auc_mean": 0.8657528703180877,
+  "auc_std_fold": 0.043121801750588724,
+  "auc_std_repeat": 0.01051872573780151,
+  "auc_min_repeat": 0.8398080180688876,
+  "auc_max_repeat": 0.878240479327436,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.8639978037594471,
+  "oof_auc_std": 0.010234068032664195,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "group": "supervised-trees",
+  "features": "all 150",
+  "n_configs": 1,
+  "tuning": "none",
+  "uses_unlabeled_test_features": false,
+  "wall_seconds": 7.8,
+  "n_constant_pred_folds": 0,
+  "oof_logloss": 0.4590919296904207,
+  "oof_brier": 0.15023655946943126,
+  "n_fold_logs": 100,
+  "status": "done",
+  "finished_at": "2026-10-22T07:45:25+09:00"
+}

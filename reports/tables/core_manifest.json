@@ -1,0 +1,31 @@
+{
+  "generated_by": "scripts/make_core_figures.py",
+  "generated_at": "2026-11-01T11:47:42+09:00",
+  "inputs": {
+    "registry/submissions.csv": "3b1c60e0abff09f3f0ee3e5c2afe270fa82a47901d9ace81e1ba54553e38a951",
+    "experiments/20261022-063908_e3_leakage/summary.json": "90bdffac5ad2c5143774985649e6007f331f1eef8156fb9a55861bcbbdcf82d4",
+    "reports/tables/r441_label_budget.csv": "9db8e4d38d1be19488b0e5798eb6630d5627b8a2d34b6c6e8589cb82795f0197",
+    "reports/tables/r404_boundary.csv": "1ac6cf61bdd97a6855e791962a6f256f297408e36d83882e19a75dae4b2b84cf",
+    "reports/tables/core_submission_history.csv": "0e618695d0e59ba1c0e945a2236eb3057e9f5ad2f49138f48aade97a5f15bae9"
+  },
+  "source_runs": {
+    "core_journey": "registry/submissions.csv (S001-S006); 20261022-063908_e3_leakage",
+    "core_unlabeled_value (a)": "20261022-182022_r441_label_budget_rerun",
+    "core_unlabeled_value (b)": "20261022-194238_r404_inductive_pooled"
+  },
+  "conventions": {
+    "public_se": "Hanley-McNeil at the pre-registered expected AUC, 198 pos / 197 neg (as R440)",
+    "label_budget": "smallest budget whose mean validation AUC (80 folds x 5 label draws, R441) reaches 0.99, among budgets where every evaluation is defined; rows marked * are table-only",
+    "boundary_rows": "test rows whose true class probability (Bayes posterior under the fitted generator) is in (0.1, 0.9), clean labels, 222 replicas (R404); bars = 2 MC SE; rows marked * are table-only"
+  },
+  "outputs": [
+    "reports/figures/core_journey.png",
+    "reports/figures/core_unlabeled_value.png",
+    "reports/tables/core_boundary.csv",
+    "reports/tables/core_boundary.md",
+    "reports/tables/core_journey.csv",
+    "reports/tables/core_journey.md",
+    "reports/tables/core_label_budget.csv",
+    "reports/tables/core_label_budget.md"
+  ]
+}

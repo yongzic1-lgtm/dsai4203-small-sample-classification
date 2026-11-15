@@ -1,0 +1,53 @@
+{
+  "n_seeds": 111,
+  "wall_seconds": 1402.7690269947052,
+  "replica_seconds_mean": 99.59617915216215,
+  "replica_seconds_max": 108.39066489099969,
+  "procs": [
+    "s003_gmm2_hv",
+    "r255_bqda_eb_hv",
+    "r209_selftrain_qda_lw",
+    "r201_qda_block",
+    "r210_qda_block_nll",
+    "x_qda_block_nll_ext",
+    "r255_bqda_eb_trainonly",
+    "x_bqda_trainonly_wk",
+    "r208_qda_block_lw",
+    "x_ens_r201_bqda_to",
+    "bayes"
+  ],
+  "flips": [
+    0.0,
+    0.0025,
+    0.005,
+    0.0075,
+    0.01,
+    0.015,
+    0.02,
+    0.03
+  ],
+  "eb_choice_total": {
+    "eb_trainonly": {
+      "1|8|pooled": 5210,
+      "1|16|pooled": 3196,
+      "1|4|pooled": 1008,
+      "1|32|pooled": 857,
+      "1|4|diag": 384,
+      "1|64|pooled": 221,
+      "1|8|diag": 174,
+      "1|128|pooled": 38
+    },
+    "eb_trainonly_wk": {
+      "3|8|pooled": 3862,
+      "10|16|pooled": 2543,
+      "10|32|pooled": 1034,
+      "10|8|diag": 973,
+      "3|4|pooled": 603,
+      "3|16|pooled": 568,
+      "3|4|diag": 545,
+      "10|16|diag": 480
+    }
+  },
+  "status": "done",
+  "finished_at": "2026-10-22T19:29:17+09:00"
+}

@@ -1,0 +1,20 @@
+data: raw   archive: /content/jobs/J20261022-212641-pro1-ssc/archive (from $SSC_ARCHIVE_ROOT)
+config : configs/final_s003_gmm2_hv.yaml   name: final_s003_gmm2_hv
+model  : transductive_gmm(alpha=1.0,columns=highvar,covariance_type=full,n_components=2,n_init=5,pca_dims=None,reg_covar=1e-06)   selector: none   scaler: none
+cv     : 5foldx20 seed 2026 (project.yaml official_cv), 100 fits, test_pred=fold_mean
+run_id : 20261022-212507_final_s003_gmm2_hv  (running...)
+
+run_id       : 20261022-212507_final_s003_gmm2_hv
+auc_mean     : 1.0000 +/- 0.0000 (std across 20 repeats; fold std 0.0000)
+oof_auc_mean : 1.0000
+split sig    : 5708ce5c3828 (5foldx20 seed 2026)
+official_cv  : yes
+folder       : /content/jobs/J20261022-212641-pro1-ssc/archive/experiments/20261022-212507_final_s003_gmm2_hv
+time         : 6.8 s
+
+Next steps:
+  write the conclusion in /content/jobs/J20261022-212641-pro1-ssc/archive/experiments/20261022-212507_final_s003_gmm2_hv/notes.md
+  compare : .venv\Scripts\python.exe scripts\compare_runs.py 20261022-212507_final_s003_gmm2_hv <OTHER_RUN_ID>
+            .venv\Scripts\python.exe scripts\compare_runs.py --ref 20261022-212507_final_s003_gmm2_hv <RUN_ID> <RUN_ID> ...
+  list    : .venv\Scripts\python.exe scripts\list_runs.py --top 10
+  submit  : .venv\Scripts\python.exe scripts\make_submission.py --run 20261022-212507_final_s003_gmm2_hv --desc "..." --expected-public <YOUR_GUESS>

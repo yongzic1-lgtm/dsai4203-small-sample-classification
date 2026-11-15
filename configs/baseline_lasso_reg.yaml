@@ -1,0 +1,12 @@
+# Baseline 5: Lasso regression on the 0/1 target, used as a ranking score.
+name: baseline_lasso_reg
+hypothesis: >-
+  Lasso regression (alpha=0.03) on the 0/1 target selects features like L1 logreg but with
+  a squared loss; AUC only needs a ranking, so it should score close to L1 logreg.
+pipeline:
+  scaler: standard
+  model:
+    name: lasso_reg
+    params: {alpha: 0.03}
+  random_state: 0
+test_pred: fold_mean

@@ -1,0 +1,50 @@
+{
+  "informative": [
+    6,
+    15,
+    30,
+    46,
+    52,
+    61,
+    64,
+    80,
+    100,
+    112,
+    142,
+    144
+  ],
+  "active": [
+    46,
+    80,
+    100,
+    112
+  ],
+  "diff_unscaled_active": [
+    -1.3758,
+    1.338,
+    1.6233,
+    1.3378
+  ],
+  "diff_unscaled_inactive_absmax": 0.058844492110744696,
+  "mahalanobis_pooled": 2.283932004869551,
+  "gen_eig_S0inv_S1_range": [
+    0.0021342851619495997,
+    26.70278182238352
+  ],
+  "log_det_ratio_S1_S0": -2.5354079340356304,
+  "auc_bayes_quadratic": 0.999949316725,
+  "auc_best_linear_mc": 0.94662692549375,
+  "auc_lda_direction_mc": 0.94662692549375,
+  "auc_mean_only_pooled_cov": 0.947035300975,
+  "auc_cov_only_same_mean": 0.9998030571,
+  "auc_best_linear_formula": 0.9468428993444679,
+  "bayes_error_rate": 0.003265,
+  "frac_post_0.1_0.9": 0.0094225,
+  "expected_test_rows_0.1_0.9": 186.094375,
+  "gmm_weights": [
+    0.5001889293506009,
+    0.49981107064939906
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T06:56:14+09:00"
+}

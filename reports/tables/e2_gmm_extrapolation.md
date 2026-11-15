@@ -1,0 +1,12 @@
+| model                | x_axis    |        x |   point |   boot_median |   boot_lo_0.05 |   boot_hi_0.95 | at_bounds   | note                                                                                |
+|:---------------------|:----------|---------:|--------:|--------------:|---------------:|---------------:|:------------|:------------------------------------------------------------------------------------|
+| power_law            | effective | 250.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 | a           | main fit, weight=sem                                                                |
+| power_law            | effective | 500.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 | a           | main fit, weight=sem                                                                |
+| log_linear           | effective | 250.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 |             | sensitivity: other curve form                                                       |
+| log_linear           | effective | 500.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 |             | sensitivity: other curve form                                                       |
+| power_law_unweighted | effective | 250.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 | a           | sensitivity: weight=none                                                            |
+| power_law_unweighted | effective | 500.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 | a           | sensitivity: weight=none                                                            |
+| power_law_drop_50    | effective | 250.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 | a           | sensitivity: size 50 left out                                                       |
+| power_law_drop_50    | effective | 500.0000 |  1.0000 |        1.0000 |         1.0000 |         1.0000 | a           | sensitivity: size 50 left out                                                       |
+| envelope             | effective | 250.0000 |  1.0000 |      nan      |         1.0000 |         1.0000 |             | union of all intervals above; still subset resampling only (no parent-sample noise) |
+| envelope             | effective | 500.0000 |  1.0000 |      nan      |         1.0000 |         1.0000 |             | union of all intervals above; still subset resampling only (no parent-sample noise) |

@@ -1,0 +1,57 @@
+name: r254_dpgmm_evidence
+kind: analysis
+bgmm_configs:
+- - pca12
+  - 12
+  - 10
+  - 0.001
+  - dirichlet_process
+- - pca12
+  - 12
+  - 10
+  - 0.01
+  - dirichlet_process
+- - pca12
+  - 12
+  - 10
+  - 0.1
+  - dirichlet_process
+- - pca12
+  - 12
+  - 10
+  - 1.0
+  - dirichlet_process
+- - pca12
+  - 12
+  - 10
+  - 10.0
+  - dirichlet_process
+- - pca12
+  - 12
+  - 10
+  - 100.0
+  - dirichlet_process
+- - pca12
+  - 12
+  - 20
+  - 1.0
+  - dirichlet_process
+- - pca12
+  - 12
+  - 10
+  - 0.01
+  - dirichlet_distribution
+- - hv
+  - null
+  - 10
+  - 1.0
+  - dirichlet_process
+- - hv
+  - null
+  - 10
+  - 0.01
+  - dirichlet_process
+inputs: train+test features (label-free fits); 250 train labels only to map components
+code_sha:
+  lib_fm.py: a52df6cce06d4be6
+  r254_dp_gmm.py: 1c188151ad9af781

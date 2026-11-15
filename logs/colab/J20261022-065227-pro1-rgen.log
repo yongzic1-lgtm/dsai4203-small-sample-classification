@@ -1,0 +1,35 @@
+176 replicas on 8 cpus
+[Parallel(n_jobs=8)]: Using backend LokyBackend with 8 concurrent workers.
+joblib.externals.loky.process_executor._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/content/venv/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py", line 453, in _process_worker
+    call_item = call_queue.get(block=True, timeout=timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: Can't get attribute 'expit' on <module 'joblib.externals.loky.backend.popen_loky_posix' from '/content/venv/lib/python3.11/site-packages/joblib/externals/loky/backend/popen_loky_posix.py'>
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/content/ml/research/r152_calibration.py", line 96, in <module>
+    rows = Parallel(n_jobs=a.n_jobs, verbose=5)(delayed(one)(*j) for j in jobs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 2098, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 1704, in _get_outputs
+    yield from self._retrieve()
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 1806, in _retrieve
+    self._raise_error_fast()
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 1885, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 780, in get_result
+    return self._return_or_raise()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/venv/lib/python3.11/site-packages/joblib/parallel.py", line 795, in _return_or_raise
+    raise self._result
+joblib.externals.loky.process_executor.BrokenProcessPool: A task has failed to un-serialize. Please ensure that the arguments of the function are all picklable.

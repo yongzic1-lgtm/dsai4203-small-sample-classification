@@ -1,0 +1,101 @@
+                      max_abs_diff_private      max_abs_diff_public      share_identical     
+                                       max  min                 max  min             max  min
+proc                                                                                         
+bayes                                  0.0  0.0                 0.0  0.0             1.0  1.0
+r201_qda_block                         0.0  0.0                 0.0  0.0             1.0  1.0
+r209_selftrain_qda_lw                  0.0  0.0                 0.0  0.0             1.0  1.0
+r210_qda_block_nll                     0.0  0.0                 0.0  0.0             1.0  1.0
+r255_bqda_eb_hv                        0.0  0.0                 0.0  0.0             1.0  1.0
+s003_gmm2_hv                           0.0  0.0                 0.0  0.0             1.0  1.0
+x_qda_block_nll_ext                    0.0  0.0                 0.0  0.0             1.0  1.0
+                                                               proc                                              run                           archived_run  max_abs_diff bit_identical  csv8_values_differing
+                                                       s003_gmm2_hv 20261022-182709_r402_inductive_replicas_s136-246           20261022-050708_r003_gmm2_hv  0.000000e+00          True                    0.0
+                                                    r255_bqda_eb_hv 20261022-182709_r402_inductive_replicas_s136-246        20261022-070200_r255_bqda_eb_hv  7.771561e-16         False                    0.0
+                                              r209_selftrain_qda_lw 20261022-182709_r402_inductive_replicas_s136-246  20261022-080632_r209_selftrain_qda_lw  0.000000e+00          True                    0.0
+                                                     r201_qda_block 20261022-182709_r402_inductive_replicas_s136-246         20261022-071234_r201_qda_block  0.000000e+00          True                    0.0
+                                                 r210_qda_block_nll 20261022-182709_r402_inductive_replicas_s136-246     20261022-082047_r210_qda_block_nll  0.000000e+00          True                    0.0
+                                                x_qda_block_nll_ext 20261022-182709_r402_inductive_replicas_s136-246 20261022-095943_r930_qda_block_nll_ext  0.000000e+00          True                    0.0
+                                             r255_bqda_eb_trainonly 20261022-182709_r402_inductive_replicas_s136-246 20261022-070202_r255_bqda_eb_trainonly  7.771561e-16         False                    0.0
+                                                x_bqda_trainonly_wk 20261022-182709_r402_inductive_replicas_s136-246                                    NaN           NaN           NaN                    NaN
+                                                  r208_qda_block_lw 20261022-182709_r402_inductive_replicas_s136-246      20261022-075228_r208_qda_block_lw  0.000000e+00          True                    0.0
+                                                 x_ens_r201_bqda_to 20261022-182709_r402_inductive_replicas_s136-246                                    NaN           NaN           NaN                    NaN
+x_ens_r201_bqda_to vs 0.5*(archived r201 + archived r255_trainonly) 20261022-182709_r402_inductive_replicas_s136-246                                    NaN  3.330669e-16         False                    NaN
+ flip_y  w_R156  w_flat_R922
+      0  0.0773    0.0887226
+ 0.0025  0.4069     0.269593
+  0.005  0.3608     0.220743
+ 0.0075       0     0.174156
+   0.01   0.155     0.144391
+  0.015       0    0.0734198
+   0.02       0    0.0250784
+   0.03       0     0.003896
+weighting                   proc  private_auc_mean  diff_vs_r201_mean  diff_vs_r201_mc_se  expected_diff_vs_r201  expected_diff_vs_r201_mc_se  p_beats_r201  p_ties_r201  diff_vs_s003_mean  regret_vs_bayes
+     R156           s003_gmm2_hv          0.997749        0.000256826         1.05677e-05            0.000244404                  6.56147e-06      0.942741            0                  0     -3.58593e-06
+     R156        r255_bqda_eb_hv          0.997633         0.00014082         8.91552e-06            0.000122333                  6.31229e-06      0.875283            0       -0.000116007     -0.000119083
+     R156  r209_selftrain_qda_lw           0.99768        0.000187729         9.17592e-06            0.000180021                  6.43878e-06      0.926778            0       -6.90975e-05     -7.23991e-05
+     R156         r201_qda_block          0.997492                  0                   0                      0                            0             0            1       -0.000256826     -0.000261008
+     R156     r210_qda_block_nll          0.997581        8.84879e-05         7.81799e-06            8.14728e-05                   5.9152e-06        0.7875  0.000114555       -0.000168338       -0.0001714
+     R156    x_qda_block_nll_ext          0.997686        0.000194071          8.7788e-06            0.000185389                  6.03627e-06      0.932354            0       -6.27549e-05      -6.6298e-05
+     R156 r255_bqda_eb_trainonly          0.997396       -9.60798e-05         1.97729e-05           -0.000111599                  1.79344e-05      0.374154            0       -0.000352906      -0.00035592
+     R156    x_bqda_trainonly_wk          0.997405       -8.73487e-05         1.82167e-05           -0.000103364                  1.63125e-05       0.36091            0       -0.000344175     -0.000346869
+     R156      r208_qda_block_lw          0.987692         -0.0097998         0.000161791            -0.00980696                  0.000161099             0            0         -0.0100566       -0.0100621
+     R156     x_ens_r201_bqda_to          0.997498        6.13727e-06         8.11719e-06           -2.60641e-06                   6.0383e-06      0.548061            0       -0.000250689     -0.000253895
+     R156                  bayes          0.997752        0.000259809         1.05081e-05            0.000244662                  6.56185e-06      0.949031            0         2.9824e-06                0
+flat_R922           s003_gmm2_hv          0.996802         0.00025517         1.13493e-05            0.000243943                   6.5491e-06      0.921626            0                  0     -1.36529e-06
+flat_R922        r255_bqda_eb_hv          0.996686        0.000139149         9.42725e-06            0.000122102                  6.30039e-06      0.848626            0       -0.000116021     -0.000117182
+flat_R922  r209_selftrain_qda_lw          0.996734        0.000187861         9.62654e-06            0.000179682                  6.42665e-06      0.909892            0       -6.73087e-05     -6.84515e-05
+flat_R922         r201_qda_block          0.996547                  0                   0                      0                            0             0            1        -0.00025517     -0.000257155
+flat_R922     r210_qda_block_nll          0.996634         8.7574e-05         8.14944e-06            8.13193e-05                  5.90405e-06      0.767052   7.5899e-05       -0.000167596     -0.000168356
+flat_R922    x_qda_block_nll_ext          0.996739        0.000192119          9.2591e-06            0.000185039                  6.02489e-06      0.913288            0       -6.30514e-05     -6.41282e-05
+flat_R922 r255_bqda_eb_trainonly          0.996446       -0.000100433         1.98108e-05           -0.000111389                  1.79006e-05      0.377564            0       -0.000355603     -0.000356708
+flat_R922    x_bqda_trainonly_wk          0.996455       -9.20036e-05         1.83213e-05            -0.00010317                  1.62818e-05      0.364653            0       -0.000347174     -0.000347903
+flat_R922      r208_qda_block_lw          0.986762        -0.00978407         0.000161529            -0.00978848                  0.000160795             0            0         -0.0100392       -0.0100424
+flat_R922     x_ens_r201_bqda_to           0.99655        3.37159e-06         8.50663e-06            -2.6015e-06                  6.02692e-06      0.540169            0       -0.000251798     -0.000252991
+flat_R922                  bayes          0.996802         0.00025582         1.13157e-05            0.000244201                  6.54948e-06       0.92061            0        6.49508e-07                0
+weighting                   a                      b    e_max  gain_vs_r201_alone  gain_vs_r201_mc_se       better_member  gain_vs_better_member  gain_vs_better_mc_se  p_pair_beats_r201_alone
+     R156 x_qda_block_nll_ext     x_ens_r201_bqda_to 0.997695         0.000202577         8.25151e-06 x_qda_block_nll_ext            8.50568e-06           1.64995e-06                 0.966281
+     R156 x_qda_block_nll_ext r255_bqda_eb_trainonly 0.997693         0.000200613         8.70064e-06 x_qda_block_nll_ext            6.54218e-06           1.38041e-06                 0.945335
+     R156 x_qda_block_nll_ext    x_bqda_trainonly_wk 0.997693         0.000200607         8.73751e-06 x_qda_block_nll_ext            6.53605e-06           1.37814e-06                 0.942729
+     R156      r201_qda_block    x_qda_block_nll_ext 0.997691         0.000198873         8.32053e-06 x_qda_block_nll_ext            4.80136e-06           1.08156e-06                 0.932354
+     R156  r210_qda_block_nll    x_qda_block_nll_ext  0.99769         0.000197846         8.55951e-06 x_qda_block_nll_ext             3.7743e-06           8.18482e-07                 0.939883
+     R156 x_qda_block_nll_ext    x_qda_block_nll_ext 0.997686         0.000194071          8.7788e-06 x_qda_block_nll_ext                      0                     0                 0.932354
+     R156 x_qda_block_nll_ext      r208_qda_block_lw 0.997686         0.000194071          8.7788e-06 x_qda_block_nll_ext                      0                     0                 0.932354
+     R156  r210_qda_block_nll     x_ens_r201_bqda_to 0.997601         0.000109069         7.22347e-06  r210_qda_block_nll             2.0581e-05           2.57635e-06                 0.876706
+flat_R922 x_qda_block_nll_ext     x_ens_r201_bqda_to 0.996751         0.000204485         8.57506e-06 x_qda_block_nll_ext            1.23665e-05           1.90236e-06                 0.953503
+flat_R922 x_qda_block_nll_ext    x_bqda_trainonly_wk 0.996748         0.000201396         9.20472e-06 x_qda_block_nll_ext            9.27737e-06           1.76496e-06                 0.929714
+flat_R922 x_qda_block_nll_ext r255_bqda_eb_trainonly 0.996748         0.000201333         9.16794e-06 x_qda_block_nll_ext            9.21472e-06           1.78054e-06                 0.931775
+flat_R922      r201_qda_block    x_qda_block_nll_ext 0.996747         0.000199984         8.55738e-06 x_qda_block_nll_ext             7.8651e-06           1.44069e-06                 0.913288
+flat_R922  r210_qda_block_nll    x_qda_block_nll_ext 0.996745         0.000198232         8.92588e-06 x_qda_block_nll_ext             6.1137e-06           1.11427e-06                 0.926733
+flat_R922 x_qda_block_nll_ext    x_qda_block_nll_ext 0.996739         0.000192119          9.2591e-06 x_qda_block_nll_ext                      0                     0                 0.913288
+flat_R922 x_qda_block_nll_ext      r208_qda_block_lw 0.996739         0.000192119          9.2591e-06 x_qda_block_nll_ext                      0                     0                 0.913288
+flat_R922  r210_qda_block_nll     x_ens_r201_bqda_to  0.99666         0.000113007         7.46942e-06  r210_qda_block_nll            2.54331e-05           2.97244e-06                 0.864703
+                  proc  n_accepted  n_replicas_accepted  public_mean  public_pred_sd  public_q10  public_q90  public_diff_vs_s003  p_public_higher_than_s003  p_public_equal_s003  private_mean_given_public
+          s003_gmm2_hv         125                   68     0.999245     7.39293e-05    0.999143    0.999355                    0                          0                    1                   0.997807
+       r255_bqda_eb_hv         125                   68     0.999064     0.000330006     0.99865    0.999487         -0.000181466                   0.271131            0.0301491                   0.997693
+ r209_selftrain_qda_lw         125                   68     0.999129     0.000330508     0.99879    0.999479         -0.000116571                   0.282737            0.0365909                   0.997735
+        r201_qda_block         125                   68     0.998836     0.000664785    0.998044     0.99941         -0.000408992                    0.20258                    0                    0.99756
+    r210_qda_block_nll         125                   68     0.999005     0.000506637    0.998497    0.999513         -0.000239993                   0.298462            0.0301491                   0.997642
+   x_qda_block_nll_ext         125                   68     0.999103     0.000421952    0.998621    0.999502         -0.000142753                   0.402844            0.0224218                   0.997747
+r255_bqda_eb_trainonly         125                   68     0.998794     0.000589378    0.997933    0.999358          -0.00045182                   0.204637            0.0288636                   0.997494
+   x_bqda_trainonly_wk         125                   68     0.998822     0.000577868    0.998009    0.999384         -0.000422902                   0.279137            0.0105681                   0.997502
+     r208_qda_block_lw         125                   68     0.989072      0.00319284    0.984252    0.993097           -0.0101736                          0                    0                   0.987793
+    x_ens_r201_bqda_to         125                   68     0.998845     0.000595168    0.998152    0.999482         -0.000399959                   0.240981                    0                   0.997572
+                 bayes         125                   68     0.999237      8.2757e-05    0.999102    0.999333          -8.8262e-06                   0.250296             0.228075                   0.997823
+                  proc  n_replicas  n_bnd_rows_mean  bnd_auc_clean_mean  bnd_auc_clean_mc_se  bnd_auc_clean_s003_minus_proc  bnd_auc_clean_s003_minus_proc_mc_se  bnd_auc_clean_share_s003_better  bnd_expected_auc_mean  bnd_expected_auc_s003_minus_proc  bnd_expected_auc_s003_minus_proc_mc_se  bnd_kendall_tau_mean  s003bnd_auc_clean_mean  s003bnd_auc_clean_s003_minus_proc  s003bnd_auc_clean_share_s003_better
+          s003_gmm2_hv         222          184.743            0.804147           0.00214701                              0                                    0                                0                0.80417                                 0                                       0              0.932432                 0.81399                                  0                                    0
+       r255_bqda_eb_hv         222          184.743            0.677715           0.00266487                       0.126431                           0.00243281                                1               0.678458                          0.125712                              0.00121975              0.407475                0.685887                           0.128103                                    1
+ r209_selftrain_qda_lw         222          184.743            0.717934           0.00265492                      0.0862129                           0.00210138                                1               0.718346                         0.0858245                             0.000972748              0.532068                0.726777                          0.0872131                                    1
+        r201_qda_block         222          184.743            0.664032           0.00269174                       0.140114                           0.00258813                                1               0.664374                          0.139796                              0.00133851               0.37078                0.671462                           0.142528                                    1
+    r210_qda_block_nll         222          184.743            0.669552            0.0026431                       0.134595                           0.00251648                                1               0.670001                           0.13417                              0.00133973              0.385022                0.677277                           0.136713                                    1
+   x_qda_block_nll_ext         222          184.743            0.697513           0.00270916                       0.106634                           0.00239687                                1               0.698503                          0.105667                              0.00138351              0.455314                0.707033                           0.106957                                    1
+r255_bqda_eb_trainonly         222          184.743            0.651516             0.002909                       0.152631                           0.00281038                                1               0.652416                          0.151754                              0.00162516              0.342669                0.658923                           0.155067                                    1
+   x_bqda_trainonly_wk         222          184.743            0.651817           0.00288497                        0.15233                           0.00281632                                1               0.652887                          0.151284                              0.00159344              0.343754                0.659204                           0.154786                                    1
+     r208_qda_block_lw         222          184.743            0.593212            0.0029659                       0.210935                           0.00310897                                1                 0.5952                          0.208971                              0.00148286               0.20835                0.597383                           0.216607                                    1
+    x_ens_r201_bqda_to         222          184.743            0.663766           0.00272545                       0.140381                           0.00259889                                1               0.664214                          0.139957                              0.00139057              0.371045                0.671421                           0.142569                                    1
+                 bayes         222          184.743            0.805774           0.00212359                    -0.00162741                          0.000263281                         0.355856               0.805551                       -0.00138107                             2.27983e-05                     1                0.815539                        -0.00154882                              0.31982
+        variant  kappa0  n_folds       share
+   eb_trainonly       1    22200           1
+eb_trainonly_wk       1        1  4.5045e-05
+eb_trainonly_wk       3    10653    0.479865
+eb_trainonly_wk      10    11530    0.519369
+eb_trainonly_wk      30       16 0.000720721

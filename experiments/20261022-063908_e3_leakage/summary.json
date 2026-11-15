@@ -1,0 +1,37 @@
+{
+  "auc_mean": 0.7934408526256352,
+  "auc_std_repeat": 0.01416352013005197,
+  "auc_std_fold": 0.05038638394138736,
+  "split_signature": "5708ce5c3828",
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "leaky_auc_mean": 0.8667809827048956,
+  "gap_mean_reference": 0.07334013007926052,
+  "leaderboard_k_feat": 20,
+  "max_gap": {
+    "k_feat": 50,
+    "k_fold": 2,
+    "gap_mean": 0.11506301319154663
+  },
+  "sanity": {
+    "gap_zero_at_150": true,
+    "null_leaky_above_honest": true,
+    "null_honest_near_half": true,
+    "null_leaky_above_half": true
+  },
+  "timings_seconds": {
+    "grid_seconds": 71.04,
+    "null_seconds": 481.12,
+    "final_seconds": 0.05,
+    "total": 555.65
+  },
+  "status": "done",
+  "finished_at": "2026-10-22T06:48:24+09:00"
+}

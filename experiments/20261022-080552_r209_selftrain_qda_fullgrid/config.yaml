@@ -1,0 +1,19 @@
+name: r209_selftrain_qda_fullgrid
+description: SelfTraining(QDA) on 20,000 rows, nested reg (down to 0.001) x threshold
+model_code: research/r209_semisup_followup.py + research/lib_sup.py
+group: semi-supervised
+features: block(train+test highvar) + 20,000 unlabeled rows
+tuning: '{''estimator__reg_param'': [0.03, 0.01, 0.003, 0.001], ''threshold'': [0.99,
+  0.9]}'
+n_configs: 8
+inner_cv: RepeatedStratifiedKFold on the 200-row training fold (see lib_sup.Tuned)
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true

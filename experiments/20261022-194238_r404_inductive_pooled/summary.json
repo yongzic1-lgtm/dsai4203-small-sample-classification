@@ -1,0 +1,58 @@
+{
+  "check_vs_r933": {
+    "rows": 56,
+    "max_abs_diff": 0.0,
+    "all_identical": true
+  },
+  "real_eb_choice": {
+    "eb_trainonly": {
+      "1|32|pooled": 45,
+      "1|64|pooled": 19,
+      "1|16|pooled": 31,
+      "1|8|pooled": 2,
+      "1|128|pooled": 3
+    },
+    "eb_trainonly_wk": {
+      "10|32|pooled": 50,
+      "10|64|pooled": 23,
+      "10|16|pooled": 13,
+      "3|16|pooled": 10,
+      "10|128|pooled": 4
+    }
+  },
+  "n_replicas": 222,
+  "seed_range": [
+    136,
+    357
+  ],
+  "best_pair": {
+    "R156": {
+      "a": "x_qda_block_nll_ext",
+      "b": "x_ens_r201_bqda_to",
+      "gain_vs_r201_alone": 0.00020257698771390995,
+      "gain_vs_r201_mc_se": 8.2515124280312e-06,
+      "gain_vs_better_member": 8.505684891270858e-06,
+      "gain_vs_better_mc_se": 1.6499527011731008e-06
+    },
+    "flat_R922": {
+      "a": "x_qda_block_nll_ext",
+      "b": "x_ens_r201_bqda_to",
+      "gain_vs_r201_alone": 0.00020448510185658867,
+      "gain_vs_r201_mc_se": 8.575055497959035e-06,
+      "gain_vs_better_member": 1.2366514046535459e-05,
+      "gain_vs_better_mc_se": 1.9023600552236369e-06
+    }
+  },
+  "weights_flat_R922": {
+    "0.0": 0.088723,
+    "0.0025": 0.269593,
+    "0.005": 0.220743,
+    "0.0075": 0.174156,
+    "0.01": 0.144391,
+    "0.015": 0.07342,
+    "0.02": 0.025078,
+    "0.03": 0.003896
+  },
+  "status": "done",
+  "finished_at": "2026-10-22T19:42:41+09:00"
+}

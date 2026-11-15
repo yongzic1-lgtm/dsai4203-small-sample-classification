@@ -1,0 +1,241 @@
+claim,value,source_file,verified,note,id,section,archived_value,status,claimed_in,check
+labelled training rows,250,data/raw/train.csv,yes,,D1,data,250,confirmed,task brief; report_core.md template,eq
+unlabelled test rows,19750,data/raw/test.csv,yes,,D2,data,19750,confirmed,task brief,eq
+features,150,data/raw/train.csv,yes,,D3,data,150,confirmed,task brief,eq
+training positive rate,0.452,data/raw/train.csv,yes,113 positives of 250,D4,data,0.452,confirmed,R150 summary (train_pos_rate),round
+test rows in the public LB,395,Kaggle competition page,no,"0.02 x 19,750 = 395; the exact public size is stated on the Kaggle page only; archive the rules page",D5,data,395,external (not archived),"verify.md §5 (about 2% of 19,750)",info
+"Hanley-McNeil SE of a public AUC of 0.79 (395 rows, 198/197)",0.023,computed (ssc.validation.auc_standard_error),yes,,D6,data,0.0227505,confirmed,verify.md §1.2,round
+Hanley-McNeil SE of a public AUC of 0.82,0.021,computed,yes,,D7,data,0.0212522,confirmed,verify.md §1.2,round
+Hanley-McNeil SE of a public AUC of 0.99913,0.0015,computed,yes,,D8,data,0.00148629,confirmed,verify.md §1.2,round
+Hanley-McNeil SE of a public AUC of 0.99884,0.0017,computed,yes,,D9,data,0.00171634,confirmed,verify.md §1.2,round
+informative columns,"[6, 15, 30, 46, 52, 61, 64, 80, 100, 112, 142, 144]",experiments/20261022-064606_r150_taxonomy/summary.json,yes,R920 basis search picks the same set (basis_best_equals_claim),G1,generator,"[6, 15, 30, 46, 52, 61, 64, 80, 100, 112, 142, 144]",confirmed,research/reports/gen.md,eq
+R920 label-free basis search returns the same 12 columns,True,experiments/20261022-100551_r920_generator_alternatives/summary.json,yes,,G2,generator,True,confirmed,research/reports/verify.md A2,true
+R920 basis margin (nats),13.0,experiments/20261022-100551_r920_generator_alternatives/summary.json,yes,,G3,generator,13.0354,confirmed,research/reports/verify.md A2,round
+R150 basis log-det margin (nats),1.09,experiments/20261022-064606_r150_taxonomy/summary.json,yes,different statistic from R920's 13.0 nats; quote R920 in the report,G4,generator,1.08629,confirmed,research/reports/gen.md,round
+redundant columns,"[8, 17, 26, 49, 57, 67, 77, 98]",experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G5,generator,"[8, 17, 26, 49, 57, 67, 77, 98]",confirmed,research/reports/gen.md,eq
+noise columns,130,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G6,generator,130,confirmed,research/reports/gen.md,eq
+structured columns / rank,"(20, 12)",experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G7,generator,"(20, 12)",confirmed,research/reports/gen.md,eq
+1 - R^2 of the 8 exact dependencies (max),4e-14,experiments/20261022-064606_r150_taxonomy/summary.json,yes,"archived 1 - R^2 = 4.07e-14, i.e. R^2 = 1 - 4.1e-14, marginally below the stated bound; write 'R^2 > 1 - 1e-13'",G8,generator,4.07452e-14,confirmed,research/reports/gen.md ('R^2 >= 1-4e-14'),round
+max |residual| of the dependencies,4.8e-6,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G9,generator,4.83695e-06,confirmed,research/reports/gen.md,round
+"noise std ~ U(0.5, 3): KS p",0.26,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G10,generator,0.256061,confirmed,research/reports/gen.md,round
+"noise mean ~ U(-5, 5): KS p",0.87,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G11,generator,0.865144,confirmed,research/reports/gen.md,round
+implied B range,-1.08 to 1.11,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G12,generator,-1.08163 to 1.11184,confirmed,research/reports/gen.md,range
+B ~ U: KS p,0.73,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G13,generator,0.732263,confirmed,research/reports/gen.md,round
+"class balance of the 20,000 rows (hard GMM labels, class 1)",10016,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G14,generator,10016,confirmed,"research/reports/gen.md (10,016 : 9,984)",eq
+max |z| of the 8 zero-difference informative columns,2.08,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G15,generator,2.08046,confirmed,research/reports/gen.md,round
+min |z| of the 4 active informative columns,47,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G16,generator,47.2964,confirmed,research/reports/gen.md ('|z| >= 47'),ge
+class_sep MLE (R920),0.703,experiments/20261022-100551_r920_generator_alternatives/summary.json,yes,,G17,generator,0.703,confirmed,research/reports/verify.md A4; gen.md errata 4,round
+class_sep 95% LR interval (R920),0.639 to 0.760,experiments/20261022-100551_r920_generator_alternatives/summary.json,yes,,G18,generator,0.639 to 0.76,confirmed,research/reports/verify.md A4,range
+"class_sep (R150, superseded)",0.71,experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G19,generator,0.709367,"superseded by R920 (0.70, 0.64-0.76)",gen.md before the errata,round
+13-column high-variance block; 7 structured columns outside it,"(13, 7)",experiments/20261022-064606_r150_taxonomy/summary.json,yes,,G20,generator,"(13, 7)",confirmed,research/reports/gen.md,eq
+population Bayes AUC (quadratic rule),0.99995,experiments/20261022-065605_r154_class_structure/summary.json,yes,,G21,generator,0.999949,confirmed,research/reports/gen.md,round
+best linear population AUC,0.947,experiments/20261022-065605_r154_class_structure/summary.json,yes,"Monte Carlo 0.9466, closed form 0.9468",G22,generator,0.946843,confirmed,research/reports/gen.md,round
+Bayes error rate,0.33%,experiments/20261022-065605_r154_class_structure/summary.json,yes,,G23,generator,0.003265,confirmed,research/reports/verify.md 7.1 (R154),pct
+"expected test rows with posterior in (0.1, 0.9)",186,experiments/20261022-065605_r154_class_structure/summary.json,yes,,G24,generator,186.094,confirmed,research/reports/verify.md 7.1 (R154),round
+replica ranking of the R003 models identical (parametric replicas),97%,experiments/20261022-072608_r151_replica_validation/summary.json,yes,29 of 30 replicas,G25,generator,0.966667,confirmed,research/reports/gen.md,pct
+S003 regret vs Bayes on parametric replicas (expected AUC),2.6e-7,experiments/20261022-094951_r921_bayes_regret_replicas/summary.json,yes,,G26,generator,2.57054e-07,confirmed,research/reports/verify.md B1,round
+mis-ordered private pairs per replica (S003 vs Bayes),24,experiments/20261022-094951_r921_bayes_regret_replicas/summary.json,yes,,G27,generator,23.546,confirmed,research/reports/verify.md B1 ('24 of 9.4e7'),round
+generic make_classification draws where the block misses a direction,5.5%,experiments/20261022-094951_r921_bayes_regret_replicas/summary.json,yes,,G28,generator,0.055,confirmed,research/reports/verify.md B1,pct
+regret of S003 on those draws,5.4e-4,experiments/20261022-094951_r921_bayes_regret_replicas/summary.json,yes,,G29,generator,0.000543771,confirmed,research/reports/verify.md B1,round
+flip_y MLE (train labels + S003 public),0.003,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,,G30,generator,0.003,confirmed,research/reports/verify.md B6; gen.md errata 1,round
+flip_y likelihood support (>= 1/8 of max),0 to 0.0147,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,archived upper end 0.01475,G31,generator,0.0 to 0.01475,confirmed,research/reports/verify.md B6,range
+likelihood ratio flip_y = 0 vs MLE,0.20,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,,G32,generator,0.196803,confirmed,research/reports/verify.md B5,round
+likelihood ratio flip_y = 0.01 vs MLE,0.37,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,,G33,generator,0.37324,confirmed,research/reports/verify.md B6,round
+"S003 private AUC, posterior mean (flat prior)",0.9968,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,,G34,generator,0.996837,confirmed,research/reports/verify.md B7,round
+"S003 private AUC, posterior median (flat prior)",0.9973,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,,G35,generator,0.997333,confirmed,research/reports/verify.md B7,round
+"S003 private AUC, 90% interval (flat prior)",0.9923 to 0.9996,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,,G36,generator,0.992304 to 0.999594,confirmed,research/reports/verify.md B7,range
+P(S003 private >= 0.999) (B004),0.16,experiments/20261022-092146_r922_label_noise_private/summary.json,yes,,G37,generator,0.162557,confirmed,research/reports/verify.md B8,round
+R156 posterior mean flip_y,0.0044,experiments/20261022-081314_r156_flip_posterior/summary.json,yes,,G38,generator,0.00437141,superseded by R922 (4-point prior truncated at 0.01),gen.md before the errata,round
+R156 expected private AUC of S003,0.9977,experiments/20261022-081314_r156_flip_posterior/summary.json,yes,,G39,generator,0.997721,"superseded by R922 (0.997, 90% 0.992-0.9996)",gen.md before the errata; B004,round
+"Table G2: Bayes private AUC, flip_y 0",0.99995,reports/tables/r153_param_summary_models.csv,yes,,G40,generator,0.99995,confirmed,research/reports/gen.md Table G2,round
+"Table G2: Bayes private AUC, flip_y 0.005",0.99742,reports/tables/r153_param_summary_models.csv,yes,,G41,generator,0.997418,confirmed,research/reports/gen.md Table G2,round
+"Table G2: S003 (gmm2_hv) regret, flip_y 0 (100 replicas)",3e-7,reports/tables/r153_param_summary_models.csv,yes,R921 (1000 replicas) gives 2.6e-7; quote R921,G42,generator,3.0869e-07,confirmed,research/reports/gen.md Table G2,round
+"Table G2: QDA reg 0.1 private AUC, flip_y 0",0.99314,reports/tables/r153_param_summary_models.csv,yes,,G43,generator,0.993137,confirmed,research/reports/gen.md Table G2,round
+"Table G2: L1 logistic private AUC, flip_y 0",0.8602,reports/tables/r153_param_summary_models.csv,yes,,G44,generator,0.860243,confirmed,research/reports/gen.md Table G2,round
+S001 CV AUC mean (registry),0.84693,experiments/20261022-050647_r003_sup_l1_all/fold_scores.csv,yes,recomputed from fold_scores.csv,S001a,submissions,0.846931,confirmed,registry/submissions.csv,round
+S001 CV AUC sd over repeats (registry),0.01201,experiments/20261022-050647_r003_sup_l1_all/fold_scores.csv,yes,,S001b,submissions,0.0120084,confirmed,registry/submissions.csv,round
+S001 submission file sha256 prefix = registry,315d234378010a1e,submissions/S001_20261022-050647_r003_sup_l1_all.csv,yes,"sha256 of the local file, computed at pack time",S001c,submissions,315d234378010a1e,confirmed,registry/submissions.csv,eq
+S001 public LB,0.83589,registry/submissions.csv,yes,recorded by record_lb.py; the only archived copy,S001d,submissions,0.83589,registry only (Kaggle page not re-read),registry/submissions.csv,round
+S002 CV AUC mean (registry),0.99578,experiments/20261022-050659_r003_sup_qda_hv/fold_scores.csv,yes,recomputed from fold_scores.csv,S002a,submissions,0.995784,confirmed,registry/submissions.csv,round
+S002 CV AUC sd over repeats (registry),0.00112,experiments/20261022-050659_r003_sup_qda_hv/fold_scores.csv,yes,,S002b,submissions,0.00111953,confirmed,registry/submissions.csv,round
+S002 submission file sha256 prefix = registry,8a5107656eb6d906,submissions/S002_20261022-050659_r003_sup_qda_hv.csv,yes,"sha256 of the local file, computed at pack time",S002c,submissions,8a5107656eb6d906,confirmed,registry/submissions.csv,eq
+S002 public LB,0.99277,registry/submissions.csv,yes,recorded by record_lb.py; the only archived copy,S002d,submissions,0.99277,registry only (Kaggle page not re-read),registry/submissions.csv,round
+S003 CV AUC mean (registry),1.00000,experiments/20261022-050708_r003_gmm2_hv/fold_scores.csv,yes,recomputed from fold_scores.csv,S003a,submissions,1,confirmed,registry/submissions.csv,round
+S003 CV AUC sd over repeats (registry),0.00000,experiments/20261022-050708_r003_gmm2_hv/fold_scores.csv,yes,,S003b,submissions,0.0,confirmed,registry/submissions.csv,round
+S003 submission file sha256 prefix = registry,3aae140e5837753f,submissions/S003_20261022-050708_r003_gmm2_hv.csv,yes,"sha256 of the local file, computed at pack time",S003c,submissions,3aae140e5837753f,confirmed,registry/submissions.csv,eq
+S003 public LB,0.99923,registry/submissions.csv,yes,recorded by record_lb.py; the only archived copy,S003d,submissions,0.99923,registry only (Kaggle page not re-read),registry/submissions.csv,round
+S004 CV AUC mean (registry),0.79344,experiments/20261022-063908_e3_leakage/summary.json,yes,E3 writes no fold_scores.csv; summary.json,S004a,submissions,0.793441,confirmed,registry/submissions.csv,round
+S004 CV AUC sd over repeats (registry),0.01416,experiments/20261022-063908_e3_leakage/summary.json,yes,,S004b,submissions,0.0141635,confirmed,registry/submissions.csv,round
+S004 submission file sha256 prefix = registry,d47d3f3909b1eba4,submissions/S004_20261022-063908_e3_leakage.csv,yes,"sha256 of the local file, computed at pack time",S004c,submissions,d47d3f3909b1eba4,confirmed,registry/submissions.csv,eq
+S004 public LB,0.79136,registry/submissions.csv,yes,recorded by record_lb.py; the only archived copy,S004d,submissions,0.79136,registry only (Kaggle page not re-read),registry/submissions.csv,round
+S005 CV AUC mean (registry),0.99990,experiments/20261022-071234_r201_qda_block/fold_scores.csv,yes,recomputed from fold_scores.csv,S005a,submissions,0.999903,confirmed,registry/submissions.csv,round
+S005 CV AUC sd over repeats (registry),0.00021,experiments/20261022-071234_r201_qda_block/fold_scores.csv,yes,,S005b,submissions,0.000213002,confirmed,registry/submissions.csv,round
+S005 submission file sha256 prefix = registry,3be09c0723286457,submissions/S005_20261022-071234_r201_qda_block.csv,yes,"sha256 of the local file, computed at pack time",S005c,submissions,3be09c0723286457,confirmed,registry/submissions.csv,eq
+S005 public LB,pending,registry/submissions.csv,yes,S005/S006 created and pre-registered (B006/B007),S005d,submissions,pending,not uploaded yet,registry/submissions.csv,eq
+S006 CV AUC mean (registry),1.00000,experiments/20261022-080632_r209_selftrain_qda_lw/fold_scores.csv,yes,recomputed from fold_scores.csv,S006a,submissions,1,confirmed,registry/submissions.csv,round
+S006 CV AUC sd over repeats (registry),0.00000,experiments/20261022-080632_r209_selftrain_qda_lw/fold_scores.csv,yes,,S006b,submissions,0.0,confirmed,registry/submissions.csv,round
+S006 submission file sha256 prefix = registry,8f3dfccd1df0c98f,submissions/S006_20261022-080632_r209_selftrain_qda_lw.csv,yes,"sha256 of the local file, computed at pack time",S006c,submissions,8f3dfccd1df0c98f,confirmed,registry/submissions.csv,eq
+S006 public LB,pending,registry/submissions.csv,yes,S005/S006 created and pre-registered (B006/B007),S006d,submissions,pending,not uploaded yet,registry/submissions.csv,eq
+E3 leaky CV (k_feat 20),0.867,experiments/20261022-063908_e3_leakage/summary.json,yes,,E3a,submissions,0.866781,confirmed,S004 description; ext34.md,round
+E3 leakage gap (k_feat 20),0.073,experiments/20261022-063908_e3_leakage/cells.csv,yes,,E3b,submissions,0.0733401,confirmed,research/reports/verify.md D4,round
+E3 gap SD over 20 split seeds,0.014,experiments/20261022-063908_e3_leakage/cells.csv,yes,,E3c,submissions,0.014288,confirmed,research/reports/verify.md D4,round
+E3 gap Nadeau-Bengio corrected SE,0.020,experiments/20261022-063908_e3_leakage/cells.csv,yes,,E3d,submissions,0.019696,confirmed,research/reports/verify.md D4,round
+E3 gap corrected p,0.0003,experiments/20261022-063908_e3_leakage/cells.csv,yes,,E3e,submissions,0.000326527,confirmed,research/reports/verify.md D4,round
+E3 leaky CV - S004 public,0.075,experiments/20261022-063908_e3_leakage/summary.json + registry/submissions.csv,yes,,E3f,submissions,0.075421,confirmed,research/reports/verify.md F8,round
+E3 honest CV - S004 public,0.002,experiments/20261022-063908_e3_leakage/summary.json + registry/submissions.csv,yes,,E3g,submissions,0.00208085,confirmed,research/reports/verify.md F8,round
+LDA (means only),0.86 to 0.88,reports/tables/r249_comparison.csv + experiments/20261022-050653_r003_sup_lda_hv/summary.json,yes,r200_lda_block 0.859 (in-fold block) and R003 lda_hv 0.878 (train+test block),P1,supervised,0.859215 to 0.877852,confirmed,research/reports/sup.md,range
+Gaussian naive Bayes,0.87,experiments/20261022-071541_r201_gnb_block/fold_scores.csv,yes,train+test block version 0.872,P2,supervised,0.866799,confirmed,research/reports/sup.md,round
+"best linear model (penalised logistic, block)",0.938,reports/tables/r249_comparison.csv,yes,r207_l2_block_tt_wide (block chosen on train+test features),P3,supervised,0.938298,confirmed,research/reports/sup.md,round
+degree-2 polynomial logistic,0.930,experiments/20261022-071544_r201_poly2lr_block/fold_scores.csv,yes,,P4,supervised,0.93033,confirmed,research/reports/sup.md,round
+RBF-SVM (block),0.951,experiments/20261022-071605_r201_svm_block/fold_scores.csv,yes,,P5,supervised,0.950547,confirmed,research/reports/sup.md,round
+kNN (block),0.902,experiments/20261022-071710_r201_knn_block/fold_scores.csv,yes,,P6,supervised,0.902087,confirmed,research/reports/sup.md,round
+"GP classifier ARD (block, sup track)",0.976,experiments/20261022-072331_r202_gpc_ard_block/fold_scores.csv,yes,"sup.md Chinese summary says 0.978 = fm's r255_gpc_ard_hv (0.9778, train+test block); use one run per sentence",P7,supervised,0.975739,confirmed,research/reports/sup.md (English text and table),round
+tree ensembles at most,0.914,reports/tables/r249_comparison.csv,yes,best = r203_lgbm_block_nested 0.9136,P8,supervised,0.913627,confirmed,research/reports/sup.md,le
+LightGBM block nested: mean,0.9136,experiments/20261022-074613_r203_lgbm_block_nested/fold_scores.csv,yes,,P9,supervised,0.913627,confirmed,research/reports/sup.md,round
+LightGBM block nested: sd,0.0113,experiments/20261022-074613_r203_lgbm_block_nested/fold_scores.csv,yes,,P10,supervised,0.0112825,confirmed,research/reports/sup.md,round
+XGBoost block,0.9033,experiments/20261022-074610_r203_xgb_block/fold_scores.csv,yes,,P11,supervised,0.903266,confirmed,reports/tables/r249_comparison.csv,round
+XGBoost all 150,0.8658,experiments/20261022-074518_r203_xgb_all/fold_scores.csv,yes,,P12,supervised,0.865753,confirmed,reports/tables/r249_comparison.csv,round
+random forest / extra trees (block),0.8965 to 0.9038,experiments/20261022-074525_r203_rf_block/fold_scores.csv,yes,,P13,supervised,0.896511 to 0.903757,confirmed,reports/tables/r249_comparison.csv,range
+gain from tuning LightGBM (nested - default),0.006,reports/tables/r249_comparison.csv,yes,,P14,supervised,0.00614099,confirmed,research/reports/sup.md,round
+"label spreading, best (kNN graph, wide grid)",0.957,experiments/20261022-080634_r209_labelspread_widegrid/fold_scores.csv,yes,,P15,supervised,0.956596,confirmed,research/reports/sup.md,round
+label spreading on all 150 features,0.62,experiments/20261022-072134_r204_labelspread_all/fold_scores.csv,yes,,P16,supervised,0.622512,confirmed,research/reports/sup.md,round
+strict supervised QDA r201 (S005): mean,0.9999,experiments/20261022-071234_r201_qda_block/fold_scores.csv,yes,,P17,supervised,0.999903,confirmed,research/reports/sup.md,round
+strict supervised QDA r201: sd,0.0002,experiments/20261022-071234_r201_qda_block/fold_scores.csv,yes,,P18,supervised,0.000213002,confirmed,research/reports/sup.md,round
+r201 OOF log-loss,0.0146,experiments/20261022-071234_r201_qda_block/summary.json,yes,,P19,supervised,0.014636,confirmed,research/reports/sup.md,round
+r201 nested reg choices span 0.001-0.01,"[0.001, 0.003, 0.01]",experiments/20261022-071234_r201_qda_block/summary.json,yes,"0.003 in 49 folds, 0.001 in 41, 0.01 in 10",P20,supervised,"[0.001, 0.003, 0.01]",confirmed,research/reports/sup.md,eq
+r210 (log-loss inner): mean,1.0000,experiments/20261022-082047_r210_qda_block_nll/fold_scores.csv,yes,0.99998; 1 of 100 folds below 1.0,P21,supervised,0.999984,confirmed,research/reports/sup.md,round
+r210: sd,0.0001,experiments/20261022-082047_r210_qda_block_nll/fold_scores.csv,yes,,P22,supervised,7.25996e-05,confirmed,research/reports/sup.md,round
+r210 OOF log-loss,0.0087,experiments/20261022-082047_r210_qda_block_nll/summary.json,yes,,P23,supervised,0.00868553,confirmed,research/reports/sup.md,round
+r210 picks reg 0.001 (grid floor) in every fold,100,experiments/20261022-082047_r210_qda_block_nll/summary.json,yes,,P24,supervised,100,confirmed,research/reports/sup.md,eq
+selection-aware estimate r205: mean,0.9995,experiments/20261022-072747_r205_select_supervised/fold_scores.csv,yes,,P25,supervised,0.999548,confirmed,research/reports/sup.md,round
+r205: sd,0.0006,experiments/20261022-072747_r205_select_supervised/fold_scores.csv,yes,,P26,supervised,0.00062287,confirmed,research/reports/sup.md,round
+configurations tried in the sup track,587,reports/tables/r249_comparison.csv,yes,,P27,supervised,587,confirmed,research/reports/sup.md,eq
+candidates in the sup track,63,reports/tables/r249_comparison.csv,yes,,P28,supervised,63,confirmed,research/reports/sup.md,eq
+QDA on in-fold top-k |corr| features (full reg grid),0.9926,experiments/20261022-075111_r208_qda_corrk_full/fold_scores.csv,yes,,P29,supervised,0.99257,confirmed,research/reports/sup.md,round
+linear: top-k |corr| vs block (L1),0.86 to 0.93,reports/tables/r249_comparison.csv,yes,,P30,supervised,0.856205 to 0.932089,confirmed,research/reports/sup.md,range
+no method exceeded 0.88 on all 150 features,0.88,"reports/tables/r249_comparison.csv + fm runs (r251, r253)",no,"true inside the sup track (max 0.875, r208_qda_all_lw) but false for the project: on all 150 features TabICL v2 0.9929, TabPFN v2 0.9851, horseshoe logistic 0.9261 (fm). Write 'no sup-track model'",P31,supervised,0.992889,refuted,research/reports/sup.md (Text for the report),le
+in-fold block size (mean columns),19.1,experiments/20261022-071234_r201_qda_block/summary.json,yes,,P32,supervised,19.06,confirmed,research/reports/sup.md,round
+self-training lifts untuned QDA-LW: supervised QDA-LW,0.9962,experiments/20261022-082044_r210_sup_qda_tt_lw/fold_scores.csv,yes,,P33,supervised,0.996188,confirmed,research/reports/sup.md,round
+self-training QDA-LW (S006) CV,1.0000,experiments/20261022-080632_r209_selftrain_qda_lw/fold_scores.csv,yes,,P34,supervised,1,confirmed,research/reports/sup.md,round
+log-loss QDA-LW supervised -> self-trained,0.082 to 0.0071,experiments/20261022-080632_r209_selftrain_qda_lw/summary.json,yes,,P35,supervised,0.081734 to 0.00708747,confirmed,research/reports/sup.md,range
+log-loss QDA reg 0.003 supervised -> self-trained,0.0109 to 0.0120,reports/tables/r249_comparison.csv,yes,reg 0.003 = modal R201 choice over all outer folds (sup.md discloses),P36,supervised,0.0109047 to 0.0120376,confirmed; not nested-honest,research/reports/sup.md,range
+self-training with an LR base vs supervised LR,0.878 to 0.898,reports/tables/r249_comparison.csv,yes,,P37,supervised,0.877699 to 0.897661,confirmed,research/reports/sup.md,range
+untuned QDA-LW on the in-fold block,0.986,experiments/20261022-075228_r208_qda_block_lw/fold_scores.csv,yes,,P38,supervised,0.986313,confirmed,research/reports/sup.md,round
+QDA-LW on all 150 features,0.875,experiments/20261022-075225_r208_qda_all_lw/fold_scores.csv,yes,,P39,supervised,0.875297,confirmed,research/reports/sup.md,round
+LDA / L2 on all 150 features,0.796 to 0.787,reports/tables/r249_comparison.csv,yes,,P40,supervised,0.796242 to 0.786963,confirmed,research/reports/sup.md,range
+"L1 logistic all 150 (sup, nested C)",0.8693,experiments/20261022-065631_r200_l1_all/fold_scores.csv,yes,,P41,supervised,0.869319,confirmed,research/reports/sup.md,round
+Spearman with S003 on 204 boundary rows: self-training (r209),0.70,reports/tables/r932_pairwise_agreement.csv,yes,,P42,supervised,0.697936,confirmed,research/reports/sup.md,round
+"Spearman with S003 on boundary rows: supervised QDA (r201, r210)",0.45 to 0.49,reports/tables/r932_pairwise_agreement.csv,yes,,P43,supervised,0.450686 to 0.49012,confirmed,research/reports/sup.md,range
+GMM OOF log-loss,0.0171,reports/tables/r249_comparison.csv,yes,the S003 run folder has no oof_logloss; R249 recomputed it,P44,supervised,0.0171086,confirmed (R249 table only),research/reports/sup.md,round
+paired diff vs r210: r201,-0.0001,experiments/20261022-071234_r201_qda_block/fold_scores.csv + r210,yes,,P45a,supervised,-8.09074e-05,confirmed,research/reports/sup.md,round
+corrected p vs r210: r201,0.77,experiments/20261022-071234_r201_qda_block/fold_scores.csv + r210,yes,,P45b,supervised,0.76706,confirmed,research/reports/sup.md,round
+paired diff vs r210: 20261022-080551_r209_sup_qda_tt_r01,-0.0042,experiments/20261022-080551_r209_sup_qda_tt_r01/fold_scores.csv + r210,yes,,P46a,supervised,-0.00419947,confirmed,research/reports/sup.md,round
+corrected p vs r210: 20261022-080551_r209_sup_qda_tt_r01,0.12,experiments/20261022-080551_r209_sup_qda_tt_r01/fold_scores.csv + r210,yes,,P46b,supervised,0.12323,confirmed,research/reports/sup.md,round
+paired diff vs r210: gmm,0.0000,experiments/20261022-050708_r003_gmm2_hv/fold_scores.csv + r210,yes,,P47a,supervised,1.62338e-05,confirmed,research/reports/sup.md,round
+corrected p vs r210: gmm,0.84,experiments/20261022-050708_r003_gmm2_hv/fold_scores.csv + r210,yes,,P47b,supervised,0.844921,confirmed,research/reports/sup.md,round
+paired diff vs r210: r205,-0.0004,experiments/20261022-072747_r205_select_supervised/fold_scores.csv + r210,yes,,P48a,supervised,-0.000435828,confirmed,research/reports/sup.md,round
+corrected p vs r210: r205,0.56,experiments/20261022-072747_r205_select_supervised/fold_scores.csv + r210,yes,,P48b,supervised,0.561075,confirmed,research/reports/sup.md,round
+D009: r210 vs GMM paired 95% interval half-width,1.6e-4,reports/tables/r930_paired_vs_gmm.csv,yes,r201: see P50; the two together give 'about 2-5e-4',P49,supervised,0.000164246,confirmed,D009 wording ('about 2-5e-4'),round
+D009: r201 vs GMM paired 95% interval half-width,5.1e-4,experiments/20261022-071234_r201_qda_block/fold_scores.csv,yes,,P50,supervised,0.000511724,confirmed,D009 wording,round
+D009: folds where r210 / r201 are worse than the GMM,"(1, 4)",experiments/20261022-071234_r201_qda_block/fold_scores.csv,yes,"the GMM is 1.0 in all 100 folds, so 'worse' = folds below 1.0; better in 0 folds",P51,supervised,"(1, 4)",confirmed,D009 wording ('1-4'),eq
+E1: sd of the paired difference under 5x20 CV (R940 reproduces 0.003056),0.003056,reports/tables/e1_paired_difference.csv,yes,,V1,validation,0.00305566,confirmed,research/reports/verify.md F1,round
+"E1: 5x20 minimum detectable difference (2 sd, ~50% power)",0.0061,reports/tables/e1_paired_difference.csv,yes,,V2,validation,0.00611132,confirmed,research/reports/verify.md F1,round
+E1: 95% interval of that MDD,0.0051 to 0.0076,reports/tables/e1_paired_difference.csv,yes,,V3,validation,0.00510499 to 0.00761552,confirmed,research/reports/verify.md F1,range
+Null A: permuted-label CV AUC of the 7 honest pipelines,0.477 to 0.496,reports/tables/r900_perm_null_A_summary.csv,yes,,V4,validation,0.477141 to 0.495968,confirmed,research/reports/verify.md D1,range
+Null A: positive control (E3 leaky pipeline),0.697,reports/tables/r900_perm_null_A_summary.csv,yes,,V5,validation,0.697046,confirmed,research/reports/verify.md D1,round
+Null B: positive control (disk reader) AUC,1.000,reports/tables/r900_perm_null_B_summary.csv,yes,,V6,validation,1,confirmed,research/reports/verify.md D1,round
+"S003 boundary rows (score in (0.1, 0.9)) / share of test rows",204,experiments/20261022-070200_r255_bqda_eb_hv/summary.json,yes,"204 / 19,750 = 1.03%",V7,validation,204,confirmed,S003 note ('~1% ambiguous'); fm.md,eq
+r251_tabpfn2_all: CV AUC mean,0.9851,experiments/20261022-073743_r251_tabpfn2_all/fold_scores.csv,yes,,F1a,fm,0.985088,confirmed,research/reports/fm.md,round
+r251_tabpfn2_all: sd over repeats,0.0041,experiments/20261022-073743_r251_tabpfn2_all/fold_scores.csv,yes,,F1b,fm,0.00405658,confirmed,research/reports/fm.md,round
+r251_tabpfn2_all: CV log-loss (fold mean),0.167,experiments/20261022-073743_r251_tabpfn2_all/summary.json,yes,,F1c,fm,0.166571,confirmed,research/reports/fm.md,round
+r251_tabpfn2_hv: CV AUC mean,0.9888,experiments/20261022-073935_r251_tabpfn2_hv/fold_scores.csv,yes,,F2a,fm,0.988755,confirmed,research/reports/fm.md,round
+r251_tabpfn2_hv: sd over repeats,0.0031,experiments/20261022-073935_r251_tabpfn2_hv/fold_scores.csv,yes,,F2b,fm,0.00310324,confirmed,research/reports/fm.md,round
+r251_tabpfn2_hv: CV log-loss (fold mean),0.146,experiments/20261022-073935_r251_tabpfn2_hv/summary.json,yes,,F2c,fm,0.145682,confirmed,research/reports/fm.md,round
+r251_tabicl_all: CV AUC mean,0.9929,experiments/20261022-074251_r251_tabicl_all/fold_scores.csv,yes,,F3a,fm,0.992889,confirmed,research/reports/fm.md,round
+r251_tabicl_all: sd over repeats,0.0021,experiments/20261022-074251_r251_tabicl_all/fold_scores.csv,yes,,F3b,fm,0.00212096,confirmed,research/reports/fm.md,round
+r251_tabicl_all: CV log-loss (fold mean),0.120,experiments/20261022-074251_r251_tabicl_all/summary.json,yes,,F3c,fm,0.120416,confirmed,research/reports/fm.md,round
+r251_tabicl_hv: CV AUC mean,0.9989,experiments/20261022-074643_r251_tabicl_hv/fold_scores.csv,yes,,F4a,fm,0.998917,confirmed,research/reports/fm.md,round
+r251_tabicl_hv: sd over repeats,0.0008,experiments/20261022-074643_r251_tabicl_hv/fold_scores.csv,yes,,F4b,fm,0.000778361,confirmed,research/reports/fm.md,round
+r251_tabicl_hv: CV log-loss (fold mean),0.047,experiments/20261022-074643_r251_tabicl_hv/summary.json,yes,,F4c,fm,0.0472436,confirmed,research/reports/fm.md,round
+r253_hs_all: CV AUC mean,0.9261,experiments/20261022-073018_r253_hs_all/fold_scores.csv,yes,,F5a,fm,0.926093,confirmed,research/reports/fm.md,round
+r253_hs_all: sd over repeats,0.0070,experiments/20261022-073018_r253_hs_all/fold_scores.csv,yes,,F5b,fm,0.00697459,confirmed,research/reports/fm.md,round
+r253_hs_all: CV log-loss (fold mean),0.347,experiments/20261022-073018_r253_hs_all/summary.json,yes,,F5c,fm,0.346933,confirmed,research/reports/fm.md,round
+r253_hs_quadhv: CV AUC mean,0.9673,experiments/20261022-073222_r253_hs_quadhv/fold_scores.csv,yes,,F6a,fm,0.967295,confirmed,research/reports/fm.md,round
+r253_hs_quadhv: sd over repeats,0.0054,experiments/20261022-073222_r253_hs_quadhv/fold_scores.csv,yes,,F6b,fm,0.00537584,confirmed,research/reports/fm.md,round
+r253_hs_quadhv: CV log-loss (fold mean),0.248,experiments/20261022-073222_r253_hs_quadhv/summary.json,yes,,F6c,fm,0.248208,confirmed,research/reports/fm.md,round
+r255_bqda_eb_hv: CV AUC mean,1.0000,experiments/20261022-070200_r255_bqda_eb_hv/fold_scores.csv,yes,,F7a,fm,1,confirmed,research/reports/fm.md,round
+r255_bqda_eb_hv: sd over repeats,0.0000,experiments/20261022-070200_r255_bqda_eb_hv/fold_scores.csv,yes,,F7b,fm,0.0,confirmed,research/reports/fm.md,round
+r255_bqda_eb_hv: CV log-loss (fold mean),0.0094,experiments/20261022-070200_r255_bqda_eb_hv/summary.json,yes,"fold-mean log-loss, not OOF; do not compare with sup's OOF log-loss (r209 OOF 0.0071)",F7c,fm,0.00936561,confirmed,research/reports/fm.md,round
+r255_bqda_eb_trainonly: CV AUC mean,0.9990,experiments/20261022-070202_r255_bqda_eb_trainonly/fold_scores.csv,yes,,F8a,fm,0.999031,confirmed,research/reports/fm.md,round
+r255_bqda_eb_trainonly: sd over repeats,0.0011,experiments/20261022-070202_r255_bqda_eb_trainonly/fold_scores.csv,yes,,F8b,fm,0.00114418,confirmed,research/reports/fm.md,round
+r255_bqda_eb_trainonly: CV log-loss (fold mean),0.041,experiments/20261022-070202_r255_bqda_eb_trainonly/summary.json,yes,,F8c,fm,0.0413587,confirmed,research/reports/fm.md,round
+r255_gpc_ard_hv: CV AUC mean,0.9778,experiments/20261022-070207_r255_gpc_ard_hv/fold_scores.csv,yes,,F9a,fm,0.977763,confirmed,research/reports/fm.md,round
+r255_gpc_ard_hv: sd over repeats,0.0046,experiments/20261022-070207_r255_gpc_ard_hv/fold_scores.csv,yes,,F9b,fm,0.00456021,confirmed,research/reports/fm.md,round
+r255_gpc_ard_hv: CV log-loss (fold mean),0.248,experiments/20261022-070207_r255_gpc_ard_hv/summary.json,yes,,F9c,fm,0.247616,confirmed,research/reports/fm.md,round
+r254_dpgmm_hv: CV AUC mean,1.0000,experiments/20261022-071054_r254_dpgmm_hv/fold_scores.csv,yes,,F10a,fm,1,confirmed,research/reports/fm.md,round
+r254_dpgmm_hv: sd over repeats,0.0000,experiments/20261022-071054_r254_dpgmm_hv/fold_scores.csv,yes,,F10b,fm,0.0,confirmed,research/reports/fm.md,round
+r254_dpgmm_hv: CV log-loss (fold mean),0.0171,experiments/20261022-071054_r254_dpgmm_hv/summary.json,yes,,F10c,fm,0.0170687,confirmed,research/reports/fm.md,round
+BQDA plug-in control: CV log-loss,0.0095,experiments/20261022-070536_r256_bqda_eb_plugin_hv/summary.json,yes,,F11,fm,0.00953892,confirmed,research/reports/fm.md,round
+classical QDA reg 0.01 (block),0.9998,experiments/20261022-070543_r256_qda_reg0.01_hv/fold_scores.csv,yes,,F12,fm,0.999758,confirmed,research/reports/fm.md,round
+classical QDA reg 0.03,0.9990,experiments/20261022-070545_r256_qda_reg0.03_hv/fold_scores.csv,no,archived 0.998950 rounds to 0.9989 (fm.md prints 0.9990); immaterial,F13,fm,0.99895,mismatch,research/reports/fm.md,round
+classical QDA reg 0.3,0.9832,experiments/20261022-070546_r256_qda_reg0.3_hv/fold_scores.csv,yes,,F14,fm,0.983168,confirmed,research/reports/fm.md,round
+horseshoe all vs L1 (R003): paired diff,0.079,experiments/20261022-073018_r253_hs_all/fold_scores.csv + l1_r003,yes,,F15,fm,0.0791627,confirmed,research/reports/fm.md,round
+horseshoe all vs L1: split SE,0.0025,experiments/20261022-073018_r253_hs_all/fold_scores.csv,yes,,F16,fm,0.00251165,confirmed,research/reports/fm.md,round
+horseshoe all vs L1: corrected p,0.0005,experiments/20261022-073018_r253_hs_all/fold_scores.csv,yes,,F17,fm,0.000494489,confirmed,research/reports/fm.md,round
+horseshoe all vs L1: fold win rate,0.99,experiments/20261022-073018_r253_hs_all/fold_scores.csv,yes,,F18,fm,0.985,confirmed,research/reports/fm.md,round
+horseshoe all vs block L2 (R003): paired diff,0.028,experiments/20261022-073018_r253_hs_all/fold_scores.csv + lr_r003,yes,,F19,fm,0.0284325,confirmed,research/reports/fm.md,round
+horseshoe all vs block L2: corrected p,0.03,experiments/20261022-073018_r253_hs_all/fold_scores.csv,yes,,F20,fm,0.0283637,confirmed,research/reports/fm.md,round
+'horseshoe 0.926 is the best linear model',0.926,reports/tables/r249_comparison.csv,no,"overstated: best linear on ALL 150 features only; on the block, L2 logistic reaches 0.938 (r207_l2_block_tt_wide)",F21,fm,0.938298,refuted,research/reports/fm.md (Text for the report),le
+BQDA vs QDA reg 0.1: paired diff,0.0042,experiments/20261022-070200_r255_bqda_eb_hv/fold_scores.csv + qda_r003,yes,,F22,fm,0.00421571,confirmed,research/reports/fm.md,round
+BQDA vs QDA reg 0.1: split SE,0.00025,experiments/20261022-070200_r255_bqda_eb_hv/fold_scores.csv,yes,,F23,fm,0.000250334,confirmed,research/reports/fm.md,round
+BQDA vs QDA reg 0.1: corrected p,0.12,experiments/20261022-070200_r255_bqda_eb_hv/fold_scores.csv,yes,,F24,fm,0.122122,confirmed,research/reports/fm.md,round
+BQDA: same side of 0.5 as S003 on the 204 boundary rows,74%,experiments/20261022-070200_r255_bqda_eb_hv/summary.json,yes,73.5%,F25,fm,0.735294,confirmed,research/reports/fm.md,pct
+BQDA: Spearman with S003 on boundary rows,0.55,experiments/20261022-070200_r255_bqda_eb_hv/summary.json,yes,,F26,fm,0.546057,confirmed,research/reports/fm.md,round
+BQDA: same side as S003 on all test rows,99.5%,experiments/20261022-070200_r255_bqda_eb_hv/summary.json,no,archived 99.554% rounds to 99.6% (fm.md truncates); immaterial,F27,fm,0.995544,mismatch,research/reports/fm.md,pct
+BQDA: pseudo-AUC vs S003's confident labels,0.99998,experiments/20261022-070200_r255_bqda_eb_hv/summary.json,yes,,F28,fm,0.999981,confirmed,research/reports/fm.md,round
+BQDA train-only: boundary side agreement,63%,experiments/20261022-070202_r255_bqda_eb_trainonly/summary.json,yes,,F29,fm,0.632353,confirmed,research/reports/fm.md,pct
+TabICL block / all: boundary side agreement,57% to 51%,experiments/20261022-074643_r251_tabicl_hv/summary.json,yes,,F30,fm,57.3529 to 51.4706,confirmed,research/reports/fm.md,range
+TabPFN block / all: boundary side agreement,49% to 51%,experiments/20261022-073935_r251_tabpfn2_hv/summary.json,yes,,F31,fm,49.0196 to 51.4706,confirmed,research/reports/fm.md,range
+FM Spearman with S003 on boundary rows,0.19 to 0.38,experiments/20261022-074643_r251_tabicl_hv/summary.json,yes,,F32,fm,0.187745 to 0.377234,confirmed,research/reports/fm.md,range
+"FM test rows with score in (0.1, 0.9)",6% to 23%,experiments/20261022-073743_r251_tabpfn2_all/summary.json,yes,,F33,fm,6.00506 to 23.0937,confirmed,research/reports/fm.md,range
+DP-GMM: same side as S003 on boundary rows,99%,experiments/20261022-071054_r254_dpgmm_hv/summary.json,yes,,F34,fm,0.990196,confirmed,research/reports/fm.md,pct
+DP-GMM: effective components,2,experiments/20261022-071054_r254_dpgmm_hv/summary.json,yes,,F35,fm,2,confirmed,research/reports/fm.md,eq
+"plug-in BIC: DP-GMM (T=10, gamma=1) vs K=2",343920 to 343911,experiments/20261022-070634_r254_dpgmm_evidence/summary.json,yes,,F36,fm,343920 to 343911,confirmed,research/reports/fm.md,range
+EB choice kappa0 = 1 (grid edge) in 100/100 folds,100,reports/tables/r255_eb_choice_frequency.csv,yes,"kappa grid (0.001, 0.01, 0.1, 1.0): the choice sits at the upper edge",F37,fm,100,confirmed,research/reports/verify.md 7.1,eq
+replicas: GMM AUC on the GMM boundary rows,0.825,reports/tables/r254_replica_auc_summary.csv,yes,,F38,fm,0.824698,confirmed; 6 replicas only (verify C12),research/reports/fm.md,round
+replicas: BQDA AUC on the GMM boundary rows,0.702,reports/tables/r254_replica_auc_summary.csv,yes,,F39,fm,0.701889,confirmed; 6 replicas only,research/reports/fm.md,round
+replicas: overall test AUC GMM vs BQDA,0.9949 to 0.9948,reports/tables/r254_replica_auc_summary.csv,yes,,F40,fm,0.994882 to 0.994764,confirmed; 6 replicas only,research/reports/fm.md,range
+L1 logistic all 150 (R003 = S001),0.8469,experiments/20261022-050647_r003_sup_l1_all/fold_scores.csv,yes,,F41,fm,0.846931,confirmed,research/reports/fm.md,round
+BQDA test rows exactly 1.0,1493,experiments/20261022-070200_r255_bqda_eb_hv/test_pred.npy,no,,F42,fm,not packed,not checked (needs test_pred.npy),research/reports/fm.md,eq
+private AUC difference vs S003 on 222 replicas: r209_selftrain_qda_lw,-6.9e-5,reports/tables/r936_private.csv,yes,"tn0, CSV-formatted scores, R156 level weights",X1,replicas,-6.90975e-05,confirmed,research/reports/verify.md C8,round
+private AUC difference vs S003 on 222 replicas: r255_bqda_eb_hv,-1.16e-4,reports/tables/r936_private.csv,yes,"tn0, CSV-formatted scores, R156 level weights",X2,replicas,-0.000116007,confirmed,research/reports/verify.md C8,round
+private AUC difference vs S003 on 222 replicas: r210_qda_block_nll,-1.68e-4,reports/tables/r936_private.csv,yes,"tn0, CSV-formatted scores, R156 level weights",X3,replicas,-0.000168338,confirmed,research/reports/verify.md C8,round
+private AUC difference vs S003 on 222 replicas: r201_qda_block,-2.57e-4,reports/tables/r936_private.csv,yes,"tn0, CSV-formatted scores, R156 level weights",X4,replicas,-0.000256826,confirmed,research/reports/verify.md C8,round
+private AUC difference vs S003 on 222 replicas: x_qda_block_nll_ext,-6.3e-5,reports/tables/r936_private.csv,yes,"tn0, CSV-formatted scores, R156 level weights",X5,replicas,-6.27549e-05,confirmed,research/reports/verify.md C8,round
+gain of the pair S003 + r209_selftrain_qda_lw over S003 alone,1.45e-5,reports/tables/r936_choice.csv,yes,,X6,replicas,1.452e-05,confirmed,research/reports/verify.md §6,round
+gain of the pair S003 + r255_bqda_eb_hv over S003 alone,1.37e-5,reports/tables/r936_choice.csv,yes,,X7,replicas,1.37397e-05,confirmed,research/reports/verify.md §6,round
+gain of the pair S003 + r210_qda_block_nll over S003 alone,5.0e-6,reports/tables/r936_choice.csv,yes,,X8,replicas,5.04334e-06,confirmed,research/reports/verify.md §6,round
+gain of the pair S003 + r201_qda_block over S003 alone,4.1e-6,reports/tables/r936_choice.csv,yes,,X9,replicas,4.07868e-06,confirmed,research/reports/verify.md §6,round
+"CV paired test non-significant in 222/222 replicas (r201, r210)",1.0,reports/tables/r936_cv_power.csv,yes,,X10,replicas,1,confirmed,research/reports/verify.md C5,round
+"true gap negative in 100% of replicas (r201, r210)",1.0,reports/tables/r936_cv_power.csv,yes,,X11,replicas,1,confirmed,research/reports/verify.md C5,round
+S006 (r209) predicted public given S003's 0.99923,0.99913,reports/tables/r936_public_abc.csv,yes,,X12,replicas,0.999129,confirmed,research/reports/verify.md §5 / B007,round
+S006 predicted public sd,0.00033,reports/tables/r936_public_abc.csv,yes,,X13,replicas,0.000330508,confirmed,research/reports/verify.md §5,round
+S005 (r201) predicted public,0.99884,reports/tables/r936_public_abc.csv,yes,,X14,replicas,0.998836,confirmed,research/reports/verify.md §5 / B006,round
+S005 predicted public sd,0.00066,reports/tables/r936_public_abc.csv,yes,,X15,replicas,0.000664785,confirmed,research/reports/verify.md §5,round
+P(S006 public > S003 public),0.28,reports/tables/r936_public_abc.csv,yes,,X16,replicas,0.282737,confirmed,research/reports/verify.md §5,round
+P(S005 public > S003 public),0.20,reports/tables/r936_public_abc.csv,yes,,X17,replicas,0.20258,confirmed,research/reports/verify.md §5,round
+R206: GMM AUC at 4 labels,1.000,reports/tables/r206_label_budget.csv,yes,,L1,label budget,1,confirmed,research/reports/sup.md,round
+R206: self-training QDA-LW (thr 0.75) at 20 labels,0.995,reports/tables/r206_label_budget.csv,yes,"first budget >= 0.99; threshold 0.75, not the S006 setting 0.99",L2,label budget,0.995045,confirmed,research/reports/sup.md,round
+"R206: QDA reg 0.003, train+test block, at 40 labels",0.9933,reports/tables/r206_label_budget.csv,yes,reg 0.003 is informed by R201's nested choice,L3,label budget,0.993271,confirmed,reports/tables/r206_label_budget.md,round
+R206: strict QDA reg 0.003 (in-fold block) at 80 labels,0.9937,reports/tables/r206_label_budget.csv,yes,,L4,label budget,0.993699,confirmed,reports/tables/r206_label_budget.md,round
+R206: strict QDA reg 0.003 at 40 labels (defined evaluations),6,reports/tables/r206_label_budget.csv,yes,the 0.9476 in r206_label_budget.md at 40 labels is the mean of only 6 of 60 evaluations (54 undefined),L5,label budget,6,confirmed,reports/tables/r206_label_budget.csv,eq
+R206: best supervised model at 20 labels,0.851,reports/tables/r206_label_budget.csv,yes,,L6,label budget,0.851302,confirmed,research/reports/sup.md,round
+R304 (E2): GMM AUC >= 0.99 with 2 labels in 50/50 subsets,1.0,reports/tables/r304_label_requirement.csv,yes,,L7,label budget,1,confirmed,verify.md C13; ext12.md,round
+R304 (E2): QDA reg 0.1 median AUC >= 0.99 from,75,reports/tables/r304_label_requirement.csv,yes,,L8,label budget,75,confirmed,verify.md C13,eq
+R441: GMM first budget with mean AUC >= 0.99 (R206 grid),4,experiments/20261022-182022_r441_label_budget_rerun/label_budget_evals.csv,yes,own grid (incl. 2 labels): 2; first fully defined: 2,L9,label budget,4,replicated,research/reports/sup.md (R206),eq
+"R441: self-training QDA-LW thr 0.75, first budget >= 0.99 (R206 grid)",20,experiments/20261022-182022_r441_label_budget_rerun/label_budget_evals.csv,yes,own grid (incl. 2 labels): 20; first fully defined: 10,L10,label budget,20,replicated,research/reports/sup.md (R206),eq
+"R441: QDA reg 0.003 train+test block, first budget >= 0.99 (R206 grid)",40,experiments/20261022-182022_r441_label_budget_rerun/label_budget_evals.csv,yes,own grid (incl. 2 labels): 40; first fully defined: 40,L11,label budget,40,replicated,research/reports/sup.md (R206),eq
+"R441: strict QDA reg 0.003 in-fold, first budget >= 0.99 (R206 grid)",80,experiments/20261022-182022_r441_label_budget_rerun/label_budget_evals.csv,yes,own grid (incl. 2 labels): 80; first fully defined: 80,L12,label budget,80,replicated,research/reports/sup.md (R206),eq
+"R441: S006 procedure (self-training thr 0.99), first budget >= 0.99 (R206 grid)",20,experiments/20261022-182022_r441_label_budget_rerun/label_budget_evals.csv,yes,own grid (incl. 2 labels): 20; first fully defined: 10,L13,label budget,20,R206 statement holds for the candidate,R206 design applied to the candidate,eq
+"R441: S005 procedure (strict nested QDA), first budget >= 0.99 (R206 grid)",80,experiments/20261022-182022_r441_label_budget_rerun/label_budget_evals.csv,no,own grid (incl. 2 labels): 120; first fully defined: 80,L14,label budget,120,R206 statement does not hold for the candidate,R206 design applied to the candidate,eq
+every r249_comparison.csv row reproduces from fold_scores.csv / summary.json,64,reports/tables/r440_r249_recheck.csv,yes,,P0,supervised,64,confirmed,reports/tables/r249_comparison.csv,eq

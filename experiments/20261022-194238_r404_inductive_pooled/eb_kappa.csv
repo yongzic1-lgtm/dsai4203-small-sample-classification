@@ -1,0 +1,6 @@
+variant,kappa0,n_folds,share
+eb_trainonly,1.0,22200,1.0
+eb_trainonly_wk,1.0,1,4.5045045045045046e-05
+eb_trainonly_wk,3.0,10653,0.47986486486486485
+eb_trainonly_wk,10.0,11530,0.5193693693693694
+eb_trainonly_wk,30.0,16,0.0007207207207207207

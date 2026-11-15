@@ -1,0 +1,19 @@
+name: r208_qda_all_lw
+description: QDA with per-class Ledoit-Wolf shrinkage (eigen solver), all 150 features,
+  no tuning
+model_code: research/r208_sup_qda_followup.py + research/lib_sup.py
+group: supervised-generative
+features: all 150
+tuning: none (analytic Ledoit-Wolf shrinkage)
+n_configs: 1
+inner_cv: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

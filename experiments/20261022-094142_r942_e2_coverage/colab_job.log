@@ -1,0 +1,27 @@
+                                      0       1
+model                            l1_all  qda_hv
+n                                   100     100
+truth_500                         0.923  0.9944
+pl_point_mean                    0.8925  0.9939
+pl_point_sd                      0.0313  0.0034
+pl_width_mean                    0.0281  0.0038
+env_width_mean                   0.1132  0.0157
+cv_mean_n250_mean                0.8483  0.9923
+cv_mean_n250_sd                  0.0261  0.0032
+gain_frac_positive_mean             1.0  0.9999
+cover_power_law                    0.21    0.57
+bias_power_law_point            -0.0305 -0.0005
+rmse_power_law_point             0.0436  0.0034
+cover_log_linear                   0.37    0.12
+bias_log_linear_point            0.0165  0.0086
+rmse_log_linear_point            0.0448  0.0095
+cover_power_law_unweighted         0.13    0.56
+bias_power_law_unweighted_point -0.0483 -0.0005
+rmse_power_law_unweighted_point   0.058  0.0034
+cover_power_law_drop_50             0.2    0.52
+bias_power_law_drop_50_point    -0.0263 -0.0002
+rmse_power_law_drop_50_point     0.0402  0.0029
+cover_envelope                     0.81    0.81
+bias_envelope_point             -0.0305 -0.0005
+rmse_envelope_point              0.0436  0.0034
+run: 20261022-094142_r942_e2_coverage

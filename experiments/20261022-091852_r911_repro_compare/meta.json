@@ -1,0 +1,33 @@
+{
+  "run_id": "20261022-091852_r911_repro_compare",
+  "kind": "analysis",
+  "name": "r911_repro_compare",
+  "author": "TODO_ID_1",
+  "created_at": "2026-10-22T09:18:52+09:00",
+  "data_source": "raw",
+  "data_fingerprint": {
+    "train.csv": "7ef80ff93ef49c8c",
+    "test.csv": "e40a4f71df157db8"
+  },
+  "git": {
+    "commit": "no-commit",
+    "dirty": true,
+    "branch": null
+  },
+  "packages": {
+    "python": "3.11.5",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "sklearn": "1.9.1",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.2.0"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "compute": {
+    "host": "local",
+    "node": "cyz912",
+    "cpus": 32
+  },
+  "command": "research\\r911_repro_compare.py"
+}

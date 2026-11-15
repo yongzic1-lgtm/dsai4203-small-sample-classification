@@ -1,0 +1,41 @@
+name: r321_e3e4_proxy_test
+label_source: TransductiveGMM('highvar', 2) fitted on all rows
+e3_k_feat:
+- 2
+- 5
+- 7
+- 10
+- 13
+- 20
+- 30
+- 50
+- 100
+- 150
+e3_pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params:
+      C: 0.1
+      l1_ratio: 0.0
+      solver: liblinear
+  random_state: 0
+n_public_rows: 395
+n_sim: 5000
+e4_stable_rule: top-10 bootstrap frequency >= 0.5, B=2000, seed=2026
+block_features:
+- '8'
+- '15'
+- '26'
+- '30'
+- '46'
+- '49'
+- '64'
+- '67'
+- '77'
+- '80'
+- '98'
+- '100'
+- '112'
+uses_unlabeled_test_features: true
+quick: false

@@ -1,0 +1,89 @@
+{
+  "groups": {
+    "tn1": {
+      "n_replicas": 136,
+      "runs": [
+        "20261022-094423_r933_replicas_param_s0-7",
+        "20261022-160545_r933_replicas_param_s8-71",
+        "20261022-161642_r933_replicas_param_s72-135"
+      ],
+      "seed_range": [
+        0,
+        135
+      ],
+      "mean_n_flip_test": {
+        "0.0": 0.0,
+        "0.0025": 24.93,
+        "0.005": 49.4,
+        "0.01": 99.11
+      },
+      "share_train_clean": {
+        "0.0": 1.0,
+        "0.0025": 0.706,
+        "0.005": 0.5,
+        "0.01": 0.228
+      }
+    },
+    "tn0": {
+      "n_replicas": 222,
+      "runs": [
+        "20261022-165009_r933_replicas_param_s247-357_tn0_r8_cv",
+        "20261022-165947_r933_replicas_param_s136-246_tn0_r8_cv"
+      ],
+      "seed_range": [
+        136,
+        357
+      ],
+      "mean_n_flip_test": {
+        "0.0": 0.0,
+        "0.0025": 24.69,
+        "0.005": 49.64,
+        "0.01": 99.7
+      },
+      "share_train_clean": {
+        "0.0": 1.0,
+        "0.0025": 1.0,
+        "0.005": 1.0,
+        "0.01": 1.0
+      }
+    }
+  },
+  "primary": {
+    "group": "tn0",
+    "scores": "csv8"
+  },
+  "manifest_runs": [
+    {
+      "run_id": "20261022-094423_r933_replicas_param_s0-7",
+      "n_replicas": 8,
+      "train_noise": true,
+      "round_decimals": null
+    },
+    {
+      "run_id": "20261022-160545_r933_replicas_param_s8-71",
+      "n_replicas": 64,
+      "train_noise": true,
+      "round_decimals": null
+    },
+    {
+      "run_id": "20261022-161642_r933_replicas_param_s72-135",
+      "n_replicas": 64,
+      "train_noise": true,
+      "round_decimals": null
+    },
+    {
+      "run_id": "20261022-165009_r933_replicas_param_s247-357_tn0_r8_cv",
+      "n_replicas": 111,
+      "train_noise": false,
+      "round_decimals": 8
+    },
+    {
+      "run_id": "20261022-165947_r933_replicas_param_s136-246_tn0_r8_cv",
+      "n_replicas": 111,
+      "train_noise": false,
+      "round_decimals": 8
+    }
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T17:21:48+09:00"
+}

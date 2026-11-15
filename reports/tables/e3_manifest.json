@@ -1,0 +1,14 @@
+{
+  "run_id": "20261022-063908_e3_leakage",
+  "data_source": "raw",
+  "quick": false,
+  "created_at": "2026-10-22T06:48:24+09:00",
+  "files": [
+    "/content/jobs/J20261022-064045-pro1-rext34/archive/reports/tables/e3_grid.csv",
+    "/content/jobs/J20261022-064045-pro1-rext34/archive/reports/tables/e3_null.csv",
+    "/content/jobs/J20261022-064045-pro1-rext34/archive/reports/tables/e3_leaderboard.csv",
+    "/content/jobs/J20261022-064045-pro1-rext34/archive/reports/figures/e3_gap_vs_kfeat.png",
+    "/content/jobs/J20261022-064045-pro1-rext34/archive/reports/figures/e3_cv_vs_kfeat.png",
+    "/content/jobs/J20261022-064045-pro1-rext34/archive/reports/figures/e3_null.png"
+  ]
+}

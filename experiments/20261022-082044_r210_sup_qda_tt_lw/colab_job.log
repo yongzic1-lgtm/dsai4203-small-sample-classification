@@ -1,0 +1,9 @@
+[sup] research/r210_sup_tiebreak_lw.py: 3 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r210_sup_qda_tt_lw                 auc=0.9962 +/- 0.0010  logloss=0.08173397957495421  4s  run=20261022-082044_r210_sup_qda_tt_lw  chosen={}
+[sup] r210_qda_block_nll                 auc=1.0000 +/- 0.0001  logloss=0.008685529278027161  15s  run=20261022-082047_r210_qda_block_nll  chosen={"{\"model__reg_param\": 0.001}": 100}
+[sup] r210_selftrain_qda_nll             auc=1.0000 +/- 0.0000  logloss=0.007112413885745866  39s  run=20261022-082102_r210_selftrain_qda_nll  chosen={"{\"estimator__reg_param\": 0.001, \"threshold\": 0.99}": 89, "{\"estimator__reg_param\": 0.001, \"threshold\": 0.9}": 11}
+
+             candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                 run_id
+r210_selftrain_qda_nll  1.000000        0.000000     0.007112          8 20261022-082102_r210_selftrain_qda_nll
+    r210_qda_block_nll  0.999984        0.000073     0.008686         11     20261022-082047_r210_qda_block_nll
+    r210_sup_qda_tt_lw  0.996188        0.000997     0.081734          1     20261022-082044_r210_sup_qda_tt_lw

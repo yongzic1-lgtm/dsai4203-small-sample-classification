@@ -1,0 +1,13 @@
+name: r426_abc_attribution
+input_pack: r424_r420_pooled.npz
+input_pack_sha256: 4e3a997a38c5383325a92b4ac8011f7c86c5e97eb536b337ddcc648806f05d42
+window: 0.00015
+weights_r156:
+  0.0: 0.0773
+  0.0025: 0.4069
+  0.005: 0.3608
+  0.01: 0.155
+n_boot: 400
+source_runs:
+- 20261022-182358_r420_replica_flip_grid_s136-209
+- 20261022-185515_r420_replica_flip_grid_s210-357

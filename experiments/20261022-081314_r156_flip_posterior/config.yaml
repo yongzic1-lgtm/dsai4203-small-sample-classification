@@ -1,0 +1,18 @@
+name: r156_flip_posterior
+flips:
+- 0.0
+- 0.0025
+- 0.005
+- 0.01
+abc_p_near_s003:
+- 0.0025
+- 0.0179
+- 0.0216
+- 0.0172
+pred_private_mean:
+- 0.9999521
+- 0.9986798
+- 0.9973724
+- 0.9949027
+abc_source_run: 20261022-073058_r153_param
+prior: uniform over the grid

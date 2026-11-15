@@ -1,0 +1,27 @@
+{
+  "auc_mean": 0.9605992900014639,
+  "auc_std_fold": 0.024368822173988548,
+  "auc_std_repeat": 0.003459847209268577,
+  "auc_min_repeat": 0.9549825375912333,
+  "auc_max_repeat": 0.9673254281949933,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.9605419546540921,
+  "oof_auc_std": 0.001955938161357255,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "regime": "qda",
+  "description": "QDA reg 0.5 on the block",
+  "n_constant_folds": 0,
+  "uses_unlabeled_test_features": true,
+  "status": "done",
+  "finished_at": "2026-10-22T06:37:21+09:00"
+}

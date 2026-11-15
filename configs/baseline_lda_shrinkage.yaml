@@ -1,0 +1,12 @@
+# Baseline 4: shrinkage LDA (Ledoit-Wolf), a classic small-n linear classifier.
+name: baseline_lda_shrinkage
+hypothesis: >-
+  LDA with automatic Ledoit-Wolf shrinkage estimates a well-conditioned covariance from
+  250 rows and should be competitive with L2 logistic regression at no tuning cost.
+pipeline:
+  scaler: standard
+  model:
+    name: lda
+    params: {solver: lsqr, shrinkage: auto}
+  random_state: 0
+test_pred: fold_mean

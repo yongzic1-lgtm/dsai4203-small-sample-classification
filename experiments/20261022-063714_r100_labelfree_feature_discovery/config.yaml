@@ -1,0 +1,18 @@
+name: r100_labelfree_feature_discovery
+rows: 20000
+block:
+- 8
+- 15
+- 26
+- 30
+- 46
+- 49
+- 64
+- 67
+- 77
+- 80
+- 98
+- 100
+- 112
+rule: add feature j to S if conditional LRT given PCA(S) > (dim(S)+2)*log(n), not
+  an exact linear combination of S

@@ -1,0 +1,9 @@
+name: r307_e2_model_comparison
+models:
+  l1_all: (a) supervised L1 logistic C=0.1, all 150 features
+  qda_hv: (b) supervised QDA reg 0.1, 13-column block
+  gmm2_hv: (c) transductive GMM K=2, block (labels map components)
+source_runs:
+  l1_all: 20261022-070248_e2_learning_curve
+  qda_hv: 20261022-070339_e2_learning_curve_qda_block
+  gmm2_hv: 20261022-070445_e2_learning_curve_gmm

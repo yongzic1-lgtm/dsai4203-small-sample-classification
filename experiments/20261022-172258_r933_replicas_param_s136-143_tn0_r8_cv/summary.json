@@ -1,0 +1,28 @@
+{
+  "n_seeds": 8,
+  "variant": "param",
+  "wall_seconds": 79.23277759552002,
+  "replica_seconds_mean": 49.16254070087507,
+  "replica_seconds_max": 50.028361392999614,
+  "n_label_vectors_mean": 1.0,
+  "procs": [
+    "s003_gmm2_hv",
+    "r105_gmm2_block_mle",
+    "r155_gmm2_inf_tight",
+    "r102_semisup_eps01",
+    "r255_bqda_eb_hv",
+    "r209_selftrain_qda_lw",
+    "r210_qda_block_nll",
+    "r201_qda_block",
+    "x_qda_block_nll_ext",
+    "bayes"
+  ],
+  "flips": [
+    0.0,
+    0.0025,
+    0.005,
+    0.01
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T17:24:17+09:00"
+}

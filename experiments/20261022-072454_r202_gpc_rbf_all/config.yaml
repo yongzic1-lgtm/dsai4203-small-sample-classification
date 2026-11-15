@@ -1,0 +1,18 @@
+name: r202_gpc_rbf_all
+description: GPC, C*RBF isotropic, all 150 features, ML-II hyperparameters
+model_code: research/r202_sup_gpc.py + research/lib_sup.py
+group: supervised-kernel
+features: all 150
+tuning: ML-II (marginal likelihood)
+n_configs: 1
+inner_cv: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

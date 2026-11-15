@@ -1,0 +1,2 @@
+candidate,run_id,group,features,n_configs,uses_unlabeled_test_features,auc_mean,auc_std_repeat,oof_auc_mean,oof_logloss,chosen,wall_s,description
+r201_qda_block,20261101-123515_r201_qda_block,supervised-generative,block(in-fold highvar),11,False,0.9999028588159024,0.0002130024908390998,0.9998837284413151,0.01463601426015323,"{""{\""model__reg_param\"": 0.003}"": 49, ""{\""model__reg_param\"": 0.001}"": 41, ""{\""model__reg_param\"": 0.01}"": 10}",107.9,"QDA on in-fold high-variance block, nested reg_param"

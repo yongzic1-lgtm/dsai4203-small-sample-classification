@@ -1,0 +1,12 @@
+name: r151_replica_validation
+n_param: 30
+n_mc: 30
+class_sep: 0.71
+hamming: 4
+cv_scheme: stratified 5-fold x 4, seed 2026 (reduced official scheme)
+models:
+- l1_all
+- lda_hv
+- qda_hv
+- logreg_hv
+- gmm2_hv

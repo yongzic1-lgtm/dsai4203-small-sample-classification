@@ -1,0 +1,40 @@
+{
+  "run_id": "20261022-165947_r933_replicas_param_s136-246_tn0_r8_cv",
+  "kind": "analysis",
+  "name": "r933_replicas_param_s136-246_tn0_r8_cv",
+  "author": "TODO_ID_1",
+  "created_at": "2026-10-22T16:59:47+09:00",
+  "data_source": "raw",
+  "data_fingerprint": {
+    "train.csv": "7ef80ff93ef49c8c",
+    "test.csv": "e40a4f71df157db8"
+  },
+  "git": {
+    "commit": "no-commit",
+    "dirty": true,
+    "branch": null,
+    "from_env": true
+  },
+  "packages": {
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "sklearn": "1.9.1",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.2.0"
+  },
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+  "compute": {
+    "host": "colab",
+    "account": "pro2",
+    "session": "vcand",
+    "hardware": "CPU High-RAM DEFAULT",
+    "job_id": "J20261022-170123-pro2-vcand",
+    "code_bundle": "ff5ea4095394acff",
+    "env_hash": "8871117790f585a7",
+    "node": "c021dc2d8d53",
+    "cpus": 8
+  },
+  "command": "research/r933_replica_candidates.py --seed-start 136 --n-seeds 111 --n-jobs 8 --train-noise 0 --round-decimals 8 --cv-stats"
+}

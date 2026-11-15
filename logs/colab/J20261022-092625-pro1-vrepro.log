@@ -1,0 +1,83 @@
+[r912] flip=0.0 seed=0 raw=0.9999979 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=-4.27e-08 uniq raw/csv8=1794/702 (8s)
+[r912] flip=0.0 seed=1 raw=0.9999608 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+1.90e-06 uniq raw/csv8=6715/2420 (12s)
+[r912] flip=0.0 seed=2 raw=0.9999994 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+6.41e-08 uniq raw/csv8=1849/591 (15s)
+[r912] flip=0.0 seed=3 raw=0.9999998 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+1.07e-08 uniq raw/csv8=4402/989 (24s)
+[r912] flip=0.0 seed=4 raw=0.9999946 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+1.49e-07 uniq raw/csv8=2807/899 (31s)
+[r912] flip=0.0 seed=5 raw=1.0000000 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+0.00e+00 uniq raw/csv8=299/97 (39s)
+[r912] flip=0.0 seed=6 raw=0.9999997 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=-1.07e-08 uniq raw/csv8=1219/398 (42s)
+[r912] flip=0.0 seed=7 raw=0.9999771 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+6.30e-07 uniq raw/csv8=4657/1910 (46s)
+[r912] flip=0.0 seed=8 raw=0.9999281 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=-3.20e-08 uniq raw/csv8=6200/2481 (53s)
+[r912] flip=0.0 seed=9 raw=0.9999886 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+4.06e-07 uniq raw/csv8=4483/1370 (56s)
+[r912] flip=0.0 seed=10 raw=1.0000000 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+2.14e-08 uniq raw/csv8=512/172 (60s)
+[r912] flip=0.0 seed=11 raw=0.9999923 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+1.28e-07 uniq raw/csv8=2052/826 (66s)
+[r912] flip=0.0 seed=12 raw=0.9999918 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+1.92e-07 uniq raw/csv8=3255/1047 (73s)
+[r912] flip=0.0 seed=13 raw=0.9999980 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=-1.71e-07 uniq raw/csv8=4155/1225 (80s)
+[r912] flip=0.0 seed=14 raw=0.9930215 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+6.98e-03 uniq raw/csv8=19041/13647 (84s)
+[r912] flip=0.0 seed=15 raw=0.9999897 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+2.56e-07 uniq raw/csv8=3429/1227 (87s)
+[r912] flip=0.0 seed=16 raw=0.9999974 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+3.31e-07 uniq raw/csv8=2358/716 (94s)
+[r912] flip=0.0 seed=17 raw=0.9999966 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=-1.07e-08 uniq raw/csv8=4126/1319 (99s)
+[r912] flip=0.0 seed=18 raw=0.9999746 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+3.63e-07 uniq raw/csv8=4778/1879 (102s)
+[r912] flip=0.0 seed=19 raw=0.9993218 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+6.25e-04 uniq raw/csv8=13320/7427 (107s)
+[r912] flip=0.0 seed=20 raw=0.9999840 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+2.99e-07 uniq raw/csv8=5447/2051 (111s)
+[r912] flip=0.0 seed=21 raw=0.9999980 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+2.24e-07 uniq raw/csv8=2039/612 (115s)
+[r912] flip=0.0 seed=22 raw=0.9999958 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+1.07e-08 uniq raw/csv8=2599/929 (118s)
+[r912] flip=0.0 seed=23 raw=0.9999953 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+7.47e-08 uniq raw/csv8=2358/902 (122s)
+[r912] flip=0.0 seed=24 raw=0.9999903 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+8.76e-07 uniq raw/csv8=4601/1308 (126s)
+[r912] flip=0.0 seed=25 raw=1.0000000 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+0.00e+00 uniq raw/csv8=1125/391 (132s)
+[r912] flip=0.0 seed=26 raw=1.0000000 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+0.00e+00 uniq raw/csv8=2098/326 (137s)
+[r912] flip=0.0 seed=27 raw=0.9999862 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+1.07e-07 uniq raw/csv8=4657/1715 (140s)
+[r912] flip=0.0 seed=28 raw=0.9990354 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+7.54e-04 uniq raw/csv8=11659/6639 (142s)
+[r912] flip=0.0 seed=29 raw=0.9999801 csv8-raw=+0.00e+00 logodds-raw=+0.00e+00 bayes-raw=+6.41e-08 uniq raw/csv8=4942/1900 (148s)
+[r912] flip=0.005 seed=0 raw=0.9974098 csv8-raw=-1.72e-05 logodds-raw=-1.77e-04 bayes-raw=-1.78e-04 uniq raw/csv8=1794/702 (153s)
+[r912] flip=0.005 seed=1 raw=0.9969521 csv8-raw=+1.45e-04 logodds-raw=-9.59e-05 bayes-raw=-9.69e-05 uniq raw/csv8=6715/2420 (160s)
+[r912] flip=0.005 seed=2 raw=0.9975628 csv8-raw=-1.18e-05 logodds-raw=-4.63e-05 bayes-raw=-4.64e-05 uniq raw/csv8=1849/591 (163s)
+[r912] flip=0.005 seed=3 raw=0.9970767 csv8-raw=+4.96e-05 logodds-raw=-2.24e-04 bayes-raw=-2.20e-04 uniq raw/csv8=4150/986 (169s)
+[r912] flip=0.005 seed=4 raw=0.9974271 csv8-raw=-1.26e-04 logodds-raw=+1.88e-05 bayes-raw=+1.84e-05 uniq raw/csv8=2807/899 (176s)
+[r912] flip=0.005 seed=5 raw=0.9974273 csv8-raw=+2.65e-05 logodds-raw=-7.72e-05 bayes-raw=-7.76e-05 uniq raw/csv8=297/97 (181s)
+[r912] flip=0.005 seed=6 raw=0.9975461 csv8-raw=+1.24e-05 logodds-raw=+7.89e-05 bayes-raw=+8.00e-05 uniq raw/csv8=1219/398 (186s)
+[r912] flip=0.005 seed=7 raw=0.9980156 csv8-raw=+5.75e-05 logodds-raw=-1.47e-04 bayes-raw=-1.46e-04 uniq raw/csv8=4657/1910 (190s)
+[r912] flip=0.005 seed=8 raw=0.9972123 csv8-raw=+1.46e-05 logodds-raw=-1.66e-04 bayes-raw=-1.65e-04 uniq raw/csv8=6144/2467 (196s)
+[r912] flip=0.005 seed=9 raw=0.9981893 csv8-raw=+5.34e-06 logodds-raw=+4.83e-05 bayes-raw=+5.11e-05 uniq raw/csv8=4482/1363 (201s)
+[r912] flip=0.005 seed=10 raw=0.9977012 csv8-raw=-8.27e-06 logodds-raw=+2.24e-04 bayes-raw=+2.24e-04 uniq raw/csv8=513/169 (205s)
+[r912] flip=0.005 seed=11 raw=0.9968851 csv8-raw=+3.08e-05 logodds-raw=+4.66e-04 bayes-raw=+4.68e-04 uniq raw/csv8=2028/821 (210s)
+[r912] flip=0.005 seed=12 raw=0.9975001 csv8-raw=+1.23e-06 logodds-raw=-8.70e-05 bayes-raw=-8.97e-05 uniq raw/csv8=3255/1047 (218s)
+[r912] flip=0.005 seed=13 raw=0.9972155 csv8-raw=+2.75e-05 logodds-raw=+1.51e-04 bayes-raw=+1.50e-04 uniq raw/csv8=4171/1220 (222s)
+[r912] flip=0.005 seed=14 raw=0.9904456 csv8-raw=-1.90e-06 logodds-raw=+4.16e-07 bayes-raw=+6.73e-03 uniq raw/csv8=19039/13643 (228s)
+[r912] flip=0.005 seed=15 raw=0.9966284 csv8-raw=-8.21e-05 logodds-raw=-5.94e-05 bayes-raw=-5.53e-05 uniq raw/csv8=3386/1229 (231s)
+[r912] flip=0.005 seed=16 raw=0.9972889 csv8-raw=-7.37e-05 logodds-raw=+3.72e-04 bayes-raw=+3.75e-04 uniq raw/csv8=2357/708 (237s)
+[r912] flip=0.005 seed=17 raw=0.9977414 csv8-raw=-3.35e-06 logodds-raw=+8.80e-05 bayes-raw=+8.64e-05 uniq raw/csv8=4126/1319 (243s)
+[r912] flip=0.005 seed=18 raw=0.9976156 csv8-raw=+4.18e-06 logodds-raw=-1.42e-04 bayes-raw=-1.43e-04 uniq raw/csv8=4778/1879 (246s)
+[r912] flip=0.005 seed=19 raw=0.9969980 csv8-raw=-2.48e-05 logodds-raw=+2.76e-05 bayes-raw=+5.40e-04 uniq raw/csv8=13295/7415 (250s)
+[r912] flip=0.005 seed=20 raw=0.9975692 csv8-raw=-6.85e-05 logodds-raw=+5.38e-05 bayes-raw=+5.42e-05 uniq raw/csv8=5447/2051 (256s)
+[r912] flip=0.005 seed=21 raw=0.9971725 csv8-raw=+7.93e-05 logodds-raw=+1.19e-04 bayes-raw=+1.23e-04 uniq raw/csv8=1933/611 (260s)
+[r912] flip=0.005 seed=22 raw=0.9978452 csv8-raw=+6.46e-05 logodds-raw=-2.41e-04 bayes-raw=-2.39e-04 uniq raw/csv8=2599/929 (262s)
+[r912] flip=0.005 seed=23 raw=0.9979239 csv8-raw=-2.37e-05 logodds-raw=-9.47e-05 bayes-raw=-9.41e-05 uniq raw/csv8=2358/904 (265s)
+[r912] flip=0.005 seed=24 raw=0.9974143 csv8-raw=-5.09e-06 logodds-raw=+7.00e-06 bayes-raw=+1.31e-05 uniq raw/csv8=4601/1308 (270s)
+[r912] flip=0.005 seed=25 raw=0.9975848 csv8-raw=-2.34e-05 logodds-raw=-1.52e-04 bayes-raw=-1.52e-04 uniq raw/csv8=1125/391 (274s)
+[r912] flip=0.005 seed=26 raw=0.9976212 csv8-raw=+5.31e-05 logodds-raw=-1.49e-04 bayes-raw=-1.52e-04 uniq raw/csv8=2098/326 (280s)
+[r912] flip=0.005 seed=27 raw=0.9977447 csv8-raw=+2.69e-05 logodds-raw=+2.41e-04 bayes-raw=+2.42e-04 uniq raw/csv8=4657/1715 (284s)
+[r912] flip=0.005 seed=28 raw=0.9966483 csv8-raw=+1.78e-05 logodds-raw=-1.28e-04 bayes-raw=+5.99e-04 uniq raw/csv8=11659/6639 (287s)
+[r912] flip=0.005 seed=29 raw=0.9976776 csv8-raw=+5.25e-06 logodds-raw=+2.70e-05 bayes-raw=+2.68e-05 uniq raw/csv8=4933/1889 (290s)
+
+                                   0            1
+flip_y                  0.000000e+00     0.005000
+n                       3.000000e+01    30.000000
+auc_raw_mean            9.997032e-01     0.997201
+auc_bayes_mean          9.999819e-01     0.997466
+n_unique_raw_mean       4.432533e+03  4415.733333
+n_unique_csv8_mean      1.937167e+03  1934.866667
+n_at_min_csv8_mean      8.453233e+03  8448.300000
+n_at_max_csv8_mean      8.586000e+03  8542.066667
+spearman_csv8_raw_mean  9.740195e-01     0.974718
+d_csv8_mean             0.000000e+00     0.000005
+d_csv8_se               0.000000e+00     0.000009
+d_csv8_min              0.000000e+00    -0.000126
+d_csv8_max              0.000000e+00     0.000145
+d_logodds_mean          0.000000e+00    -0.000002
+d_logodds_se            0.000000e+00     0.000031
+d_logodds_min           0.000000e+00    -0.000241
+d_logodds_max           0.000000e+00     0.000466
+d_bayes_mean            2.787030e-04     0.000264
+d_bayes_se              2.331491e-04     0.000227
+d_bayes_min            -1.708418e-07    -0.000239
+d_bayes_max             6.975852e-03     0.006735

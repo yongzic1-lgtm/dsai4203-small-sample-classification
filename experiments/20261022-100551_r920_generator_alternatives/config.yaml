@@ -1,0 +1,28 @@
+name: r920_generator_alternatives
+n_rep_lr: 12
+n_boot: 20
+n_calib: 24
+n_sim: 16000000
+claim_informative:
+- 6
+- 15
+- 30
+- 46
+- 52
+- 61
+- 64
+- 80
+- 100
+- 112
+- 142
+- 144
+claim_redundant:
+- 8
+- 17
+- 26
+- 49
+- 57
+- 67
+- 77
+- 98
+quick: false

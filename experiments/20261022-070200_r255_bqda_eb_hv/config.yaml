@@ -1,0 +1,31 @@
+name: r255_bqda_eb_hv
+description: Bayesian QDA, NIW prior by empirical Bayes per fold, label-free block
+  (R003 basis)
+model_code: research/r255_bayes_qda.py + research/lib_fm.py
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true
+block:
+- 8
+- 15
+- 26
+- 30
+- 46
+- 49
+- 64
+- 67
+- 77
+- 80
+- 98
+- 100
+- 112
+code_sha:
+  lib_fm.py: 9a8fb86c4d4e37e6
+  r255_bayes_qda.py: cf25eaccf2127e5e

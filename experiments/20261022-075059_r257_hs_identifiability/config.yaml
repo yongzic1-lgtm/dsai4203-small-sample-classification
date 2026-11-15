@@ -1,0 +1,22 @@
+name: r257_hs_identifiability
+kind: analysis
+inputs: all 250 labelled rows; label-free null space
+mcmc:
+  warmup: 1000
+  samples: 1000
+  chains: 4
+versions:
+  torch: null
+  tabpfn: null
+  tabicl: null
+  jax: 0.10.2
+  jaxlib: 0.10.2
+  numpyro: 0.22.0
+  huggingface_hub: null
+  scikit-learn: 1.9.1
+  numpy: 2.4.6
+  pandas: 3.0.6
+  scipy: 1.17.1
+code_sha:
+  lib_fm.py: 2b2319bcbfbd701c
+  r257_hs_identifiability.py: deb6c2a8213c9e30

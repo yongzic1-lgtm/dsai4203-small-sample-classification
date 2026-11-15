@@ -1,0 +1,53 @@
+name: e4_feature_stability
+hypothesis: 'A few features enter the bootstrap top-k in nearly every resample, the
+  rest at about the chance rate k/150; the sorted frequency curve drops sharply after
+  them and the drop position does not move with k. Whether those stable features are
+  also worth keeping is decided only by honest CV (selection repeated inside each
+  fold); the naive comparison (stable set chosen on all 250 rows) is biased upward.
+  Real data (written before the full run, ext34 2026-10-22): R001 found 7 features
+  with |corr| 0.34-0.40 (98, 17, 100, 112, 80, 77, 46), the next one 0.24 (49), the
+  rest <= 0.18, so the drop should sit at m* ~ 7 for every k >= 7 (at k = 5 the 7
+  strong features share 5 places). Six of the seven are in the label-free 13-feature
+  high-variance block, so the stable set should be a strict subset of the block plus
+  feature 17; with L2 logistic regression the stable set alone should beat all 150.
+
+  '
+bootstrap:
+  n_boot: 2000
+  ks: &id001
+  - 5
+  - 10
+  - 13
+  - 20
+  method: pearson
+  seed: 2026
+drop:
+  primary_rule: perm
+  threshold: 0.5
+  binom_alpha: 0.05
+  null_permutations: 50
+  null_n_boot: 2000
+  null_quantile: 0.95
+  label_seed: 7
+pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params:
+      C: 0.1
+      l1_ratio: 0.0
+      solver: liblinear
+  random_state: 0
+usefulness:
+  ks: *id001
+  threshold: 0.5
+  n_boot_fold: 500
+  fold_seed: 0
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+quick_mode: false
+config_file: extensions/e4_feature_stability/config.yaml
+data_source: raw

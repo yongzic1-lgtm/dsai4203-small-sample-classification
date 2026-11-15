@@ -1,0 +1,78 @@
+name: r420_replica_flip_grid_s210-357
+design: r933 --train-noise 0 --round-decimals 8, extended levels
+variant: param
+seeds:
+- 210
+- 357
+flips:
+- 0.0
+- 0.001
+- 0.002
+- 0.0025
+- 0.003
+- 0.004
+- 0.005
+- 0.006
+- 0.007
+- 0.008
+- 0.009
+- 0.01
+- 0.011
+- 0.012
+- 0.013
+- 0.014
+- 0.015
+- 0.016
+- 0.017
+- 0.018
+- 0.019
+- 0.02
+- 0.025
+- 0.03
+n_draws: 16
+n_abc: 512
+obs_public_s003: 0.99923
+abc_store_window: 0.0003
+abc_procs:
+- s003_gmm2_hv
+- r105_gmm2_block_mle
+- r255_bqda_eb_hv
+- r209_selftrain_qda_lw
+- r210_qda_block_nll
+- r201_qda_block
+- bayes
+procedures:
+- s003_gmm2_hv
+- r105_gmm2_block_mle
+- r155_gmm2_inf_tight
+- r102_semisup_eps01
+- r255_bqda_eb_hv
+- r209_selftrain_qda_lw
+- r210_qda_block_nll
+- r201_qda_block
+- x_qda_block_nll_ext
+- bayes
+source_runs:
+  s003_gmm2_hv: 20261022-050708_r003_gmm2_hv
+  r105_gmm2_block_mle: 20261022-074857_r105_gmm2_block_mle
+  r155_gmm2_inf_tight: 20261022-080453_r155_gmm2_inf_tight
+  r102_semisup_eps01: 20261022-064500_r102_semisup_eps01
+  r255_bqda_eb_hv: 20261022-070200_r255_bqda_eb_hv
+  r209_selftrain_qda_lw: 20261022-080632_r209_selftrain_qda_lw
+  r210_qda_block_nll: 20261022-082047_r210_qda_block_nll
+  r201_qda_block: 20261022-071234_r201_qda_block
+  x_qda_block_nll_ext: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+code: research/r931_cand_lib.py + research/lib_gen_replica.py + lib_mix.expected_auc
+reproduces:
+- 20261022-165947_r933_replicas_param_s136-246_tn0_r8_cv
+- 20261022-165009_r933_replicas_param_s247-357_tn0_r8_cv
+quick: false

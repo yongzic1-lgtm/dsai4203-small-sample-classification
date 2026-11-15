@@ -1,0 +1,14 @@
+{
+ "research/r403_r402_pooled.npz": {
+  "sha256": "4246ec03ed055a51e3e5df9e8441ce665ee2d3904a374c9b4f5e6ea6ec9e2173",
+  "bytes": 5695937
+ },
+ "research/r424_r420_pooled.npz": {
+  "sha256": "4e3a997a38c5383325a92b4ac8011f7c86c5e97eb536b337ddcc648806f05d42",
+  "bytes": 3040530
+ },
+ "research/r935_r933_pooled.npz": {
+  "sha256": "30256fb929f66d14c3e00a79e2d25a1866543f036ed416002a4305022f073013",
+  "bytes": 3480914
+ }
+}

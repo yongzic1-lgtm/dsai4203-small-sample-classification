@@ -1,0 +1,37 @@
+{
+  "auc_mean": 0.9999028588159024,
+  "auc_std_fold": 0.0005057781571764715,
+  "auc_std_repeat": 0.0002130024908390998,
+  "auc_min_repeat": 0.9993506493506494,
+  "auc_max_repeat": 1.0,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.9998837284413151,
+  "oof_auc_std": 0.00013996086441439072,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "reproduces_run": "20261022-071234_r201_qda_block",
+  "test_pred_sha16": "0d7e9b64d238586a",
+  "oof_sha16": "67a28deb55720218",
+  "fold_auc_sha16": "4a50345d4e076238",
+  "wall_seconds": 98.4,
+  "cpus": 2,
+  "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "chosen_params_top": {
+    "{\"model__reg_param\": 0.003}": 49,
+    "{\"model__reg_param\": 0.001}": 41,
+    "{\"model__reg_param\": 0.01}": 10
+  },
+  "oof_logloss": 0.01463601426015323,
+  "oof_brier": 0.004206703909244861,
+  "status": "done",
+  "finished_at": "2026-10-22T09:14:03+09:00"
+}

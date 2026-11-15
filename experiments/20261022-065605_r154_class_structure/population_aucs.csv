@@ -1,0 +1,7 @@
+quantity,auc
+bayes_quadratic,0.999949316725
+best_linear_mc,0.94662692549375
+lda_direction_mc,0.94662692549375
+mean_only_pooled_cov,0.947035300975
+cov_only_same_mean,0.9998030571
+best_linear_formula,0.9468428993444679

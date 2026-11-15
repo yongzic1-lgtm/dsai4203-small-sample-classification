@@ -1,0 +1,30 @@
+name: r401_bqda_eb_trainonly_widekappa
+description: Bayesian QDA (EB NIW prior, Student-t predictive), block + scaling from
+  the fold's training rows only, EB kappa0 grid [0.001, 0.01, 0.1, 1.0, 3.0, 10.0,
+  30.0, 100.0, 300.0]
+model_code: research/r401_inductive_official.py + research/r400_inductive_lib.py +
+  research/lib_fm.py + research/lib_sup.py
+group: supervised-generative
+features: block(in-fold highvar)
+n_configs: 297
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false
+wide_kappa_grid:
+- 0.001
+- 0.01
+- 0.1
+- 1.0
+- 3.0
+- 10.0
+- 30.0
+- 100.0
+- 300.0
+members: null

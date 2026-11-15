@@ -1,0 +1,31 @@
+{
+  "wall_seconds": 31.4,
+  "n_evals": 5000,
+  "n_failed_evals": 1194,
+  "auc_at_min_budget": {
+    "ssl_labelspread": 0.5741,
+    "ssl_selftrain_lw": NaN,
+    "ssl_selftrain_r01": NaN,
+    "sup_lr_tt": 0.6807,
+    "sup_qda_infold_lw": NaN,
+    "sup_qda_infold_r003": NaN,
+    "sup_qda_tt_lw": NaN,
+    "sup_qda_tt_r003": NaN,
+    "sup_qda_tt_r01": NaN,
+    "trans_gmm2": 1.0
+  },
+  "auc_at_200": {
+    "ssl_labelspread": 0.9159,
+    "ssl_selftrain_lw": 1.0,
+    "ssl_selftrain_r01": 0.9963,
+    "sup_lr_tt": 0.8955,
+    "sup_qda_infold_lw": 0.9836,
+    "sup_qda_infold_r003": 1.0,
+    "sup_qda_tt_lw": 0.9956,
+    "sup_qda_tt_r003": 1.0,
+    "sup_qda_tt_r01": 0.9952,
+    "trans_gmm2": 1.0
+  },
+  "status": "done",
+  "finished_at": "2026-10-22T07:47:43+09:00"
+}

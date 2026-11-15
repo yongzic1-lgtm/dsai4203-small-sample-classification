@@ -1,0 +1,43 @@
+{
+  "auc_mean": 0.8051683501683502,
+  "auc_std_fold": 0.055181567246562695,
+  "auc_std_repeat": 0.010839395441130077,
+  "auc_min_repeat": 0.7844297007340486,
+  "auc_max_repeat": 0.828119706380576,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.6948840514178671,
+  "oof_auc_std": 0.0478202235188679,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "group": "supervised-kernel",
+  "features": "all 150",
+  "n_configs": 16,
+  "tuning": "C in [0.1, 1.0, 10.0, 100.0] x gamma in [0.0003, 0.001, 0.003, 0.01]",
+  "uses_unlabeled_test_features": false,
+  "wall_seconds": 37.8,
+  "n_constant_pred_folds": 0,
+  "oof_logloss": null,
+  "oof_brier": null,
+  "n_fold_logs": 100,
+  "chosen_params_top": {
+    "{\"model__C\": 10.0, \"model__gamma\": 0.01}": 50,
+    "{\"model__C\": 0.1, \"model__gamma\": 0.01}": 29,
+    "{\"model__C\": 1.0, \"model__gamma\": 0.01}": 17,
+    "{\"model__C\": 1.0, \"model__gamma\": 0.003}": 2,
+    "{\"model__C\": 10.0, \"model__gamma\": 0.001}": 1,
+    "{\"model__C\": 0.1, \"model__gamma\": 0.003}": 1
+  },
+  "chosen_params_n_distinct": 6,
+  "best_inner_auc_mean": 0.8029108377003112,
+  "status": "done",
+  "finished_at": "2026-10-22T07:17:10+09:00"
+}

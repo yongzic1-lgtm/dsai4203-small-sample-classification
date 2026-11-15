@@ -1,0 +1,11 @@
+[sup] research/r202_sup_gpc.py: 4 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r202_gpc_rbf_block                 auc=0.9558 +/- 0.0089  logloss=0.3458726109574061  12s  run=20261022-072319_r202_gpc_rbf_block  chosen={}
+[sup] r202_gpc_ard_block                 auc=0.9757 +/- 0.0047  logloss=0.2576407067263275  52s  run=20261022-072331_r202_gpc_ard_block  chosen={}
+[sup] r202_gpc_ard_block_tt              auc=0.9775 +/- 0.0038  logloss=0.25562334161034517  30s  run=20261022-072424_r202_gpc_ard_block_tt  chosen={}
+[sup] r202_gpc_rbf_all                   auc=0.7855 +/- 0.0141  logloss=0.5688566096395526  41s  run=20261022-072454_r202_gpc_rbf_all  chosen={}
+
+            candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                run_id
+r202_gpc_ard_block_tt  0.977454        0.003817     0.255623          1 20261022-072424_r202_gpc_ard_block_tt
+   r202_gpc_ard_block  0.975739        0.004706     0.257641          1    20261022-072331_r202_gpc_ard_block
+   r202_gpc_rbf_block  0.955844        0.008940     0.345873          1    20261022-072319_r202_gpc_rbf_block
+     r202_gpc_rbf_all  0.785499        0.014143     0.568857          1      20261022-072454_r202_gpc_rbf_all

@@ -1,0 +1,14 @@
+name: r422_linear_ceiling_r921
+generator: R921 fit_param / gen_param (copied verbatim)
+compared_with: R154 = lib_gen_replica.fit_parametric (run 20261022-065605_r154_class_structure)
+mc_rows_per_class: 400000
+mc_seed: 154
+n_rep: 200
+bands:
+- - 0.1
+  - 0.9
+- - 0.05
+  - 0.95
+- - 0.01
+  - 0.99
+quick: false

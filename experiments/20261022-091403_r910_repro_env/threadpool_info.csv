@@ -1,0 +1,5 @@
+user_api,internal_api,num_threads,prefix,filepath,version,threading_layer,architecture
+openmp,openmp,2,libgomp,/content/venv/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0,,,
+blas,openblas,2,libscipy_openblas,/content/venv/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so,0.3.30,pthreads,Haswell
+blas,openblas,2,libscipy_openblas,/content/venv/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so,0.3.31.188.0,pthreads,Haswell
+openmp,openmp,2,libgomp,/usr/lib/x86_64-linux-gnu/libgomp.so.1.0.0,,,

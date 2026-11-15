@@ -1,0 +1,44 @@
+GMM proxy labels: {'test_pos_rate_hard': 0.5013670886075949, 'n_boundary_0.1_0.9': 203, 'train_auc_gmm': 1.0}
+  E3 k_feat=  2 proxy AUC hard 0.7756 soft 0.7703  public-sim 0.7759 +/- 0.0228
+  E3 k_feat=  5 proxy AUC hard 0.8214 soft 0.8153  public-sim 0.8219 +/- 0.0208
+  E3 k_feat=  7 proxy AUC hard 0.8517 soft 0.8452  public-sim 0.8522 +/- 0.0187
+  E3 k_feat= 10 proxy AUC hard 0.8638 soft 0.8569  public-sim 0.8643 +/- 0.0179
+  E3 k_feat= 13 proxy AUC hard 0.8413 soft 0.8347  public-sim 0.8420 +/- 0.0195
+  E3 k_feat= 20 proxy AUC hard 0.8195 soft 0.8132  public-sim 0.8200 +/- 0.0208
+  E3 k_feat= 30 proxy AUC hard 0.7831 soft 0.7776  public-sim 0.7836 +/- 0.0228
+  E3 k_feat= 50 proxy AUC hard 0.8250 soft 0.8188  public-sim 0.8253 +/- 0.0204
+  E3 k_feat=100 proxy AUC hard 0.8052 soft 0.7994  public-sim 0.8057 +/- 0.0214
+  E3 k_feat=150 proxy AUC hard 0.8015 soft 0.7958  public-sim 0.8019 +/- 0.0216
+  E4 logreg all150               (150) proxy AUC hard 0.8015
+  E4 logreg block                ( 13) proxy AUC hard 0.8869
+  E4 logreg stable_k10           (  8) proxy AUC hard 0.8515
+  E4 logreg block_minus_stable   (  6) proxy AUC hard 0.7366
+  E4 logreg block_or_stable      ( 14) proxy AUC hard 0.8855
+  E4 qda    block                ( 13) proxy AUC hard 0.9942
+  E4 qda    stable_k10           (  8) proxy AUC hard 0.9622
+  E4 qda    block_minus_stable   (  6) proxy AUC hard 0.9172
+  E4 qda    block_or_stable      ( 14) proxy AUC hard 0.9950
+
+ k_feat  proxy_auc_hard  proxy_auc_soft  pub_sim_mean  pub_sim_sd  pub_sim_q05  pub_sim_q95
+      2          0.7756          0.7703        0.7759      0.0228       0.7381       0.8137
+      5          0.8214          0.8153        0.8219      0.0208       0.7864       0.8556
+      7          0.8517          0.8452        0.8522      0.0187       0.8209       0.8818
+     10          0.8638          0.8569        0.8643      0.0179       0.8342       0.8929
+     13          0.8413          0.8347        0.8420      0.0195       0.8099       0.8735
+     20          0.8195          0.8132        0.8200      0.0208       0.7850       0.8539
+     30          0.7831          0.7776        0.7836      0.0228       0.7461       0.8208
+     50          0.8250          0.8188        0.8253      0.0204       0.7910       0.8589
+    100          0.8052          0.7994        0.8057      0.0214       0.7705       0.8395
+    150          0.8015          0.7958        0.8019      0.0216       0.7655       0.8366
+
+ model                set  n_features  proxy_auc_hard  proxy_auc_soft
+logreg             all150         150          0.8015          0.7958
+logreg              block          13          0.8869          0.8797
+logreg         stable_k10           8          0.8515          0.8450
+logreg block_minus_stable           6          0.7366          0.7321
+logreg    block_or_stable          14          0.8855          0.8784
+   qda              block          13          0.9942          0.9853
+   qda         stable_k10           8          0.9622          0.9539
+   qda block_minus_stable           6          0.9172          0.9099
+   qda    block_or_stable          14          0.9950          0.9861
+run folder: /content/jobs/J20261022-073122-pro1-rext34/archive/experiments/20261022-072942_r321_e3e4_proxy_test

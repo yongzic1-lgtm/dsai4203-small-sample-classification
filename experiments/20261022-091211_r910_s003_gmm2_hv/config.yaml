@@ -1,0 +1,16 @@
+name: r910_s003_gmm2_hv
+description: 'R910 re-run of 20261022-050708_r003_gmm2_hv (S003): TransductiveGMM(''highvar'',
+  2), constructor as in research/r003_transductive_vs_supervised.py'
+model_code: ssc.transductive.TransductiveGMM('highvar', 2, source=src) [= r003 CANDIDATES['gmm2_hv']]
+reproduces_run: 20261022-050708_r003_gmm2_hv
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+n_jobs: 2
+uses_unlabeled_test_features: true

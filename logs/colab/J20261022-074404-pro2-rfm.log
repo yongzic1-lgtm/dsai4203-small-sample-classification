@@ -1,0 +1,15 @@
+python=/content/venv_tabicl/bin/python device=cuda gpu=NVIDIA L4 versions={'torch': '2.14.1', 'tabpfn': None, 'tabicl': '2.2.0', 'jax': None, 'jaxlib': None, 'numpyro': None, 'huggingface_hub': '2.2.0', 'scikit-learn': '1.9.1', 'numpy': '2.4.6', 'pandas': '3.0.6', 'scipy': '1.17.1'}
+model params: {'allow_auto_download': 'True', 'average_logits': 'True', 'batch_size': '8', 'checkpoint_version': 'tabicl-classifier-v2-20260212.ckpt', 'class_shuffle_method': 'shift', 'device': 'cuda', 'disk_offload_dir': 'None', 'feat_shuffle_method': 'latin', 'inference_config': 'None', 'kv_cache': 'False', 'model_path': 'None', 'n_estimators': '8', 'n_jobs': 'None', 'norm_methods': 'None', 'offload_mode': 'auto', 'outlier_threshold': '4.0', 'random_state': '0', 'softmax_temperature': '0.9', 'support_many_classes': 'True', 'use_amp': 'auto', 'use_fa3': 'auto', 'verbose': 'False'}
+references done in 14s: r003_gmm2_hv=1.0000, r003_sup_qda_hv=0.9958, r003_sup_l1_all=0.8469, r003_sup_logreg_hv=0.8977
+INFO: You are downloading 'tabicl-classifier-v2-20260212.ckpt', the latest best-performing version, used in our TabICLv2 paper.
+
+Checkpoint 'tabicl-classifier-v2-20260212.ckpt' not cached.
+ Downloading from Hugging Face Hub (jingang/TabICL).
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+timing probe (all): fit + predict 50 validation rows = 5.4s
+r251_tabicl_all    auc=0.99289 +/- 0.00212 logloss=0.1204 pseudoAUC=0.99505 side_agree_boundary=0.515 (231s) run=20261022-074251_r251_tabicl_all
+r251_tabicl_hv     auc=0.99892 +/- 0.00078 logloss=0.0472 pseudoAUC=0.99868 side_agree_boundary=0.574 (71s) run=20261022-074643_r251_tabicl_hv
+      candidate  auc_mean  auc_std_repeat  cv_logloss  s003_pseudo_auc_confident  s003_side_agree_boundary  cv_seconds
+r251_tabicl_all  0.992889        0.002121    0.120416                   0.995045                  0.514706  231.482827
+ r251_tabicl_hv  0.998917        0.000778    0.047244                   0.998682                  0.573529   71.234924

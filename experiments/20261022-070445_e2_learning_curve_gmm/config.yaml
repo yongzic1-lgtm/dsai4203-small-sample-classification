@@ -1,0 +1,80 @@
+name: e2_learning_curve_gmm
+hypothesis: 'The mixture is fitted without labels, so the labelled rows only have
+  to tell which of the two components is the positive class. With 40 training rows
+  (n = 50) that mapping is already certain, so the CV AUC equals 1.0 at every size
+  with zero spread, the learning curve is flat and the extrapolated AUC at 500 rows
+  is 1.0: unlabeled structure moves the label requirement from hundreds of rows (supervised
+  QDA / L1) to a handful.'
+pipeline:
+  scaler: none
+  model:
+    name: transductive_gmm
+    params:
+      columns: highvar
+      n_components: 2
+      covariance_type: full
+      n_init: 5
+      alpha: 1.0
+  random_state: 0
+sizes:
+- 50
+- 100
+- 150
+- 200
+- 250
+n_subsets: 10
+subset_seed: 2026
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 4
+  seed: 7000
+cv_seed_stride: 100
+out_of_subset: true
+fit:
+  x_axis: effective
+  target_n: 500
+  predict_at:
+  - 250
+  - 500
+  weight: sem
+  sigma_floor: 0.002
+  bounds:
+    a:
+    - 0.5
+    - 1.0
+    b:
+    - 0.0
+    - 10000.0
+    c:
+    - 0.01
+    - 3.0
+  n_boot: 2000
+  sensitivity:
+    unweighted: true
+    drop_smallest: true
+    n_boot: 500
+  boot_seed: 0
+  interval: 0.9
+ground_truth:
+  enabled: true
+  n_draws: 10
+  n_eval: 5000
+  seed: 99
+quick:
+  sizes:
+  - 50
+  - 100
+  - 150
+  - 250
+  n_subsets: 3
+  cv_n_repeats: 1
+  n_boot: 100
+  sens_n_boot: 50
+  gt_n_draws: 2
+  gt_n_eval: 2000
+_runtime:
+  data: raw
+  quick: false
+  n_jobs: 8
+  config_file: /content/ml/research/r303_e2_gmm.yaml

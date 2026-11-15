@@ -1,0 +1,44 @@
+# --- environment ---
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# --- competition data: never in git (rule 5: no sharing outside the team) ---
+data/raw/*
+!data/raw/SHA256SUMS.txt
+data/synthetic/
+
+# --- sandbox: synthetic-data runs, tests, scratch ---
+sandbox/
+reports/build/
+
+# --- large or regenerable run artefacts (configs/meta/scores stay tracked) ---
+experiments/**/*.npy
+submissions/*.csv
+
+# --- deliverables (zip, video renders, also in subfolders of video/) ---
+deliverables/
+video/**/*.mp4
+video/**/*.mov
+video/**/*.mkv
+
+# --- secrets: Kaggle API token / OAuth login must never be committed ---
+kaggle.json
+access_token*
+credentials.json
+.env
+*.env
+.env.*
+
+# logs/colab/*.log (Colab job logs) ARE tracked on purpose: small text, part of the compute record
+# (docs/ARCHIVE_RULES.md section 2); package_deliverables.py leaves logs/ out of the zip.
+
+# --- local snapshots made by scripts/archive_check.py --snapshot (copies of tracked files) ---
+backups/
+
+# --- Colab code bundles (D005) stay on the owner's machine and in backups/ snapshots, not in git (D016):
+#     most contain an old project.yaml with personal e-mail addresses; the rdata_*.json manifests are tracked ---
+logs/code_bundles/*.tar.gz

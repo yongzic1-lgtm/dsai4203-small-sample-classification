@@ -1,0 +1,9 @@
+{
+  "best_strict_supervised": "r201_qda_pcablock",
+  "n_candidates": 60,
+  "n_strict_supervised": 42,
+  "n_configs_total": 567,
+  "gmm_boundary_rows": 204,
+  "status": "done",
+  "finished_at": "2026-10-22T08:20:13+09:00"
+}

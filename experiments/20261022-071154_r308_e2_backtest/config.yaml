@@ -1,0 +1,7 @@
+name: r308_e2_backtest
+variants:
+  l1_all: extensions/e2_learning_curve/config.yaml
+  qda_hv: research/r302_e2_qda_block.yaml
+cuts:
+- 3
+- 4

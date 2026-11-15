@@ -1,0 +1,22 @@
+{
+  "n_claims": 242,
+  "verified_counts": {
+    "yes": 235,
+    "no": 7
+  },
+  "not_verified": [
+    "D5",
+    "P31",
+    "F13",
+    "F21",
+    "F27",
+    "F42",
+    "L14"
+  ],
+  "r249_rows_ok": 64,
+  "r249_rows": 64,
+  "label_budget_flags_3se": 0,
+  "label_budget_comparable_cells": 37,
+  "status": "done",
+  "finished_at": "2026-10-22T18:40:26+09:00"
+}

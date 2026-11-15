@@ -1,0 +1,131 @@
+{
+  "wall_seconds": 313.8,
+  "n_evals": 40480,
+  "n_failed_evals": 14330,
+  "n_folds": 80,
+  "first_hits": [
+    {
+      "model": "eq206_qda_infold_lw",
+      "label": "QDA-LW, in-fold block (strict; R206)",
+      "uses_test_features": "no",
+      "first_defined": 6,
+      "first_fully_defined": 10,
+      "min_labels_mean_ge_0.99": NaN,
+      "min_labels_mean_minus_2se_ge_0.99": NaN,
+      "min_labels_median_ge_0.99": NaN,
+      "min_labels_mean_ge_0.95": 120
+    },
+    {
+      "model": "eq206_qda_infold_r003",
+      "label": "QDA reg 0.003, in-fold block (strict; R206)",
+      "uses_test_features": "no",
+      "first_defined": 40,
+      "first_fully_defined": 80,
+      "min_labels_mean_ge_0.99": 80.0,
+      "min_labels_mean_minus_2se_ge_0.99": 80.0,
+      "min_labels_median_ge_0.99": 80.0,
+      "min_labels_mean_ge_0.95": 80
+    },
+    {
+      "model": "eq206_qda_tt_r003",
+      "label": "QDA reg 0.003, train+test block (R206)",
+      "uses_test_features": "block+scaling",
+      "first_defined": 40,
+      "first_fully_defined": 40,
+      "min_labels_mean_ge_0.99": 40.0,
+      "min_labels_mean_minus_2se_ge_0.99": 40.0,
+      "min_labels_median_ge_0.99": 40.0,
+      "min_labels_mean_ge_0.95": 40
+    },
+    {
+      "model": "eq206_qda_tt_r01",
+      "label": "QDA reg 0.1, train+test block (S002; R206/R304)",
+      "uses_test_features": "block+scaling",
+      "first_defined": 40,
+      "first_fully_defined": 40,
+      "min_labels_mean_ge_0.99": 120.0,
+      "min_labels_mean_minus_2se_ge_0.99": 120.0,
+      "min_labels_median_ge_0.99": 80.0,
+      "min_labels_mean_ge_0.95": 40
+    },
+    {
+      "model": "eq206_selftrain_lw_t075",
+      "label": "Self-training QDA-LW, thr 0.75 (R206)",
+      "uses_test_features": "yes",
+      "first_defined": 6,
+      "first_fully_defined": 10,
+      "min_labels_mean_ge_0.99": 20.0,
+      "min_labels_mean_minus_2se_ge_0.99": 20.0,
+      "min_labels_median_ge_0.99": 20.0,
+      "min_labels_mean_ge_0.95": 20
+    },
+    {
+      "model": "r201_qda_block",
+      "label": "Strict supervised QDA, nested reg, AUC (S005)",
+      "uses_test_features": "no",
+      "first_defined": 40,
+      "first_fully_defined": 80,
+      "min_labels_mean_ge_0.99": 120.0,
+      "min_labels_mean_minus_2se_ge_0.99": 120.0,
+      "min_labels_median_ge_0.99": 80.0,
+      "min_labels_mean_ge_0.95": 80
+    },
+    {
+      "model": "r209_selftrain_qda_lw",
+      "label": "Self-training QDA-LW, thr 0.99 (S006)",
+      "uses_test_features": "yes",
+      "first_defined": 6,
+      "first_fully_defined": 10,
+      "min_labels_mean_ge_0.99": 20.0,
+      "min_labels_mean_minus_2se_ge_0.99": 20.0,
+      "min_labels_median_ge_0.99": 20.0,
+      "min_labels_mean_ge_0.95": 20
+    },
+    {
+      "model": "r210_qda_block_nll",
+      "label": "Strict supervised QDA, nested reg, log-loss (r210)",
+      "uses_test_features": "no",
+      "first_defined": 40,
+      "first_fully_defined": 80,
+      "min_labels_mean_ge_0.99": 120.0,
+      "min_labels_mean_minus_2se_ge_0.99": 120.0,
+      "min_labels_median_ge_0.99": 120.0,
+      "min_labels_mean_ge_0.95": 120
+    },
+    {
+      "model": "r255_bqda_eb_hv",
+      "label": "Bayesian QDA EB, train+test block",
+      "uses_test_features": "block+scaling",
+      "first_defined": 4,
+      "first_fully_defined": 4,
+      "min_labels_mean_ge_0.99": 80.0,
+      "min_labels_mean_minus_2se_ge_0.99": 80.0,
+      "min_labels_median_ge_0.99": 80.0,
+      "min_labels_mean_ge_0.95": 80
+    },
+    {
+      "model": "r255_bqda_eb_trainonly",
+      "label": "Bayesian QDA EB, in-fold block (strict)",
+      "uses_test_features": "no",
+      "first_defined": 4,
+      "first_fully_defined": 4,
+      "min_labels_mean_ge_0.99": 160.0,
+      "min_labels_mean_minus_2se_ge_0.99": 160.0,
+      "min_labels_median_ge_0.99": 160.0,
+      "min_labels_mean_ge_0.95": 120
+    },
+    {
+      "model": "s003_gmm2_hv",
+      "label": "Transductive GMM K=2 (S003)",
+      "uses_test_features": "yes",
+      "first_defined": 2,
+      "first_fully_defined": 2,
+      "min_labels_mean_ge_0.99": 2.0,
+      "min_labels_mean_minus_2se_ge_0.99": 2.0,
+      "min_labels_median_ge_0.99": 2.0,
+      "min_labels_mean_ge_0.95": 2
+    }
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T18:25:36+09:00"
+}

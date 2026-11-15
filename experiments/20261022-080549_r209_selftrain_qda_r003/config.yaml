@@ -1,0 +1,19 @@
+name: r209_selftrain_qda_r003
+description: SelfTraining(QDA reg 0.003, threshold 0.99) on 20,000 rows (pair A)
+model_code: research/r209_semisup_followup.py + research/lib_sup.py
+group: semi-supervised
+features: block(train+test highvar) + 20,000 unlabeled rows
+tuning: none
+n_configs: 1
+inner_cv: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true
+note: reg 0.003 = modal nested choice of R201 qda_block (informed by R201)

@@ -1,0 +1,23 @@
+name: r155_gmm2_inf_tight
+model_code: research/lib_gen_replica.py:TransductiveGMMTight
+params:
+  alpha: 1.0
+  columns: informative
+  max_iter: 5000
+  n_components: 2
+  n_init: 5
+  pca_dims: null
+  random_state: 0
+  reg_covar: 1.0e-06
+  source: raw
+  tol: 1.0e-08
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true

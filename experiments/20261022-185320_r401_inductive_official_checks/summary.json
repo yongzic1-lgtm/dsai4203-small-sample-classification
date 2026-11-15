@@ -1,0 +1,36 @@
+{
+  "eb_default": {
+    "1|32|pooled": 45,
+    "1|64|pooled": 19,
+    "1|16|pooled": 31,
+    "1|8|pooled": 2,
+    "1|128|pooled": 3
+  },
+  "eb_wide": {
+    "10|32|pooled": 50,
+    "10|64|pooled": 23,
+    "10|16|pooled": 13,
+    "3|16|pooled": 10,
+    "10|128|pooled": 4
+  },
+  "block_size": {
+    "19": 25,
+    "22": 6,
+    "18": 17,
+    "21": 12,
+    "20": 17,
+    "17": 12,
+    "16": 8,
+    "23": 3
+  },
+  "sha16_r201_recomputed": "fe0bb2830edc9fbb",
+  "r201_bit_identical": false,
+  "sha16_bqda_trainonly_recomputed": "929c63d601764dfd",
+  "bqda_trainonly_bit_identical": false,
+  "sha16_bqda_wide_recomputed": "8a15e4af1576f89a",
+  "wide_official_equals_recomputed_max_abs": 1.1102230246251565e-16,
+  "ens_official_minus_member_average_max_abs": 1.3322676295501878e-15,
+  "ens_r8_values_differing": 0,
+  "status": "done",
+  "finished_at": "2026-10-22T18:54:06+09:00"
+}

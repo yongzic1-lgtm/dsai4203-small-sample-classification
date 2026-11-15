@@ -1,0 +1,53 @@
+{
+  "by_flip": [
+    {
+      "flip_y": 0.0,
+      "n": 30,
+      "auc_raw_mean": 0.999703158955186,
+      "auc_bayes_mean": 0.9999818619494878,
+      "n_unique_raw_mean": 4432.533333333334,
+      "n_unique_csv8_mean": 1937.1666666666667,
+      "n_at_min_csv8_mean": 8453.233333333334,
+      "n_at_max_csv8_mean": 8586.0,
+      "spearman_csv8_raw_mean": 0.9740195225174332,
+      "d_csv8_mean": 0.0,
+      "d_csv8_se": 0.0,
+      "d_csv8_min": 0.0,
+      "d_csv8_max": 0.0,
+      "d_logodds_mean": 0.0,
+      "d_logodds_se": 0.0,
+      "d_logodds_min": 0.0,
+      "d_logodds_max": 0.0,
+      "d_bayes_mean": 0.00027870299430163465,
+      "d_bayes_se": 0.0002331491358690404,
+      "d_bayes_min": -1.7084183834281674e-07,
+      "d_bayes_max": 0.006975852183635944
+    },
+    {
+      "flip_y": 0.005,
+      "n": 30,
+      "auc_raw_mean": 0.9972013583595724,
+      "auc_bayes_mean": 0.9974656552509701,
+      "n_unique_raw_mean": 4415.733333333334,
+      "n_unique_csv8_mean": 1934.8666666666666,
+      "n_at_min_csv8_mean": 8448.3,
+      "n_at_max_csv8_mean": 8542.066666666668,
+      "spearman_csv8_raw_mean": 0.9747179219235224,
+      "d_csv8_mean": 5.0819800611390246e-06,
+      "d_csv8_se": 9.48094795947178e-06,
+      "d_csv8_min": -0.00012567088359327627,
+      "d_csv8_max": 0.00014528482745268523,
+      "d_logodds_mean": -2.0923017693334305e-06,
+      "d_logodds_se": 3.087319213797525e-05,
+      "d_logodds_min": -0.00024088132914767968,
+      "d_logodds_max": 0.0004656028556220271,
+      "d_bayes_mean": 0.0002642968913978749,
+      "d_bayes_se": 0.0002267334666278784,
+      "d_bayes_min": -0.00023854293463176912,
+      "d_bayes_max": 0.00673456653516058
+    }
+  ],
+  "seconds": 290.0,
+  "status": "done",
+  "finished_at": "2026-10-22T09:29:35+09:00"
+}

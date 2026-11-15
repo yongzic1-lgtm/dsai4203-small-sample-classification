@@ -1,0 +1,10 @@
+name: r910_repro_env
+description: environment of the R910 re-run + threadpool_limits(1) repeats
+reruns:
+  s003: 20261022-091211_r910_s003_gmm2_hv
+  e3final: 20261022-091223_r910_e3_final_k20
+  r201qda: 20261022-091224_r910_r201_qda_block
+archived:
+  s003: 20261022-050708_r003_gmm2_hv
+  e3final: 20261022-063908_e3_leakage
+  r201qda: 20261022-071234_r201_qda_block

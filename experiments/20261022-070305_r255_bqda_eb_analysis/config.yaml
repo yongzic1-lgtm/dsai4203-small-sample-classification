@@ -1,0 +1,3 @@
+name: r255_bqda_eb_analysis
+kind: analysis
+inputs: train rows (labels), label-free block

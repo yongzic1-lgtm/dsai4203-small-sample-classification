@@ -1,0 +1,106 @@
+{
+  "run_id": "20261022-212507_final_s003_gmm2_hv",
+  "kind": "experiment",
+  "name": "final_s003_gmm2_hv",
+  "author": "TODO_ID_1",
+  "created_at": "2026-10-22T21:25:07+09:00",
+  "data_source": "raw",
+  "data_fingerprint": {
+    "train.csv": "7ef80ff93ef49c8c",
+    "test.csv": "e40a4f71df157db8"
+  },
+  "git": {
+    "commit": "no-commit",
+    "dirty": true,
+    "branch": null,
+    "from_env": true
+  },
+  "packages": {
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "sklearn": "1.9.1",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.2.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0"
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "version": "0.3.30",
+      "architecture": "Haswell",
+      "threading_layer": "pthreads",
+      "num_threads": 8,
+      "library": "libscipy_openblas-6cdc3b4a.so"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "version": null,
+      "architecture": null,
+      "threading_layer": null,
+      "num_threads": 8,
+      "library": "libgomp.so.1.0.0"
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "version": "0.3.31.188.0",
+      "architecture": "Haswell",
+      "threading_layer": "pthreads",
+      "num_threads": 8,
+      "library": "libscipy_openblas64_-32a4b2a6.so"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "version": null,
+      "architecture": null,
+      "threading_layer": null,
+      "num_threads": 8,
+      "library": "libgomp-e985bcbb.so.1.0.0"
+    }
+  ],
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+  "compute": {
+    "host": "colab",
+    "account": "pro1",
+    "session": "ssc",
+    "hardware": "CPU High-RAM DEFAULT",
+    "job_id": "J20261022-212641-pro1-ssc",
+    "code_bundle": "3e06285e1ebb8427",
+    "env_hash": "8871117790f585a7",
+    "research_data": "ebe13cddfe369284",
+    "node": "386c5941501a",
+    "cpus": 8,
+    "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz"
+  },
+  "command": "scripts/run_experiment.py --config configs/final_s003_gmm2_hv.yaml --n-jobs 8",
+  "estimator": {
+    "class": "sklearn.pipeline.Pipeline",
+    "params": {
+      "memory": null,
+      "model": "TransductiveGMM()",
+      "model__alpha": 1.0,
+      "model__columns": "highvar",
+      "model__covariance_type": "full",
+      "model__n_components": 2,
+      "model__n_init": 5,
+      "model__pca_dims": null,
+      "model__random_state": 0,
+      "model__reg_covar": 1e-06,
+      "model__source": "raw",
+      "steps": [
+        [
+          "model",
+          "TransductiveGMM()"
+        ]
+      ],
+      "transform_input": null,
+      "verbose": false
+    }
+  }
+}

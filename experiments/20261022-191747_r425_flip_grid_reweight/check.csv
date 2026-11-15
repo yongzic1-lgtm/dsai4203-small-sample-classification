@@ -1,0 +1,3 @@
+array,n_replicas_compared,n_values,n_identical,max_abs_diff,reference_runs
+pub_auc_r8,222,142080,142080,0.0,"['20261022-165009_r933_replicas_param_s247-357_tn0_r8_cv', '20261022-165947_r933_replicas_param_s136-246_tn0_r8_cv']"
+priv_auc_r8,222,142080,142080,0.0,"['20261022-165009_r933_replicas_param_s247-357_tn0_r8_cv', '20261022-165947_r933_replicas_param_s136-246_tn0_r8_cv']"

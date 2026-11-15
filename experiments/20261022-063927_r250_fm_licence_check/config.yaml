@@ -1,0 +1,11 @@
+name: r250_fm_licence_check
+kind: analysis
+stacks:
+  tabpfn:
+  - tabpfn
+  - huggingface_hub
+  tabicl:
+  - tabicl
+  - huggingface_hub
+inputs: random numbers only (no competition data)
+token_policy: all hub tokens removed, browser login off

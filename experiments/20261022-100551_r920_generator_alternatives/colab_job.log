@@ -1,0 +1,107 @@
+   redundant_col   r2      resid_sd  rounding_sd_pred  ratio_obs_over_pred  max_abs_resid  resid_kurtosis_excess
+0              8  1.0  9.680688e-07      9.703603e-07             0.997638   3.715570e-06              -0.178376
+1             17  1.0  3.288214e-07      3.299807e-07             0.996487   9.776443e-07              -0.717003
+2             26  1.0  6.274760e-07      6.324770e-07             0.992093   2.208997e-06              -0.187563
+3             49  1.0  1.208428e-06      1.203128e-06             1.004406   3.844997e-06              -0.402585
+4             57  1.0  4.268835e-07      4.262172e-07             1.001563   1.337798e-06              -0.424993
+5             67  1.0  5.964628e-07      5.959958e-07             1.000784   2.110234e-06              -0.254492
+6             77  1.0  1.169152e-06      1.177465e-06             0.992940   3.808156e-06              -0.462959
+7             98  1.0  1.479860e-06      1.477062e-06             1.001894   4.836955e-06              -0.254158
+   rank                                   basis   crit_nats
+0     1  6 15 30 46 52 61 64 80 100 112 142 144 -129.340251
+1     2  6 26 30 46 52 61 64 80 100 112 142 144 -142.375695
+2     3   6 15 30 46 49 52 61 64 80 100 112 142 -143.000477
+3     4   6 15 30 46 52 57 61 64 80 100 112 142 -145.609401
+4     5   6 15 30 46 49 52 61 64 80 100 112 144 -145.620964
+5     6  6 15 30 46 52 57 61 80 100 112 142 144 -146.019559
+6     7   6 8 30 46 52 61 64 80 100 112 142 144 -146.221205
+7     8    6 8 15 30 46 52 61 64 80 112 142 144 -147.063323
+8     9  6 15 30 46 52 61 64 98 100 112 142 144 -147.968513
+9    10  6 15 17 30 46 52 61 80 100 112 142 144 -148.740633
+A/B done 14 s: {'structured': [6, 8, 15, 17, 26, 30, 46, 49, 52, 57, 61, 64, 67, 77, 80, 98, 100, 112, 142, 144], 'n_structured': 20, 'rank': 12, 'max_abs_corr_outside_structured': 0.029085228367483524, 'structured_equals_claim': True, 'eig_lambda1': 4.23663161155594, 'eig_lambda12': 0.19312228284587138, 'eig_lambda13': 2.4896781555422722e-14, 'eig_lambda20': 1.3653944954402452e-15, 'eig_small8_over_rounding_floor_mean': 0.8659293921010776, 'zero_diff_cols': [6, 15, 30, 52, 61, 64, 142, 144], 'zero_diff_all_claimed_informative': True, 'n_subsets': 125970, 'n_subsets_full_rank': 125970, 'basis_best': [6, 15, 30, 46, 52, 61, 64, 80, 100, 112, 142, 144], 'basis_best_equals_claim': True, 'basis_margin_nats': 13.03544440713614, 'basis_runner_up_swap': {'out': [15], 'in': [26]}, 'n_subsets_hypercube_constrained': 495, 'basis_margin_constrained_nats': 17.723072545344337, 'basis_bootstrap_same_rate': 1.0, 'basis_bootstrap_margin_min': 12.763880513645006}
+[Parallel(n_jobs=8)]: Using backend LokyBackend with 8 concurrent workers.
+[Parallel(n_jobs=8)]: Done  2 out of 60 | elapsed:   50.2s
+[Parallel(n_jobs=8)]: Done 58 out of 60 | elapsed:  2.6min remaining:    5.3s
+[Parallel(n_jobs=8)]: Done 60 out of 60 | elapsed:  3.1min finished
+            LR_K3_vs_K2                                 LR_K4_vs_K2                                  LR_K2_vs_K1                              
+                    min        median            max            min         median            max            min         median            max
+kind                                                                                                                                          
+H0_mc        159.957763    228.927819     267.488962     289.824768     446.916668    1253.758084  123918.228162  172180.424380  263676.097258
+H0_param     179.553104    242.790610     280.215885     350.445557     412.813419     536.355729  121514.073317  122648.487153  123453.358208
+H1_mc_2pc  44917.748984  68674.183206  105256.247059  121298.306712  146513.683168  176157.088918   21372.235422   43277.230939   88369.110465
+REAL         230.616277    230.616277     230.616277     480.103107     480.103107     480.103107  122594.639248  122594.639248  122594.639248
+   hypercube  n_draws  n_abc_accepted  P_T1_le_obs  P_T2_le_obs  P_joint_le_obs  local_density_rel  abc_accept_rate
+0       True  2000000           24085     0.669421     0.530455        0.356903           0.000719         0.012042
+1      False  2000000           85705     0.014585     0.004107        0.000047           0.000002         0.042853
+structured: [6, 8, 15, 17, 26, 30, 46, 49, 52, 57, 61, 64, 67, 77, 80, 98, 100, 112, 142, 144]
+n_structured: 20
+rank: 12
+max_abs_corr_outside_structured: 0.029085228367483524
+structured_equals_claim: True
+eig_lambda1: 4.23663161155594
+eig_lambda12: 0.19312228284587138
+eig_lambda13: 2.4896781555422722e-14
+eig_lambda20: 1.3653944954402452e-15
+eig_small8_over_rounding_floor_mean: 0.8659293921010776
+zero_diff_cols: [6, 15, 30, 52, 61, 64, 142, 144]
+zero_diff_all_claimed_informative: True
+n_subsets: 125970
+n_subsets_full_rank: 125970
+basis_best: [6, 15, 30, 46, 52, 61, 64, 80, 100, 112, 142, 144]
+basis_best_equals_claim: True
+basis_margin_nats: 13.03544440713614
+basis_runner_up_swap: {'out': [15], 'in': [26]}
+n_subsets_hypercube_constrained: 495
+basis_margin_constrained_nats: 17.723072545344337
+basis_bootstrap_same_rate: 1.0
+basis_bootstrap_margin_min: 12.763880513645006
+cluster_LR_real_K4_vs_K2: 480.10310713830404
+cluster_LR_H0_param_K4_vs_K2_range: [350.44555721012875, 536.355729476898]
+cluster_LR_H0_mc_K4_vs_K2_range: [289.8247682447545, 1253.7580836371053]
+cluster_LR_H1_K4_vs_K2_range: [121298.30671218596, 176157.0889183064]
+basis_calibration_recovery_rate: 1.0
+basis_calibration_zero_set_rate: 0.20833333333333334
+basis_calibration_margin_median: 11.69040376930245
+basis_calibration_margin_min: 5.095213585888274
+zero_set_calibration_true_subset_rate: 1.0
+class_sep_calibration_mle_mean: 0.7022916666666666
+class_sep_calibration_mle_sd: 0.03764996583711904
+class_sep_calibration_coverage95: 0.875
+active_cols: [100, 46, 80, 112]
+zero_cols_informative: [52, 64, 61, 6, 30, 144, 15, 142]
+T1_obs_sum_z2_zero: 9.108228909974018
+T1_chi2_8_cdf: 0.6667516212329889
+T2_obs_maxmin_active: 1.2134300617582743
+active_r_pooled: [0.8116650966962637, 0.6879139899843468, 0.6689841406703821, 0.6689014243805297]
+class_sep_mle: 0.703
+class_sep_95ci_LR: [0.639, 0.76]
+class_sep_post_mean_flat: 0.6997671515940804
+class_sep_post_95: [0.638, 0.76]
+LR_cs0.5_vs_mle: 1.5302214976282435e-08
+LR_cs0.6_vs_mle: 0.007647681118600533
+LR_cs0.65_vs_mle: 0.2749423272417877
+LR_cs0.7_vs_mle: 0.9920884076443004
+LR_cs0.75_vs_mle: 0.27012395278648893
+LR_cs0.8_vs_mle: 0.003730161724919052
+LR_cs0.85_vs_mle: 1.4492934300657998e-06
+LR_cs0.9_vs_mle: 1.1352095709585808e-306
+LR_cs1_vs_mle: 0.0
+hypercube_BF_true_vs_false_local: 359.5
+hypercube_BF_is_lower_bound: False
+hypercube_false_P_joint_le_obs: 4.667172276996675e-05
+noise_z_mean_KS_p: 0.31443904489252106
+noise_z_logvar_KS_p: 0.5848748431211352
+noise_max_abs_z: 3.1067644853483567
+noise_bonferroni_p_min: 0.49178226161890076
+noise_cols_std_KS_U0.5_3_p: 0.2560613935525258
+noise_cols_mean_KS_U-5_5_p: 0.865143826090934
+spearman_id_post_test: -0.0011341313362568232
+spearman_id_post_train: 0.07867780884079066
+runs_test_z_test_rows: -1.109031955302772
+lag1_autocorr_post_test: 0.007270140015857489
+sum_post_all: 9996.200103077199
+sd_sum_post: 7.003361585283018
+z_balance_vs_10000: -0.5425818553744564
+train_y_sum: 113
+train_post_sum: 113.60805175032289
+seconds: 496.18805599212646

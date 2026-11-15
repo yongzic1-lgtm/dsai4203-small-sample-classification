@@ -1,0 +1,17 @@
+[sup] research/r204_semisup_sklearn.py: 7 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r204_selftrain_qda_nested          auc=0.9995 +/- 0.0002  logloss=0.04103341521941589  40s  run=20261022-071922_r204_selftrain_qda_nested  chosen={"{\"estimator__reg_param\": 0.03, \"threshold\": 0.99}": 56, "{\"estimator__reg_param\": 0.03, \"threshold\": 0.9}": 44}
+[sup] r204_selftrain_qda_default         auc=0.9966 +/- 0.0008  logloss=0.08607018322781348  2s  run=20261022-072002_r204_selftrain_qda_default  chosen={}
+[sup] r204_selftrain_lr                  auc=0.8777 +/- 0.0074  logloss=1.582241969533894  5s  run=20261022-072003_r204_selftrain_lr  chosen={}
+[sup] r204_labelspread_block             auc=0.9118 +/- 0.0081  logloss=0.5931980934314393  6s  run=20261022-072008_r204_labelspread_block  chosen={}
+[sup] r204_labelprop_block               auc=0.9313 +/- 0.0039  logloss=0.5245318459682913  24s  run=20261022-072014_r204_labelprop_block  chosen={}
+[sup] r204_labelspread_nested            auc=0.9438 +/- 0.0052  logloss=0.3128799976379154  57s  run=20261022-072038_r204_labelspread_nested  chosen={"{\"alpha\": 0.8, \"n_neighbors\": 30}": 98, "{\"alpha\": 0.8, \"n_neighbors\": 15}": 2}
+[sup] r204_labelspread_all               auc=0.6225 +/- 0.0201  logloss=1.5582944898771616  9s  run=20261022-072134_r204_labelspread_all  chosen={}
+
+                 candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                     run_id
+ r204_selftrain_qda_nested  0.999483        0.000243     0.041033          6  20261022-071922_r204_selftrain_qda_nested
+r204_selftrain_qda_default  0.996641        0.000757     0.086070          1 20261022-072002_r204_selftrain_qda_default
+   r204_labelspread_nested  0.943768        0.005197     0.312880          9    20261022-072038_r204_labelspread_nested
+      r204_labelprop_block  0.931308        0.003870     0.524532          1       20261022-072014_r204_labelprop_block
+    r204_labelspread_block  0.911786        0.008128     0.593198          1     20261022-072008_r204_labelspread_block
+         r204_selftrain_lr  0.877699        0.007401     1.582242          1          20261022-072003_r204_selftrain_lr
+      r204_labelspread_all  0.622512        0.020080     1.558294          1       20261022-072134_r204_labelspread_all

@@ -1,0 +1,42 @@
+name: r153_mc_cs0.71_h4
+variant: mc
+seeds:
+- 0
+- 100
+flips:
+- 0.0
+- 0.005
+- 0.01
+class_sep: 0.71
+hamming: 4
+lb_draws: 100
+cv_scheme: stratified 5-fold x 4, seed 2026
+gmms:
+- gmm2_hv
+- gmm2_hv_tight
+- gmm2_hv_pca
+- gmm4_hv
+- gmm2_struct_pca
+- gmm2_all
+- gmm2_inf_oracle
+supervised:
+- qda_hv
+- l1_all
+pairs:
+- - gmm2_hv
+  - gmm2_hv_pca
+- - gmm2_hv
+  - gmm2_hv_tight
+- - gmm2_hv
+  - gmm4_hv
+- - gmm2_hv
+  - gmm2_struct_pca
+- - gmm2_hv
+  - gmm2_inf_oracle
+- - gmm2_hv
+  - qda_hv
+- - bayes
+  - gmm2_hv
+- - gmm2_hv
+  - gmm2_all
+library: research/lib_gen_replica.py

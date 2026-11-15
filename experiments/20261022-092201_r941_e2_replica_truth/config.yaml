@@ -1,0 +1,23 @@
+sizes:
+- 40
+- 80
+- 120
+- 160
+- 200
+- 250
+- 300
+- 400
+- 500
+n_draws: 100
+n_test: 20000
+l1:
+  scaler: standard
+  model:
+    name: logreg
+    params:
+      C: 0.1
+      l1_ratio: 1.0
+      solver: liblinear
+  random_state: 0
+replica: lib_gen_replica.sample_parametric(fit_parametric(X_all, y)), seed 50000+d
+model_code: research/r941_e2_replica_truth.py

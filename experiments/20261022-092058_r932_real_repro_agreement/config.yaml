@@ -1,0 +1,52 @@
+name: r932_real_repro_agreement
+procedures:
+- s003_gmm2_hv
+- r105_gmm2_block_mle
+- r155_gmm2_inf_tight
+- r102_semisup_eps01
+- r255_bqda_eb_hv
+- r209_selftrain_qda_lw
+- r210_qda_block_nll
+- r201_qda_block
+- x_qda_block_nll_ext
+source_runs:
+  s003_gmm2_hv: 20261022-050708_r003_gmm2_hv
+  r105_gmm2_block_mle: 20261022-074857_r105_gmm2_block_mle
+  r155_gmm2_inf_tight: 20261022-080453_r155_gmm2_inf_tight
+  r102_semisup_eps01: 20261022-064500_r102_semisup_eps01
+  r255_bqda_eb_hv: 20261022-070200_r255_bqda_eb_hv
+  r209_selftrain_qda_lw: 20261022-080632_r209_selftrain_qda_lw
+  r210_qda_block_nll: 20261022-082047_r210_qda_block_nll
+  r201_qda_block: 20261022-071234_r201_qda_block
+  x_qda_block_nll_ext: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+reg_grid_ext:
+- 0.9
+- 0.7
+- 0.5
+- 0.3
+- 0.2
+- 0.1
+- 0.05
+- 0.03
+- 0.01
+- 0.003
+- 0.001
+- 0.0003
+- 0.0001
+- 3.0e-05
+- 1.0e-05
+n_label_draws: 2000
+flips:
+- 0.0
+- 0.0044
+- 0.01
+code: research/r931_cand_lib.py

@@ -1,0 +1,41 @@
+name: r900_perm_null_B
+kind: analysis
+verifier: leak
+'null': B
+n_perm: 20
+perm_seed: 9000
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+pipelines:
+  s003_gmm2_hv: TransductiveGMM K=2 full on the train+test high-variance block (S003)
+  r155_gmm2_inf_tight: TransductiveGMMTight on the 12 label-free identified informative
+    columns, EM tol 1e-8
+  r201_qda_block: QDA on in-fold block, nested reg (inner RepeatedStratifiedKFold(5,2),
+    AUC)
+  r210_qda_block_nll: QDA on in-fold block, nested reg by inner log-loss
+  r209_selftrain_qda_lw: SelfTraining(QDA Ledoit-Wolf, thr 0.99) on 20,000 rows, fold
+    labels only
+  r255_bqda_eb_hv: Bayesian QDA, NIW prior by empirical Bayes on the training fold
+  e3_honest: 'E3 honest: scaler + in-fold CorrelationTopK(20) + L2 logreg C=0.1'
+  ctrl_e3_leaky: 'POSITIVE CONTROL (a): E3 leaky, top-20 |corr| columns chosen on
+    all 250 rows'
+  ctrl_disk_reader: 'POSITIVE CONTROL (b): QDA fitted on all 250 rows with the true
+    labels read from disk'
+  ctrl_random: 'chance floor: random scores'
+archived_reference:
+  s003_gmm2_hv: 20261022-050708_r003_gmm2_hv
+  r155_gmm2_inf_tight: 20261022-080453_r155_gmm2_inf_tight
+  r201_qda_block: 20261022-071234_r201_qda_block
+  r210_qda_block_nll: 20261022-082047_r210_qda_block_nll
+  r209_selftrain_qda_lw: 20261022-080632_r209_selftrain_qda_lw
+  r255_bqda_eb_hv: 20261022-070200_r255_bqda_eb_hv
+  e3_honest: 20261022-063908_e3_leakage (honest, k_feat 20, 5-fold)
+  ctrl_e3_leaky: 20261022-063908_e3_leakage (leaky, k_feat 20, 5-fold)
+max_folds: null
+inputs: train features + labels (permuted), train+test features (label-free parts)

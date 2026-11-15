@@ -1,0 +1,55 @@
+# Project-wide settings. Fill in the TODO fields once the team is confirmed.
+course: DSAI4203
+competition:
+  kaggle_slug: small-sample-classification-challenge
+  url: https://www.kaggle.com/competitions/small-sample-classification-challenge
+  metric: roc_auc
+  daily_submission_limit: 5          # rule 3; Kaggle day resets 00:00 UTC = 09:00 JST (08:00 HKT)
+  team_daily_limit: 3                # team rule (D008); make_submission.py / kaggle_submit.py stop here unless --force-limit
+  public_fraction: 0.02              # ~395 rows; private LB = remaining ~98%
+  deadline: "2026-11-29T23:59:00+08:00"  # = 2026-11-30 00:59:59 JST, verified on the Kaggle overview page 2026-10-22
+  final_selection: 2                 # Kaggle: select up to 2 submissions for the private LB (else auto = best public)
+
+# Laptops are in Japan: the archive clock (ssc.tracking.ARCHIVE_TZ) and colab/remote.py use this zone.
+timezone: Asia/Tokyo
+
+# Compute: formal runs go to Google Colab through colab/remote.py (decision D005).
+compute:
+  default: colab
+  wsl_distro: Ubuntu-24.04
+  accounts:                          # colab/remote.py -a <name>
+    pro1: "Colab Pro account 1 (owner's Google account; address kept out of git)"   # default WSL $HOME
+    pro2: "Colab Pro account 2 (owner's Google account; address kept out of git)"   # WSL ~/.colab-accounts/pro2
+
+team:
+  name: TODO_TEAM_NAME               # final zip is named after this
+  kaggle_team_name: TODO
+  members:                           # one entry per member; `id` is used in author fields
+    - id: TODO_ID_1                  # short id, e.g. initials
+      name: TODO_FULL_NAME_1
+      student_id: TODO
+      kaggle_display_name: TODO      # must be stated in the Canvas checkpoint (rule 1)
+      extension: TODO                # e1_validation_protocol | e2_learning_curve | e3_leakage | e4_feature_stability
+    # - id: TODO_ID_2
+    #   name: ...
+    #   extension: ...
+
+# Author recorded on runs/submissions when --author is not given.
+# On a shared machine each member can override it with the env var SSC_AUTHOR.
+default_author: TODO_ID_1
+
+# The team's official validation protocol (ssc.validation.Scheme).
+# Every run that is compared against another MUST use these values so that the
+# split signatures match and paired comparison is valid. Change only by a
+# recorded decision in registry/decisions.md.
+official_cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+
+# Report assembly (scripts/build_report.py): the extensions that go into reports/report.pdf, one per
+# member who owns one, e.g. [e1, e3]. [] = owners not decided yet: all four are included, with a warning.
+# The team name (PDF metadata) is read from team.name above.
+report:
+  extensions_owned: []

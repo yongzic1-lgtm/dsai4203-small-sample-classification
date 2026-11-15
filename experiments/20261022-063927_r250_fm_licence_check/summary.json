@@ -1,0 +1,58 @@
+{
+  "official_cv": false,
+  "checks": [
+    {
+      "stack": "tabpfn",
+      "attempt": "fit_v2",
+      "package_version": "9.2.0",
+      "status": "ok",
+      "seconds": 4.6,
+      "error": "",
+      "hub_repo_gated": false,
+      "hub_card_license": "other",
+      "package_license": "{\"License\": null, \"License-Expression\": \"Apache-2.0\", \"classifiers\": []}",
+      "cuda": true,
+      "gpu": "NVIDIA L4",
+      "torch": "2.14.1",
+      "sklearn": "1.9.1",
+      "numpy": "2.4.6",
+      "pinned_resolution": true
+    },
+    {
+      "stack": "tabpfn",
+      "attempt": "fit_default_latest",
+      "package_version": "9.2.0",
+      "status": "error",
+      "seconds": 0.3,
+      "error": "TabPFNLicenseError: TabPFN requires a one-time license acceptance to download\nmodel weights for local inference, but browser login is\ndisabled (TABPFN_NO_BROWSER is set).\n\nSet the TABPFN_TOKEN environment variable with a valid API key\nobtained from https://ux.priorlabs.ai",
+      "hub_repo_gated": false,
+      "hub_card_license": "other",
+      "package_license": "{\"License\": null, \"License-Expression\": \"Apache-2.0\", \"classifiers\": []}",
+      "cuda": true,
+      "gpu": "NVIDIA L4",
+      "torch": "2.14.1",
+      "sklearn": "1.9.1",
+      "numpy": "2.4.6",
+      "pinned_resolution": true
+    },
+    {
+      "stack": "tabicl",
+      "attempt": "fit_default",
+      "package_version": "2.2.0",
+      "status": "ok",
+      "seconds": 4.8,
+      "error": "",
+      "hub_repo_gated": false,
+      "hub_card_license": "bsd-3-clause",
+      "package_license": "{\"License\": \"BSD 3-Clause License\\n\\nCopyright (c) 2025, Soda team @ Inria\\n\\nRedistribution and use in source and binary forms, with or without\\nmodification, are permitted provided that the following conditions are met:\\n\\n1. Redistributions of source code must retain the above copyright notice, t",
+      "cuda": true,
+      "gpu": "NVIDIA L4",
+      "torch": "2.14.1",
+      "sklearn": "1.9.1",
+      "numpy": "2.4.6",
+      "pinned_resolution": true
+    }
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T06:40:30+09:00"
+}

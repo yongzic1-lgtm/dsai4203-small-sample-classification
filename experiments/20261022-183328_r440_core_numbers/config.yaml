@@ -1,0 +1,15 @@
+name: r440_core_numbers
+pack: research/r440_archive_pack.json.gz
+n_packed_files: 206
+r441_run: 20261022-182022_r441_label_budget_rerun
+n_claims: 233
+data_facts:
+  n_train: 250
+  n_test: 19750
+  n_features: 150
+  n_pos: 113
+  pos_rate: 0.452
+hm_se_counts:
+- 198
+- 197
+code: research/r440_core_numbers.py

@@ -1,0 +1,86 @@
+# Experiment config template for scripts/run_experiment.py
+# ------------------------------------------------------------------------------
+# Copy this file to configs/<something>.yaml, edit, then run
+#     .venv\Scripts\python.exe scripts\run_experiment.py --config configs\<something>.yaml
+# Any key can also be changed on the command line without editing the file:
+#     --override pipeline.model.params.C=0.5 --override cv.n_repeats=2
+# (dotted keys; values are parsed as YAML, so 0.5 / true / null / [1, 2] work).
+#
+# The exact config that was run (after overrides, with the cv block filled in)
+# is copied into experiments/<run_id>/config.yaml, so the file here may change
+# later without breaking reproducibility.
+#
+# Unknown keys are an error (typos such as "pipline" or "n_repeat" are caught).
+# YAML note: write 1.0e-3, not 1e-3 (PyYAML reads "1e-3" as text; run_experiment
+# converts it, but other tools may not).
+# ------------------------------------------------------------------------------
+
+# name: short label; becomes part of the run id (<YYYYMMDD-HHMMSS>_<name>).
+# Default: the file name. --name on the command line wins.
+name: my_experiment
+
+# author: member id from project.yaml team.members[].id.
+# Default: --author, else $SSC_AUTHOR, else project.yaml default_author.
+# author: AB
+
+# hypothesis: what you expect and why, written BEFORE running (archive rule).
+# It is stored in notes.md and in the registry; the conclusion is added to
+# experiments/<run_id>/notes.md after reading the results.
+hypothesis: >-
+  One or two sentences: what should happen, compared with which earlier run,
+  and what result would make you reject the idea.
+
+# pipeline: passed to ssc.models.build_pipeline (steps: scale -> select -> model).
+pipeline:
+  # scaler: standard | robust | none. Linear models need scaling; trees do not.
+  scaler: standard
+
+  # selector (optional): re-fitted inside every CV fold on the training part
+  # only, so there is no selection leakage. Omit the block for "all 150 features".
+  #   corr_topk       {k: 20, method: pearson|spearman}     top-k by |corr(feature, target)|
+  #   stability_topk  {k: 20, n_boot: 200, threshold: 0.5}  bootstrap top-k frequency >= threshold
+  #   fixed_columns   {columns: [0, 5, 17]}                 chosen in advance (leaks if chosen
+  #                                                         by looking at all 250 labels!)
+  # selector:
+  #   name: corr_topk
+  #   k: 20
+
+  # model: a name from ssc.models.ESTIMATORS and its sklearn parameters.
+  #   logreg, logreg_cv, lda, gnb, svc, linear_svc, ridge_clf, lasso_reg, knn,
+  #   rf, extratrees, hgb, lgbm, xgb
+  #   transductive_gmm (uses unlabeled train+test FEATURES, D007; see configs/final_s003_gmm2_hv.yaml)
+  # sklearn 1.9: LogisticRegression `penalty` is deprecated. Use l1_ratio instead:
+  #   l1_ratio: 1.0 = L1 (lasso), 0.0 = L2 (ridge); with solver liblinear or saga.
+  model:
+    name: logreg
+    params:
+      C: 0.1
+      l1_ratio: 1.0
+      solver: liblinear
+
+  # random_state: the MODEL seed (random forests, boosting, ...). It is held
+  # fixed across all folds and repeats, so the spread across repeats measures
+  # split-to-split variation only.
+  random_state: 0
+
+# cv (optional): validation scheme, fields of ssc.validation.Scheme:
+#   kind: kfold | holdout, n_splits (kfold), n_repeats, seed,
+#   test_size (holdout), shuffle (kfold, default true), stratify (default true).
+#
+# RULE: leave this block OUT for any run you want to compare, rank or submit.
+# Without it, project.yaml official_cv (kfold, 5 splits x 20 repeats, seed 2026)
+# is used; only runs on the official CV share a split signature, and only runs
+# with equal split signatures can be compared fold by fold (compare_runs.py
+# refuses otherwise). A different scheme is archived with official_cv: false.
+# For a quick smoke test use --override cv.n_repeats=2 instead of editing here.
+# cv:
+#   kind: kfold
+#   n_splits: 5
+#   n_repeats: 20
+#   seed: 2026
+
+# test_pred: how test-set scores are produced for a submission.
+#   fold_mean  average of the scores of all n_splits x n_repeats fold models (default)
+#   refit      one extra fit on all 250 rows, then predict
+#   none       no test prediction (pure validation run; cannot be submitted)
+test_pred: fold_mean

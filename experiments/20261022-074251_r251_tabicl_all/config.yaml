@@ -1,0 +1,134 @@
+name: r251_tabicl_all
+description: tabicl (v2 ckpt), raw 150 features
+model_code: research/r251_fm_tabular_cv.py + research/lib_fm.py
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: refit
+uses_unlabeled_test_features: false
+model_params:
+  allow_auto_download: 'True'
+  average_logits: 'True'
+  batch_size: '8'
+  checkpoint_version: tabicl-classifier-v2-20260212.ckpt
+  class_shuffle_method: shift
+  device: cuda
+  disk_offload_dir: None
+  feat_shuffle_method: latin
+  inference_config: None
+  kv_cache: 'False'
+  model_path: None
+  n_estimators: '8'
+  n_jobs: None
+  norm_methods: None
+  offload_mode: auto
+  outlier_threshold: '4.0'
+  random_state: '0'
+  softmax_temperature: '0.9'
+  support_many_classes: 'True'
+  use_amp: auto
+  use_fa3: auto
+  verbose: 'False'
+n_estimators: 8
+device: cuda
+versions:
+  torch: 2.14.1
+  tabpfn: null
+  tabicl: 2.2.0
+  jax: null
+  jaxlib: null
+  numpyro: null
+  huggingface_hub: 2.2.0
+  scikit-learn: 1.9.1
+  numpy: 2.4.6
+  pandas: 3.0.6
+  scipy: 1.17.1
+venv:
+  venv: /content/venv_tabicl
+  packages:
+  - tabicl
+  - huggingface_hub
+  hash: fcef5f5de125f7dd
+  pinned_resolution: true
+venv_freeze:
+- anyio==4.15.1
+- click==8.5.0
+- cloudpickle==3.1.2
+- contourpy==1.3.3
+- cuda-bindings==13.4.4
+- cuda-pathfinder==1.8.3
+- cuda-toolkit==13.0.3.0
+- cycler==0.12.1
+- einops==0.8.2
+- filelock==4.2.4
+- fonttools==4.67.0
+- formulaic==1.2.2
+- fsspec==2026.9.0
+- h11==0.16.0
+- hf-xet==1.7.0
+- httpcore2==2.16.0
+- httpx2==2.16.0
+- huggingface-hub==2.2.0
+- idna==3.20
+- interface-meta==2.0.1
+- jinja2==3.1.6
+- joblib==1.6.0
+- kiwisolver==1.5.1
+- lightgbm==4.7.0
+- markupsafe==3.0.4
+- matplotlib==3.11.2
+- mpmath==1.3.0
+- narwhals==2.27.1
+- networkx==3.6.1
+- numpy==2.4.6
+- nvidia-cublas==13.1.1.3
+- nvidia-cuda-cupti==13.0.85
+- nvidia-cuda-nvrtc==13.0.88
+- nvidia-cuda-runtime==13.0.96
+- nvidia-cudnn-cu13==9.24.0.43
+- nvidia-cufft==12.0.0.61
+- nvidia-cufile==1.15.1.6
+- nvidia-curand==10.4.0.35
+- nvidia-cusolver==12.0.4.66
+- nvidia-cusparse==12.6.3.3
+- nvidia-cusparselt-cu13==0.8.1
+- nvidia-nccl-cu13==2.30.7
+- nvidia-nvjitlink==13.4.92
+- nvidia-nvshmem-cu13==3.4.5
+- nvidia-nvtx==13.0.85
+- packaging==26.3
+- pandas==3.0.6
+- patsy==1.0.3
+- pillow==13.0.0
+- psutil==7.2.2
+- pyparsing==3.3.3
+- python-dateutil==2.9.0.post0
+- pyyaml==6.0.3
+- scikit-learn==1.9.1
+- scipy==1.17.1
+- seaborn==0.13.2
+- setuptools==84.2.1
+- six==1.17.0
+- -e file:///content/ml
+- statsmodels==0.15.0
+- sympy==1.14.0
+- tabicl==2.2.0
+- tabulate==0.10.0
+- threadpoolctl==3.7.0
+- torch==2.14.1
+- tqdm==4.70.1
+- triton==3.8.0
+- truststore==0.10.5
+- typing-extensions==4.16.0
+- tzdata==2026.5
+- wrapt==2.5.1
+- xgboost-cpu==3.2.0
+pretrained_on: synthetic prior data (no real datasets) per the model papers
+code_sha:
+  lib_fm.py: 2b2319bcbfbd701c
+  r251_fm_tabular_cv.py: dc53aadd69c8390f

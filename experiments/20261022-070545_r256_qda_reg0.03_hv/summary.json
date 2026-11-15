@@ -1,0 +1,72 @@
+{
+  "auc_mean": 0.9989499027542506,
+  "auc_std_fold": 0.001965684766750424,
+  "auc_std_repeat": 0.0006277445456978832,
+  "auc_min_repeat": 0.9974235104669887,
+  "auc_max_repeat": 1.0,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.9989793940959887,
+  "oof_auc_std": 0.00018815107656681518,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "cv_logloss": 0.04591516602465263,
+  "cv_brier": 0.013537723175943756,
+  "cv_logloss_std_repeat": 0.0029284050432810136,
+  "agreement_with_s003": {
+    "n_test": 19750,
+    "n_boundary": 204,
+    "spearman_all": 0.8988990013256581,
+    "pseudo_auc_vs_ref_hard": 0.9978000284182222,
+    "pseudo_auc_confident": 0.9984158963845048,
+    "frac_pred_in_0.1_0.9": 0.10486075949367088,
+    "spearman_boundary": 0.32992345802913264,
+    "kendall_boundary": 0.22138510576644455,
+    "side_agree_boundary": 0.5980392156862745,
+    "mean_abs_diff_boundary": 0.25887506110737013,
+    "side_agree_all": 0.9755949367088608
+  },
+  "paired_vs_references": [
+    {
+      "candidate": "qda_reg0.03_hv",
+      "reference": "r003_sup_qda_hv",
+      "auc_candidate": 0.9989499027542506,
+      "auc_reference": 0.9957842921973357,
+      "mean_diff": 0.003165610556914912,
+      "std_diff_fold": 0.0038268670693591884,
+      "std_diff_repeat": 0.0009408698077810675,
+      "se_split": 0.00021038488481756273,
+      "win_rate_fold": 0.77,
+      "n_folds": 100,
+      "n_repeats": 20,
+      "corrected_t": 1.622286054160603,
+      "corrected_p": 0.10792255607224707
+    },
+    {
+      "candidate": "qda_reg0.03_hv",
+      "reference": "r003_gmm2_hv",
+      "auc_candidate": 0.9989499027542506,
+      "auc_reference": 1.0,
+      "mean_diff": -0.001050097245749405,
+      "std_diff_fold": 0.001965684766750424,
+      "std_diff_repeat": 0.0006277445456978751,
+      "se_split": 0.00014036794766851717,
+      "win_rate_fold": 0.335,
+      "n_folds": 100,
+      "n_repeats": 20,
+      "corrected_t": -1.0476807718059338,
+      "corrected_p": 0.29733678625845267
+    }
+  ],
+  "uses_unlabeled_test_features": true,
+  "status": "done",
+  "finished_at": "2026-10-22T07:05:46+09:00"
+}

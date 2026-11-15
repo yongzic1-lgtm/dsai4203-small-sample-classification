@@ -1,0 +1,64 @@
+# E1 validation protocol, SECOND pair (ceiling regime): QDA reg_param 0.1 vs 0.3 on the
+# label-free 13-column block. Selected by the pre-registered rule of R300
+# (research/r300_e1_pair_screen.py): official-CV paired A - B = +0.0126, se_split 0.0005,
+# corr of repeat means 0.49 (runs 20261022-063715_r300_qda_r01 / 20261022-063717_r300_qda_r03).
+# Run through research/r301_run_extension.py (extended model builder, report prefix e1_qda_):
+#   .venv\Scripts\python.exe colab\remote.py run -a pro1 -s rext12 --high-mem -- research/r301_run_extension.py
+#       --ext e1 --prefix e1_qda_ -- --config research/r305_e1_qda_pair.yaml --n-jobs -1
+# Everything except `name`, `hypothesis` and `models` is identical to
+# extensions/e1_validation_protocol/config.yaml (main pair: corr top-30 vs top-50 + L2).
+
+name: e1_validation_protocol_qda_pair
+hypothesis: >-
+  Near the AUC ceiling (0.996 vs 0.983) the split noise of every scheme is several times
+  smaller than for the linear pair at AUC 0.80, so already a plain 5-fold (or even a 30 %
+  hold-out) resolves this 0.0126 gap more often than for the linear pair; the MDD of the
+  same scheme therefore depends strongly on the pair, and repeated 5-fold is still needed
+  for the linear pair.
+
+n_split_seeds: 50
+seed_base: 1
+seed_stride: 1000
+
+models:
+  A:
+    label: "QDA reg 0.1 on block"
+    pipeline:
+      scaler: none
+      model:
+        name: subspace_qda       # research/lib_ext12.py: SubspaceModel(QDA(reg_param), columns)
+        params: {reg_param: 0.1, columns: highvar}
+      random_state: 0
+  B:
+    label: "QDA reg 0.3 on block"
+    pipeline:
+      scaler: none
+      model:
+        name: subspace_qda
+        params: {reg_param: 0.3, columns: highvar}
+      random_state: 0
+
+schemes:
+  - {name: holdout20, kind: holdout, test_size: 0.2, n_repeats: 1, enabled: true}
+  - {name: holdout30, kind: holdout, test_size: 0.3, n_repeats: 1, enabled: true}
+  - {name: 3fold, kind: kfold, n_splits: 3, n_repeats: 1, enabled: true}
+  - {name: 5fold, kind: kfold, n_splits: 5, n_repeats: 1, enabled: true}
+  - {name: 10fold, kind: kfold, n_splits: 10, n_repeats: 1, enabled: true}
+  - {name: 5foldx10, kind: kfold, n_splits: 5, n_repeats: 10, enabled: true}
+  - {name: 5foldx20, kind: kfold, n_splits: 5, n_repeats: 20, enabled: true}
+  - {name: 5fold_noshuffle, kind: kfold, n_splits: 5, n_repeats: 1, shuffle: false, enabled: true}
+
+reference:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 50
+  seed: 900000
+
+target_difference: 0.01
+
+ground_truth: true
+
+quick:
+  n_split_seeds: 4
+  max_repeats: 2
+  reference_repeats: 4

@@ -1,0 +1,100 @@
+{
+  "python": "3.11.17",
+  "cpus": 2,
+  "cpu_model": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "all_pins_match": true,
+  "pin_mismatches": [],
+  "blas": [
+    {
+      "internal_api": "openmp",
+      "version": null,
+      "num_threads": 2,
+      "architecture": null,
+      "threading_layer": null
+    },
+    {
+      "internal_api": "openblas",
+      "version": "0.3.30",
+      "num_threads": 2,
+      "architecture": "Haswell",
+      "threading_layer": "pthreads"
+    },
+    {
+      "internal_api": "openblas",
+      "version": "0.3.31.188.0",
+      "num_threads": 2,
+      "architecture": "Haswell",
+      "threading_layer": "pthreads"
+    },
+    {
+      "internal_api": "openmp",
+      "version": null,
+      "num_threads": 2,
+      "architecture": null,
+      "threading_layer": null
+    }
+  ],
+  "e3_leaky_auc_mean": 0.8667809827048959,
+  "e3_leaky_columns": [
+    8,
+    17,
+    24,
+    26,
+    34,
+    39,
+    46,
+    47,
+    49,
+    55,
+    67,
+    77,
+    80,
+    98,
+    100,
+    108,
+    112,
+    115,
+    117,
+    138
+  ],
+  "thread_sensitivity": [
+    {
+      "model": "s003",
+      "rerun": "20261022-091211_r910_s003_gmm2_hv",
+      "seconds_t1": 7.6,
+      "fold_auc_max_abs_diff": 0.0,
+      "n_folds_differ": 0,
+      "test_max_abs_diff": 0.0,
+      "test_n_differ": 0,
+      "test_spearman": 1.0,
+      "test_bit_identical": true,
+      "oof_max_abs_diff": 0.0
+    },
+    {
+      "model": "e3final",
+      "rerun": "20261022-091223_r910_e3_final_k20",
+      "seconds_t1": 0.9,
+      "fold_auc_max_abs_diff": 0.0,
+      "n_folds_differ": 0,
+      "test_max_abs_diff": 0.0,
+      "test_n_differ": 0,
+      "test_spearman": 1.0,
+      "test_bit_identical": true,
+      "oof_max_abs_diff": 0.0
+    },
+    {
+      "model": "r201qda",
+      "rerun": "20261022-091224_r910_r201_qda_block",
+      "seconds_t1": 112.1,
+      "fold_auc_max_abs_diff": 0.0,
+      "n_folds_differ": 0,
+      "test_max_abs_diff": 0.0,
+      "test_n_differ": 0,
+      "test_spearman": 1.0,
+      "test_bit_identical": true,
+      "oof_max_abs_diff": 0.0
+    }
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T09:16:05+09:00"
+}

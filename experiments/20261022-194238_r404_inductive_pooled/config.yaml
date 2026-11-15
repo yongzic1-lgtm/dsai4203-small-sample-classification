@@ -1,0 +1,54 @@
+name: r404_inductive_pooled
+input_npz: r403_r402_pooled.npz
+input_sha256: 4246ec03ed055a51e3e5df9e8441ce665ee2d3904a374c9b4f5e6ea6ec9e2173
+source_runs:
+- 20261022-182709_r402_inductive_replicas_s136-246
+- 20261022-190554_r402_inductive_replicas_s247-357
+n_replicas: 222
+flips:
+- 0.0
+- 0.0025
+- 0.005
+- 0.0075
+- 0.01
+- 0.015
+- 0.02
+- 0.03
+procedures:
+- s003_gmm2_hv
+- r255_bqda_eb_hv
+- r209_selftrain_qda_lw
+- r201_qda_block
+- r210_qda_block_nll
+- x_qda_block_nll_ext
+- r255_bqda_eb_trainonly
+- x_bqda_trainonly_wk
+- r208_qda_block_lw
+- x_ens_r201_bqda_to
+- bayes
+weights:
+  R156:
+    '0.0': 0.0773
+    '0.0025': 0.4069
+    '0.005': 0.3608
+    '0.0075': 0.0
+    '0.01': 0.155
+    '0.015': 0.0
+    '0.02': 0.0
+    '0.03': 0.0
+  flat_R922:
+    '0.0': 0.088723
+    '0.0025': 0.269593
+    '0.005': 0.220743
+    '0.0075': 0.174156
+    '0.01': 0.144391
+    '0.015': 0.07342
+    '0.02': 0.025078
+    '0.03': 0.003896
+r922_source:
+  file: reports/tables/r922_likelihood_fine.csv
+  sha256: 1de87e2555f27c658846114e4099b232fff34e04c34aa4a5ea072f392e6a7064
+  run_id: 20261022-092146_r922_label_noise_private
+s003_public: 0.99923
+abc_window: 0.00015
+r933_npz: r935_r933_pooled.npz

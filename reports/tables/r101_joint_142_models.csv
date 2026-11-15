@@ -1,0 +1,4 @@
+model,loglik,n_params,bic
+A: K=2 full GMM on all 142 dims,-3850128.542747868,20591,7904179.797690008
+B: K=2 block GMM x full Gaussian on 130 isolated,-3856116.973843343,8826,7799642.12882537
+C: K=2 block GMM x independent Gaussians on 130 isolated,-3860299.443674293,441,7724966.325359254

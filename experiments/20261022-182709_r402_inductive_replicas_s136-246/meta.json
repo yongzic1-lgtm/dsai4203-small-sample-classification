@@ -1,0 +1,40 @@
+{
+  "run_id": "20261022-182709_r402_inductive_replicas_s136-246",
+  "kind": "analysis",
+  "name": "r402_inductive_replicas_s136-246",
+  "author": "TODO_ID_1",
+  "created_at": "2026-10-22T18:27:09+09:00",
+  "data_source": "raw",
+  "data_fingerprint": {
+    "train.csv": "7ef80ff93ef49c8c",
+    "test.csv": "e40a4f71df157db8"
+  },
+  "git": {
+    "commit": "no-commit",
+    "dirty": true,
+    "branch": null,
+    "from_env": true
+  },
+  "packages": {
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "sklearn": "1.9.1",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.2.0"
+  },
+  "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+  "compute": {
+    "host": "colab",
+    "account": "pro2",
+    "session": "r2ind",
+    "hardware": "CPU High-RAM DEFAULT",
+    "job_id": "J20261022-182845-pro2-r2ind",
+    "code_bundle": "3098f517018a7115",
+    "env_hash": "8871117790f585a7",
+    "node": "cf9b8977e7eb",
+    "cpus": 8
+  },
+  "command": "research/r402_inductive_replicas.py --seed-start 136 --n-seeds 111 --n-jobs 8 --real-check"
+}

@@ -1,0 +1,5 @@
+[sup] research/r205_sup_nested_selection.py: 1 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r205_select_supervised             auc=0.9995 +/- 0.0006  logloss=0.028303969045154847  84s  run=20261022-072747_r205_select_supervised  chosen={"{\"model\": \"QuadraticDiscriminantAnalysis()\", \"model__reg_param\": 0.01, \"sel\": \"HighVarColumns(ratio=1.6)\"}": 50, "{\"model\": \"QuadraticDiscriminan
+
+             candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                 run_id
+r205_select_supervised  0.999548        0.000623     0.028304         46 20261022-072747_r205_select_supervised

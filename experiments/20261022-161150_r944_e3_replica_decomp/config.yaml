@@ -1,0 +1,30 @@
+k_feat:
+- 2
+- 5
+- 7
+- 10
+- 13
+- 20
+- 30
+- 50
+- 100
+- 150
+k_fold:
+- 2
+- 5
+- 10
+n_draws: 100
+n_test: 20000
+n_repeats: 3
+base:
+  scaler: standard
+  model:
+    name: logreg
+    params:
+      C: 0.1
+      l1_ratio: 0.0
+      solver: liblinear
+  random_state: 0
+split_seeds: 2026 + r (as E3)
+replica: lib_gen_replica.sample_parametric(fit_parametric(X_all, y)), seed 94400+d
+model_code: research/r944_e3_replica_decomp.py

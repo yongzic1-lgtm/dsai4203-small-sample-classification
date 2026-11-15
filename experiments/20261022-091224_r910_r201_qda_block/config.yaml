@@ -1,0 +1,17 @@
+name: r910_r201_qda_block
+description: 'R910 re-run of 20261022-071234_r201_qda_block: QDA on in-fold high-variance
+  block, nested reg_param'
+model_code: research/r201_sup_quadratic.py candidates()['qda_block'] + research/lib_sup.py
+reproduces_run: 20261022-071234_r201_qda_block
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+n_jobs: -1
+uses_unlabeled_test_features: false
+tuning: reg_param in [0.9, 0.7, 0.5, 0.3, 0.2, 0.1, 0.05, 0.03, 0.01, 0.003, 0.001]

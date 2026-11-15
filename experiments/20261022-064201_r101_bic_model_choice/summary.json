@@ -1,0 +1,52 @@
+{
+  "ref_mean_loglik": -8.552962867107183,
+  "ref_bic": 343911.04593129636,
+  "bic_best": {
+    "K": 2,
+    "cov": "full",
+    "reg": 1e-06,
+    "seed": 0,
+    "n_init": 5,
+    "bic": 343911.0462876929,
+    "aic": 342480.51504068385,
+    "mean_loglik": -8.552962876017096,
+    "n_params": 181,
+    "converged": true,
+    "n_iter": 6
+  },
+  "joint_142": [
+    {
+      "model": "A: K=2 full GMM on all 142 dims",
+      "loglik": -3850128.542747868,
+      "n_params": 20591,
+      "bic": 7904179.797690008
+    },
+    {
+      "model": "B: K=2 block GMM x full Gaussian on 130 isolated",
+      "loglik": -3856116.973843343,
+      "n_params": 8826,
+      "bic": 7799642.12882537
+    },
+    {
+      "model": "C: K=2 block GMM x independent Gaussians on 130 isolated",
+      "loglik": -3860299.443674293,
+      "n_params": 441,
+      "bic": 7724966.325359254
+    }
+  ],
+  "model_A_vs_ref": {
+    "n_boundary_s003": 204,
+    "n_boundary_self": 127,
+    "spearman_all": 0.9632498884777352,
+    "spearman_boundary": 0.5347294174187757,
+    "kendall_boundary": 0.3758330918574327,
+    "n_side_flips_all": 54,
+    "frac_pos_half": 0.5005569620253164,
+    "expected_auc_under_ref": 0.9999093010559016
+  },
+  "expected_auc_ref_self (model Bayes AUC on test)": 0.9999479955326838,
+  "expected_auc_s003_under_ref": 0.9999479955326838,
+  "restart_K2_loglik_range": 1.1138521216480513e-09,
+  "status": "done",
+  "finished_at": "2026-10-22T06:42:40+09:00"
+}

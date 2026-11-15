@@ -1,0 +1,6 @@
+size,x,n_train_eff,n_subsets,cv_mean,cv_std,cv_sem,cv_min,cv_max,oos_mean,oos_std,oos_min,oos_max,n_oos_rows,frac_constant_folds,spread_source
+50,40.0,40.0,10,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,200,0.0,subset draw + CV seed
+100,80.0,80.0,10,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,150,0.0,subset draw + CV seed
+150,120.0,120.0,10,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,100,0.0,subset draw + CV seed
+200,160.0,160.0,10,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,1.0,50,0.0,subset draw + CV seed
+250,200.0,200.0,10,1.0,0.0,0.0,1.0,1.0,,,,,0,0.0,CV seed only (subset = full data)

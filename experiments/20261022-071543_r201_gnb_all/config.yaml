@@ -1,0 +1,18 @@
+name: r201_gnb_all
+description: Gaussian naive Bayes on all 150 features
+model_code: research/r201_sup_quadratic.py + research/lib_sup.py
+group: supervised-generative
+features: all 150
+tuning: none
+n_configs: 1
+inner_cv: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

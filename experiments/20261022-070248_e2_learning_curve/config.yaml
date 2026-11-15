@@ -1,0 +1,76 @@
+name: e2_learning_curve
+hypothesis: The mean CV AUC rises with n and flattens; the spread across the 10 subsets
+  shrinks with n. Because 250 rows give only a few points on the curve, the extrapolated
+  AUC at 500 training rows has a wide interval, and the predicted gain from 250 to
+  500 rows is small relative to that interval.
+pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params:
+      C: 0.1
+      l1_ratio: 1.0
+      solver: liblinear
+  random_state: 0
+sizes:
+- 50
+- 100
+- 150
+- 200
+- 250
+n_subsets: 10
+subset_seed: 2026
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 4
+  seed: 7000
+cv_seed_stride: 100
+out_of_subset: true
+fit:
+  x_axis: effective
+  target_n: 500
+  predict_at:
+  - 250
+  - 500
+  weight: sem
+  sigma_floor: 0.002
+  bounds:
+    a:
+    - 0.5
+    - 1.0
+    b:
+    - 0.0
+    - 10000.0
+    c:
+    - 0.01
+    - 3.0
+  n_boot: 2000
+  sensitivity:
+    unweighted: true
+    drop_smallest: true
+    n_boot: 500
+  boot_seed: 0
+  interval: 0.9
+ground_truth:
+  enabled: true
+  n_draws: 10
+  n_eval: 5000
+  seed: 99
+quick:
+  sizes:
+  - 50
+  - 100
+  - 150
+  - 250
+  n_subsets: 3
+  cv_n_repeats: 1
+  n_boot: 100
+  sens_n_boot: 50
+  gt_n_draws: 2
+  gt_n_eval: 2000
+_runtime:
+  data: raw
+  quick: false
+  n_jobs: 8
+  config_file: /content/ml/extensions/e2_learning_curve/config.yaml

@@ -1,0 +1,3 @@
+candidate,run_id,auc_mean,auc_std_repeat,oof_logloss,n_folds_below_1,uses_unlabeled_test_features,description
+r401_bqda_eb_trainonly_widekappa,20261022-185248_r401_bqda_eb_trainonly_widekappa,0.99919249430119,0.0008219806364812056,0.04381819838576469,24,False,"Bayesian QDA (EB NIW prior, Student-t predictive), block + scaling from the fold's training rows only, EB kappa0 grid [0.001, 0.01, 0.1, 1.0, 3.0, 10.0, 30.0, 100.0, 300.0]"
+r401_ens_r201_bqda_trainonly,20261022-185255_r401_ens_r201_bqda_trainonly,0.9998063711650669,0.00024340048900256843,0.025524630135830458,9,False,"Equal-weight average of P(class 1) of r201_qda_block (in-fold block, nested reg by inner AUC) and r255_bqda_eb_trainonly (in-fold block, EB Bayesian QDA); both fitted on the same training fold"

@@ -1,0 +1,21 @@
+name: r101_bic_model_choice
+basis: non-degenerate PCA of the standardised 13-feature block (12 dims)
+grid:
+  K:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  cov:
+  - full
+  - tied
+  - diag
+  - spherical
+  reg:
+  - 1.0e-06
+  - 0.0001
+  - 0.001
+  - 0.01
+n_seeds_restarts: 30

@@ -1,0 +1,45 @@
+block=[8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112] cpus=12 n_jobs=11
+S003 reference recomputed in 8s: n_boundary=204, mean=0.496621
+BGMM dirichlet_process T=10 gamma=0.001       pca12 n_eff=2 active=2 elbo=49511.3 bic=343920.1 side_agree_bnd=0.995 (96s)
+BGMM dirichlet_process T=10 gamma=0.01        pca12 n_eff=2 active=2 elbo=49508.9 bic=343920.1 side_agree_bnd=0.995 (82s)
+BGMM dirichlet_process T=10 gamma=0.1         pca12 n_eff=2 active=2 elbo=49505.6 bic=343920.1 side_agree_bnd=0.995 (98s)
+BGMM dirichlet_process T=10 gamma=1.0         pca12 n_eff=2 active=2 elbo=49494.1 bic=343920.1 side_agree_bnd=0.995 (98s)
+BGMM dirichlet_process T=10 gamma=10.0        pca12 n_eff=2 active=2 elbo=49415.6 bic=343920.2 side_agree_bnd=0.995 (96s)
+BGMM dirichlet_process T=10 gamma=100.0       pca12 n_eff=2 active=2 elbo=48862.6 bic=343918.9 side_agree_bnd=0.990 (98s)
+BGMM dirichlet_process T=20 gamma=1.0         pca12 n_eff=2 active=2 elbo=50553.0 bic=343925.1 side_agree_bnd=0.985 (165s)
+BGMM dirichlet_distribution T=10 gamma=0.01   pca12 n_eff=2 active=2 elbo=49597.8 bic=343919.8 side_agree_bnd=0.985 (78s)
+BGMM dirichlet_process T=10 gamma=1.0         hv    n_eff=2 active=2 elbo=178510.3 bic=nan side_agree_bnd=0.990 (111s)
+BGMM dirichlet_process T=10 gamma=0.01        hv    n_eff=2 active=2 elbo=178524.9 bic=nan side_agree_bnd=0.990 (106s)
+                                      model basis  n_eff_1pct  n_active          elbo    bic_plugin  s003_side_agree_boundary  s003_spearman_boundary  s003_pseudo_auc_confident
+                                    GMM K=1 pca12         1.0       1.0           NaN 465604.058111                       NaN                     NaN                        NaN
+                                    GMM K=2 pca12         2.0       2.0           NaN 343911.046288                       NaN                     NaN                        NaN
+                                    GMM K=3 pca12         3.0       3.0           NaN 344761.702268                       NaN                     NaN                        NaN
+                                    GMM K=4 pca12         4.0       4.0           NaN 345608.254767                       NaN                     NaN                        NaN
+                                    GMM K=5 pca12         5.0       5.0           NaN 346410.982955                       NaN                     NaN                        NaN
+                                    GMM K=6 pca12         6.0       6.0           NaN 347261.459012                       NaN                     NaN                        NaN
+    BGMM dirichlet_process T=10 gamma=0.001 pca12         2.0       2.0  49511.286958 343920.135609                  0.995098                0.999217                        1.0
+     BGMM dirichlet_process T=10 gamma=0.01 pca12         2.0       2.0  49508.886230 343920.135690                  0.995098                0.999217                        1.0
+      BGMM dirichlet_process T=10 gamma=0.1 pca12         2.0       2.0  49505.609480 343920.136781                  0.995098                0.999217                        1.0
+      BGMM dirichlet_process T=10 gamma=1.0 pca12         2.0       2.0  49494.087902 343920.141711                  0.995098                0.999217                        1.0
+     BGMM dirichlet_process T=10 gamma=10.0 pca12         2.0       2.0  49415.574121 343920.151483                  0.995098                0.999218                        1.0
+    BGMM dirichlet_process T=10 gamma=100.0 pca12         2.0       2.0  48862.595643 343918.905482                  0.990196                0.999385                        1.0
+      BGMM dirichlet_process T=20 gamma=1.0 pca12         2.0       2.0  50553.026735 343925.077293                  0.985294                0.998780                        1.0
+BGMM dirichlet_distribution T=10 gamma=0.01 pca12         2.0       2.0  49597.846913 343919.774201                  0.985294                0.999292                        1.0
+      BGMM dirichlet_process T=10 gamma=1.0    hv         2.0       2.0 178510.317447           NaN                  0.990196                0.999317                        1.0
+     BGMM dirichlet_process T=10 gamma=0.01    hv         2.0       2.0 178524.905935           NaN                  0.990196                0.999317                        1.0
+  GMM K=2 (S003 config, full-train mapping)    hv         NaN       NaN           NaN           NaN                  1.000000                1.000000                        1.0
+generator                      model  test_auc  oracle_component_auc  auc_on_gmm_boundary_rows  n_gmm_boundary  boundary_auc  n_eff_1pct
+  G1_gmm2 BayesQDA (250 labels only)  0.994764              0.995138                  0.701889      201.000000      0.828994        -1.0
+  G1_gmm2           DP-BGMM T=10 g=1  0.994790              0.995138                  0.824103      201.000000      0.825397         2.0
+  G1_gmm2                    GMM K=2  0.994882              0.995138                  0.824698      201.000000      0.824698         2.0
+  G1_gmm2    mean(GMM K=2, BayesQDA)  0.994869              0.995138                  0.795075      201.000000      0.900550        -1.0
+ G2_dpgmm BayesQDA (250 labels only)  0.991052              0.991193                  0.700979      210.666667      0.836513        -1.0
+ G2_dpgmm           DP-BGMM T=10 g=1  0.991098              0.991193                  0.829728      210.666667      0.829087         2.0
+ G2_dpgmm                    GMM K=2  0.991198              0.991193                  0.830452      210.666667      0.830452         2.0
+ G2_dpgmm    mean(GMM K=2, BayesQDA)  0.991166              0.991193                  0.802596      210.666667      0.899661        -1.0
+dpgmm_hv     auc=1.00000 logloss=0.0171 brier=0.00267 n_eff=2 side_agree_bnd=0.990 run=20261022-071054_r254_dpgmm_hv
+dpgmm_pca12  auc=1.00000 logloss=0.0192 brier=0.00338 n_eff=2 side_agree_bnd=0.995 run=20261022-071450_r254_dpgmm_pca12
+                      candidate                           run_id  auc_mean  cv_logloss  cv_brier  cv_logloss_std_repeat                                                                                  weights  n_eff_1pct          elbo converged  s003_n_test  s003_n_boundary  s003_spearman_all  s003_pseudo_auc_vs_ref_hard  s003_pseudo_auc_confident  s003_frac_pred_in_0.1_0.9  s003_spearman_boundary  s003_kendall_boundary  s003_side_agree_boundary  s003_mean_abs_diff_boundary  s003_side_agree_all
+                       dpgmm_hv    20261022-071054_r254_dpgmm_hv       1.0    0.017069  0.002674               0.000019   [0.49911, 0.49879, 0.00055, 0.0003, 0.00026, 0.00025, 0.00025, 0.0002, 0.0002, 0.0001]         2.0 178510.317447      True      19750.0            204.0           0.949361                     0.999999                        1.0                   0.012051                0.999317               0.982807                  0.990196                     0.004285             0.999291
+                    dpgmm_pca12 20261022-071450_r254_dpgmm_pca12       1.0    0.019246  0.003379               0.000029 [0.49899, 0.49876, 0.00061, 0.00045, 0.00025, 0.00023, 0.0002, 0.0002, 0.00017, 0.00015]         2.0  49494.087902      True      19750.0            204.0           0.947682                     0.999999                        1.0                   0.012304                0.999217               0.980585                  0.995098                     0.004300             0.999291
+[ref] r003_gmm2_hv (recomputed)     20261022-050708_r003_gmm2_hv       1.0    0.017109  0.002682               0.000019                                                                                      NaN         NaN           NaN       NaN          NaN              NaN                NaN                          NaN                        NaN                        NaN                     NaN                    NaN                       NaN                          NaN                  NaN

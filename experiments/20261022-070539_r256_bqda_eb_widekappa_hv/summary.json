@@ -1,0 +1,72 @@
+{
+  "auc_mean": 1.0,
+  "auc_std_fold": 0.0,
+  "auc_std_repeat": 0.0,
+  "auc_min_repeat": 1.0,
+  "auc_max_repeat": 1.0,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.9999903107034429,
+  "oof_auc_std": 2.366433360459352e-05,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "official_cv": true,
+  "cv_logloss": 0.010247671509103226,
+  "cv_brier": 0.0026031906944608955,
+  "cv_logloss_std_repeat": 0.001368429933073076,
+  "agreement_with_s003": {
+    "n_test": 19750,
+    "n_boundary": 204,
+    "spearman_all": 0.9538360062791474,
+    "pseudo_auc_vs_ref_hard": 0.9999120134425411,
+    "pseudo_auc_confident": 0.9999806305902931,
+    "frac_pred_in_0.1_0.9": 0.022835443037974683,
+    "spearman_boundary": 0.5465167395806094,
+    "kendall_boundary": 0.38645803148845753,
+    "side_agree_boundary": 0.7401960784313726,
+    "mean_abs_diff_boundary": 0.1893778281697712,
+    "side_agree_all": 0.9956962025316456
+  },
+  "paired_vs_references": [
+    {
+      "candidate": "bqda_eb_widekappa_hv",
+      "reference": "r003_sup_qda_hv",
+      "auc_candidate": 1.0,
+      "auc_reference": 0.9957842921973357,
+      "mean_diff": 0.004215707802664317,
+      "std_diff_fold": 0.005302255751004443,
+      "std_diff_repeat": 0.0011195282602874319,
+      "se_split": 0.00025033412927347756,
+      "win_rate_fold": 0.7899999999999999,
+      "n_folds": 100,
+      "n_repeats": 20,
+      "corrected_t": 1.559276579545963,
+      "corrected_p": 0.12212207383723685
+    },
+    {
+      "candidate": "bqda_eb_widekappa_hv",
+      "reference": "r003_gmm2_hv",
+      "auc_candidate": 1.0,
+      "auc_reference": 1.0,
+      "mean_diff": 0.0,
+      "std_diff_fold": 0.0,
+      "std_diff_repeat": 0.0,
+      "se_split": 0.0,
+      "win_rate_fold": 0.5,
+      "n_folds": 100,
+      "n_repeats": 20,
+      "corrected_t": 0.0,
+      "corrected_p": 1.0
+    }
+  ],
+  "uses_unlabeled_test_features": true,
+  "status": "done",
+  "finished_at": "2026-10-22T07:05:42+09:00"
+}

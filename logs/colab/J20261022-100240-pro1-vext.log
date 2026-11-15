@@ -1,0 +1,30 @@
+                                0        1        2        3
+k                          5.0000  10.0000  13.0000  20.0000
+chance_rate                0.0333   0.0667   0.0867   0.1333
+m_gap                      7.0000   8.0000   8.0000   8.0000
+gap_size                   0.4935   0.3695   0.3690   0.2975
+freq_above_gap             0.5345   0.6520   0.7920   0.9155
+freq_below_gap             0.0410   0.2825   0.4230   0.6180
+m_half                     7.0000   8.0000   8.0000   9.0000
+binom_bound                0.0480   0.0865   0.1090   0.1600
+m_binom                    7.0000  17.0000  22.0000  28.0000
+m_perm                     7.0000   8.0000   9.0000  17.0000
+null_q_top1                0.7278   0.8418   0.8803   0.9324
+top_freq                   0.9545   0.9995   1.0000   1.0000
+freq_at_rank_k             0.5765   0.1735   0.2410   0.2610
+m_star                     7.0000   8.0000   9.0000  17.0000
+obs_max_step               0.4935   0.3695   0.3690   0.2975
+null_max_step_mean         0.1443   0.1508   0.1460   0.1295
+null_max_step_q95          0.3600   0.3359   0.3039   0.2502
+null_max_step_max          0.5060   0.4700   0.4560   0.3850
+frac_null_step_ge_obs      0.0200   0.0200   0.0200   0.0200
+null_pos_max_step_median   1.0000   1.0000   1.0000   2.0000
+null_m_half_mean           0.3200   1.2400   2.2000   5.2200
+null_frac_m_half_ge1       0.2800   0.7200   0.9000   1.0000
+null_m_perm_loo_mean       0.0800   0.1000   0.1000   0.1000
+null_frac_m_perm_loo_ge1   0.0600   0.0800   0.0800   0.0600
+null_m_binom_mean         27.0000  33.4600  35.9200  39.9400
+null_top_freq_q95          0.7278   0.8418   0.8803   0.9324
+reproduces e4_drop.csv: None
+{'n_abs_corr_gt_1_over_sqrt_n_real': 61, 'n_abs_corr_gt_1_over_sqrt_n_perm_mean': 50.02, 'expected_null_150_x_P(|Z|>1)': 47.59657617943712}
+run: 20261022-100104_r943_e4_null_step

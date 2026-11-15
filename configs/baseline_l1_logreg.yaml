@@ -1,0 +1,13 @@
+# Baseline 1: sparse linear model on all 150 features (official CV: no cv block).
+name: baseline_l1_logreg
+hypothesis: >-
+  With n=250, p=150 and mostly noise features, L1 logistic regression (C=0.1) should
+  zero out most coefficients and beat an unpenalised model; it sets the bar for every
+  later idea.
+pipeline:
+  scaler: standard
+  model:
+    name: logreg
+    params: {C: 0.1, l1_ratio: 1.0, solver: liblinear}
+  random_state: 0
+test_pred: fold_mean

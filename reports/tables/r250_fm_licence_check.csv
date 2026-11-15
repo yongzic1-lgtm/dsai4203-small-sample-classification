@@ -1,0 +1,9 @@
+stack,attempt,package_version,status,seconds,error,hub_repo_gated,hub_card_license,package_license,cuda,gpu,torch,sklearn,numpy,pinned_resolution
+tabpfn,fit_v2,9.2.0,ok,4.6,,False,other,"{""License"": null, ""License-Expression"": ""Apache-2.0"", ""classifiers"": []}",True,NVIDIA L4,2.14.1,1.9.1,2.4.6,True
+tabpfn,fit_default_latest,9.2.0,error,0.3,"TabPFNLicenseError: TabPFN requires a one-time license acceptance to download
+model weights for local inference, but browser login is
+disabled (TABPFN_NO_BROWSER is set).
+
+Set the TABPFN_TOKEN environment variable with a valid API key
+obtained from https://ux.priorlabs.ai",False,other,"{""License"": null, ""License-Expression"": ""Apache-2.0"", ""classifiers"": []}",True,NVIDIA L4,2.14.1,1.9.1,2.4.6,True
+tabicl,fit_default,2.2.0,ok,4.8,,False,bsd-3-clause,"{""License"": ""BSD 3-Clause License\n\nCopyright (c) 2025, Soda team @ Inria\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, t",True,NVIDIA L4,2.14.1,1.9.1,2.4.6,True

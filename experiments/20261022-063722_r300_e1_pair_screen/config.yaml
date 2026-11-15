@@ -1,0 +1,47 @@
+name: r300_e1_pair_screen
+candidates:
+- corr10_l2
+- corr20_l2
+- corr30_l2
+- corr50_l2
+- l2_all
+- l1_c005
+- l1_c01
+- l1_c02
+- block_l2_c01
+- block_l2_c1
+- qda_r01
+- qda_r03
+- qda_r05
+- qda_r08
+pairs:
+- - corr10_l2
+  - corr20_l2
+- - corr20_l2
+  - corr30_l2
+- - corr30_l2
+  - corr50_l2
+- - corr50_l2
+  - l2_all
+- - l1_c005
+  - l1_c01
+- - l1_c01
+  - l1_c02
+- - l2_all
+  - l1_c01
+- - block_l2_c01
+  - block_l2_c1
+- - qda_r01
+  - qda_r03
+- - qda_r03
+  - qda_r05
+- - qda_r05
+  - qda_r08
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true

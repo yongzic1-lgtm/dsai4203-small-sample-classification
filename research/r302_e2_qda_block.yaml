@@ -1,0 +1,69 @@
+# E2 learning curve, variant (b): supervised QDA on the label-free 13-column block.
+# Run through research/r301_run_extension.py (extended model builder, report prefix e2_qda_):
+#   .venv\Scripts\python.exe colab\remote.py run -a pro1 -s rext12 --high-mem -- research/r301_run_extension.py
+#       --ext e2 --prefix e2_qda_ -- --config research/r302_e2_qda_block.yaml --n-jobs -1
+# Everything except `name`, `hypothesis` and `pipeline` is identical to
+# extensions/e2_learning_curve/config.yaml (variant (a), the supervised L1 baseline).
+
+name: e2_learning_curve_qda_block
+hypothesis: >-
+  Supervised QDA (reg_param 0.1) on the 13-column high-variance block (columns and
+  standardisation from train+test features, labels only from the subset) needs many labels
+  to estimate two 13x13 covariance matrices: its CV AUC is clearly below the 250-row value
+  0.996 (R003) at n = 50 (about 18 rows per class per training fold) and rises steeply,
+  so the curve is still rising at n = 250 but close to the ceiling 1; the extrapolated
+  AUC at 500 training rows is above 0.996 and the predicted gain is small in absolute
+  terms (< 0.005) because of the ceiling.
+
+pipeline:
+  scaler: none                 # SubspaceModel standardises with train+test feature statistics
+  model:
+    name: subspace_qda         # research/lib_ext12.py: SubspaceModel(QDA(reg_param), columns)
+    params: {reg_param: 0.1, columns: highvar}
+  random_state: 0
+
+sizes: [50, 100, 150, 200, 250]
+n_subsets: 10
+subset_seed: 2026
+
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 4
+  seed: 7000
+cv_seed_stride: 100
+
+out_of_subset: true
+
+fit:
+  x_axis: effective
+  target_n: 500
+  predict_at: [250, 500]
+  weight: sem
+  sigma_floor: 0.002
+  bounds:
+    a: [0.5, 1.0]
+    b: [0.0, 10000.0]
+    c: [0.01, 3.0]
+  n_boot: 2000
+  sensitivity:
+    unweighted: true
+    drop_smallest: true
+    n_boot: 500
+  boot_seed: 0
+  interval: 0.90
+
+ground_truth:
+  enabled: true
+  n_draws: 10
+  n_eval: 5000
+  seed: 99
+
+quick:
+  sizes: [50, 100, 150, 250]
+  n_subsets: 3
+  cv_n_repeats: 1
+  n_boot: 100
+  sens_n_boot: 50
+  gt_n_draws: 2
+  gt_n_eval: 2000

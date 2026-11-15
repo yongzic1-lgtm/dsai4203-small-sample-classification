@@ -1,0 +1,66 @@
+{
+  "high_variance_features": [
+    "8",
+    "15",
+    "26",
+    "30",
+    "46",
+    "49",
+    "64",
+    "67",
+    "77",
+    "80",
+    "98",
+    "100",
+    "112"
+  ],
+  "block_size": 13,
+  "block_rank_d": 12,
+  "block_eigenvalues": [
+    3.768692,
+    2.380619,
+    2.157098,
+    1.33081,
+    1.020894,
+    0.958075,
+    0.520941,
+    0.447155,
+    0.241647,
+    0.151009,
+    0.017813,
+    0.005248,
+    0.0
+  ],
+  "noise_max_abs_pairwise_corr": 0.6239415554810858,
+  "noise_mean_abs_pairwise_corr": 0.006118180241617657,
+  "noise_max_abs_corr_with_block": 0.6116908757916103,
+  "noise_n_nonnormal_p_lt_0.001": 2,
+  "noise_n": 137,
+  "noise_std_range": [
+    0.5264333987406682,
+    2.9969100364174963
+  ],
+  "noise_max_abs_corr_target_train": 0.39033583977078795,
+  "expected_max_abs_corr_under_null_approx": 0.19839316370940052,
+  "pc_abs_corr_target_train": [
+    0.329,
+    0.221,
+    0.327,
+    0.304,
+    0.118,
+    0.001,
+    0.265,
+    0.155,
+    0.007,
+    0.226,
+    0.321,
+    0.14
+  ],
+  "gmm_best_K": 2,
+  "component_train_pos_rates": [
+    0.0,
+    0.991
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T05:33:04+09:00"
+}

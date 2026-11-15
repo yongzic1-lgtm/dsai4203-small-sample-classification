@@ -1,0 +1,18 @@
+name: r201_qda_block_tt
+description: QDA on R003's train+test block (SubspaceModel), nested reg_param
+model_code: research/r201_sup_quadratic.py + research/lib_sup.py
+group: supervised-generative
+features: block(train+test highvar, train+test standardised)
+tuning: reg_param in [0.9, 0.7, 0.5, 0.3, 0.2, 0.1, 0.05, 0.03, 0.01, 0.003, 0.001]
+n_configs: 11
+inner_cv: RepeatedStratifiedKFold on the 200-row training fold (see lib_sup.Tuned)
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: true

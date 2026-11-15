@@ -1,0 +1,3 @@
+name: r001_data_structure
+kind: analysis
+inputs: train+test features, train labels for |corr| only

@@ -1,0 +1,77 @@
+name: r425_flip_grid_reweight
+input_pack: r424_r420_pooled.npz
+input_pack_sha256: 4e3a997a38c5383325a92b4ac8011f7c86c5e97eb536b337ddcc648806f05d42
+input_r935_sha256: 30256fb929f66d14c3e00a79e2d25a1866543f036ed416002a4305022f073013
+source_runs:
+- 20261022-182358_r420_replica_flip_grid_s136-209
+- 20261022-185515_r420_replica_flip_grid_s210-357
+likelihood_sources:
+  lik_r922:
+    file: reports/tables/r922_likelihood_fine.csv
+    sha256: 1de87e2555f27c658846114e4099b232fff34e04c34aa4a5ea072f392e6a7064
+    columns:
+    - flip_y
+    - Ltrain_rel
+    - Lcomb_main
+  lik_r421:
+    file: reports/tables/r421_likelihood_fine.csv
+    sha256: 7207be06b70cd735ac873861f51da3d0187d5ade66e050bf56081a2b35be164d
+    columns:
+    - flip_y
+    - L_train_rel
+    - Lcomb_random
+    - Lcomb_strat197
+    - Lcomb_strat198
+    - Lcomb_stratmix
+flips:
+- 0.0
+- 0.001
+- 0.002
+- 0.0025
+- 0.003
+- 0.004
+- 0.005
+- 0.006
+- 0.007
+- 0.008
+- 0.009
+- 0.01
+- 0.011
+- 0.012
+- 0.013
+- 0.014
+- 0.015
+- 0.016
+- 0.017
+- 0.018
+- 0.019
+- 0.02
+- 0.025
+- 0.03
+n_abc: 512
+windows:
+- 5.0e-05
+- 0.00015
+weights_r156:
+  0.0: 0.0773
+  0.0025: 0.4069
+  0.005: 0.3608
+  0.01: 0.155
+n_boot: 400
+beliefs:
+  r201_qda_block:
+    belief: B006
+    point: 0.9988
+    lo: 0.998
+    hi: 0.9997
+    bad: 0.996
+    p_higher: '0.20'
+    pred_sd: 0.00066
+  r209_selftrain_qda_lw:
+    belief: B007
+    point: 0.9991
+    lo: 0.9987
+    hi: 0.9996
+    bad: 0.9975
+    p_higher: 0.25-0.28 (equal 0.04)
+    pred_sd: 0.00033

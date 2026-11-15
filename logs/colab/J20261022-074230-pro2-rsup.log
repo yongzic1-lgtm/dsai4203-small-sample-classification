@@ -1,0 +1,9 @@
+[sup] research/r207_sup_linear_widegrid.py: 3 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r207_l2_block_wide                 auc=0.9318 +/- 0.0079  logloss=0.3686142996606244  19s  run=20261022-074049_r207_l2_block_wide  chosen={"{\"model__C\": 100.0}": 34, "{\"model__C\": 300.0}": 17, "{\"model__C\": 3000.0}": 15, "{\"model__C\": 30.0}": 14, "{\"model__C\": 1000.0}": 12, "{\"model__C\
+[sup] r207_l1_block_wide                 auc=0.9319 +/- 0.0084  logloss=0.36444729943821613  40s  run=20261022-074108_r207_l1_block_wide  chosen={"{\"model__C\": 10.0}": 50, "{\"model__C\": 100.0}": 16, "{\"model__C\": 30.0}": 11, "{\"model__C\": 300.0}": 10, "{\"model__C\": 3.0}": 5, "{\"model__C\": 100
+[sup] r207_l2_block_tt_wide              auc=0.9383 +/- 0.0068  logloss=0.33595447412177243  59s  run=20261022-074147_r207_l2_block_tt_wide  chosen={"{\"estimator__C\": 100.0}": 28, "{\"estimator__C\": 1000.0}": 19, "{\"estimator__C\": 30.0}": 18, "{\"estimator__C\": 300.0}": 15, "{\"estimator__C\": 3000.0}
+
+            candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                run_id
+r207_l2_block_tt_wide  0.938298        0.006793     0.335954         11 20261022-074147_r207_l2_block_tt_wide
+   r207_l1_block_wide  0.931940        0.008413     0.364447         11    20261022-074108_r207_l1_block_wide
+   r207_l2_block_wide  0.931777        0.007900     0.368614         11    20261022-074049_r207_l2_block_wide

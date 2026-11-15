@@ -1,0 +1,96 @@
+name: e1_validation_protocol
+hypothesis: The spread of a single hold-out AUC (one split of 250 rows) is several
+  times larger than 0.01, so a hold-out cannot rank two models that differ by 0.01.
+  Plain k-fold shrinks the spread as k grows only modestly; only repeated k-fold (5-fold
+  x 10, or the official 5-fold x 20) brings the MDD (2 x std of the paired difference
+  of two close candidates) below 0.01.
+n_split_seeds: 50
+seed_base: 1
+seed_stride: 1000
+models:
+  A:
+    label: corr top-30 + L2 logreg C=0.05
+    pipeline:
+      scaler: standard
+      selector:
+        name: corr_topk
+        k: 30
+      model:
+        name: logreg
+        params:
+          C: 0.05
+          l1_ratio: 0.0
+          solver: liblinear
+      random_state: 0
+  B:
+    label: corr top-50 + L2 logreg C=0.05
+    pipeline:
+      scaler: standard
+      selector:
+        name: corr_topk
+        k: 50
+      model:
+        name: logreg
+        params:
+          C: 0.05
+          l1_ratio: 0.0
+          solver: liblinear
+      random_state: 0
+schemes:
+- name: holdout20
+  kind: holdout
+  test_size: 0.2
+  n_repeats: 1
+  enabled: true
+- name: holdout30
+  kind: holdout
+  test_size: 0.3
+  n_repeats: 1
+  enabled: true
+- name: 3fold
+  kind: kfold
+  n_splits: 3
+  n_repeats: 1
+  enabled: true
+- name: 5fold
+  kind: kfold
+  n_splits: 5
+  n_repeats: 1
+  enabled: true
+- name: 10fold
+  kind: kfold
+  n_splits: 10
+  n_repeats: 1
+  enabled: true
+- name: 5foldx10
+  kind: kfold
+  n_splits: 5
+  n_repeats: 10
+  enabled: true
+- name: 5foldx20
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  enabled: true
+- name: 5fold_noshuffle
+  kind: kfold
+  n_splits: 5
+  n_repeats: 1
+  shuffle: false
+  enabled: true
+reference:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 50
+  seed: 900000
+target_difference: 0.01
+ground_truth: true
+quick:
+  n_split_seeds: 4
+  max_repeats: 2
+  reference_repeats: 4
+_runtime:
+  data: raw
+  quick: false
+  n_jobs: 8
+  config_file: /content/ml/extensions/e1_validation_protocol/config.yaml

@@ -1,0 +1,89 @@
+      id                                                                       claim   value archived_value                                          status                                                                                                                                                                                                  note
+4     D5                                                  test rows in the public LB     395            395                         external (not archived)                                                                                                  0.02 x 19,750 = 395; the exact public size is stated on the Kaggle page only; archive the rules page
+116  P31                                 no method exceeded 0.88 on all 150 features    0.88       0.992889                                         refuted  true inside the sup track (max 0.875, r208_qda_all_lw) but false for the project: on all 150 features TabICL v2 0.9929, TabPFN v2 0.9851, horseshoe logistic 0.9261 (fm). Write 'no sup-track model'
+180  F13                                                      classical QDA reg 0.03  0.9990        0.99895                                        mismatch                                                                                                                                  archived 0.998950 rounds to 0.9989 (fm.md prints 0.9990); immaterial
+188  F21                                  'horseshoe 0.926 is the best linear model'   0.926       0.938298                                         refuted                                                                                     overstated: best linear on ALL 150 features only; on the block, L2 logistic reaches 0.938 (r207_l2_block_tt_wide)
+194  F27                                    BQDA: same side as S003 on all test rows   99.5%       0.995544                                        mismatch                                                                                                                                        archived 99.554% rounds to 99.6% (fm.md truncates); immaterial
+209  F42                                                  BQDA test rows exactly 1.0    1493     not packed               not checked (needs test_pred.npy)                                                                                                                                                                                                      
+240  L14  R441: S005 procedure (strict nested QDA), first budget >= 0.99 (R206 grid)      80            120  R206 statement does not hold for the candidate                                                                                                                                               own grid (incl. 2 labels): 120; first fully defined: 80
+                      model  n_labels  mean_r206  n_failed_r206  mean_r441  n_failed_r441    diff  se_diff       z  comparable  flag_3se
+0       eq206_qda_infold_lw         4        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+1       eq206_qda_infold_lw         6     0.5812              0     0.5849              9  0.0037   0.0127  0.2895       False     False
+2       eq206_qda_infold_lw        10     0.6237              0     0.6564              0  0.0327   0.0165  1.9842        True     False
+3       eq206_qda_infold_lw        20     0.7753              0     0.7890              0  0.0137   0.0101  1.3578        True     False
+4       eq206_qda_infold_lw        40     0.8767              0     0.8694              0 -0.0073   0.0107 -0.6882        True     False
+5       eq206_qda_infold_lw        80     0.9383              0     0.9367              0 -0.0017   0.0071 -0.2346        True     False
+6       eq206_qda_infold_lw       120     0.9605              0     0.9647              0  0.0042   0.0040  1.0509        True     False
+7       eq206_qda_infold_lw       160     0.9718              0     0.9794              0  0.0077   0.0048  1.6110        True     False
+8       eq206_qda_infold_lw       200     0.9836              0     0.9870              0  0.0034   0.0034  1.0122        True     False
+9     eq206_qda_infold_r003         4        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+10    eq206_qda_infold_r003         6        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+11    eq206_qda_infold_r003        10        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+12    eq206_qda_infold_r003        20        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+13    eq206_qda_infold_r003        40     0.9476             54     0.9430            371 -0.0046   0.0191 -0.2405       False     False
+14    eq206_qda_infold_r003        80     0.9937              0     0.9939              0  0.0002   0.0010  0.1872        True     False
+15    eq206_qda_infold_r003       120     0.9990              0     0.9990              0  0.0000   0.0003  0.0729        True     False
+16    eq206_qda_infold_r003       160     0.9995              0     0.9998              0  0.0003   0.0002  1.6319        True     False
+17    eq206_qda_infold_r003       200     1.0000              0     1.0000              0 -0.0000   0.0000 -1.0000        True     False
+18        eq206_qda_tt_r003         4        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+19        eq206_qda_tt_r003         6        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+20        eq206_qda_tt_r003        10        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+21        eq206_qda_tt_r003        20        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+22        eq206_qda_tt_r003        40     0.9933              0     0.9925              0 -0.0008   0.0016 -0.4748        True     False
+23        eq206_qda_tt_r003        80     0.9984              0     0.9994              0  0.0010   0.0005  1.8919        True     False
+24        eq206_qda_tt_r003       120     0.9997              0     0.9999              0  0.0002   0.0002  1.0553        True     False
+25        eq206_qda_tt_r003       160     0.9999              0     1.0000              0  0.0000   0.0000  1.2198        True     False
+26        eq206_qda_tt_r003       200     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+27         eq206_qda_tt_r01         4        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+28         eq206_qda_tt_r01         6        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+29         eq206_qda_tt_r01        10        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+30         eq206_qda_tt_r01        20        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+31         eq206_qda_tt_r01        40     0.9698              0     0.9689              0 -0.0009   0.0055 -0.1658        True     False
+32         eq206_qda_tt_r01        80     0.9877              0     0.9897              0  0.0020   0.0031  0.6550        True     False
+33         eq206_qda_tt_r01       120     0.9936              0     0.9940              0  0.0003   0.0020  0.1510        True     False
+34         eq206_qda_tt_r01       160     0.9944              0     0.9953              0  0.0009   0.0020  0.4548        True     False
+35         eq206_qda_tt_r01       200     0.9952              0     0.9959              0  0.0008   0.0018  0.4505        True     False
+36  eq206_selftrain_lw_t075         4        NaN             60        NaN            400     NaN   0.0000     inf       False     False
+37  eq206_selftrain_lw_t075         6     0.7959              0     0.8060              4  0.0101   0.0224  0.4516       False     False
+38  eq206_selftrain_lw_t075        10     0.8830              0     0.9211              0  0.0381   0.0194  1.9619        True     False
+39  eq206_selftrain_lw_t075        20     0.9950              0     0.9959              0  0.0009   0.0014  0.6413        True     False
+40  eq206_selftrain_lw_t075        40     0.9996              0     0.9998              0  0.0002   0.0003  0.5724        True     False
+41  eq206_selftrain_lw_t075        80     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+42  eq206_selftrain_lw_t075       120     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+43  eq206_selftrain_lw_t075       160     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+44  eq206_selftrain_lw_t075       200     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+45             s003_gmm2_hv         4     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+46             s003_gmm2_hv         6     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+47             s003_gmm2_hv        10     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+48             s003_gmm2_hv        20     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+49             s003_gmm2_hv        40     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+50             s003_gmm2_hv        80     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+51             s003_gmm2_hv       120     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+52             s003_gmm2_hv       160     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+53             s003_gmm2_hv       200     1.0000              0     1.0000              0  0.0000   0.0000  0.0000        True     False
+                      model           r206_model  r441_first_mean_ge_099  r441_first_mean_ge_099_on_r206_grid  r441_first_median_ge_099  r206_first_mean_ge_099  r441_first_defined  r441_first_fully_defined  r441_mean_at_2  r441_mean_at_4  r441_mean_at_20  r441_mean_at_40  r441_mean_at_80
+0       eq206_qda_infold_lw    sup_qda_infold_lw                     NaN                                  NaN                       NaN                     NaN                   6                        10             NaN             NaN         0.789012         0.869410         0.936665
+1     eq206_qda_infold_r003  sup_qda_infold_r003                    80.0                                 80.0                      80.0                    80.0                  40                        80             NaN             NaN              NaN              NaN         0.993889
+2         eq206_qda_tt_r003      sup_qda_tt_r003                    40.0                                 40.0                      40.0                    40.0                  40                        40             NaN             NaN              NaN         0.992509         0.999402
+3          eq206_qda_tt_r01       sup_qda_tt_r01                   120.0                                120.0                      80.0                   120.0                  40                        40             NaN             NaN              NaN         0.968856         0.989736
+4   eq206_selftrain_lw_t075     ssl_selftrain_lw                    20.0                                 20.0                      20.0                    20.0                   6                        10             NaN             NaN         0.995916         0.999754         1.000000
+5            r201_qda_block                                        120.0                                120.0                      80.0                     NaN                  40                        80             NaN             NaN              NaN              NaN         0.984225
+6     r209_selftrain_qda_lw                                         20.0                                 20.0                      20.0                     NaN                   6                        10             NaN             NaN         0.999083         1.000000         1.000000
+7        r210_qda_block_nll                                        120.0                                120.0                     120.0                     NaN                  40                        80             NaN             NaN              NaN              NaN         0.937584
+8           r255_bqda_eb_hv                                         80.0                                 80.0                      80.0                     NaN                   4                         4             NaN        0.662824         0.806451         0.902390         0.998009
+9    r255_bqda_eb_trainonly                                        160.0                                160.0                     160.0                     NaN                   4                         4             NaN        0.614625         0.643655         0.825754         0.923764
+10             s003_gmm2_hv           trans_gmm2                     2.0                                  4.0                       2.0                     4.0                   2                         2             1.0        1.000000         1.000000         1.000000         1.000000
+Journey from the naive baseline to the final candidates (official 5x20 CV; public LB from registry/submissions.csv; HM SE = Hanley-McNeil SE of the expected public AUC on 395 rows (198/197); surprise = (public - expected) / HM SE; pending rows show the replica-ABC prediction given S003's public 0.99923 (r936_public_abc, CSV scores); last column = expected private-AUC difference to S003 on 222 parametric replicas (r936_private, tn0, csv8, R156 weights); S003's own private expectation is about 0.997 (R922, flat prior). Run 20261022-184020_r440_core_numbers.)
+
+| Step | Sub | Model | Test features used | CV AUC (sd) | Expected public | Public LB | Public - CV | Surprise (HM SE) | Replica private vs S003 |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | S001 | L1 logistic, all 150 features | labels only | 0.8469 (0.0120) | 0.8500 | 0.83589 | -0.0110 | -0.72 |  |
+| 2 | S002 | QDA reg 0.1 on the 13-column block | block from train+test features | 0.9958 (0.0011) | 0.9900 | 0.99277 | -0.0030 | 0.55 |  |
+| 3 | S003 | Transductive GMM K=2 on the block | yes (transductive) | 1.0000 (0.0000) | 0.9990 | 0.99923 | -0.0008 | 0.14 | 0 (reference) |
+| 4 | S004 | E3 final: in-fold corr top-20 + L2 logistic | labels only | 0.7934 (0.0142) | 0.8200 | 0.79136 | -0.0021 | -1.35 |  |
+| 5 | S005 | Strict supervised QDA, nested reg (r201) | labels only (strictly inductive) | 0.9999 (0.0002) | 0.9988 | pending (pred. 0.99884 ± 0.00066) |  |  | -2.6e-04 |
+| 6 | S006 | Self-training QDA-LW (r209) | yes (self-training on test rows) | 1.0000 (0.0000) | 0.9991 | pending (pred. 0.99913 ± 0.00033) |  |  | -6.9e-05 |
+| - | - | Strict QDA, nested reg, log-loss inner (r210) | labels only | 1.0000 (0.0001) |  | not submitted (pred. 0.99901 ± 0.00051) |  |  | -1.7e-04 |
+| - | - | Bayesian QDA EB, train+test block (r255) | block from train+test features | 1.0000 (0.0000) |  | not submitted (pred. 0.99906 ± 0.00033) |  |  | -1.2e-04 |
+| - | - | Bayesian QDA EB, in-fold block (r255) | labels only (strictly inductive) | 0.9990 (0.0011) |  | - |  |  |  |
+

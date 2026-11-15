@@ -1,0 +1,12 @@
+proc,run,archived_run,max_abs_diff,bit_identical,csv8_values_differing
+s003_gmm2_hv,20261022-182709_r402_inductive_replicas_s136-246,20261022-050708_r003_gmm2_hv,0.0,True,0.0
+r255_bqda_eb_hv,20261022-182709_r402_inductive_replicas_s136-246,20261022-070200_r255_bqda_eb_hv,7.771561172376096e-16,False,0.0
+r209_selftrain_qda_lw,20261022-182709_r402_inductive_replicas_s136-246,20261022-080632_r209_selftrain_qda_lw,0.0,True,0.0
+r201_qda_block,20261022-182709_r402_inductive_replicas_s136-246,20261022-071234_r201_qda_block,0.0,True,0.0
+r210_qda_block_nll,20261022-182709_r402_inductive_replicas_s136-246,20261022-082047_r210_qda_block_nll,0.0,True,0.0
+x_qda_block_nll_ext,20261022-182709_r402_inductive_replicas_s136-246,20261022-095943_r930_qda_block_nll_ext,0.0,True,0.0
+r255_bqda_eb_trainonly,20261022-182709_r402_inductive_replicas_s136-246,20261022-070202_r255_bqda_eb_trainonly,7.771561172376096e-16,False,0.0
+x_bqda_trainonly_wk,20261022-182709_r402_inductive_replicas_s136-246,,,,
+r208_qda_block_lw,20261022-182709_r402_inductive_replicas_s136-246,20261022-075228_r208_qda_block_lw,0.0,True,0.0
+x_ens_r201_bqda_to,20261022-182709_r402_inductive_replicas_s136-246,,,,
+x_ens_r201_bqda_to vs 0.5*(archived r201 + archived r255_trainonly),20261022-182709_r402_inductive_replicas_s136-246,,3.3306690738754696e-16,False,

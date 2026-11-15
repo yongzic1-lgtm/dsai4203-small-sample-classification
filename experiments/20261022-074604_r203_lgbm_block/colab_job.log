@@ -1,0 +1,21 @@
+[sup] research/r203_sup_trees.py: 9 candidates, n_jobs=-1, cpus=8, train+test block = [8, 15, 26, 30, 46, 49, 64, 67, 77, 80, 98, 100, 112]
+[sup] r203_rf_all                        auc=0.8659 +/- 0.0070  logloss=0.5440747408829767  25s  run=20261022-074421_r203_rf_all  chosen={}
+[sup] r203_et_all                        auc=0.8614 +/- 0.0089  logloss=0.5704160882307225  24s  run=20261022-074446_r203_et_all  chosen={}
+[sup] r203_lgbm_all                      auc=0.8724 +/- 0.0122  logloss=0.4488367630670923  8s  run=20261022-074509_r203_lgbm_all  chosen={}
+[sup] r203_xgb_all                       auc=0.8658 +/- 0.0105  logloss=0.4590919296904207  8s  run=20261022-074518_r203_xgb_all  chosen={}
+[sup] r203_rf_block                      auc=0.8965 +/- 0.0074  logloss=0.4443705320361871  20s  run=20261022-074525_r203_rf_block  chosen={}
+[sup] r203_et_block                      auc=0.9038 +/- 0.0079  logloss=0.4668265055773131  18s  run=20261022-074546_r203_et_block  chosen={}
+[sup] r203_lgbm_block                    auc=0.9075 +/- 0.0095  logloss=0.38446531367312087  6s  run=20261022-074604_r203_lgbm_block  chosen={}
+[sup] r203_xgb_block                     auc=0.9033 +/- 0.0109  logloss=0.390608010798484  3s  run=20261022-074610_r203_xgb_block  chosen={}
+[sup] r203_lgbm_block_nested             auc=0.9136 +/- 0.0113  logloss=0.37561344061233143  29s  run=20261022-074613_r203_lgbm_block_nested  chosen={"{\"model__min_child_samples\": 5, \"model__n_estimators\": 400, \"model__num_leaves\": 7}": 97, "{\"model__min_child_samples\": 20, \"model__n_estimators\": 1
+
+             candidate  auc_mean  auc_std_repeat  oof_logloss  n_configs                                 run_id
+r203_lgbm_block_nested  0.913627        0.011282     0.375613          8 20261022-074613_r203_lgbm_block_nested
+       r203_lgbm_block  0.907486        0.009542     0.384465          1        20261022-074604_r203_lgbm_block
+         r203_et_block  0.903757        0.007921     0.466827          1          20261022-074546_r203_et_block
+        r203_xgb_block  0.903266        0.010879     0.390608          1         20261022-074610_r203_xgb_block
+         r203_rf_block  0.896511        0.007400     0.444371          1          20261022-074525_r203_rf_block
+         r203_lgbm_all  0.872352        0.012173     0.448837          1          20261022-074509_r203_lgbm_all
+           r203_rf_all  0.865885        0.007005     0.544075          1            20261022-074421_r203_rf_all
+          r203_xgb_all  0.865753        0.010519     0.459092          1           20261022-074518_r203_xgb_all
+           r203_et_all  0.861415        0.008854     0.570416          1            20261022-074446_r203_et_all

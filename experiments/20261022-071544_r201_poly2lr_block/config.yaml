@@ -1,0 +1,19 @@
+name: r201_poly2lr_block
+description: L2 logistic on degree-2 polynomial features of the in-fold block, nested
+  C
+model_code: research/r201_sup_quadratic.py + research/lib_sup.py
+group: supervised-linear
+features: poly2(block in-fold)
+tuning: C in [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1.0, 3.0]
+n_configs: 8
+inner_cv: RepeatedStratifiedKFold on the 200-row training fold (see lib_sup.Tuned)
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false

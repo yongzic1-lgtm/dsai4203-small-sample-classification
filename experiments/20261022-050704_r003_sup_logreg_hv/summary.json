@@ -1,0 +1,22 @@
+{
+  "auc_mean": 0.8976608476064999,
+  "auc_std_fold": 0.03619439991647861,
+  "auc_std_repeat": 0.007627804640450822,
+  "auc_min_repeat": 0.8865853148461843,
+  "auc_max_repeat": 0.9114964343225213,
+  "n_folds_total": 100,
+  "split_signature": "5708ce5c3828",
+  "oof_auc_mean": 0.8960338479426394,
+  "oof_auc_std": 0.006722699649152756,
+  "scheme": {
+    "kind": "kfold",
+    "n_splits": 5,
+    "n_repeats": 20,
+    "seed": 2026,
+    "test_size": 0.2,
+    "shuffle": true,
+    "stratify": true
+  },
+  "status": "done",
+  "finished_at": "2026-10-22T05:07:08+08:00"
+}

@@ -1,0 +1,75 @@
+name: r402_inductive_replicas_s247-357
+variant: param
+seeds:
+- 247
+- 357
+flips:
+- 0.0
+- 0.0025
+- 0.005
+- 0.0075
+- 0.01
+- 0.015
+- 0.02
+- 0.03
+n_draws: 16
+train_noise: false
+round_decimals: 8
+procedures:
+- s003_gmm2_hv
+- r255_bqda_eb_hv
+- r209_selftrain_qda_lw
+- r201_qda_block
+- r210_qda_block_nll
+- x_qda_block_nll_ext
+- r255_bqda_eb_trainonly
+- x_bqda_trainonly_wk
+- r208_qda_block_lw
+- x_ens_r201_bqda_to
+- bayes
+inductive:
+- r201_qda_block
+- r210_qda_block_nll
+- x_qda_block_nll_ext
+- r255_bqda_eb_trainonly
+- x_bqda_trainonly_wk
+- r208_qda_block_lw
+- x_ens_r201_bqda_to
+transductive_references:
+- s003_gmm2_hv
+- r255_bqda_eb_hv
+- r209_selftrain_qda_lw
+source_runs:
+  s003_gmm2_hv: 20261022-050708_r003_gmm2_hv
+  r255_bqda_eb_hv: 20261022-070200_r255_bqda_eb_hv
+  r209_selftrain_qda_lw: 20261022-080632_r209_selftrain_qda_lw
+  r201_qda_block: 20261022-071234_r201_qda_block
+  r210_qda_block_nll: 20261022-082047_r210_qda_block_nll
+  x_qda_block_nll_ext: 20261022-095943_r930_qda_block_nll_ext
+  r255_bqda_eb_trainonly: 20261022-070202_r255_bqda_eb_trainonly
+  r208_qda_block_lw: 20261022-075228_r208_qda_block_lw
+  x_bqda_trainonly_wk: null
+  x_ens_r201_bqda_to: null
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+wide_kappa_grid:
+- 0.001
+- 0.01
+- 0.1
+- 1.0
+- 3.0
+- 10.0
+- 30.0
+- 100.0
+- 300.0
+boundary: Bayes posterior in (0.1, 0.9), all 19,750 test rows, clean labels
+code: research/r400_inductive_lib.py + research/r931_cand_lib.py + research/lib_gen_replica.py
+real_check: false
+max_folds: null

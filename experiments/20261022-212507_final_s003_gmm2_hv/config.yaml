@@ -1,0 +1,25 @@
+name: final_s003_gmm2_hv
+hypothesis: 'Reproduction of S003 (run 20261022-050708_r003_gmm2_hv) through scripts/run_experiment.py:
+  official CV AUC 1.0 in all 100 folds (split signature 5708ce5c3828) and a test_pred
+  that is bit-identical on Colab, so make_submission writes a file with sha256 prefix
+  3aae140e5837753f; on the Windows laptop the GMM agrees only to about 1e-11 (R910/R911),
+  so one CSV value and the sha256 may differ there.'
+pipeline:
+  scaler: none
+  model:
+    name: transductive_gmm
+    params:
+      columns: highvar
+      n_components: 2
+      covariance_type: full
+      pca_dims: null
+      n_init: 5
+      alpha: 1.0
+      reg_covar: 1.0e-06
+  random_state: 0
+test_pred: fold_mean
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026

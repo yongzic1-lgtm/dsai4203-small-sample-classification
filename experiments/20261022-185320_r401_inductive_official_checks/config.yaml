@@ -1,0 +1,3 @@
+name: r401_inductive_official_checks
+inputs: real train rows (labels), official splits
+code: research/r400_inductive_lib.py

@@ -1,0 +1,19 @@
+bqda_eb_plugin_hv    auc=1.00000 +/- 0.00000 logloss=0.0095 diff_vs_qda0.1=+0.00422 (se 0.00025) run=20261022-070536_r256_bqda_eb_plugin_hv
+bqda_eb_widekappa_hv auc=1.00000 +/- 0.00000 logloss=0.0102 diff_vs_qda0.1=+0.00422 (se 0.00025) run=20261022-070539_r256_bqda_eb_widekappa_hv
+bqda_weak_plugin_hv  auc=0.99945 +/- 0.00049 logloss=0.0364 diff_vs_qda0.1=+0.00367 (se 0.00023) run=20261022-070542_r256_bqda_weak_plugin_hv
+qda_reg0.01_hv       auc=0.99976 +/- 0.00033 logloss=0.0236 diff_vs_qda0.1=+0.00397 (se 0.00023) run=20261022-070543_r256_qda_reg0.01_hv
+qda_reg0.03_hv       auc=0.99895 +/- 0.00063 logloss=0.0459 diff_vs_qda0.1=+0.00317 (se 0.00021) run=20261022-070545_r256_qda_reg0.03_hv
+qda_reg0.3_hv        auc=0.98317 +/- 0.00255 logloss=0.1776 diff_vs_qda0.1=-0.01262 (se 0.00050) run=20261022-070546_r256_qda_reg0.3_hv
+           candidate  auc_mean  auc_std_repeat  cv_logloss  diff_vs_qda0.1  se_vs_qda0.1
+   bqda_eb_plugin_hv  1.000000        0.000000    0.009539        0.004216      0.000250
+bqda_eb_widekappa_hv  1.000000        0.000000    0.010248        0.004216      0.000250
+ bqda_weak_plugin_hv  0.999451        0.000493    0.036446        0.003666      0.000227
+      qda_reg0.01_hv  0.999758        0.000330    0.023605        0.003974      0.000234
+      qda_reg0.03_hv  0.998950        0.000628    0.045915        0.003166      0.000210
+       qda_reg0.3_hv  0.983168        0.002553    0.177613       -0.012616      0.000499
+wide-kappa EB choices over folds:
+ kappa0  nu0_extra  prior  n_folds
+    3.0          4 pooled       95
+    3.0          4   diag        3
+    3.0          8 pooled        2
+wide-kappa EB on all 250 rows: kappa0=3.0 nu0_extra=4 prior=pooled

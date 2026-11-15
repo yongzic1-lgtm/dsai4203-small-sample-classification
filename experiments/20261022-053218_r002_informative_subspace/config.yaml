@@ -1,0 +1,16 @@
+name: r002_informative_subspace
+high_variance_rule: std > 1.5 * median(std) on train+test
+high_variance_features:
+- '8'
+- '15'
+- '26'
+- '30'
+- '46'
+- '49'
+- '64'
+- '67'
+- '77'
+- '80'
+- '98'
+- '100'
+- '112'

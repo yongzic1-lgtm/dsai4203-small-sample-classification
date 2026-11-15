@@ -1,0 +1,2 @@
+iter,S,dim_S,n_S,mean_loglik,gmm_bic,frac_r_boundary,n_boundary_all,added_next,top5_cond,backward_min_cond_lrt,backward_weakest,backward_n_dbic_pos
+0,8 15 26 30 46 49 64 67 77 80 98 100 112,12,13,-8.552962867107183,343911.04593129636,0.0095,190,,52:127(df14.0); 6:127(df14.0); 61:127(df14.0); 17:127(df14.0); 142:127(df14.0),83.65749425126705,67,9

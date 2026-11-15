@@ -1,0 +1,149 @@
+{
+  "n_replicas": 222,
+  "n_levels": 24,
+  "n_abc_rows_le_1.5e-4": 19923,
+  "bit_exact": true,
+  "R922_flat_mass_beyond_grid": 0.000908237040036349,
+  "posterior_mean_f_binned": {
+    "r936_R156": 0.00437125,
+    "R922_flat_combined": 0.006199806359117477,
+    "R922_flat_train_only": 0.007657920965806997,
+    "R421_flat_random": 0.006209271475417023,
+    "R421_flat_stratified_mix": 0.0062234699226958335
+  },
+  "private": {
+    "r936_R156": {
+      "s003_mean": 0.9977491,
+      "s003_q05": 0.9946797,
+      "s003_q50": 0.9979936,
+      "s003_q95": 0.9999471,
+      "P_s003_ge_0.999": 0.1419091,
+      "gain_second_r201": 4.1e-06,
+      "gain_second_r209": 1.45e-05
+    },
+    "R922_flat_combined": {
+      "s003_mean": 0.996825,
+      "s003_q05": 0.9921777,
+      "s003_q50": 0.9973804,
+      "s003_q95": 0.9995822,
+      "P_s003_ge_0.999": 0.1605126,
+      "gain_second_r201": 7e-06,
+      "gain_second_r209": 2.02e-05
+    },
+    "R922_flat_train_only": {
+      "s003_mean": 0.9960948,
+      "s003_q05": 0.9877262,
+      "s003_q50": 0.997268,
+      "s003_q95": 0.9999493,
+      "P_s003_ge_0.999": 0.2362137,
+      "gain_second_r201": 1e-05,
+      "gain_second_r209": 2.31e-05
+    },
+    "R421_flat_random": {
+      "s003_mean": 0.9968202,
+      "s003_q05": 0.9921731,
+      "s003_q50": 0.9973762,
+      "s003_q95": 0.9995784,
+      "P_s003_ge_0.999": 0.1594467,
+      "gain_second_r201": 7e-06,
+      "gain_second_r209": 2.02e-05
+    },
+    "R421_flat_stratified_mix": {
+      "s003_mean": 0.9968131,
+      "s003_q05": 0.992156,
+      "s003_q50": 0.9973724,
+      "s003_q95": 0.9995791,
+      "P_s003_ge_0.999": 0.1592338,
+      "gain_second_r201": 7.1e-06,
+      "gain_second_r209": 2.02e-05
+    }
+  },
+  "public_pred_pm1.5e-4": [
+    {
+      "method": "R922_flat_combined",
+      "proc": "r201_qda_block",
+      "public_pred_mean": 0.998684,
+      "public_pred_mc_se": 2.4e-05,
+      "public_pred_q10": 0.99782,
+      "public_pred_q90": 0.999411,
+      "P_higher_than_s003": 0.193589,
+      "P_equal_s003": 0.012783,
+      "P_in_belief_80pct": 0.846771
+    },
+    {
+      "method": "R922_flat_combined",
+      "proc": "r209_selftrain_qda_lw",
+      "public_pred_mean": 0.999102,
+      "public_pred_mc_se": 7e-06,
+      "public_pred_q10": 0.998818,
+      "public_pred_q90": 0.99941,
+      "P_higher_than_s003": 0.272209,
+      "P_equal_s003": 0.033896,
+      "P_in_belief_80pct": 0.923719
+    },
+    {
+      "method": "pure_ABC_R922_train",
+      "proc": "r201_qda_block",
+      "public_pred_mean": 0.998683,
+      "public_pred_mc_se": 2.4e-05,
+      "public_pred_q10": 0.99782,
+      "public_pred_q90": 0.999411,
+      "P_higher_than_s003": 0.193301,
+      "P_equal_s003": 0.012808,
+      "P_in_belief_80pct": 0.845905
+    },
+    {
+      "method": "pure_ABC_R922_train",
+      "proc": "r209_selftrain_qda_lw",
+      "public_pred_mean": 0.999101,
+      "public_pred_mc_se": 8e-06,
+      "public_pred_q10": 0.998818,
+      "public_pred_q90": 0.99941,
+      "P_higher_than_s003": 0.272688,
+      "P_equal_s003": 0.033706,
+      "P_in_belief_80pct": 0.923018
+    },
+    {
+      "method": "R421_stratified_mix",
+      "proc": "r201_qda_block",
+      "public_pred_mean": 0.998684,
+      "public_pred_mc_se": 2.4e-05,
+      "public_pred_q10": 0.99782,
+      "public_pred_q90": 0.999411,
+      "P_higher_than_s003": 0.193583,
+      "P_equal_s003": 0.012785,
+      "P_in_belief_80pct": 0.846693
+    },
+    {
+      "method": "R421_stratified_mix",
+      "proc": "r209_selftrain_qda_lw",
+      "public_pred_mean": 0.999102,
+      "public_pred_mc_se": 7e-06,
+      "public_pred_q10": 0.998818,
+      "public_pred_q90": 0.99941,
+      "P_higher_than_s003": 0.272286,
+      "P_equal_s003": 0.033882,
+      "P_in_belief_80pct": 0.923667
+    }
+  ],
+  "r936_repro": [
+    {
+      "proc": "r201_qda_block",
+      "n_accepted": 125,
+      "n_replicas": 68,
+      "public_mean": 0.9988364,
+      "public_diff_vs_s003": -0.000409,
+      "p_public_higher": 0.2025795
+    },
+    {
+      "proc": "r209_selftrain_qda_lw",
+      "n_accepted": 125,
+      "n_replicas": 68,
+      "public_mean": 0.9991288,
+      "public_diff_vs_s003": -0.0001166,
+      "p_public_higher": 0.2827374
+    }
+  ],
+  "status": "done",
+  "finished_at": "2026-10-22T19:17:50+09:00"
+}

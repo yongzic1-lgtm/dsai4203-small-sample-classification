@@ -1,0 +1,19 @@
+name: r203_lgbm_block_nested
+description: LightGBM on in-fold block, nested num_leaves x min_child_samples x n_estimators
+model_code: research/r203_sup_trees.py + research/lib_sup.py
+group: supervised-trees
+features: block(in-fold highvar)
+tuning: '{''model__num_leaves'': [3, 7], ''model__min_child_samples'': [20, 5], ''model__n_estimators'':
+  [100, 400]}'
+n_configs: 8
+inner_cv: RepeatedStratifiedKFold on the 200-row training fold (see lib_sup.Tuned)
+cv:
+  kind: kfold
+  n_splits: 5
+  n_repeats: 20
+  seed: 2026
+  test_size: 0.2
+  shuffle: true
+  stratify: true
+test_pred: fold_mean
+uses_unlabeled_test_features: false
