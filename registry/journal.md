@@ -166,3 +166,13 @@
 ## 2026-11-15 — TODO（仓库改为公开）
 - Did: 用户要求公开仓库。AI 先列出规则风险（Kaggle 6a/6b、课程规则 5，比赛 11-30 00:59 JST 才截止），给了三个选项；用户选择现在就公开。公开前检查了学号、密码、token 和个人邮箱，都没有。已改为 PUBLIC（D017）。
 - Next: 组员可以直接 clone；如果以后要改回私有：`gh repo edit yongzic1-lgtm/dsai4203-small-sample-classification --visibility private --accept-visibility-change-consequences`（已有的 clone/fork 收不回）。
+
+## 2026-11-23 — TODO（报告润色：Times New Roman、新图、核心报告改写，使用 Claude Code）
+- Did: 按用户要求（"文章写好一点，图好看，丰富一点"；"字体用新罗马，图太单调"）跑了一个 12 个代理的工作流（ai_usage 第 24 行）：
+  - 排版：`build_report.py` 全文改用 Times New Roman（正文、标题、表格、图注、代码片段），新增 `<!-- small -->` 标记（只用于参考文献，目前没有用）。
+  - 核心报告的图从 2 张变成 6 张，全部从档案里已有的结果画：数据结构（F1）、验证协议（F2，E1 山脊图 + R900 置换零假设）、提交历程（F3，"几个 9"刻度）、最终选择（F4，R936 + R922）、模型全景（F5，100 折蜂群图）、无标签数据的价值（F6，R441 + R404）。每张图先画、再由评审代理挑问题、再改一轮。
+  - 四个扩展各换一张新图（`ext_e1`–`ext_e4`），只改图和图注，正文不动；E3 原来没有图，现在有一张。
+  - 核心报告围绕新图重写；三路审查（数字 13 条、表述 22 条、读者 34 条），修改轮改掉了所有中高优先级问题，低优先级的大多改了，没改的记在报告头部注释里。
+- Result: `reports/report.pdf` 15 页；核心 5.91/6，E1 1.90、E2 1.87、E3 1.95、E4 1.93（上限 2），贡献表 0.95/1；pdffonts 只有 Times New Roman 三个字形。没有新计算，没有新的 Kaggle 提交。
+- Difficulties: 核心报告只剩约 4 行余量，成员的 TODO 填进去后可能挤掉一节的开头，每次改完都要 `--parts core` 重建查页数。第一次把代码字体换成 Times 时用了 `\setmonofont`，把正文字距弄坏了（18 行出界），改用 `	tdefault` 解决。
+- Next: 成员通读新版核心报告和图，确认每个数字自己能解释（规则 6）；贡献表和 ai_usage 第 24 行的 TODO 由成员填。

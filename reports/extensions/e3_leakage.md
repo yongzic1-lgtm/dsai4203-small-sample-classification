@@ -67,6 +67,11 @@ flat (0.201 / 0.206 / 0.210 for 3 / 5 / 10 folds).
 errors), honest CV (0.793) 0.002 above. The proxy (0.820) is 0.028 above it (1.2 SE). The public score lies inside the
 pre-registered 90% range 0.785–0.854 (B005; reports/tables/e3_leaderboard.csv).
 
+![Leaky and honest CV against k_feat](../figures/ext_e3.png)
+
+*Figure 1. 5-fold CV AUC against k_feat, real (a) and permuted (b) labels: mean and 10–90% band; segments: the
+gap; open diamond: S004 public score 0.79136. Run 20261022-063908_e3_leakage (e3_grid.csv, e3_null.csv).*
+
 ## Conclusion
 
 **How much too high.** At k_feat = 20 (the submitted configuration) leaky CV exceeds honest CV by 0.073 (SD over

@@ -12,9 +12,11 @@ Parts, always assembled in this order, each starting on a new page (reports/READ
 Without --parts: core, the extensions in project.yaml report.extensions_owned, contrib. An empty or
 missing list means the owners are not decided yet: all four extensions are included, with a warning.
 
-Layout: XeLaTeX, Calibri 11 pt (LaTeX's 10.95 pt), A4, 2.54 cm margins, single line spacing, block
-paragraphs 4 pt apart (+-1 pt as TeX fills a page), widow and orphan lines avoided, page numbers at
-the foot. Tables in 10 pt (9 pt and narrower column gaps only
+Layout: XeLaTeX, Times New Roman 11 pt (LaTeX's 10.95 pt) for body, headings, tables and captions
+(TeX Gyre Termes, then Latin Modern, if it is missing; code spans also in Times New Roman), A4,
+2.54 cm margins, single line spacing, block paragraphs 4 pt apart (+-1 pt as TeX fills a page), widow
+and orphan lines avoided, page numbers at the foot. No math font is loaded, as no math mode is
+produced (see "Not supported"). Tables in 10 pt (9 pt and narrower column gaps only
 if a table does not fit otherwise). Figures at the text width unless the Markdown gives a width.
 The first heading of each part is its title. One word space after a full stop, as in Word
 ("et al. (2008)" is not spaced like a sentence end); a justified line squeezes its word spaces by
@@ -33,9 +35,11 @@ in one of three forms:
     ![alt](../figures/x.png "width=65%")     ![alt](../figures/x.png){width=65%}
     <img src="../figures/x.png" width="65%">
 (the first form looks clean on GitHub too); GitHub pipe tables; bullet and numbered lists (nested);
-block quotes; horizontal rules; fenced code blocks. HTML comments are dropped. Straight quotes
+block quotes; horizontal rules; fenced code blocks. HTML comments are dropped, except the markers
+<!-- small --> and <!-- /small --> on lines of their own: the blocks between them are set in \\small
+(10 pt; meant for a reference list; invisible on GitHub). Straight quotes
 become curly quotes; -- and --- become en and em dashes. Unicode text (+-, x, minus, approx, >=,
-dashes, Greek letters, superscripts) is set in Calibri as written.
+dashes, Greek letters, superscripts) is set in Times New Roman as written.
 Not supported: reference-style links, footnotes, math ($...$ is printed as is), indented code blocks,
 other HTML (tags are dropped with a warning), images inside running text (only their alt text shows).
 
@@ -124,9 +128,25 @@ def normalise(text: str) -> str:
     return "\n".join(line.expandtabs(4) for line in text.split("\n"))
 
 
+# <!-- small --> and <!-- /small --> on a line of their own become these marker lines (parse_blocks)
+SMALL_OPEN, SMALL_CLOSE = "\ue000small", "\ue000/small"
+_SMALL_MARK = re.compile(r"[ \t]*<!--[ \t]*(/?)small[ \t]*-->", re.I)
+
+
 def strip_comments(text: str, warnings: list[str] | None = None) -> str:
-    """Drop HTML comments (<!-- ... -->, also over several lines) outside fenced code blocks."""
-    out = _FENCE_OR_COMMENT.sub(lambda m: m.group(1) if m.group(1) else "", text)
+    """Drop HTML comments (<!-- ... -->, also over several lines) outside fenced code blocks; a
+    <!-- small --> or <!-- /small --> line becomes a SMALL_OPEN / SMALL_CLOSE marker line."""
+
+    def repl(m: re.Match) -> str:
+        if m.group(1):
+            return m.group(1)
+        mark = _SMALL_MARK.fullmatch(m.group(3))
+        if (mark and (m.start() == 0 or text[m.start() - 1] == "\n")
+                and not text[m.end():].split("\n", 1)[0].strip()):
+            return SMALL_CLOSE if mark.group(1) else SMALL_OPEN
+        return ""
+
+    out = _FENCE_OR_COMMENT.sub(repl, text)
     # an unclosed comment hides the rest of the file (as on GitHub)
     k = -1
     for m in re.finditer(r"<!--", out):
@@ -146,12 +166,12 @@ def strip_comments(text: str, warnings: list[str] | None = None) -> str:
 
 @dataclass
 class Block:
-    kind: str                       # heading para table image list quote hr code group
+    kind: str                       # heading para table image list quote hr code group small
     level: int = 0                  # heading level
     text: str = ""                  # heading text, code block content
     lines: list = field(default_factory=list)      # paragraph lines
     hard_breaks: bool = False       # paragraph: keep every line break (title block)
-    children: list = field(default_factory=list)   # quote/group: blocks; list: one block list per item
+    children: list = field(default_factory=list)   # quote/group/small: blocks; list: one list per item
     ordered: bool = False
     start: int = 1
     delim: str = "-"
@@ -246,6 +266,8 @@ def is_table_start(lines: list[str], i: int) -> bool:
 def starts_block(line: str) -> bool:
     """Lines that end a paragraph / lazy continuation (tables need a look-ahead and are checked apart)."""
     if _ATX.match(line) or _HR.match(line) or _QUOTE.match(line) or _FENCE_OPEN.match(line):
+        return True
+    if line.strip() in (SMALL_OPEN, SMALL_CLOSE):
         return True
     lm = list_marker(line)
     return bool(lm and lm["indent"] <= 3 and _can_interrupt(lm))
@@ -348,6 +370,25 @@ def parse_blocks(lines: list[str], warnings: list[str]) -> list[Block]:
         if not line.strip():
             flush()
             i += 1
+            continue
+        if line.strip() == SMALL_CLOSE:
+            flush()
+            warnings.append("<!-- /small --> without a <!-- small --> before it: ignored")
+            i += 1
+            continue
+        if line.strip() == SMALL_OPEN:
+            flush()
+            depth, j = 1, i + 1
+            while j < n:
+                mark = lines[j].strip()
+                depth += (mark == SMALL_OPEN) - (mark == SMALL_CLOSE)
+                if depth == 0:
+                    break
+                j += 1
+            if j >= n:
+                warnings.append("<!-- small --> without a <!-- /small --> after it: the rest is set small")
+            blocks.append(Block("small", children=parse_blocks(lines[i + 1:j], warnings)))
+            i = j + 1
             continue
         m = _FENCE_OPEN.match(line)
         if m and not (m.group(2)[0] == "`" and "`" in m.group(3)):
@@ -977,9 +1018,8 @@ def find_font_file(name: str) -> Path | None:
 
 
 class FontMetrics:
-    """Advance widths of Calibri regular and bold (from the font files, via fontTools); 0.5 em per
-    character when they cannot be read. Only used to choose table column widths."""
-    MONO_EM = 0.521        # Consolas (0.55 em) scaled to Calibri's x-height, as in the preamble
+    """Advance widths of Times New Roman regular and bold (from the font files, via fontTools); 0.5 em
+    per character when they cannot be read. Only used to choose table column widths."""
 
     def __init__(self, load: bool = True):
         self.widths: dict[str, dict[int, float]] = {}
@@ -987,7 +1027,7 @@ class FontMetrics:
             return
         try:
             from fontTools.ttLib import TTFont
-            for style, fname in (("r", "calibri.ttf"), ("b", "calibrib.ttf")):
+            for style, fname in (("r", "times.ttf"), ("b", "timesbd.ttf")):
                 p = find_font_file(fname)
                 if p is None:
                     continue
@@ -1000,8 +1040,8 @@ class FontMetrics:
             self.widths = {}
 
     def width(self, text: str, size: float, style: str = "r") -> float:
-        if style == "m":
-            return len(text) * self.MONO_EM * size
+        if style == "m":                       # code spans are set in Times New Roman too (preamble)
+            style = "r"
         table = self.widths.get(style) or self.widths.get("r")
         if not table:
             return len(text) * 0.5 * size * (1.06 if style == "b" else 1.0)
@@ -1365,6 +1405,8 @@ def render_block(b: Block, ctx: Ctx) -> str:
     if b.kind == "code":
         body = b.text.rstrip("\n").replace(r"\end{Verbatim}", r"\end {Verbatim}")
         return "\\begin{Verbatim}[fontsize=\\small]\n" + body + "\n\\end{Verbatim}\n"
+    if b.kind == "small":                     # <!-- small --> ... <!-- /small -->
+        return "{\\small\n" + render_blocks(b.children, ctx) + "\\par}\n"
     if b.kind == "group":
         inner = []
         for child in b.children:
@@ -1398,7 +1440,7 @@ def render_blocks(blocks: list[Block], ctx: Ctx) -> str:
         lead = k > 0 and leads_in(prepared[k - 1])
         tex = render_list(b, ctx, keep_start=lead) if b.kind == "list" else render_block(b, ctx)
         nxt = prepared[k + 1] if k + 1 < len(prepared) else None
-        if nxt is not None and nxt.kind in ("para", "group", "image", "table") and leads_in(b):
+        if nxt is not None and nxt.kind in ("para", "group", "image", "table", "small") and leads_in(b):
             tex = tex.rstrip("\n") + "\n\\par\\nopagebreak\n"
         out.append(tex)
     return "\n".join(out)
@@ -1427,7 +1469,8 @@ def convert_markdown(text: str, base: Path, key: str = "part", images: ImageStor
     ctx = Ctx(base=base, images=images or ImageStore(), metrics=metrics or FontMetrics(load=False),
               warnings=warnings)
     first = next((k for k, b in enumerate(blocks) if b.kind == "heading"), None)
-    headings = [plain_text(parse_inline(b.text)).strip() for b in blocks if b.kind == "heading" and b.level == 2]
+    flat = [c for b in blocks for c in (b.children if b.kind == "small" else [b])]
+    headings = [plain_text(parse_inline(b.text)).strip() for b in flat if b.kind == "heading" and b.level == 2]
     out: list[str] = []
     title = ""
     anchor = "mdpart." + re.sub(r"[^A-Za-z0-9]+", "-", key)
@@ -1473,17 +1516,20 @@ PREAMBLE = r"""\documentclass[11pt,a4paper]{article}
 % edit the Markdown and rebuild.
 \usepackage[a4paper,margin=2.54cm]{geometry}
 \usepackage{fontspec}
-% WordSpace: a justified line may squeeze its word spaces by 1/5 of a space, not 1/3 (XeTeX's
-% default, down to 0.15 em in Calibri, which looks crushed); Word does not squeeze them at all.
-\IfFontExistsTF{Calibri}{\setmainfont{Calibri}[Ligatures=TeXOff,WordSpace={1,1,0.6}]%
-  \typeout{MDFONT main=Calibri}}{%
-  \IfFontExistsTF{Carlito}{\setmainfont{Carlito}[Ligatures=TeXOff,WordSpace={1,1,0.6}]%
-    \typeout{MDFONT main=Carlito}}{\typeout{MDFONT main=LatinModern}}}
-\IfFontExistsTF{Consolas}{\setmonofont{Consolas}[Scale=MatchLowercase]\typeout{MDFONT mono=Consolas}}{%
-  \typeout{MDFONT mono=LatinModernMono}}
+% Times New Roman for all text (body, headings, tables, captions). WordSpace: a justified line may
+% squeeze its word spaces by 1/5 of a space, not 1/3 (XeTeX's default, down to 0.17 em, which looks
+% crushed); Word does not squeeze them at all.
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}[Ligatures=TeXOff,WordSpace={1,1,0.6}]%
+  \typeout{MDFONT main=TimesNewRoman}}{%
+  \IfFontExistsTF{TeX Gyre Termes}{\setmainfont{TeX Gyre Termes}[Ligatures=TeXOff,WordSpace={1,1,0.6}]%
+    \typeout{MDFONT main=TeXGyreTermes}}{\typeout{MDFONT main=LatinModern}}}
+% Code spans (\texttt) in the main font, set exactly like the body text: one typeface for the whole
+% document. (A second \setmonofont{Times New Roman} would share the font instance and reset its word
+% spacing, so the body text would lose the WordSpace setting above.)
+\renewcommand{\ttdefault}{\rmdefault}\typeout{MDFONT mono=main}
 % Copied or searched PDF text = the Markdown text: '-' stays U+002D and the middle dot U+00B7 (without
-% this, Calibri's shared glyphs map them back to U+2010 and U+2219), and words hyphenated at a line end
-% come out whole.
+% this, a font that shares one glyph between characters, such as Calibri, maps them back to U+2010 and
+% U+2219), and words hyphenated at a line end come out whole.
 \ifdefined\XeTeXgenerateactualtext\XeTeXgenerateactualtext=1\fi
 \usepackage{graphicx}
 \usepackage{array,longtable,booktabs}
@@ -1669,9 +1715,9 @@ def _part_of(line: int, ranges: dict[str, tuple[int, int]]) -> str:
 def log_findings(log: str, ranges: dict[str, tuple[int, int]]) -> list[str]:
     notes = []
     fonts = dict(re.findall(r"MDFONT (\w+)=(\w+)", log))
-    if fonts.get("main", "Calibri") != "Calibri":
-        notes.append(f"Calibri not found; the text font is {fonts['main']}, so page counts differ from the "
-                     "team's layout")
+    if fonts.get("main", "TimesNewRoman") != "TimesNewRoman":
+        notes.append(f"Times New Roman not found; the text font is {fonts['main']}, so page counts differ "
+                     "from the team's layout")
     missing = sorted(set(re.findall(r"Missing character: There is no (.+?) \(U\+([0-9A-Fa-f]+)\)", log)))
     if missing:
         notes.append("characters missing from the font (printed as blanks): "
@@ -1860,7 +1906,7 @@ def main() -> int:
               "no writable folder with an ASCII path for XeLaTeX: pass --tmp-dir C:\\tmp (or set $SSC_TEX_TMP)", 2)
 
     keep = BUILD_DIR / (out.stem + ".tex") if args.keep_tex else None
-    print(f"Building {C.rel(out)} from {', '.join(keys)} (XeLaTeX, Calibri 11 pt, A4, 2.54 cm margins)")
+    print(f"Building {C.rel(out)} from {', '.join(keys)} (XeLaTeX, Times New Roman 11 pt, A4, 2.54 cm margins)")
     res = build(sources, out, xelatex=xelatex, tmp_base=tmp_base, author=team_name(project), keep_tex=keep)
     if not res.ok and res.pdf is None and not res.pages:
         for line in res.warnings:

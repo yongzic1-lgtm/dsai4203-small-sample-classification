@@ -166,7 +166,26 @@ def test_line_block_is_set_one_ragged_paragraph_per_line(B):
     assert r"one\newline{}two" in body(B, "one  \ntwo")                  # a single line break stays as it was
 
 
-def test_preamble_spacing_and_pdf_text(B):
+def test_small_markers_set_the_blocks_between_them_in_small_type(B):
+    md = ("# T\n\nBefore.\n\n<!-- small -->\nRef A.\\\nRef B.\\\nRef C.\n\n  <!--/SMALL-->  \n"
+          "After <!-- small --> inline.\n\n```\n<!-- small -->\n```")
+    out, warnings = B.convert(md)
+    assert ("{\\small\n{\\raggedright Ref A.\\par\\setlength{\\parskip}{0pt}\nRef B.\\par\nRef C.\\par}\n"
+            "\\par}\n") in out
+    assert out.index("Before.") < out.index(r"{\small") < out.index("Ref C.") < out.index("After inline.")
+    assert out.count(r"{\small") == 1 and "<!-- small -->" in out and not warnings   # inline / in code: as before
+    assert B.convert("a\n<!-- small -->\nb")[0].count(r"{\small") == 1    # the marker line ends the paragraph
+    _, warnings = B.convert("a\n\n<!-- small -->\n\nb")
+    assert any("without a <!-- /small -->" in w for w in warnings)
+    _, warnings = B.convert("a\n\n<!-- /small -->\n\nb")
+    assert any("without a <!-- small -->" in w for w in warnings)
+    res = B.convert_markdown("# E\n\n## Question\n\n## Protocol\n\n## Results\n\n<!-- small -->\n## Conclusion\n\nx\n"
+                             "<!-- /small -->\n", Path("."), "e2")
+    assert B.check_part(res) == []                                       # headings inside still count
+
+
+def test_preamble_fonts_spacing_and_pdf_text(B):
+    assert r"\setmainfont{Times New Roman}" in B.PREAMBLE and "Calibri}" not in B.PREAMBLE
     assert r"\frenchspacing" in B.PREAMBLE                               # no wide space after "et al."
     assert "WordSpace={1,1,0.6}" in B.PREAMBLE
     assert r"\XeTeXgenerateactualtext=1" in B.PREAMBLE                   # copied text keeps '-' and words
@@ -307,7 +326,9 @@ TORTURE = ("# Torture: *every* construct & `chars` #1\n\n**Team: T_1** (Kaggle: 
            "<img src=\"figures/x.png\" width=\"20%\">\n\n<div align=\"center\">\n\nIn a div.\n\n</div>\n\n"
            "Lead-in with a colon:\n\n- kept with this line\n- second\n\n**Pseudo heading.**\n\n"
            "After it: p = 0.05, P(≥ 0.999), 20 %, A − B = −0.01 and 2 / 3 / 5 · end.\n\n"
-           "Ref A. (2001). Title. *J.*, 1–2.\\\nRef B. (2002). Title.\\\nRef C. (2003). Title.\n\nLast line.\n")
+           "Ref A. (2001). Title. *J.*, 1–2.\\\nRef B. (2002). Title.\\\nRef C. (2003). Title.\n\n"
+           "<!-- small -->\n### Small refs\n\nRef D. (2004). Title.\\\nRef E. (2005). Title.\n<!-- /small -->\n\n"
+           "Last line.\n")
 
 
 def test_compile_two_parts_and_count_pages(B, tmp_path):
@@ -333,4 +354,6 @@ def test_compile_two_parts_and_count_pages(B, tmp_path):
     assert res.total_pages == e1.end
     assert any("missing.png not found" in w for w in res.warnings)
     assert any("deeper than 4 levels" in w for w in res.warnings)
-    assert not [w for w in res.warnings if "characters missing" in w or "stick out" in w]
+    assert not [w for w in res.warnings if "characters missing" in w or "stick out" in w or "small" in w]
+    if B.find_font_file("times.ttf"):
+        assert not [w for w in res.warnings if "the text font is" in w]   # Times New Roman was used

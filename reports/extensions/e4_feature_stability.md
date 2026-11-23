@@ -48,10 +48,13 @@ Pedregosa et al. 2011) on the block, the in-fold stable set (top-10, frequency �
 
 ## Results
 
-![E4 frequency](../figures/e4_frequency_sorted.png)
+![E4 frequency](../figures/ext_e4.png)
 
-*Figure 1. Sorted selection frequency for k = 5, 10, 13, 20 (log rank axis); panel titles give m\* under the
-primary perm rule. Run 20261022-071414_e4_feature_stability (e4_frequency.csv, e4_drop.csv).*
+*Figure 1. (a) Sorted selection frequency for k = 5, 10, 13, 20 (log rank, square-root frequency); dots: m\* under
+the primary perm rule; grey: 95% envelope of the 50 permuted-label curves for k = 20; right: chance k/150. (b) Sorted
+position of the 13 label-free block features (ties stacked); shaded: ranks 1 to m\*; tick: first rank below chance.
+Run 20261022-071414_e4_feature_stability (e4_frequency.csv, e4_drop.csv, null_sorted_curves.csv); block:
+r320_feature_table.csv (R320).*
 
 Features 98, 17, 100, 112, 80, 77 and 46 (|corr| 0.34–0.40) are selected in ≥ 98.5% of resamples for k = 10, 13
 and 20, and share five places at k = 5 (0.53–0.95). Feature 49 (|corr| 0.24) reaches 4% / 65% / 79% / 92%; all

@@ -1,0 +1,41 @@
+model,label,n_labels,n_evals,defined_all,auc_mean,auc_q10,auc_q50,auc_q90,frac_eq_1,first_hit_0.99
+s003_gmm2_hv,S003 GMM,2,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,4,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,6,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,10,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,20,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,40,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,80,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,120,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,160,400,True,1.0,1.0,1.0,1.0,1.0,2
+s003_gmm2_hv,S003 GMM,200,80,True,1.0,1.0,1.0,1.0,1.0,2
+r209_selftrain_qda_lw,S006 self-training,2,400,False,,,,,,20
+r209_selftrain_qda_lw,S006 self-training,4,400,False,,,,,,20
+r209_selftrain_qda_lw,S006 self-training,6,400,False,,,,,,20
+r209_selftrain_qda_lw,S006 self-training,10,400,True,0.9273347802559759,0.7777597402597403,0.9694041867954912,1.0,0.115,20
+r209_selftrain_qda_lw,S006 self-training,20,400,True,0.999082916379112,0.996779388083736,1.0,1.0,0.8325,20
+r209_selftrain_qda_lw,S006 self-training,40,400,True,1.0,1.0,1.0,1.0,1.0,20
+r209_selftrain_qda_lw,S006 self-training,80,400,True,1.0,1.0,1.0,1.0,1.0,20
+r209_selftrain_qda_lw,S006 self-training,120,400,True,1.0,1.0,1.0,1.0,1.0,20
+r209_selftrain_qda_lw,S006 self-training,160,400,True,1.0,1.0,1.0,1.0,1.0,20
+r209_selftrain_qda_lw,S006 self-training,200,80,True,1.0,1.0,1.0,1.0,1.0,20
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",2,400,False,,,,,,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",4,400,True,0.6628242962753832,0.4856682769726248,0.685064935064935,0.8115942028985508,0.0,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",6,400,True,0.6758378296421774,0.4814814814814815,0.7033128908128907,0.8199502791894097,0.0,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",10,400,True,0.6603177348014304,0.473268921095008,0.6835748792270531,0.8099920007528704,0.0,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",20,400,True,0.8064512980477653,0.6746165066817241,0.8221474580170233,0.9156523830436875,0.0,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",40,400,True,0.902389781615325,0.8417372482589874,0.9098228663446056,0.9566487859966122,0.0,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",80,400,True,0.9980085665140014,0.9949727607336304,1.0,1.0,0.5625,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",120,400,True,0.9997173795407491,0.998389694041868,1.0,1.0,0.8825,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",160,400,True,0.9999313986134638,1.0,1.0,1.0,0.9625,80
+r255_bqda_eb_hv,"Bayesian QDA, label-free block",200,80,True,1.0,1.0,1.0,1.0,1.0,80
+r201_qda_block,S005 strict QDA,2,400,False,,,,,,120
+r201_qda_block,S005 strict QDA,4,400,False,,,,,,120
+r201_qda_block,S005 strict QDA,6,400,False,,,,,,120
+r201_qda_block,S005 strict QDA,10,400,False,,,,,,120
+r201_qda_block,S005 strict QDA,20,400,False,,,,,,120
+r201_qda_block,S005 strict QDA,40,400,False,,,,,,120
+r201_qda_block,S005 strict QDA,80,400,True,0.9842254650542693,0.9750402576489533,0.998389694041868,1.0,0.4825,120
+r201_qda_block,S005 strict QDA,120,400,True,0.9992525866846519,0.996779388083736,1.0,1.0,0.7825,120
+r201_qda_block,S005 strict QDA,160,400,True,0.9997980582219712,1.0,1.0,1.0,0.9175,120
+r201_qda_block,S005 strict QDA,200,80,True,0.9999191579354623,1.0,1.0,1.0,0.9625,120

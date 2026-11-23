@@ -22,11 +22,12 @@ Run from the project root. The project folder is currently `D:\polyu_class\æ–°å»
 .venv\Scripts\python.exe scripts\build_report.py [--parts core,e1,e2,e3,e4,contrib] [--out reports\report.pdf] [--keep-tex]
 ```
 
-- **What it does**: assembles the parts in document order (core report, the chosen extensions, contribution table), each starting on a new page; compiles them with XeLaTeX in the agreed layout (Calibri 11 pt, A4, 2.54 cm margins, single line spacing); writes `reports\report.pdf`; and **prints the page count of every part**, to compare with the limits below.
+- **What it does**: assembles the parts in document order (core report, the chosen extensions, contribution table), each starting on a new page; compiles them with XeLaTeX in the agreed layout (Times New Roman 11 pt for body, headings, tables and captions; A4, 2.54 cm margins, single line spacing); writes `reports\report.pdf`; and **prints the page count of every part**, to compare with the limits below.
 - **`--parts`**: a comma-separated list in document order. Default: `core`, the extensions listed in `project.yaml` under `report.extensions_owned` (for example `[e1, e3]`), then `contrib`. If that key is not set, all four extensions are included and the script prints a warning. Set it as soon as the owners are known, so that drafts nobody owns stay out of the document.
 - **`--out`**: output file, default `reports\report.pdf`. For a trial build of a single part (for example `--parts e3`), write outside `reports/` (for example `--out $env:TEMP\e3_check.pdf`): `package_deliverables.py` picks up every PDF under `reports/`.
 - **`--keep-tex`**: keep the generated LaTeX source, to inspect layout problems.
-- **Needs**: TeX Live with `xelatex` (TeX Live 2024 is installed on the team laptop) and the Calibri font (Windows). pandoc is not needed.
+- **Smaller type for a reference list**: put `<!-- small -->` and `<!-- /small -->` on lines of their own around the blocks (for example the paragraphs under References); they are set in 10 pt instead of 11 pt. Like any HTML comment, the markers do not show on GitHub. Use them only for references, not to squeeze body text under a page limit.
+- **Needs**: TeX Live with `xelatex` (TeX Live 2024 is installed on the team laptop) and the Times New Roman font (Windows; without it the script falls back to TeX Gyre Termes and warns, as page counts then differ). pandoc is not needed.
 
 The Markdown files stay the source of truth: change them, then rebuild; never edit the PDF by hand, so that the archive matches the PDF. If the script cannot be used, the fallback is the manual route: paste each part into Word, Google Docs (shared only with team members; rule 5) or a private Overleaf project, use the same layout, start each part on a new page, and count pages part by part.
 

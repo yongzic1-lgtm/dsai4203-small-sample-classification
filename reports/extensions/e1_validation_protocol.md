@@ -47,9 +47,9 @@ When only the **split seed** changes, how far do hold-out and k-fold AUC estimat
 - **Pairing matters.** Identical splits cut the 5 × 20 sd from 0.0050 (unpaired) to 0.0031; the within-run SE (0.0030) matches it, so the `se_split` of `compare_runs.py` can be trusted. Without shuffling, all 50 seeds give one split: zero spread is false precision.
 - **The studied linear pair is only about 0.004 apart.** Pooling all 1,000 repeats gives A − B = −0.0044 (SE 0.0004; R940; reference 5 × 50: −0.0029, SE about 0.0019). The official seed's −0.0101 was a 1.84-sd draw, favoured by picking the pair closest to 0.01. The MDD depends on sd(A − B), not on the gap, and it transfers: over all 28 linear pairs the 5 × 20 sd is 0.0018–0.0046, and 25 pairs keep the whole MDD CI below 0.01 (R940). p_correct at 0.01 is a normal-shift extrapolation, not an observed rate.
 
-![Split-seed noise of the paired difference](../figures/r306_e1_pair_comparison.png)
+![Split-seed noise of the estimates and of the paired difference](../figures/ext_e1.png)
 
-*Figure 1. sd of A − B by scheme (log scale; bars: 95 % CI); blue: linear pair, orange: QDA pair; dashed: MDD = 0.01. Run `20261022-064412_r306_e1_pair_comparison`.*
+*Figure 1. The 50 estimates per scheme (ticks; density over the observed range, scaled to equal height; darker = more fits per decision): (a) AUC of model A, linear pair; (b) A − B, linear pair; (c) A − B, QDA pair. Bars: mean ± MDD; MDD in bold where its whole 95 % CI lies below 0.01. Shaded: ±0.01 around the pooled 5 × 20 mean (linear −0.0044, QDA 0.0126). Runs `20261022-064054_e1_validation_protocol`, `20261022-064148_e1_validation_protocol_qda_pair`.*
 
 ## Conclusion
 

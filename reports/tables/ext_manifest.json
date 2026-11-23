@@ -1,0 +1,107 @@
+{
+  "generated_by": "scripts/make_ext_figures.py",
+  "generated_at": "2026-11-23T23:16:48+09:00",
+  "figures": {
+    "ext_e1.png": {
+      "source_runs": [
+        "20261022-064054_e1_validation_protocol",
+        "20261022-064148_e1_validation_protocol_qda_pair"
+      ],
+      "inputs": {
+        "experiments/20261022-064054_e1_validation_protocol/estimates.csv": "ffb08d96529258dd222dc03afe94372749028264e624b86ccef89de74b6c5c14",
+        "experiments/20261022-064054_e1_validation_protocol/scheme_spread.csv": "23a6e311387c8809999536580bbb8334a0058eecdc7c69daaf0eae0a4d77476b",
+        "experiments/20261022-064054_e1_validation_protocol/paired_estimates.csv": "bb5e68bb3b43b6d6866e1f1c6f71fdf1ffa63f81474ca42728ff3662ec36eb36",
+        "experiments/20261022-064054_e1_validation_protocol/paired_difference.csv": "0f7907ab64598a46609057b7ad44159bc069f33a13abd777944760829778c5b0",
+        "experiments/20261022-064148_e1_validation_protocol_qda_pair/paired_estimates.csv": "ec6ce081f19980cd5ec678ffc1aa1dfe538e91ef2e9855293d762b5a70c026bc",
+        "experiments/20261022-064148_e1_validation_protocol_qda_pair/paired_difference.csv": "dede99997f4baa4d912ee961fa800253e2eafd40e8aabf44c802784a1c5ff493"
+      },
+      "table_views": [
+        "reports/tables/ext_e1_ridges.csv",
+        "reports/tables/ext_e1_ridges.md"
+      ]
+    },
+    "ext_e2.png": {
+      "source_runs": [
+        "20261022-070248_e2_learning_curve",
+        "20261022-070339_e2_learning_curve_qda_block",
+        "20261022-070445_e2_learning_curve_gmm",
+        "20261022-092201_r941_e2_replica_truth",
+        "20261022-094142_r942_e2_coverage"
+      ],
+      "inputs": {
+        "reports/tables/r941_e2_replica_truth.csv": "1a60b687c9da8601b29d9c930a6ad618a479aae5342ec381ae7a9eabb77cbe60",
+        "reports/tables/r942_e2_coverage.csv": "a8d90db815cbd28f5be7eb38ec354a7f779fe9b590f7dc21b8ff604bed0cdb80",
+        "experiments/20261022-070248_e2_learning_curve/subset_scores.csv": "090971f2c9c404e06fc498c6ca0e8823409be3c6ffb1ac4cbb34a4478e9d5a32",
+        "experiments/20261022-070248_e2_learning_curve/summary.json": "130bb4fcbdfb00c57312c6ad9e218321f1aae39f2cfbfa9628828441f12752f2",
+        "experiments/20261022-070248_e2_learning_curve/extrapolation.csv": "766d5e37781d9e4248804d267997fa5fd5d78bf661027327fb344d0754f5ab0d",
+        "experiments/20261022-070248_e2_learning_curve/bootstrap.csv": "429c0c2989d83d277602b64529141afd4d96370f1ee8b168485294be94d12d3e",
+        "experiments/20261022-070339_e2_learning_curve_qda_block/subset_scores.csv": "68b7ba0864f5aacd8bda63adddb1eb34d880892fc55f4361db1fa1a30c7fa66d",
+        "experiments/20261022-070339_e2_learning_curve_qda_block/summary.json": "b20533b46e36025922c816869c6c306037cd1efd3235ccc43ad4ab5eaf042606",
+        "experiments/20261022-070339_e2_learning_curve_qda_block/extrapolation.csv": "34f65e463f099f524835197b4f0d1ee17e92542f94edd725bea3327d2156b5d6",
+        "experiments/20261022-070339_e2_learning_curve_qda_block/bootstrap.csv": "7d6ded7f27b4544d26c13b5c37b6131f17ac29b05849a0759b2e30e3471d16a8",
+        "experiments/20261022-070445_e2_learning_curve_gmm/subset_scores.csv": "9eee0398fb5b31d322d349f84314caee66c1a5dc68c152ef2c08380b74d1051a",
+        "experiments/20261022-070445_e2_learning_curve_gmm/extrapolation.csv": "33aa3048f88d98d60b96c56d1826800c84c715e8e8aa31ca24c15b93c97c1acb"
+      },
+      "table_views": [
+        "reports/tables/ext_e2_fan.csv",
+        "reports/tables/ext_e2_fan.md"
+      ]
+    },
+    "ext_e3.png": {
+      "source_runs": [
+        "20261022-063908_e3_leakage"
+      ],
+      "inputs": {
+        "experiments/20261022-063908_e3_leakage/repeat_scores_grid.csv": "e7b47e892c57f0cf75db2cd22e808af5f50d1467472b854c035f15dd306ab96a",
+        "experiments/20261022-063908_e3_leakage/cells.csv": "a99154b1dab0673c665a82d47bb600378bce00749c9fc6c45ab5078ed2f300a2",
+        "experiments/20261022-063908_e3_leakage/null_repeat_scores.csv": "9a6e721eeaa98732893525fbccec95d54e1bfd45cad41762197ca83fe2368628",
+        "experiments/20261022-063908_e3_leakage/null_cells.csv": "ed533aa831b173d6c892a440297e6513d80a1282a2521906643201932c2e7185",
+        "experiments/20261022-063908_e3_leakage/leaderboard.csv": "cc509e4c9c08007c7590e6fa9ba2f513d010610f24a41fca50e6f4b720aecc91",
+        "reports/tables/e3_leaderboard.csv": "f3d5b2d4c2c34062ba372a6b043c9fbf1e2de88f44037c0c38391034aefa8679"
+      },
+      "table_views": [
+        "reports/tables/ext_e3_curves.csv",
+        "reports/tables/ext_e3_curves.md"
+      ]
+    },
+    "ext_e4.png": {
+      "source_runs": [
+        "20261022-071414_e4_feature_stability",
+        "20261022-074624_r320_e4_stable_vs_block"
+      ],
+      "inputs": {
+        "experiments/20261022-071414_e4_feature_stability/frequency.csv": "55c810a78c69a2380c8a286b64d7e43f80c2c6422dc9ab90ff479cc6b8bd9c98",
+        "experiments/20261022-071414_e4_feature_stability/drop.csv": "6622e14ec7afbedb61f40fbc90848d67a60c613c2b8da100af845c796aff7c0f",
+        "experiments/20261022-071414_e4_feature_stability/null_sorted_curves.csv": "7760ab074fe2e9a1b65fa1c1a7ab047cf12f767d0432664db81710006b1c7372",
+        "experiments/20261022-071414_e4_feature_stability/config.yaml": "42e339eaf245707fef4410300ff0cf9241b2a5eb61d8b781806352fdf8c9ed28",
+        "reports/tables/r320_feature_table.csv": "a4f7372298462919b34367c4564c9325ada3e93c4bf50d9004d49fc0dc047974"
+      },
+      "table_views": [
+        "reports/tables/ext_e4_curves.csv",
+        "reports/tables/ext_e4_curves.md"
+      ]
+    }
+  },
+  "conventions": {
+    "bands": "10-90 % of the plotted replicates (np.quantile, linear interpolation) unless a caption says nominal 90 % (bootstrap 5-95 %)",
+    "e1": "densities: Gaussian KDE (Scott bandwidth) evaluated on [min, max] of the 50 estimates only (cut = 0), each row scaled to the same height; fill lightness log-scaled by fits per decision (2 -> 200) within the entity hue (linear grey, QDA orange); ticks: the 50 estimates; bar: mean +- MDD, MDD = 2 sd (ddof 1) as archived, bold where mdd_hi < 0.01; band: pooled 5 x 20 mean +- 0.01",
+    "e2": "x = effective training rows 4n/5; dashed: archived power-law parameters evaluated, fan = 5-95 % of the 2,000 archived bootstrap curves (outlined, to keep it apart from the filled 10-90 % data band); side panel: the 500-row box of (a) enlarged on its own y scale (0.845-0.99); panel (b) on -log10(1 - AUC), AUC 1.0 drawn at 1 - 1e-5 with an axis break between 0.9999 and 1.0",
+    "e3": "official 5-fold splits (k_fold = 5); gap = vertical segment between the two means at each k_feat",
+    "e4": "sorted order with ties broken by feature id for the curves (drawn as steps, square-root y scale); strip dots at the average rank of their tie group, tied block features stacked vertically; m* = perm rule (pre-registered primary), re-derived from the rank-wise 95 % null quantile as a check",
+    "jitter": "subset dots of E2 jittered along x for visibility only (fixed seed 11)"
+  },
+  "outputs": [
+    "reports/figures/ext_e1.png",
+    "reports/figures/ext_e2.png",
+    "reports/figures/ext_e3.png",
+    "reports/figures/ext_e4.png",
+    "reports/tables/ext_e1_ridges.csv",
+    "reports/tables/ext_e1_ridges.md",
+    "reports/tables/ext_e2_fan.csv",
+    "reports/tables/ext_e2_fan.md",
+    "reports/tables/ext_e3_curves.csv",
+    "reports/tables/ext_e3_curves.md",
+    "reports/tables/ext_e4_curves.csv",
+    "reports/tables/ext_e4_curves.md"
+  ]
+}

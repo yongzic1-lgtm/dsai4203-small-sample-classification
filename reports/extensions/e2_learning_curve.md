@@ -58,9 +58,9 @@ How does the AUC change when a model is trained on 50, 100, 150, 200 or 250 of o
 - **The nominal 90 % interval is far too narrow.** On 100 replica samples (R942) it covers the replica truth at 500 rows (0.923; R941) in only 21 %; the power-law point is low by 0.031 on average (RMSE 0.044; log-linear +0.017), and the envelope covers 81 %. The bootstrap resamples subsets of one sample, so the noise of a new sample is missing. The replica is model-based (0.034 too high at x = 80), so 0.923 is indicative; the under-coverage is a property of the procedure.
 - **(b) QDA is nearly saturated** (0.973 with 40 training rows), **and (c) the GMM's CV is at its ceiling at every size**: every subset scores 1.0. In R304 the GMM ranks the unseen rows perfectly in all 50 label sets with only **2 labels** (one per class). QDA reaches 0.950 at 30 labels and a median above 0.99 from 75; L1 is constant up to 20.
 
-![Learning curve of the L1 baseline](../figures/e2_learning_curve.png "width=70%")
+![Learning curves and the extrapolation to 500 rows](../figures/ext_e2.png)
 
-*Figure 1. L1 baseline (a), run `20261022-070248_e2_learning_curve`. Diamond: bootstrap median of AUC(500), 0.904, with the nominal 90 % interval (the text uses the point fit, 0.906); grey bar: envelope.*
+*Figure 1. (a) L1 baseline, run `20261022-070248_e2_learning_curve`: dots, the 10 subsets per size; line and filled band, their mean and 10–90 % range; dashed line and outlined band, the power law and its nominal 90 % bootstrap band. Side panel, the box at 500 rows enlarged: diamond and dark bar, point fit 0.906 and nominal 90 % interval; bracket, point ± 0.044 (replica RMSE); light bar, envelope; line and ring, replica truth 0.923 (R941); percentages, coverage of the truth on 100 replicas (R942). (b) QDA and GMM (runs `20261022-070339_e2_learning_curve_qda_block`, `20261022-070445_e2_learning_curve_gmm`) on a log scale of 1 − AUC; AUC 1.0 is drawn one decade above 0.9999 (axis break).*
 
 ## Conclusion
 
