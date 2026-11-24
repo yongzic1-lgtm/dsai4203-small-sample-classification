@@ -2,8 +2,6 @@
 
 **Author: TODO Full Name** (Kaggle: TODO)
 
-*Use of generative AI. Claude Code (Anthropic; Claude Opus 5.5) designed this study, wrote and ran its code on Google Colab, drew the figures, and drafted and revised this text; a separate AI verification round re-checked the numbers against the archive [R943]. TODO (owner): state what you re-ran, rewrote and checked. The log is in `registry/ai_usage.md`, rows 3, 7, 8, 10, 16, 21, 24 and 25.*
-
 <!--
 Sources (all numbers): E4 run 20261022-071414_e4_feature_stability (Colab job J20261022-071554-pro1-rext34) ->
 reports/tables/e4_frequency.csv, e4_drop.csv, e4_stable_sets.csv, e4_usefulness.csv, e4_paired.csv,
@@ -61,11 +59,13 @@ et al., 2008; XF25, XL27), which the core report's software line cites; the arch
 (HOUSE_STYLE section 2 allows it; moving it into the AI statement as in E1 and E3 costs a line). Typeset with
 draft_build.py: 2 pages, 1.94 used.
 Main session 2026-11-25: 'admits 67 at k >= 13, and 8 and 26 at k = 20' (comma added against a misreading); 'binom (17–28)' -> 'binom (up to 28)' (binom m* is 7 at k = 5); AI-use statement lists row 25. Measured: 2 pages, 1.94 used.
+2026-11-25 (main session, at the member's request): the AI-use statement is removed from this part for now; the member will write the AI disclosure together with the contribution table (course rule 6 requires it in the submitted report; facts in registry/ai_usage.md; previous wording in git 63b56f9).
+2026-11-25 (main session, at the member's request): the reference list of this part moved to one complete, alphabetical list for the whole document, reports/references.md (written by scripts/make_references.py from registry/references.md; built as part 'refs' after the extensions).
 -->
 
 ## Question
 
-We ranked the 150 features by |corr|, the absolute Pearson correlation between a feature and the label, on bootstrap resamples of the 250 labelled rows. How often does each feature enter the top *k*, relative to the chance rate *k*/150? Does the sorted frequency drop sharply, and does the drop move with *k*? Does a model on the features above the drop match or beat one on all 150? How does being stably selected relate to being worth keeping? Bracketed identifiers cite the project archive: runs (R) and decisions (D).
+We ranked the 150 features by |corr|, the absolute Pearson correlation between a feature and the label, on bootstrap resamples of the 250 labelled rows. How often does each feature enter the top *k*, relative to the chance rate *k*/150? Does the sorted frequency drop sharply, and does the drop move with *k*? Does a model on the features above the drop match or beat one on all 150? How does being stably selected relate to being worth keeping? Bracketed identifiers cite the project archive: runs (R) and decisions (D). Cited works are listed in the References at the end of the document.
 
 ## Protocol
 
@@ -104,7 +104,3 @@ Block features outside the stable set carry signal in their variance. Six of the
 **Stability and the sharp drop.** The |corr| ranking is stable only at its top: seven features are selected far above the chance rate *k*/150 for every *k* and most others below it, and the sorted frequency drops sharply, more steeply than 49 of 50 permuted-label curves (narrowly for *k* ≥ 10). The drop never splits the seven: it lies below all of them at *k* = 5, where they share five places, and below them and feature 49 for *k* ≥ 10. Which weaker features also clear the envelope depends on *k*: the perm rule adds nine features with |corr| 0.13–0.18 at *k* = 20 (*m*\* = 17). The gap and half rules stay at 7–9, but half admits noise, and binom (up to 28) fails because every resample reproduces a noise feature's large sample correlation.
 
 **Stably selected versus worth keeping.** For a linear model the stable features are worth keeping (+0.063 over all 150), whereas the 17 above the perm drop at *k* = 20 add little (+0.028, *p* = 0.30). Every stable set, however, equals the top-*m* set by |corr|: stability measures how reproducible the marginal correlation is, not whether a feature carries information. Block features outside the top-10 stable set carry signal in their variance, and the stable feature 17 is redundant. Stability and usefulness therefore coincide only when the signal lies in the class means; usefulness depends on the model and must be judged by honest CV. For our covariance-based final model, the transductive GMM, the |corr| ranking is the wrong guide.
-
-<!-- small -->
-**References.** Ambroise, C. & McLachlan, G. J. (2002). *Proc. Natl Acad. Sci. USA* 99, 6562–6566. Efron, B. (1979). *Ann. Stat.* 7, 1–26. Meinshausen, N. & Bühlmann, P. (2010). *J. R. Stat. Soc. B* 72, 417–473. Nadeau, C. & Bengio, Y. (2003). *Mach. Learn.* 52, 239–281. Pedregosa, F. et al. (2011). *J. Mach. Learn. Res.* 12, 2825–2830.
-<!-- /small -->

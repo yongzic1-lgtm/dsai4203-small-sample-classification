@@ -160,7 +160,8 @@ def test_lead_in_paragraph_stays_with_the_next_block(B):
 def test_line_block_is_set_one_ragged_paragraph_per_line(B):
     out = body(B, "Intro.\n\nChen, T. (2016). XGBoost. *Proc. KDD*.\\\nEfron, B. (1993). *Bootstrap*.\\\n"
                   "Yarowsky, D. (1995). Word senses.")
-    assert ("{\\raggedright Chen, T. (2016). XGBoost. \\emph{Proc. KDD}.\\par\\setlength{\\parskip}{0pt}\n"
+    assert ("{\\raggedright\\everypar{\\hangindent=1.5em\\hangafter=1}Chen, T. (2016). XGBoost. \\emph{Proc. KDD}."
+            "\\par\\setlength{\\parskip}{0pt}\n"
             "Efron, B. (1993). \\emph{Bootstrap}.\\par\nYarowsky, D. (1995). Word senses.\\par}") in out
     assert r"\newline" not in out
     assert r"one\newline{}two" in body(B, "one  \ntwo")                  # a single line break stays as it was
@@ -170,8 +171,8 @@ def test_small_markers_set_the_blocks_between_them_in_small_type(B):
     md = ("# T\n\nBefore.\n\n<!-- small -->\nRef A.\\\nRef B.\\\nRef C.\n\n  <!--/SMALL-->  \n"
           "After <!-- small --> inline.\n\n```\n<!-- small -->\n```")
     out, warnings = B.convert(md)
-    assert ("{\\small\n{\\raggedright Ref A.\\par\\setlength{\\parskip}{0pt}\nRef B.\\par\nRef C.\\par}\n"
-            "\\par}\n") in out
+    assert ("{\\small\n{\\raggedright\\everypar{\\hangindent=1.5em\\hangafter=1}Ref A.\\par\\setlength{\\parskip}{0pt}\n"
+            "Ref B.\\par\nRef C.\\par}\n\\par}\n") in out
     assert out.index("Before.") < out.index(r"{\small") < out.index("Ref C.") < out.index("After inline.")
     assert out.count(r"{\small") == 1 and "<!-- small -->" in out and not warnings   # inline / in code: as before
     assert B.convert("a\n<!-- small -->\nb")[0].count(r"{\small") == 1    # the marker line ends the paragraph
@@ -272,14 +273,16 @@ def test_width_hints(B):
 # ---------------------------------------------------------------- parts, page marks
 def test_parts_from_project_yaml(B):
     keys, warnings = B.parts_from_project({})
-    assert keys == ["core", "e1", "e2", "e3", "e4", "contrib"] and warnings
+    assert keys == ["core", "e1", "e2", "e3", "e4", "refs", "contrib"] and warnings
     keys, warnings = B.parts_from_project({"report": {"extensions_owned": []}})
-    assert keys == ["core", "e1", "e2", "e3", "e4", "contrib"] and warnings
+    assert keys == ["core", "e1", "e2", "e3", "e4", "refs", "contrib"] and warnings
     keys, warnings = B.parts_from_project({"report": {"extensions_owned": ["E3", "e1_validation_protocol"]}})
-    assert keys == ["core", "e1", "e3", "contrib"] and not warnings
+    assert keys == ["core", "e1", "e3", "refs", "contrib"] and not warnings
     with pytest.raises(ValueError):
         B.parts_from_project({"report": {"extensions_owned": ["e5"]}})
     assert B.parse_parts_arg("contrib, core,e2") == ["core", "e2", "contrib"]
+    assert B.parse_parts_arg("references,e4,core") == ["core", "e4", "refs"]    # the reference list follows E4
+    assert B.PARTS["refs"].limit == 0                                            # no page limit
     with pytest.raises(ValueError):
         B.parse_parts_arg("core,appendix")
 

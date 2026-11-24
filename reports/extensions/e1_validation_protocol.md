@@ -2,8 +2,6 @@
 
 **Author: TODO** (Kaggle: TODO)
 
-*Use of generative AI. Claude Code (Anthropic; Claude Opus 5.5) designed this protocol, wrote and ran its code on Google Colab, drew the figure, and drafted and revised this text; a separate AI verification round re-checked the numbers against the archive [R940, R941]. TODO (owner): state what you re-ran, rewrote and checked. The log is in `registry/ai_usage.md`, rows 3, 7, 8, 10, 21, 24 and 25.*
-
 <!--
 Limit: <= 2 pages. Headings exactly Question / Protocol / Results / Conclusion.
 Every number traces to a run_id: main pair = 20261022-064054_e1_validation_protocol
@@ -47,11 +45,13 @@ term "resolves 0.01". Not applied for lack of space: naming the two regimes afte
 same paragraph). Registry note: kohavi1995 and bengio2004 are still "candidate" in registry/references.md and must be set
 to "used" when E1 is submitted.
 Main session 2026-11-25: AI-use statement lists row 25 of registry/ai_usage.md (formal rewrite). Measured: 2 pages, 1.93 used.
+2026-11-25 (main session, at the member's request): the AI-use statement is removed from this part for now; the member will write the AI disclosure together with the contribution table (course rule 6 requires it in the submitted report; facts in registry/ai_usage.md; previous wording in git 63b56f9).
+2026-11-25 (main session, at the member's request): the reference list of this part moved to one complete, alphabetical list for the whole document, reports/references.md (written by scripts/make_references.py from registry/references.md; built as part 'refs' after the extensions).
 -->
 
 ## Question
 
-When only the random seed of the split changes, how far do hold-out and *k*-fold estimates of the area under the receiver operating characteristic curve (AUC) move, and which scheme would we trust to choose between two models that differ by 0.01 AUC? The public leaderboard cannot decide: on its roughly 395 rows, the standard error (SE) of an AUC near 0.85 is about 0.02 (Hanley & McNeil, 1982). Because one *k*-fold cross-validation (CV) run cannot estimate its own variance without bias (Bengio & Grandvalet, 2004), we measured the split noise directly. Our final model, a transductive Gaussian mixture fitted without labels to the training and test rows, is saturated at CV AUC 1.0 [R003], so we studied supervised models. Bracketed identifiers cite the project archive: runs (R) and decisions (D).
+When only the random seed of the split changes, how far do hold-out and *k*-fold estimates of the area under the receiver operating characteristic curve (AUC) move, and which scheme would we trust to choose between two models that differ by 0.01 AUC? The public leaderboard cannot decide: on its roughly 395 rows, the standard error (SE) of an AUC near 0.85 is about 0.02 (Hanley & McNeil, 1982). Because one *k*-fold cross-validation (CV) run cannot estimate its own variance without bias (Bengio & Grandvalet, 2004), we measured the split noise directly. Our final model, a transductive Gaussian mixture fitted without labels to the training and test rows, is saturated at CV AUC 1.0 [R003], so we studied supervised models. Bracketed identifiers cite the project archive: runs (R) and decisions (D). Cited works are listed in the References at the end of the document.
 
 ## Protocol
 
@@ -88,7 +88,3 @@ The studied linear pair is only about 0.004 apart: pooling all 1,000 repeats giv
 ## Conclusion
 
 To choose between two similar supervised models (AUC about 0.80) that may differ by 0.01, we would trust only stratified 5-fold CV repeated 20 times, with both models scored on the same splits. It is the only scheme tested that resolves 0.01 (MDD 0.0061; 95% CI 0.0051–0.0076), which supports our official protocol [D002]. Ten repeats are borderline; single *k*-fold runs, for any *k*, and hold-out splits are inadequate (MDD 0.026–0.057). The verdict depends on the criterion: even 5-fold × 20 is inconclusive at 80% power (0.0086; 95% CI 0.0071–0.0107), whereas for ordering alone 5-fold × 10 ranks a 0.01 pair correctly with probability ≥ 0.93 for all 28 pairs [R940]. Near the ceiling, the QDA pair's split noise is 4.5–6.1 times smaller in every *k*-fold scheme and one 3-fold run suffices, so a protocol must be sized for its hardest decision. Split noise is, however, conditional on our 250 rows and thus a lower bound. Across simulated 250-row samples from a generator fitted to our data, the linear pair's true AUC gap has sd 0.0105, 3.4 times the 5-fold × 20 split noise (model-based [R941]); the corrected *t*-test, which allows for this variance, finds the linear difference significant in at most 1 of 50 executions. Finally, the evidence comes from two pairs (plus the 28-pair check) on one data set with fixed hyper-parameters.
-
-<!-- small -->
-**References.** Bengio, Y. & Grandvalet, Y. (2004). *J. Mach. Learn. Res.* 5, 1089–1105. Fan, R.-E. et al. (2008). *J. Mach. Learn. Res.* 9, 1871–1874. Friedman, J. H. (1989). *J. Am. Stat. Assoc.* 84, 165–175. Hanley, J. A. & McNeil, B. J. (1982). *Radiology* 143, 29–36. Kohavi, R. (1995). *Proc. 14th IJCAI*, 1137–1143. Nadeau, C. & Bengio, Y. (2003). *Mach. Learn.* 52, 239–281. Pedregosa, F. et al. (2011). *J. Mach. Learn. Res.* 12, 2825–2830.
-<!-- /small -->

@@ -2,8 +2,6 @@
 
 **Author: TODO Full Name** (Kaggle: TODO)
 
-*Use of generative AI. Claude Code (Anthropic; Claude Opus 5.5) designed this study, wrote and ran its code on Google Colab, drew the figure, uploaded S004 with our authorisation, and drafted and revised this text; a separate AI verification round re-checked the numbers against the archive [R944]. TODO (owner): state what you re-ran, rewrote and checked. The log is in `registry/ai_usage.md`, rows 3, 4, 7, 8, 10, 21, 24 and 25. Bracketed identifiers cite the project archive: runs (R) and pre-registered beliefs (B).*
-
 <!--
 Sources (all numbers): E3 run 20261022-063908_e3_leakage (Colab job J20261022-064045-pro1-rext34) ->
 reports/tables/e3_grid.csv (= experiments/<run>/cells.csv), e3_null.csv, e3_leaderboard.csv (refreshed with S004 by
@@ -55,11 +53,13 @@ for length: "(61 here, 48 under pure noise)" (now tagged [R943]) and "is 0 at 15
 costs a line; E3 has no free line): glossing C, "corrected SE" and "null SEs" (XL26) and citing LIBLINEAR (Fan et al.,
 2008; XF25, XL27), which the core report's software line cites. Typeset with draft_build.py: 2 pages, 1.94 used.
 Main session 2026-11-25: leak optimism by k_fold now says it is the k_feat = 20 value (0.053-0.054 with 2, 5 or 10 folds; r944_e3_replica_decomp.csv leak_optimism_mean 0.0540 / 0.0536 / 0.0530), so it no longer reads against the 0.015 at k_feat = 2; AI-use statement lists row 25. Measured: 2 pages, 1.94 used.
+2026-11-25 (main session, at the member's request): the AI-use statement is removed from this part for now; the member will write the AI disclosure together with the contribution table (course rule 6 requires it in the submitted report; facts in registry/ai_usage.md; previous wording in git 63b56f9).
+2026-11-25 (main session, at the member's request): the reference list of this part moved to one complete, alphabetical list for the whole document, reports/references.md (written by scripts/make_references.py from registry/references.md; built as part 'refs' after the extensions).
 -->
 
 ## Question
 
-We study a filter keeping the *k*<sub>feat</sub> features most correlated with the label (largest absolute Pearson correlation). Fitted once to all 250 labelled rows before *k*<sub>fold</sub>-fold cross-validation (CV), it is *leaky*, as the validation rows help to select the features (Ambroise & McLachlan, 2002; Hastie et al., 2009, Sec. 7.10.2); refitted inside each fold on the training part only, it is *honest*. By how much does leaky CV overstate the area under the receiver operating characteristic curve (AUC) relative to honest CV and to the public leaderboard (LB), and how and why does the gap vary with *k*<sub>feat</sub> and *k*<sub>fold</sub>?
+We study a filter keeping the *k*<sub>feat</sub> features most correlated with the label (largest absolute Pearson correlation). Fitted once to all 250 labelled rows before *k*<sub>fold</sub>-fold cross-validation (CV), it is *leaky*, as the validation rows help to select the features (Ambroise & McLachlan, 2002; Hastie et al., 2009, Sec. 7.10.2); refitted inside each fold on the training part only, it is *honest*. By how much does leaky CV overstate the area under the receiver operating characteristic curve (AUC) relative to honest CV and to the public leaderboard (LB), and how and why does the gap vary with *k*<sub>feat</sub> and *k*<sub>fold</sub>? Bracketed identifiers cite the project archive: runs (R) and pre-registered beliefs (B). Cited works are listed in the References at the end of the document.
 
 ## Protocol
 
@@ -99,7 +99,3 @@ Both checks passed (Table 1). At *k*<sub>feat</sub> = 20, more folds reduced the
 **How the gap depends on *k*<sub>fold</sub>, and why.** More folds shrink the share of each validation part in the leaky selection but make its correlation noisier; to first order the effects cancel, so the null gap is flat. On the real data the gap shrinks because larger training parts help the honest filter find the seven strong features, while leak optimism stays constant (0.053–0.054 with 2, 5 or 10 folds at *k*<sub>feat</sub> = 20 [R944]).
 
 **Consequence.** Leaky CV would also pick the wrong model, *k*<sub>feat</sub> = 50 (proxy AUC 0.825), whereas honest CV picks *k*<sub>feat</sub> = 7 (0.852), close to the proxy optimum at *k*<sub>feat</sub> = 10 (0.864). Every label-dependent step, feature selection included, belongs inside the pipeline that is refitted in each fold.
-
-<!-- small -->
-**References.** Ambroise, C. & McLachlan, G. J. (2002). *Proc. Natl Acad. Sci. USA* 99, 6562–6566. Hanley, J. A. & McNeil, B. J. (1982). *Radiology* 143, 29–36. Hastie, T., Tibshirani, R. & Friedman, J. (2009). *The Elements of Statistical Learning*, 2nd edn. Springer. Nadeau, C. & Bengio, Y. (2003). *Mach. Learn.* 52, 239–281. Pedregosa, F. et al. (2011). *J. Mach. Learn. Res.* 12, 2825–2830.
-<!-- /small -->

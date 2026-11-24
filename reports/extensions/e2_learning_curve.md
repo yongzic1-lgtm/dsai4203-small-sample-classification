@@ -2,8 +2,6 @@
 
 **Author: TODO** (Kaggle: TODO)
 
-*Use of generative AI. Claude Code (Anthropic; Claude Opus 5.5) designed this study, wrote and ran its code on Google Colab, drew the figures, and drafted and revised this text; a separate AI verification round re-checked the numbers against the archive [R941, R942]. TODO (owner): state what you re-ran, rewrote and checked. The log is in `registry/ai_usage.md`, rows 3, 7, 8, 10, 16, 21, 24 and 25.*
-
 <!--
 Limit: <= 2 pages. Headings exactly Question / Protocol / Results / Conclusion.
 Every number traces to a run_id: (a) L1 baseline = 20261022-070248_e2_learning_curve (reports/tables/e2_manifest.json),
@@ -76,11 +74,13 @@ dropped after "replica truth" in Results (part of its definition); caption keys 
 ids at the end; Table 1 caption cites runs (files: reports/tables/e2_*, r307_e2_model_comparison.md); references without
 article titles (house style).
 Main session 2026-11-25: '0.041 above its value at 250 training rows' -> 'at x = 250' (the power law at x = 250, not the n = 250 mean; r307_e2_extrapolation_comparison.csv); AI-use statement lists row 25. Measured: 2 pages, 1.94 used.
+2026-11-25 (main session, at the member's request): the AI-use statement is removed from this part for now; the member will write the AI disclosure together with the contribution table (course rule 6 requires it in the submitted report; facts in registry/ai_usage.md; previous wording in git 63b56f9).
+2026-11-25 (main session, at the member's request): the reference list of this part moved to one complete, alphabetical list for the whole document, reports/references.md (written by scripts/make_references.py from registry/references.md; built as part 'refs' after the extensions).
 -->
 
 ## Question
 
-How does the area under the receiver operating characteristic curve (AUC) change with the training-set size (50, 100, 150, 200 or 250 of our 250 labelled rows), what AUC should 500 rows give, and with what confidence? We study three submitted models. S001, the L1 baseline, is L1-penalised logistic regression on all 150 features (inverse regularisation strength *C* = 0.1). S002 is quadratic discriminant analysis (QDA; Friedman, 1989) with regularisation 0.1 on the high-variance block, the 13 features whose standard deviation (sd) over all 20,000 training and test rows exceeds 1.5 times the median, chosen without labels. S003, our final transductive Gaussian mixture model (GMM), fits two Gaussian components to these 13 features of all 20,000 rows, test rows included, by expectation–maximisation (Dempster et&nbsp;al., 1977) and uses labels only to name them. Bracketed identifiers cite the project archive: runs (R).
+How does the area under the receiver operating characteristic curve (AUC) change with the training-set size (50, 100, 150, 200 or 250 of our 250 labelled rows), what AUC should 500 rows give, and with what confidence? We study three submitted models. S001, the L1 baseline, is L1-penalised logistic regression on all 150 features (inverse regularisation strength *C* = 0.1). S002 is quadratic discriminant analysis (QDA; Friedman, 1989) with regularisation 0.1 on the high-variance block, the 13 features whose standard deviation (sd) over all 20,000 training and test rows exceeds 1.5 times the median, chosen without labels. S003, our final transductive Gaussian mixture model (GMM), fits two Gaussian components to these 13 features of all 20,000 rows, test rows included, by expectation–maximisation (Dempster et&nbsp;al., 1977) and uses labels only to name them. Bracketed identifiers cite the project archive: runs (R). Cited works are listed in the References at the end of the document.
 
 ## Protocol
 
@@ -116,7 +116,3 @@ QDA is nearly saturated (0.973 with 40 training rows), and the GMM's CV is at it
 From *n* = 50 to 250, the L1 baseline's mean CV AUC rose from 0.659 to 0.847 and its sd across the 10 subsets fell from 0.100 to 0.021 (*n* = 200), while QDA rose only from 0.973 to 0.996 and the GMM stayed at 1.000. For 500 rows the power law predicts an L1 AUC of 0.906. Inside the observed range the trend is well determined (SE of a size mean 0.007–0.03), but the extrapolation reaches 2.5 times the largest training size with three parameters fitted to five points, and the bootstrap interval under-covers (21% for a nominal 90%, bias −0.030 [R942]). We therefore quote about 0.91–0.92 for 500 training rows, between the point fit and the replica truth (0.923), with a realistic uncertainty of about ±0.04 (envelope 0.86–0.97). For QDA, 500 rows would add less than 0.002 (+0.0008; replica bias −0.0005 [R942]); for the GMM, nothing.
 
 For the core task, more labels would help only the weaker supervised models: the GMM, fitted to all 20,000 rows, ranks perfectly with two labels, whereas QDA (regularisation 0.1) needs about 75 for a median AUC of 0.99 [R304]. As it uses only our 250 labelled rows, this extension cannot show where the GMM still errs: the roughly 1% of test rows near its decision boundary (189 of 19,750 with fitted posterior probability 0.1–0.9 [R422]).
-
-<!-- small -->
-**References.** Dempster, A. P. et&nbsp;al. (1977). *J.&nbsp;R. Stat. Soc. B* 39, 1–38. Efron, B. (1979). *Ann. Stat.* 7, 1–26. Figueroa, R. L. et&nbsp;al. (2012). *BMC Med. Inform. Decis. Mak.* 12, 8. Friedman, J. H. (1989). *J. Am. Stat. Assoc.* 84, 165–175. Pedregosa, F. et&nbsp;al. (2011). *J. Mach. Learn. Res.* 12, 2825–2830. Virtanen, P. et&nbsp;al. (2020). *Nat. Methods* 17, 261–272.
-<!-- /small -->

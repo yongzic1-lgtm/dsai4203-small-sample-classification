@@ -8,9 +8,11 @@ Parts, always assembled in this order, each starting on a new page (reports/READ
   core      reports/report_core.md                                   limit 6 pages
   e1..e4    reports/extensions/e1_validation_protocol.md, e2_learning_curve.md,
             e3_leakage.md, e4_feature_stability.md (the owned ones)    limit 2 pages each
+  refs      reports/references.md (one reference list for all parts;  no page limit
+            written by scripts/make_references.py)
   contrib   reports/contribution_table.md                            limit 1 page
-Without --parts: core, the extensions in project.yaml report.extensions_owned, contrib. An empty or
-missing list means the owners are not decided yet: all four extensions are included, with a warning.
+Without --parts: core, the extensions in project.yaml report.extensions_owned, refs, contrib. An empty
+or missing list means the owners are not decided yet: all four extensions are included, with a warning.
 
 Layout: XeLaTeX, Times New Roman 11 pt (LaTeX's 10.95 pt) for body, headings, tables and captions
 (TeX Gyre Termes, then Latin Modern, if it is missing; code spans also in Times New Roman), A4,
@@ -25,7 +27,8 @@ spaces (p = 0.05, 5 x 20, A - B, 7 / 8 / 9, P(>= 0.999) stay together) and none 
 middle dot used as a separator (20 %); table cells are not affected. A paragraph that ends with a
 colon, or a short bold or italic line used as a heading, stays on the page of the paragraph, list,
 table or figure after it. A paragraph made of hard-broken lines (a reference list) is set ragged
-right, one line per paragraph, so that a page break never splits a wrapped reference.
+right, one line per paragraph with a hanging indent, so that a page break never splits a wrapped
+reference.
 
 Markdown subset (GitHub-style): ATX headings (#, ##, ###, ...); paragraphs (a line ending in two
 spaces or a backslash breaks the line; in the paragraph right under a part's title every line break
@@ -98,6 +101,7 @@ PARTS = {
     "e2": PartSpec("e2", "reports/extensions/e2_learning_curve.md", 2, "extension E2"),
     "e3": PartSpec("e3", "reports/extensions/e3_leakage.md", 2, "extension E3"),
     "e4": PartSpec("e4", "reports/extensions/e4_feature_stability.md", 2, "extension E4"),
+    "refs": PartSpec("refs", "reports/references.md", 0, "references"),        # 0 = no page limit
     "contrib": PartSpec("contrib", "reports/contribution_table.md", 1, "contribution table"),
 }
 ORDER = list(PARTS)
@@ -1273,6 +1277,7 @@ def render_para(b: Block, ctx: Ctx) -> str:
         # A block of hard-broken lines (a reference list): one paragraph per line, no space between
         # them, so that a page break never falls inside an entry that wraps (widow/club control), and
         # ragged right, as justified text stretches a line that wraps before a long word with wide gaps.
+        # Each entry gets a hanging indent, so that the wrapped lines of a reference stand out.
         segments: list[list] = [[]]
         for nd in nodes:
             if nd[0] == "br":
@@ -1281,8 +1286,8 @@ def render_para(b: Block, ctx: Ctx) -> str:
                 segments[-1].append(nd)
         lines = [t for t in (render_inline(seg).strip() for seg in segments) if t]
         if len(lines) >= 2:
-            return ("{\\raggedright " + lines[0] + "\\par\\setlength{\\parskip}{0pt}\n"
-                    + "\\par\n".join(lines[1:]) + "\\par}\n")
+            return ("{\\raggedright\\everypar{\\hangindent=1.5em\\hangafter=1}" + lines[0]
+                    + "\\par\\setlength{\\parskip}{0pt}\n" + "\\par\n".join(lines[1:]) + "\\par}\n")
     return render_inline(nodes).strip() + "\n"
 
 
@@ -1774,7 +1779,7 @@ def parts_from_project(project: dict) -> tuple[list[str], list[str]]:
     if not owned:
         warnings.append("project.yaml report.extensions_owned is empty (owners not decided yet): all four "
                         "extensions are included; list only the owned ones, e.g. [e1, e3]")
-        return ["core", *EXTENSIONS, "contrib"], warnings
+        return ["core", *EXTENSIONS, "refs", "contrib"], warnings
     exts = []
     for v in owned:
         k = normalise_ext(v)
@@ -1787,7 +1792,7 @@ def parts_from_project(project: dict) -> tuple[list[str], list[str]]:
     if declared and declared != set(exts):
         warnings.append(f"report.extensions_owned {sorted(exts)} differs from the extensions of "
                         f"team.members {sorted(declared)} in project.yaml")
-    return sorted(["core", *exts, "contrib"], key=ORDER.index), warnings
+    return sorted(["core", *exts, "refs", "contrib"], key=ORDER.index), warnings
 
 
 def parse_parts_arg(text: str) -> list[str]:
@@ -1796,7 +1801,8 @@ def parse_parts_arg(text: str) -> list[str]:
         if not tok:
             continue
         t = tok.lower()
-        k = t if t in PARTS else "contrib" if t.startswith("contrib") else normalise_ext(t)
+        k = (t if t in PARTS else "contrib" if t.startswith("contrib") else "refs" if t.startswith("ref")
+             else normalise_ext(t))
         if k not in PARTS:
             raise ValueError(f"unknown part {tok!r}; choose from {', '.join(ORDER)}")
         if k not in keys:
@@ -1890,6 +1896,10 @@ def main() -> int:
             keys, notes = parts_from_project(project)
     except ValueError as e:
         C.die(str(e), 2)
+    if not args.parts and "refs" in keys and not (ROOT / PARTS["refs"].path).is_file():
+        keys = [k for k in keys if k != "refs"]
+        notes.append(f"{PARTS['refs'].path} not found, so the document has no reference list: "
+                     "run scripts\\make_references.py")
     sources = [(k, ROOT / PARTS[k].path) for k in keys]
     missing = [C.rel(p) for _, p in sources if not p.is_file()]
     if missing:
@@ -1928,7 +1938,7 @@ def main() -> int:
         if flag:
             over.append(f"{r.key} has {pc.pages} pages (limit {limit}; {pc.used:.2f} pages used)")
         pp = f"{pc.start}-{pc.end}" if pc.end > pc.start else str(pc.start)
-        print(f"{r.key:<8} {pc.pages:>5} {pc.used:>5.2f} {limit:>5}  {pp:<7} {console(r.title)[:60]}{flag}")
+        print(f"{r.key:<8} {pc.pages:>5} {pc.used:>5.2f} {limit or '-':>5}  {pp:<7} {console(r.title)[:60]}{flag}")
     print(f"total    {res.total_pages:>5}")
 
     warnings = notes + over + res.warnings
