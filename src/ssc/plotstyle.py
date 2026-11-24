@@ -69,7 +69,7 @@ LABEL = {
     "s001": "S001 L1 logistic, all 150", "s002": "S002 QDA, reg 0.1", "s003": "S003 GMM",
     "s004": "S004 E3 top-20 + L2", "s005": "S005 strict QDA", "s006": "S006 self-training",
     "bqda": "Bayesian QDA, label-free block", "bqda_infold": "Bayesian QDA, in-fold block",
-    "r210": "Log-loss QDA (r210)", "r155": "GMM, tight prior (r155)", "ext_qda": "Ext.-grid QDA (r930, post hoc)",
+    "r210": "Log-loss QDA (r210)", "r155": "GMM, converged EM (r155)", "ext_qda": "Ext.-grid QDA (r930, post hoc)",
     "tabpfn": "TabPFN v2", "tabicl": "TabICL v2",
 }
 

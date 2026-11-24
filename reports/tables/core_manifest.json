@@ -1,6 +1,6 @@
 {
   "generated_by": "scripts/make_core_figures.py",
-  "generated_at": "2026-11-23T23:16:38+09:00",
+  "generated_at": "2026-11-25T00:29:31+09:00",
   "style": "src/ssc/plotstyle.py (Times New Roman, 300 dpi, drawn at 6.27 in)",
   "inputs": {
     "data/raw/sample_submission.csv": "ce6362dfb3c7386a0dbee598ccdb54ef03e8ceb7a4836d56b9cbec0a0fab08c8",
