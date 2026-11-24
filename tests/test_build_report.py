@@ -167,6 +167,27 @@ def test_line_block_is_set_one_ragged_paragraph_per_line(B):
     assert r"one\newline{}two" in body(B, "one  \ntwo")                  # a single line break stays as it was
 
 
+def test_numbered_reference_list_puts_the_labels_in_a_column(B):
+    out = body(B, "[1] A. Author, “One,” 2001.\\\n[2] B. Author, *Two*, 2002.\\\n[10] C. Author, 2010.")
+    assert ("{\\raggedright\\everypar{\\hangindent=2.2em\\hangafter=1}\\makebox[2.2em][l]{[1]}A. Author,") in out
+    assert "\\makebox[2.2em][l]{[10]}C. Author, 2010.\\par}" in out
+
+
+def test_citations_are_numbered_across_parts_and_listed_in_refs(B, tmp_path):
+    reg = tmp_path / "references.md"
+    reg.write_text("@article{a1, % status: used\n author={Alpha, A.}, title={One}, journal={J}, year={2001}}\n"
+                   "@article{b2, % status: used\n author={Beta, B.}, title={Two}, journal={J}, year={2002}}\n",
+                   encoding="utf-8")
+    texts, warnings = B.resolve_citations(
+        [("core", "First [@b2], then [@a1; @b2]."), ("e1", "Again [@a1]."), ("refs", "")], registry_path=reg)
+    assert texts[0] == ("core", "First&nbsp;[1], then&nbsp;[1, 2].")
+    assert texts[1] == ("e1", "Again&nbsp;[2].")
+    assert texts[2][1].startswith("# References") and "[1] B. Beta" in texts[2][1] and "[2] A. Alpha" in texts[2][1]
+    assert not warnings
+    untouched = [("core", "No citations here.")]
+    assert B.resolve_citations(untouched, registry_path=reg) == (untouched, [])
+
+
 def test_small_markers_set_the_blocks_between_them_in_small_type(B):
     md = ("# T\n\nBefore.\n\n<!-- small -->\nRef A.\\\nRef B.\\\nRef C.\n\n  <!--/SMALL-->  \n"
           "After <!-- small --> inline.\n\n```\n<!-- small -->\n```")

@@ -6,7 +6,7 @@ The team submits **one document** (inside the team zip) made of these parts, in 
 |---|---|---|
 | Core report | `reports/report_core.md` | ≤ 6 pages |
 | Extensions (one per owner, headed with the owner's name) | `reports/extensions/e1_validation_protocol.md`, `e2_learning_curve.md`, `e3_leakage.md`, `e4_feature_stability.md` (only the owned ones) | ≤ 2 pages each |
-| References (one complete list for all parts) | `reports/references.md`, written by `scripts\make_references.py` from `registry/references.md` | no limit (the brief's 6-page core report lists only its five sections) |
+| References (one numbered list for all parts) | generated at build time from the `[@key]` citations of the parts and `registry/references.md` | no limit (the brief's 6-page core report lists only its five sections) |
 | Contribution table | `reports/contribution_table.md` | 1 page |
 
 Individual reflections (`reports/reflections/`) are **not** part of this document: each member exports their own PDF and uploads it to Canvas separately (`scripts\package_deliverables.py` leaves `reports/reflections/` out of the zip).
@@ -20,7 +20,7 @@ Figures and tables come only from scripts: `reports/figures/` and `reports/table
 Run from the project root. The project folder is currently `D:\polyu_class\新建文件夹`, so the interpreter is `D:\polyu_class\新建文件夹\.venv\Scripts\python.exe`; the relative form below works wherever the folder lives.
 
 ```powershell
-.venv\Scripts\python.exe scripts\make_references.py           # after any change of citations or of registry/references.md
+.venv\Scripts\python.exe scripts\make_references.py           # optional: check the [@key] citations without building
 .venv\Scripts\python.exe scripts\build_report.py [--parts core,e1,e2,e3,e4,refs,contrib] [--out reports\report.pdf] [--keep-tex]
 ```
 
@@ -28,7 +28,7 @@ Run from the project root. The project folder is currently `D:\polyu_class\新�
 - **`--parts`**: a comma-separated list in document order. Default: `core`, the extensions listed in `project.yaml` under `report.extensions_owned` (for example `[e1, e3]`), then `contrib`. If that key is not set, all four extensions are included and the script prints a warning. Set it as soon as the owners are known, so that drafts nobody owns stay out of the document.
 - **`--out`**: output file, default `reports\report.pdf`. For a trial build of a single part (for example `--parts e3`), write outside `reports/` (for example `--out $env:TEMP\e3_check.pdf`): `package_deliverables.py` picks up every PDF under `reports/`.
 - **`--keep-tex`**: keep the generated LaTeX source, to inspect layout problems.
-- **References**: the parts cite author–year only. `scripts\make_references.py` writes `reports/references.md`: every registry entry with status "used", plus any other entry that a part cites, as complete entries in alphabetical order. It warns about a citation without an entry and about a listed entry that no part cites (`--check` only checks). Do not edit `reports/references.md` by hand.
+- **References (numbered, IEEE style)**: cite a work by its key in `registry/references.md`, in pandoc syntax: `[@hanley1982]`, several `[@xgboost; @lightgbm]`, with a locator `[@hastie2009, Sec. 7.10.2]`, or narratively `Nadeau and Bengio [@nadeau2003]`. The build numbers the works in the order of their first citation (core first, then the extensions), prints `[1]`, `[3, 7]`, `[2–4]`, and writes the numbered list as the part "refs" after the extensions, so adding a citation never needs manual renumbering. A key that is not in the registry prints `[?]` and a warning: add the entry to `registry/references.md` first. `scripts\make_references.py` checks the citations without building and warns about "used" entries that no part cites (course rule 4).
 - **Smaller type for a reference list**: put `<!-- small -->` and `<!-- /small -->` on lines of their own around the blocks (for example the paragraphs under References); they are set in 10 pt instead of 11 pt. Like any HTML comment, the markers do not show on GitHub. Use them only for references, not to squeeze body text under a page limit.
 - **Needs**: TeX Live with `xelatex` (TeX Live 2024 is installed on the team laptop) and the Times New Roman font (Windows; without it the script falls back to TeX Gyre Termes and warns, as page counts then differ). pandoc is not needed.
 
@@ -44,5 +44,5 @@ The Markdown files stay the source of truth: change them, then rebuild; never ed
   Select-String -Path reports\report_core.md, reports\contribution_table.md, reports\extensions\*.md -Pattern TODO
   ```
 - [ ] Every number traces to a run_id / sub_id (captions or text); no `sandbox/` results.
-- [ ] References: `scripts\make_references.py --check` reports no warning, then `reports/references.md` is regenerated; AI disclosure from `registry/ai_usage.md`.
+- [ ] References: `scripts\make_references.py` reports no error or warning (every citation key in the registry, every "used" entry cited); AI disclosure from `registry/ai_usage.md`.
 - [ ] `.venv\Scripts\python.exe scripts\package_deliverables.py` (dry run) lists `reports/report.pdf`.

@@ -1,4 +1,4 @@
-"""Tests for scripts/make_references.py (reference list of the report)."""
+"""Tests for scripts/make_references.py (numbered citations and the IEEE-style reference list)."""
 import importlib.util
 import sys
 from pathlib import Path
@@ -28,47 +28,52 @@ Some Markdown text.
 @book{hastie2009, % status: used
   author = {Hastie, T. and Tibshirani, R. and Friedman, J.},
   title = {The Elements of Statistical Learning}, edition = {2nd}, publisher = {Springer}, year = {2009}}
+@article{sklearn, % status: used
+  author = {Pedregosa, F. and Varoquaux, G. and others}, title = {Scikit-learn: Machine Learning in {P}ython},
+  journal = {Journal of Machine Learning Research}, volume = {12}, pages = {2825--2830}, year = {2011}}
 @misc{jax, % status: used
-  author = {Bradbury, J. and Frostig, R. and Hawkins, P. and Johnson, M. J. and Leary, C. and Maclaurin, D. and Necula, G.},
-  title = {{JAX}: Composable Transformations of {P}ython+{N}um{P}y Programs},
+  author = {Bradbury, J. and Frostig, R.}, title = {{JAX}: Composable Transformations of {P}ython+{N}um{P}y Programs},
   howpublished = {\url{https://github.com/jax-ml/jax}}, year = {2018}}
-@article{kohavi1995, % status: candidate (cited by E1 only)
-  author = {Kohavi, R.}, title = {A Study of Cross-Validation}, journal = {Proc. IJCAI}, year = {1995}}
 @article{seaborn, % status: candidate
   author = {Waskom, M. L.}, title = {seaborn}, journal = {JOSS}, year = {2021}}
 ```
 """
 
 
-def test_entries_are_complete_and_in_one_style(M):
-    E = {e["key"]: e for e in M.parse_bibtex(BIB)}
-    assert E["hanley1982"]["status"] == "used" and E["kohavi1995"]["status"] == "candidate"
-    assert M.format_entry(E["hanley1982"]) == (
-        "Hanley, J. A., & McNeil, B. J. (1982). The Meaning and Use of the Area Under a Receiver Operating "
-        "Characteristic (ROC) Curve. *Radiology*, *143*(1), 29–36.")
-    assert M.format_entry(E["hastie2009"]) == (
-        "Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning* (2nd ed.). Springer.")
-    jax = M.format_entry(E["jax"])                       # seven authors: six, then et al.; URL as a link
-    assert jax.startswith("Bradbury, J., Frostig, R., Hawkins, P., Johnson, M. J., Leary, C., Maclaurin, D., et al. (2018).")
-    assert jax.endswith("[https://github.com/jax-ml/jax](https://github.com/jax-ml/jax)")
+@pytest.fixture(scope="module")
+def REG(M):
+    return {e["key"]: e for e in M.parse_bibtex(BIB)}
 
 
-def test_selection_follows_status_and_citations(M):
-    entries = M.parse_bibtex(BIB)
-    cited = M.citations("As shown by Hanley and McNeil (1982) and (Kohavi, 1995; Hastie et al., 2009, Sec. 7). "
-                        "<!-- (Waskom, 2021) in a comment does not count --> seed 2026, Run 20261022-063908.")
-    assert cited == {("hanley", "1982"), ("kohavi", "1995"), ("hastie", "2009")}
-    chosen, warnings = M.select(entries, cited | {("nobody", "1999")})
-    assert [e["key"] for e in chosen] == ["jax", "hanley1982", "hastie2009", "kohavi1995"]   # sorted by surname
-    assert any("nobody 1999" in w for w in warnings)                  # a citation without an entry
-    assert any(w.startswith("jax is listed") for w in warnings)        # a used entry that no part cites
-    assert not any("seaborn" in w for w in warnings)                   # uncited candidates are simply left out
+def test_entries_in_ieee_style(M, REG):
+    assert REG["hanley1982"]["status"] == "used" and REG["seaborn"]["status"] == "candidate"
+    assert M.format_entry(REG["hanley1982"]) == (
+        "J. A. Hanley and B. J. McNeil, “The Meaning and Use of the Area Under a Receiver Operating "
+        "Characteristic (ROC) Curve,” *Radiology*, vol. 143, no. 1, pp. 29–36, 1982.")
+    assert M.format_entry(REG["hastie2009"]) == (
+        "T. Hastie, R. Tibshirani, and J. Friedman, *The Elements of Statistical Learning*, 2nd ed. Springer, 2009.")
+    assert M.format_entry(REG["sklearn"]).startswith(
+        "F. Pedregosa et al., “Scikit-learn: Machine Learning in Python,” *J. Mach. Learn. Res.*, vol. 12,")
+    assert M.format_entry(REG["jax"]).endswith(
+        "2018. [Online]. Available: [https://github.com/jax-ml/jax](https://github.com/jax-ml/jax)")
 
 
-def test_rendered_list_is_one_hard_broken_block_in_small_type(M):
-    entries = [e for e in M.parse_bibtex(BIB) if e["status"] == "used"]
-    md = M.render(sorted(entries, key=M.sort_key))
-    assert "# References" in md and md.count("<!-- small -->") == 1 and md.count("<!-- /small -->") == 1
+def test_citations_are_numbered_by_first_appearance(M, REG):
+    core = ("Scores [@hanley1982]. Trees [@sklearn; @hastie2009]. Again [@hanley1982].\n"
+            "<!-- [@seaborn] in a comment is ignored --> `[@jax]` in code is ignored.")
+    ext = "Leakage [@hastie2009, Sec. 7.10.2]; software [@jax; @sklearn; @hanley1982]; unknown [@nobody]."
+    (c, e), order, warnings = M.resolve([core, ext], REG)
+    assert order == ["hanley1982", "sklearn", "hastie2009", "jax"]
+    assert c.startswith("Scores&nbsp;[1]. Trees&nbsp;[2, 3]. Again&nbsp;[1].")
+    assert "<!-- [@seaborn] in a comment is ignored -->" in c and "`[@jax]`" in c
+    assert "Leakage&nbsp;[3, Sec. 7.10.2]" in e and "software&nbsp;[1–2, 4]" not in e
+    assert "software&nbsp;[1, 2, 4]" in e and "unknown&nbsp;[?]" in e      # runs of 3+ only become ranges
+    assert warnings == ["citation key @nobody is not in registry/references.md"]
+    assert M._compress([5, 3, 4, 9]) == "3–5, 9"
+
+
+def test_reference_list_part(M, REG):
+    md = M.render_list(["hanley1982", "sklearn"], REG)
+    assert md.startswith("# References\n\n<!-- small -->\n[1] J. A. Hanley and B. J. McNeil,")
     body = md.split("<!-- small -->\n")[1].split("\n<!-- /small -->")[0]
-    lines = body.split("\n")
-    assert len(lines) == 3 and all(l.endswith("\\") for l in lines[:-1]) and not lines[-1].endswith("\\")
+    assert body.split("\n")[1].startswith("[2] F. Pedregosa et al.") and body.split("\n")[0].endswith("\\")

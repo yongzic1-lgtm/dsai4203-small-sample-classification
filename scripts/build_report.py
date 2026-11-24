@@ -82,6 +82,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 import _common as C
+import make_references as R
 from ssc import paths
 
 ROOT = paths.ROOT
@@ -101,7 +102,7 @@ PARTS = {
     "e2": PartSpec("e2", "reports/extensions/e2_learning_curve.md", 2, "extension E2"),
     "e3": PartSpec("e3", "reports/extensions/e3_leakage.md", 2, "extension E3"),
     "e4": PartSpec("e4", "reports/extensions/e4_feature_stability.md", 2, "extension E4"),
-    "refs": PartSpec("refs", "reports/references.md", 0, "references"),        # 0 = no page limit
+    "refs": PartSpec("refs", "registry/references.md", 0, "references"),       # generated; 0 = no page limit
     "contrib": PartSpec("contrib", "reports/contribution_table.md", 1, "contribution table"),
 }
 ORDER = list(PARTS)
@@ -1286,7 +1287,12 @@ def render_para(b: Block, ctx: Ctx) -> str:
                 segments[-1].append(nd)
         lines = [t for t in (render_inline(seg).strip() for seg in segments) if t]
         if len(lines) >= 2:
-            return ("{\\raggedright\\everypar{\\hangindent=1.5em\\hangafter=1}" + lines[0]
+            hang = "1.5em"
+            numbered = [re.match(r"(?:\{\[\}|\[)(\d+)(?:\{\]\}|\])\s*(.*)$", t, re.S) for t in lines]
+            if all(numbered):                  # "[12] Author, ..." (numbered references): labels in a column
+                hang = "2.2em"
+                lines = ["\\makebox[" + hang + "][l]{[" + m.group(1) + "]}" + m.group(2) for m in numbered]
+            return ("{\\raggedright\\everypar{\\hangindent=" + hang + "\\hangafter=1}" + lines[0]
                     + "\\par\\setlength{\\parskip}{0pt}\n" + "\\par\n".join(lines[1:]) + "\\par}\n")
     return render_inline(nodes).strip() + "\n"
 
@@ -1839,6 +1845,22 @@ class BuildResult:
     work: Path | None = None
 
 
+def resolve_citations(texts: list[tuple[str, str]],
+                      registry_path: Path | None = None) -> tuple[list[tuple[str, str]], list[str]]:
+    """Number the [@key] citations of the parts in document order and write the reference list into the part
+    "refs" (make_references.py). texts: (key, Markdown) in build order -> (same with citations resolved, warnings)."""
+    body = [(k, t) for k, t in texts if k != "refs"]
+    wants_list = any(k == "refs" for k, _ in texts)
+    if not wants_list and not any("[@" in t for _, t in body):
+        return texts, []
+    registry = R.load_registry(registry_path or R.REGISTRY)
+    resolved, order, warnings = R.resolve([t for _, t in body], registry)
+    new = dict(zip([k for k, _ in body], resolved))
+    if wants_list:
+        new["refs"] = R.render_list(order, registry)
+    return [(k, new[k]) for k, _ in texts], warnings
+
+
 def build(sources: list[tuple[str, Path]], out: Path, *, xelatex: str, tmp_base: Path,
           title: str = "", author: str = "", keep_tex: Path | None = None, runs: int = 2,
           metrics: FontMetrics | None = None) -> BuildResult:
@@ -1846,8 +1868,11 @@ def build(sources: list[tuple[str, Path]], out: Path, *, xelatex: str, tmp_base:
     images = ImageStore()
     results = []
     warnings: list[str] = []
-    for key, path in sources:
-        res = convert_markdown(path.read_text(encoding="utf-8-sig"), path.parent, key, images, metrics, path)
+    texts, cite_warnings = resolve_citations(
+        [(key, "" if key == "refs" else path.read_text(encoding="utf-8-sig")) for key, path in sources])
+    warnings += cite_warnings
+    for (key, path), (_, text) in zip(sources, texts):
+        res = convert_markdown(text, path.parent, key, images, metrics, path)
         results.append(res)
         warnings += [f"{key}: {w}" for w in res.warnings + check_part(res)]
     doc_title = title or next((r.title for r in results if r.key == "core"), "") or (results[0].title if results else "")
@@ -1898,8 +1923,7 @@ def main() -> int:
         C.die(str(e), 2)
     if not args.parts and "refs" in keys and not (ROOT / PARTS["refs"].path).is_file():
         keys = [k for k in keys if k != "refs"]
-        notes.append(f"{PARTS['refs'].path} not found, so the document has no reference list: "
-                     "run scripts\\make_references.py")
+        notes.append(f"{PARTS['refs'].path} not found, so the document has no reference list")
     sources = [(k, ROOT / PARTS[k].path) for k in keys]
     missing = [C.rel(p) for _, p in sources if not p.is_file()]
     if missing:
