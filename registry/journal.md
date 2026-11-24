@@ -199,3 +199,8 @@
 - Did: 用户认为作者–年份制"不是正规的 reference，没有数字"，改成 IEEE 编号制（ai_usage 第 27 行）。正文改用 registry 键引用（`[@hanley1982]`，pandoc 写法），`build_report.py` 按全文首次出现的顺序编号，正文印成 [1]、[3, 7]、[2–4]，文末参考文献表按编号列出（IEEE 格式，期刊用标准缩写，编号单独成列、悬挂缩进）。上一个提交里生成的 `reports/references.md` 不再需要，删掉了。
 - Result: 60 条文献全部解析；核心 5.23/6 页，E1–E4 1.80–1.86 页，参考文献 1.94 页（第 15–16 页）。
 - Next: 以后加引用只要在 registry 里有条目，正文写 `[@键]`，编号自动生成；`scripts/make_references.py` 可以不排版先检查引用。
+
+## 2026-11-25 — TODO（推送与归档）
+- Did: 按用户要求把 e3bf9c0（去掉 AI 声明、文末参考文献）和 f9634f8（编号制参考文献）推到 GitHub 公开仓库（推送前检查过，没有邮箱、密钥或比赛邀请链接）；然后按 §12 归档：`verify_data.py` 通过，`archive_check.py --snapshot` 0 个问题，快照 `backups/snapshot_20261125-020212.zip`（2761 个文件，191.8 MB，不进 git）。
+- Result: 剩下 4 条警告都是旧的：3 个 failed run（按 append-only 保留，原因在各自 notes.md）和 `research/reports/sup.md` 引用了不存在的 `tables/r20x_candidates.csv`。
+- Next: 成员写 AI 使用说明和贡献表后，用 `build_report.py`（不加 --parts）重建完整文档。
